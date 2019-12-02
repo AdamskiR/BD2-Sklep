@@ -141,7 +141,7 @@ namespace Sklep
                         string pattern = "^([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$)";
                  
                         int rowsAdded = cmd.ExecuteNonQuery();
-                        if (rowsAdded > 0 && !string.IsNullOrWhiteSpace(textBoxNazwaUzytkownika.Text) && !string.IsNullOrWhiteSpace(textBoxHaslo.Text) && !string.IsNullOrWhiteSpace(textBoxEmail.Text) && Regex.IsMatch(textBoxEmail.Text, pattern))
+                        if (rowsAdded > 0 && !string.IsNullOrWhiteSpace(textBoxNazwaUzytkownika.Text) && !string.IsNullOrWhiteSpace(textBoxHaslo.Text) && !string.IsNullOrWhiteSpace(textBoxEmail.Text) && Regex.IsMatch(textBoxEmail.Text, pattern)&& textBoxHaslo.Text == textHaslo2.Text)
                         {
                             MessageBox.Show("Twoje konto zostało założone. Witaj " + textBoxNazwaUzytkownika.Text.ToString());
                         }
@@ -171,6 +171,18 @@ namespace Sklep
             {
                 EmailValidation.Text = "Adres email jest poprawny ";
                 return;
+            }
+        }
+
+        private void textHaslo2_Validating(object sender, CancelEventArgs e)
+        {
+            if (textBoxHaslo.Text == textHaslo2.Text)
+            {
+                PasswordValidation.Text = "Hasła są zgodne :)";
+            }
+            else
+            {
+                PasswordValidation.Text = "Hasła muszą być identyczne!";
             }
         }
     }

@@ -57,6 +57,7 @@
             this.panelLogo = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panelRejestracja = new System.Windows.Forms.Panel();
+            this.EmailValidation = new System.Windows.Forms.TextBox();
             this.buttonRejestracja = new System.Windows.Forms.Button();
             this.textBoxKod = new System.Windows.Forms.TextBox();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
@@ -110,7 +111,7 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.EmailValidation = new System.Windows.Forms.TextBox();
+            this.PasswordValidation = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
             this.panelRejestracja.SuspendLayout();
@@ -329,6 +330,7 @@
             // panelRejestracja
             // 
             this.panelRejestracja.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelRejestracja.Controls.Add(this.PasswordValidation);
             this.panelRejestracja.Controls.Add(this.EmailValidation);
             this.panelRejestracja.Controls.Add(this.buttonRejestracja);
             this.panelRejestracja.Controls.Add(this.textBoxKod);
@@ -357,6 +359,16 @@
             this.panelRejestracja.Size = new System.Drawing.Size(800, 424);
             this.panelRejestracja.TabIndex = 5;
             this.panelRejestracja.Paint += new System.Windows.Forms.PaintEventHandler(this.panelRejestracja_Paint);
+            // 
+            // EmailValidation
+            // 
+            this.EmailValidation.AccessibleName = "EmailValidation";
+            this.EmailValidation.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.EmailValidation.Cursor = System.Windows.Forms.Cursors.No;
+            this.EmailValidation.Location = new System.Drawing.Point(478, 314);
+            this.EmailValidation.Name = "EmailValidation";
+            this.EmailValidation.Size = new System.Drawing.Size(197, 13);
+            this.EmailValidation.TabIndex = 5;
             // 
             // buttonRejestracja
             // 
@@ -389,6 +401,7 @@
             this.textHaslo2.Name = "textHaslo2";
             this.textHaslo2.Size = new System.Drawing.Size(100, 20);
             this.textHaslo2.TabIndex = 3;
+            this.textHaslo2.Validating += new System.ComponentModel.CancelEventHandler(this.textHaslo2_Validating);
             // 
             // textBoxHaslo
             // 
@@ -850,15 +863,15 @@
             this.label27.TabIndex = 0;
             this.label27.Text = "Edytuj swoje dane";
             // 
-            // EmailValidation
+            // PasswordValidation
             // 
-            this.EmailValidation.AccessibleName = "EmailValidation";
-            this.EmailValidation.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.EmailValidation.Cursor = System.Windows.Forms.Cursors.No;
-            this.EmailValidation.Location = new System.Drawing.Point(478, 314);
-            this.EmailValidation.Name = "EmailValidation";
-            this.EmailValidation.Size = new System.Drawing.Size(197, 13);
-            this.EmailValidation.TabIndex = 5;
+            this.PasswordValidation.AccessibleName = "PasswordValidation";
+            this.PasswordValidation.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PasswordValidation.Cursor = System.Windows.Forms.Cursors.No;
+            this.PasswordValidation.Location = new System.Drawing.Point(482, 288);
+            this.PasswordValidation.Name = "PasswordValidation";
+            this.PasswordValidation.Size = new System.Drawing.Size(193, 13);
+            this.PasswordValidation.TabIndex = 6;
             // 
             // Home
             // 
@@ -973,5 +986,6 @@
         private System.Windows.Forms.ToolStripMenuItem modyfikujProduktToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ądzajUżytkownikamiToolStripMenuItem;
         private System.Windows.Forms.TextBox EmailValidation;
+        private System.Windows.Forms.TextBox PasswordValidation;
     }
 }
