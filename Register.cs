@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace Sklep
 {
@@ -50,20 +51,20 @@ namespace Sklep
 
         private void wypiszuserow()
         {
-            
-                using (connection = new SqlConnection(connectionString))
-                using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Users", connection))
-                {
 
-                    DataTable tabela_ven = new DataTable();
-                    adapter.Fill(tabela_ven);
+            using (connection = new SqlConnection(connectionString))
+            using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Users", connection))
+            {
 
-                    listBox1.DisplayMember = "Username";
-                    listBox1.ValueMember = "ID";
-                    listBox1.DataSource = tabela_ven;
-                                               
+                DataTable tabela_ven = new DataTable();
+                adapter.Fill(tabela_ven);
+
+                listBox1.DisplayMember = "Username";
+                listBox1.ValueMember = "ID";
+                listBox1.DataSource = tabela_ven;
+
             }
-            
+
         }
 
         void Zarejestruj()
@@ -91,9 +92,10 @@ namespace Sklep
                         cmd.Parameters.Add("@pass", SqlDbType.NChar).Value = textBoxHaslo.Text;
                         cmd.Parameters.Add("@email", SqlDbType.NChar).Value = textBoxEmail.Text;
 
+                        string pattern = "^([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$)";
                         // Let's ask the db to execute the query
                         int rowsAdded = cmd.ExecuteNonQuery();
-                        if (rowsAdded >= 3)
+                        if (rowsAdded > 0&&!string.IsNullOrWhiteSpace(textBoxlogin.Text) && !string.IsNullOrWhiteSpace(textBoxHaslo.Text) && !string.IsNullOrWhiteSpace(textBoxEmail.Text) && Regex.IsMatch(textBoxEmail.Text, pattern))
                         {
                             MessageBox.Show("Twoje konto zostało założone. Witaj " + textBoxlogin.Text.ToString());
                             wypiszuserow();
@@ -102,8 +104,6 @@ namespace Sklep
                         else
                             // Well this should never really happen
                             MessageBox.Show("Wprowadzone dane są nieprawidłowe lub brakuje wymaganych informacji, spróbuj ponownie!");
-
-                       
                     }
                 }
                 catch (Exception ex)
@@ -114,8 +114,8 @@ namespace Sklep
                 }
             }
 
-           
-            
+
+
 
             //using (connection = new SqlConnection(connectionString))
             //using (SqlCommand command = new SqlCommand(querry, connection))
@@ -145,7 +145,18 @@ namespace Sklep
 
         }
 
-  
+        private void textBoxEmail_Validating(object sender, CancelEventArgs e)
+        {
+            string pattern = "^([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$)";
+            if (!Regex.IsMatch(textBoxEmail.Text, pattern))
+            {
+                textBox1.Text = "Adres email jest nieprawidłowy";
+            }
+            else
+            {
+                textBox1.Text = "Adres email jest poprawny ";
+                return;
+            }
+        }
     }
-
 }
