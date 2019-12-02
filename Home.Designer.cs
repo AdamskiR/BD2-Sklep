@@ -47,6 +47,10 @@
             this.przejdźDoKasyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuńProduktyZKoszykaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zamknijProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelAdministracyjnyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dodajProduktToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modyfikujProduktToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ądzajUżytkownikamiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageListlogo = new System.Windows.Forms.ImageList(this.components);
             this.panelWelcome = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -106,10 +110,7 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.panelAdministracyjnyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dodajProduktToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modyfikujProduktToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ądzajUżytkownikamiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.EmailValidation = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
             this.panelRejestracja.SuspendLayout();
@@ -146,7 +147,7 @@
             // zalogujToolStripMenuItem
             // 
             this.zalogujToolStripMenuItem.Name = "zalogujToolStripMenuItem";
-            this.zalogujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.zalogujToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.zalogujToolStripMenuItem.Text = "Zaloguj";
             this.zalogujToolStripMenuItem.Click += new System.EventHandler(this.zalogujToolStripMenuItem_Click);
             // 
@@ -154,26 +155,26 @@
             // 
             this.wylogujToolStripMenuItem.Enabled = false;
             this.wylogujToolStripMenuItem.Name = "wylogujToolStripMenuItem";
-            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.wylogujToolStripMenuItem.Text = "Wyloguj";
             // 
             // edytujSwojeDaneToolStripMenuItem
             // 
             this.edytujSwojeDaneToolStripMenuItem.Enabled = false;
             this.edytujSwojeDaneToolStripMenuItem.Name = "edytujSwojeDaneToolStripMenuItem";
-            this.edytujSwojeDaneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.edytujSwojeDaneToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.edytujSwojeDaneToolStripMenuItem.Text = "Edytuj swoje dane";
             this.edytujSwojeDaneToolStripMenuItem.Click += new System.EventHandler(this.edytujSwojeDaneToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(166, 6);
             // 
             // zarejestrujToolStripMenuItem
             // 
             this.zarejestrujToolStripMenuItem.Name = "zarejestrujToolStripMenuItem";
-            this.zarejestrujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.zarejestrujToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.zarejestrujToolStripMenuItem.Text = "Zarejestruj";
             this.zarejestrujToolStripMenuItem.Click += new System.EventHandler(this.zarejestrujToolStripMenuItem_Click);
             // 
@@ -251,6 +252,35 @@
             this.zamknijProgramToolStripMenuItem.Text = "Zamknij program";
             this.zamknijProgramToolStripMenuItem.Click += new System.EventHandler(this.zamknijProgramToolStripMenuItem_Click);
             // 
+            // panelAdministracyjnyToolStripMenuItem
+            // 
+            this.panelAdministracyjnyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dodajProduktToolStripMenuItem,
+            this.modyfikujProduktToolStripMenuItem,
+            this.ądzajUżytkownikamiToolStripMenuItem});
+            this.panelAdministracyjnyToolStripMenuItem.Name = "panelAdministracyjnyToolStripMenuItem";
+            this.panelAdministracyjnyToolStripMenuItem.Size = new System.Drawing.Size(137, 20);
+            this.panelAdministracyjnyToolStripMenuItem.Text = "Panel Administracyjny";
+            // 
+            // dodajProduktToolStripMenuItem
+            // 
+            this.dodajProduktToolStripMenuItem.Name = "dodajProduktToolStripMenuItem";
+            this.dodajProduktToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.dodajProduktToolStripMenuItem.Text = "Dodaj Produkt";
+            // 
+            // modyfikujProduktToolStripMenuItem
+            // 
+            this.modyfikujProduktToolStripMenuItem.Name = "modyfikujProduktToolStripMenuItem";
+            this.modyfikujProduktToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.modyfikujProduktToolStripMenuItem.Text = "Modyfikuj Produkt";
+            // 
+            // ądzajUżytkownikamiToolStripMenuItem
+            // 
+            this.ądzajUżytkownikamiToolStripMenuItem.Name = "ądzajUżytkownikamiToolStripMenuItem";
+            this.ądzajUżytkownikamiToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.ądzajUżytkownikamiToolStripMenuItem.Text = "Edytuj userów";
+            this.ądzajUżytkownikamiToolStripMenuItem.Click += new System.EventHandler(this.ądzajUżytkownikamiToolStripMenuItem_Click);
+            // 
             // imageListlogo
             // 
             this.imageListlogo.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListlogo.ImageStream")));
@@ -299,6 +329,7 @@
             // panelRejestracja
             // 
             this.panelRejestracja.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelRejestracja.Controls.Add(this.EmailValidation);
             this.panelRejestracja.Controls.Add(this.buttonRejestracja);
             this.panelRejestracja.Controls.Add(this.textBoxKod);
             this.panelRejestracja.Controls.Add(this.textBoxEmail);
@@ -335,6 +366,7 @@
             this.buttonRejestracja.TabIndex = 4;
             this.buttonRejestracja.Text = "Zarejestruj";
             this.buttonRejestracja.UseVisualStyleBackColor = true;
+            this.buttonRejestracja.Click += new System.EventHandler(this.buttonRejestracja_Click);
             // 
             // textBoxKod
             // 
@@ -349,6 +381,7 @@
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(100, 20);
             this.textBoxEmail.TabIndex = 3;
+            this.textBoxEmail.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxEmail_Validating);
             // 
             // textHaslo2
             // 
@@ -817,34 +850,15 @@
             this.label27.TabIndex = 0;
             this.label27.Text = "Edytuj swoje dane";
             // 
-            // panelAdministracyjnyToolStripMenuItem
+            // EmailValidation
             // 
-            this.panelAdministracyjnyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dodajProduktToolStripMenuItem,
-            this.modyfikujProduktToolStripMenuItem,
-            this.ądzajUżytkownikamiToolStripMenuItem});
-            this.panelAdministracyjnyToolStripMenuItem.Name = "panelAdministracyjnyToolStripMenuItem";
-            this.panelAdministracyjnyToolStripMenuItem.Size = new System.Drawing.Size(137, 20);
-            this.panelAdministracyjnyToolStripMenuItem.Text = "Panel Administracyjny";
-            // 
-            // dodajProduktToolStripMenuItem
-            // 
-            this.dodajProduktToolStripMenuItem.Name = "dodajProduktToolStripMenuItem";
-            this.dodajProduktToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.dodajProduktToolStripMenuItem.Text = "Dodaj Produkt";
-            // 
-            // modyfikujProduktToolStripMenuItem
-            // 
-            this.modyfikujProduktToolStripMenuItem.Name = "modyfikujProduktToolStripMenuItem";
-            this.modyfikujProduktToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.modyfikujProduktToolStripMenuItem.Text = "Modyfikuj Produkt";
-            // 
-            // ądzajUżytkownikamiToolStripMenuItem
-            // 
-            this.ądzajUżytkownikamiToolStripMenuItem.Name = "ądzajUżytkownikamiToolStripMenuItem";
-            this.ądzajUżytkownikamiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.ądzajUżytkownikamiToolStripMenuItem.Text = "Edytuj userów";
-            this.ądzajUżytkownikamiToolStripMenuItem.Click += new System.EventHandler(this.ądzajUżytkownikamiToolStripMenuItem_Click);
+            this.EmailValidation.AccessibleName = "EmailValidation";
+            this.EmailValidation.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.EmailValidation.Cursor = System.Windows.Forms.Cursors.No;
+            this.EmailValidation.Location = new System.Drawing.Point(478, 314);
+            this.EmailValidation.Name = "EmailValidation";
+            this.EmailValidation.Size = new System.Drawing.Size(197, 13);
+            this.EmailValidation.TabIndex = 5;
             // 
             // Home
             // 
@@ -958,5 +972,6 @@
         private System.Windows.Forms.ToolStripMenuItem dodajProduktToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modyfikujProduktToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ądzajUżytkownikamiToolStripMenuItem;
+        private System.Windows.Forms.TextBox EmailValidation;
     }
 }

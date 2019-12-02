@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -30,9 +31,6 @@ namespace Sklep
         {
             panelLogo.BackgroundImage = imageListlogo.Images[0];
             panelWelcome.BringToFront();
-            Register registerform = new Register();
-            registerform.Show();
-
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -120,6 +118,60 @@ namespace Sklep
         private void ądzajUżytkownikamiToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonRejestracja_Click(object sender, EventArgs e)
+        {
+            string querry = "INSERT INTO [Users] ([Username], [Password], [Email]) VALUES(@login, @pass, @email)";
+
+            using (SqlConnection cnn = new SqlConnection(connectionString))
+            {
+
+                try
+                {
+                    cnn.Open();
+
+                    using (SqlCommand cmd = new SqlCommand(querry, cnn))
+                    {
+
+                        cmd.Parameters.Add("@login", SqlDbType.NChar).Value = textBoxNazwaUzytkownika.Text;
+                        cmd.Parameters.Add("@pass", SqlDbType.NChar).Value = textBoxHaslo.Text;
+                        cmd.Parameters.Add("@email", SqlDbType.NChar).Value = textBoxEmail.Text;
+
+                        string pattern = "^([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$)";
+                 
+                        int rowsAdded = cmd.ExecuteNonQuery();
+                        if (rowsAdded > 0 && !string.IsNullOrWhiteSpace(textBoxNazwaUzytkownika.Text) && !string.IsNullOrWhiteSpace(textBoxHaslo.Text) && !string.IsNullOrWhiteSpace(textBoxEmail.Text) && Regex.IsMatch(textBoxEmail.Text, pattern))
+                        {
+                            MessageBox.Show("Twoje konto zostało założone. Witaj " + textBoxNazwaUzytkownika.Text.ToString());
+                        }
+                        else
+                        {
+                            MessageBox.Show("Wprowadzone dane są nieprawidłowe lub brakuje wymaganych informacji, spróbuj ponownie!");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // We should log the error somewhere, 
+                    // for this example let's just show a message
+                    MessageBox.Show("ERROR:" + ex.Message);
+                }
+            }
+        }
+
+        private void textBoxEmail_Validating(object sender, CancelEventArgs e)
+        {
+            string pattern = "^([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$)";
+            if (!Regex.IsMatch(textBoxEmail.Text, pattern))
+            {
+                EmailValidation.Text = "Adres email jest nieprawidłowy";
+            }
+            else
+            {
+                EmailValidation.Text = "Adres email jest poprawny ";
+                return;
+            }
         }
     }
 }
