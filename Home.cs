@@ -30,7 +30,9 @@ namespace Sklep
         {
             panelLogo.BackgroundImage = imageListlogo.Images[0];
             panelWelcome.BringToFront();
-           
+            Register registerform = new Register();
+            registerform.Show();
+
         }
 
         private void label1_Click(object sender, EventArgs e)

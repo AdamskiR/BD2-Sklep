@@ -93,7 +93,7 @@ namespace Sklep
 
                         // Let's ask the db to execute the query
                         int rowsAdded = cmd.ExecuteNonQuery();
-                        if (rowsAdded > 0)
+                        if (rowsAdded >= 3)
                         {
                             MessageBox.Show("Twoje konto zostało założone. Witaj " + textBoxlogin.Text.ToString());
                             wypiszuserow();
@@ -101,7 +101,7 @@ namespace Sklep
                         }
                         else
                             // Well this should never really happen
-                            MessageBox.Show("ERROR: No row inserted");
+                            MessageBox.Show("Wprowadzone dane są nieprawidłowe lub brakuje wymaganych informacji, spróbuj ponownie!");
 
                        
                     }
