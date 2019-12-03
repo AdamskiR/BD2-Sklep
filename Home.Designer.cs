@@ -57,6 +57,7 @@
             this.panelLogo = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panelRejestracja = new System.Windows.Forms.Panel();
+            this.PasswordValidation = new System.Windows.Forms.TextBox();
             this.EmailValidation = new System.Windows.Forms.TextBox();
             this.buttonRejestracja = new System.Windows.Forms.Button();
             this.textBoxKod = new System.Windows.Forms.TextBox();
@@ -111,7 +112,7 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.PasswordValidation = new System.Windows.Forms.TextBox();
+            this.LoginValidation = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
             this.panelRejestracja.SuspendLayout();
@@ -330,6 +331,7 @@
             // panelRejestracja
             // 
             this.panelRejestracja.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelRejestracja.Controls.Add(this.LoginValidation);
             this.panelRejestracja.Controls.Add(this.PasswordValidation);
             this.panelRejestracja.Controls.Add(this.EmailValidation);
             this.panelRejestracja.Controls.Add(this.buttonRejestracja);
@@ -359,6 +361,16 @@
             this.panelRejestracja.Size = new System.Drawing.Size(800, 424);
             this.panelRejestracja.TabIndex = 5;
             this.panelRejestracja.Paint += new System.Windows.Forms.PaintEventHandler(this.panelRejestracja_Paint);
+            // 
+            // PasswordValidation
+            // 
+            this.PasswordValidation.AccessibleName = "PasswordValidation";
+            this.PasswordValidation.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PasswordValidation.Cursor = System.Windows.Forms.Cursors.No;
+            this.PasswordValidation.Location = new System.Drawing.Point(478, 288);
+            this.PasswordValidation.Name = "PasswordValidation";
+            this.PasswordValidation.Size = new System.Drawing.Size(197, 13);
+            this.PasswordValidation.TabIndex = 6;
             // 
             // EmailValidation
             // 
@@ -863,15 +875,15 @@
             this.label27.TabIndex = 0;
             this.label27.Text = "Edytuj swoje dane";
             // 
-            // PasswordValidation
+            // LoginValidation
             // 
-            this.PasswordValidation.AccessibleName = "PasswordValidation";
-            this.PasswordValidation.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PasswordValidation.Cursor = System.Windows.Forms.Cursors.No;
-            this.PasswordValidation.Location = new System.Drawing.Point(482, 288);
-            this.PasswordValidation.Name = "PasswordValidation";
-            this.PasswordValidation.Size = new System.Drawing.Size(193, 13);
-            this.PasswordValidation.TabIndex = 6;
+            this.LoginValidation.AccessibleName = "LoginValidation";
+            this.LoginValidation.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.LoginValidation.Cursor = System.Windows.Forms.Cursors.No;
+            this.LoginValidation.Location = new System.Drawing.Point(478, 245);
+            this.LoginValidation.Name = "LoginValidation";
+            this.LoginValidation.Size = new System.Drawing.Size(197, 13);
+            this.LoginValidation.TabIndex = 7;
             // 
             // Home
             // 
@@ -987,5 +999,6 @@
         private System.Windows.Forms.ToolStripMenuItem ądzajUżytkownikamiToolStripMenuItem;
         private System.Windows.Forms.TextBox EmailValidation;
         private System.Windows.Forms.TextBox PasswordValidation;
+        private System.Windows.Forms.TextBox LoginValidation;
     }
 }

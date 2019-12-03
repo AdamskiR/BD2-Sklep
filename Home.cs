@@ -17,6 +17,7 @@ namespace Sklep
     {
         SqlConnection connection;
         string connectionString;
+        bool isUsernameTaken;
 
         public Home()
         {
@@ -119,10 +120,10 @@ namespace Sklep
         {
 
         }
-
         private void buttonRejestracja_Click(object sender, EventArgs e)
         {
             string querry = "INSERT INTO [Users] ([Username], [Password], [Email]) VALUES(@login, @pass, @email)";
+
 
             using (SqlConnection cnn = new SqlConnection(connectionString))
             {
@@ -135,15 +136,47 @@ namespace Sklep
                     {
 
                         cmd.Parameters.Add("@login", SqlDbType.NChar).Value = textBoxNazwaUzytkownika.Text;
+                        using (SqlConnection cnn2 = new SqlConnection(connectionString))
+                        {
+
+                            try
+                            {
+                                cnn2.Open();
+
+                                string querry2 = "SELECT * from [Users] where Username= @Username";
+                                SqlCommand cmd2 = new SqlCommand(querry2, cnn2);
+                                cmd2.Parameters.AddWithValue("@Username", this.textBoxNazwaUzytkownika.Text);
+                                SqlDataReader dr = cmd2.ExecuteReader();
+                                dr.Read();
+
+                                if (dr.HasRows == true)
+                                {
+                                    LoginValidation.Text = "Login jest zajęty!";
+                                    isUsernameTaken = true;
+                                }
+                                else
+                                {
+                                    isUsernameTaken = false;
+                                    LoginValidation.Text = " ";
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                // We should log the error somewhere, 
+                                // for this example let's just show a message
+                                MessageBox.Show("ERROR:" + ex.Message);
+                            }
+                        }
                         cmd.Parameters.Add("@pass", SqlDbType.NChar).Value = textBoxHaslo.Text;
                         cmd.Parameters.Add("@email", SqlDbType.NChar).Value = textBoxEmail.Text;
 
                         string pattern = "^([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$)";
-                 
+
                         int rowsAdded = cmd.ExecuteNonQuery();
-                        if (rowsAdded > 0 && !string.IsNullOrWhiteSpace(textBoxNazwaUzytkownika.Text) && !string.IsNullOrWhiteSpace(textBoxHaslo.Text) && !string.IsNullOrWhiteSpace(textBoxEmail.Text) && Regex.IsMatch(textBoxEmail.Text, pattern)&& textBoxHaslo.Text == textHaslo2.Text)
+                        if (rowsAdded > 0 && !string.IsNullOrWhiteSpace(textBoxNazwaUzytkownika.Text) && !string.IsNullOrWhiteSpace(textBoxHaslo.Text) && !string.IsNullOrWhiteSpace(textBoxEmail.Text) && Regex.IsMatch(textBoxEmail.Text, pattern) && isUsernameTaken == false && textBoxHaslo.Text == textHaslo2.Text)
                         {
                             MessageBox.Show("Twoje konto zostało założone. Witaj " + textBoxNazwaUzytkownika.Text.ToString());
+                            isUsernameTaken = true;
                         }
                         else
                         {
@@ -159,6 +192,8 @@ namespace Sklep
                 }
             }
         }
+
+
 
         private void textBoxEmail_Validating(object sender, CancelEventArgs e)
         {
@@ -185,5 +220,7 @@ namespace Sklep
                 PasswordValidation.Text = "Hasła muszą być identyczne!";
             }
         }
+
+      
     }
 }
