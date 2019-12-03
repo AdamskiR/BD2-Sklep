@@ -18,7 +18,7 @@ namespace Sklep
         SqlConnection connection;
         string connectionString;
         bool isUsernameTaken;
-        bool isUserAuthenticated;
+        bool isUserAuthenticated = false;
 
         public Home()
         {
@@ -268,6 +268,15 @@ namespace Sklep
             {
                 PasswordValidation.Text = "Hasła muszą być identyczne!";
             }
+        }
+
+        private void wylogujToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            isUserAuthenticated = false;
+            labelZalogowanyJako.Text = " ";
+            buttonZaloguj.Visible = true;
+            wylogujToolStripMenuItem.Visible = false;
+            edytujSwojeDaneToolStripMenuItem.Visible = false;
         }
     }
 }

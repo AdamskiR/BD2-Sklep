@@ -160,6 +160,7 @@
             this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.wylogujToolStripMenuItem.Text = "Wyloguj";
             this.wylogujToolStripMenuItem.Visible = false;
+            this.wylogujToolStripMenuItem.Click += new System.EventHandler(this.wylogujToolStripMenuItem_Click);
             // 
             // edytujSwojeDaneToolStripMenuItem
             // 
