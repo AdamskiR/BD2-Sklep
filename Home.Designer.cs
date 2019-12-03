@@ -46,7 +46,6 @@
             this.koszykToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.przejdźDoKasyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuńProduktyZKoszykaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.zamknijProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelAdministracyjnyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajProduktToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modyfikujProduktToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -126,7 +125,6 @@
             this.użytkownikToolStripMenuItem,
             this.zakupyToolStripMenuItem,
             this.koszykToolStripMenuItem,
-            this.zamknijProgramToolStripMenuItem,
             this.panelAdministracyjnyToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -248,13 +246,6 @@
             this.usuńProduktyZKoszykaToolStripMenuItem.Name = "usuńProduktyZKoszykaToolStripMenuItem";
             this.usuńProduktyZKoszykaToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.usuńProduktyZKoszykaToolStripMenuItem.Text = "Usuń produkty z koszyka";
-            // 
-            // zamknijProgramToolStripMenuItem
-            // 
-            this.zamknijProgramToolStripMenuItem.Name = "zamknijProgramToolStripMenuItem";
-            this.zamknijProgramToolStripMenuItem.Size = new System.Drawing.Size(111, 20);
-            this.zamknijProgramToolStripMenuItem.Text = "Zamknij program";
-            this.zamknijProgramToolStripMenuItem.Click += new System.EventHandler(this.zamknijProgramToolStripMenuItem_Click);
             // 
             // panelAdministracyjnyToolStripMenuItem
             // 
@@ -423,6 +414,7 @@
             // 
             this.textHaslo2.Location = new System.Drawing.Point(372, 288);
             this.textHaslo2.Name = "textHaslo2";
+            this.textHaslo2.PasswordChar = '*';
             this.textHaslo2.Size = new System.Drawing.Size(100, 20);
             this.textHaslo2.TabIndex = 3;
             this.textHaslo2.Validating += new System.ComponentModel.CancelEventHandler(this.textHaslo2_Validating);
@@ -431,6 +423,7 @@
             // 
             this.textBoxHaslo.Location = new System.Drawing.Point(372, 265);
             this.textBoxHaslo.Name = "textBoxHaslo";
+            this.textBoxHaslo.PasswordChar = '*';
             this.textBoxHaslo.Size = new System.Drawing.Size(100, 20);
             this.textBoxHaslo.TabIndex = 3;
             // 
@@ -623,6 +616,7 @@
             // 
             this.textBoxLogHaslo.Location = new System.Drawing.Point(371, 168);
             this.textBoxLogHaslo.Name = "textBoxLogHaslo";
+            this.textBoxLogHaslo.PasswordChar = '*';
             this.textBoxLogHaslo.Size = new System.Drawing.Size(120, 20);
             this.textBoxLogHaslo.TabIndex = 2;
             // 
@@ -670,9 +664,8 @@
             this.labelZalogowanyJako.BackColor = System.Drawing.Color.Transparent;
             this.labelZalogowanyJako.Location = new System.Drawing.Point(606, 5);
             this.labelZalogowanyJako.Name = "labelZalogowanyJako";
-            this.labelZalogowanyJako.Size = new System.Drawing.Size(91, 13);
+            this.labelZalogowanyJako.Size = new System.Drawing.Size(0, 13);
             this.labelZalogowanyJako.TabIndex = 6;
-            this.labelZalogowanyJako.Text = "Zalogowany jako:";
             this.labelZalogowanyJako.Click += new System.EventHandler(this.label14_Click);
             // 
             // panelEdytujSwojeDane
@@ -933,7 +926,6 @@
         private System.Windows.Forms.ToolStripMenuItem twojeZamówieniaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wszystkieToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ostatnieToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem zamknijProgramToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem koszykToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem przejdźDoKasyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuńProduktyZKoszykaToolStripMenuItem;

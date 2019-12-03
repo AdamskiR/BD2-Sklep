@@ -71,11 +71,6 @@ namespace Sklep
 
         }
 
-        private void zamknijProgramToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void label14_Click(object sender, EventArgs e)
         {
 
@@ -121,7 +116,7 @@ namespace Sklep
                     if (dr2.Read() == true && isUserAuthenticated == false)
                     {
                         MessageBox.Show("Witaj ponownie " + textBoxLogUzytkownik.Text.ToString());
-                        labelZalogowanyJako.Text += " " + textBoxLogUzytkownik.Text;
+                        labelZalogowanyJako.Text = "Zalogowany jako: " + textBoxLogUzytkownik.Text;
                         isUserAuthenticated = true;
                         buttonZaloguj.Visible = false;
                         wylogujToolStripMenuItem.Visible = true;
@@ -277,6 +272,7 @@ namespace Sklep
             buttonZaloguj.Visible = true;
             wylogujToolStripMenuItem.Visible = false;
             edytujSwojeDaneToolStripMenuItem.Visible = false;
+            MessageBox.Show("Do zobaczenia!");
         }
     }
 }
