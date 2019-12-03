@@ -170,7 +170,7 @@
             // zalogujToolStripMenuItem
             // 
             this.zalogujToolStripMenuItem.Name = "zalogujToolStripMenuItem";
-            this.zalogujToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.zalogujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.zalogujToolStripMenuItem.Text = "Zaloguj";
             this.zalogujToolStripMenuItem.Click += new System.EventHandler(this.zalogujToolStripMenuItem_Click);
             // 
@@ -178,7 +178,7 @@
             // 
             this.wylogujToolStripMenuItem.Name = "wylogujToolStripMenuItem";
             this.wylogujToolStripMenuItem.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded;
-            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.wylogujToolStripMenuItem.Text = "Wyloguj";
             this.wylogujToolStripMenuItem.Visible = false;
             this.wylogujToolStripMenuItem.Click += new System.EventHandler(this.wylogujToolStripMenuItem_Click);
@@ -186,7 +186,7 @@
             // edytujSwojeDaneToolStripMenuItem
             // 
             this.edytujSwojeDaneToolStripMenuItem.Name = "edytujSwojeDaneToolStripMenuItem";
-            this.edytujSwojeDaneToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.edytujSwojeDaneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.edytujSwojeDaneToolStripMenuItem.Text = "Edytuj swoje dane";
             this.edytujSwojeDaneToolStripMenuItem.Visible = false;
             this.edytujSwojeDaneToolStripMenuItem.Click += new System.EventHandler(this.edytujSwojeDaneToolStripMenuItem_Click);
@@ -194,12 +194,12 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(166, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // zarejestrujToolStripMenuItem
             // 
             this.zarejestrujToolStripMenuItem.Name = "zarejestrujToolStripMenuItem";
-            this.zarejestrujToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.zarejestrujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.zarejestrujToolStripMenuItem.Text = "Zarejestruj";
             this.zarejestrujToolStripMenuItem.Click += new System.EventHandler(this.zarejestrujToolStripMenuItem_Click);
             // 
@@ -216,14 +216,14 @@
             // naszaOfertaToolStripMenuItem
             // 
             this.naszaOfertaToolStripMenuItem.Name = "naszaOfertaToolStripMenuItem";
-            this.naszaOfertaToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.naszaOfertaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.naszaOfertaToolStripMenuItem.Text = "Nasza oferta";
             this.naszaOfertaToolStripMenuItem.Click += new System.EventHandler(this.naszaOfertaToolStripMenuItem_Click_1);
             // 
             // wyszukajToolStripMenuItem
             // 
             this.wyszukajToolStripMenuItem.Name = "wyszukajToolStripMenuItem";
-            this.wyszukajToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.wyszukajToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.wyszukajToolStripMenuItem.Text = "Wyszukaj";
             // 
             // twojeZamówieniaToolStripMenuItem
@@ -233,7 +233,7 @@
             this.ostatnieToolStripMenuItem});
             this.twojeZamówieniaToolStripMenuItem.Enabled = false;
             this.twojeZamówieniaToolStripMenuItem.Name = "twojeZamówieniaToolStripMenuItem";
-            this.twojeZamówieniaToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.twojeZamówieniaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.twojeZamówieniaToolStripMenuItem.Text = "Twoje zamówienia";
             // 
             // wszystkieToolStripMenuItem

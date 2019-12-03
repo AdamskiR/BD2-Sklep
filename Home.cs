@@ -164,7 +164,7 @@ namespace Sklep
         }
         private void buttonRejestracja_Click(object sender, EventArgs e)
         {
-            string querry = "INSERT INTO [Users] ([Username], [Password], [Email]) VALUES(@login, @pass, @email)";
+            string querry = "INSERT INTO [Users] ([Username], [Password], [Email], [FirstName], [LastName], [ZipCode], [City], [Street], [TelephoneNumber]) VALUES(@login, @pass, @email, @nazwisko, @imie, @zipcode, @miasto, @ulica, @telefon)";
 
 
             using (SqlConnection cnn = new SqlConnection(connectionString))
@@ -212,6 +212,12 @@ namespace Sklep
                         }
                         cmd.Parameters.Add("@pass", SqlDbType.NChar).Value = textBoxHaslo.Text;
                         cmd.Parameters.Add("@email", SqlDbType.NChar).Value = textBoxEmail.Text;
+                        cmd.Parameters.Add("@nazwisko", SqlDbType.NChar).Value = textBoxNazwisko.Text;
+                        cmd.Parameters.Add("@imie", SqlDbType.NChar).Value = textBoxImie.Text;
+                        cmd.Parameters.Add("@zipcode", SqlDbType.NChar).Value = textBoxKod.Text;
+                        cmd.Parameters.Add("@miasto", SqlDbType.NChar).Value = textBoxMiasto.Text;
+                        cmd.Parameters.Add("@ulica", SqlDbType.NChar).Value = textBoxUlica.Text;
+                        cmd.Parameters.Add("@telefon", SqlDbType.Int).Value = textBoxNrTelefonu.Text;
 
                         string pattern = "^([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$)";
 
