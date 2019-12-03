@@ -605,6 +605,7 @@
             this.buttonZaloguj.TabIndex = 3;
             this.buttonZaloguj.Text = "Zaloguj";
             this.buttonZaloguj.UseVisualStyleBackColor = true;
+            this.buttonZaloguj.Click += new System.EventHandler(this.buttonZaloguj_Click);
             // 
             // textBoxLogHaslo
             // 

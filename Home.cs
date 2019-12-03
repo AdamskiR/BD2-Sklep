@@ -94,7 +94,10 @@ namespace Sklep
         {
             panelLogin.BringToFront();
         }
+        private void buttonZaloguj_Click(object sender, EventArgs e)
+        {
 
+        }
         private void label22_Click(object sender, EventArgs e)
         {
 
@@ -172,9 +175,10 @@ namespace Sklep
 
                         string pattern = "^([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$)";
 
-                        int rowsAdded = cmd.ExecuteNonQuery();
-                        if (rowsAdded > 0 && !string.IsNullOrWhiteSpace(textBoxNazwaUzytkownika.Text) && !string.IsNullOrWhiteSpace(textBoxHaslo.Text) && !string.IsNullOrWhiteSpace(textBoxEmail.Text) && Regex.IsMatch(textBoxEmail.Text, pattern) && isUsernameTaken == false && textBoxHaslo.Text == textHaslo2.Text)
+                        
+                        if (!string.IsNullOrWhiteSpace(textBoxNazwaUzytkownika.Text) && !string.IsNullOrWhiteSpace(textBoxHaslo.Text) && !string.IsNullOrWhiteSpace(textBoxEmail.Text) && Regex.IsMatch(textBoxEmail.Text, pattern) && isUsernameTaken == false && textBoxHaslo.Text == textHaslo2.Text)
                         {
+                            cmd.ExecuteNonQuery();
                             MessageBox.Show("Twoje konto zostało założone. Witaj " + textBoxNazwaUzytkownika.Text.ToString());
                             isUsernameTaken = true;
                         }
