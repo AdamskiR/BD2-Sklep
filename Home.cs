@@ -18,6 +18,7 @@ namespace Sklep
         SqlConnection connection;
         string connectionString;
         bool isUsernameTaken;
+        bool isUserAuthenticated = false;
 
         public Home()
         {
@@ -120,6 +121,8 @@ namespace Sklep
                     if (dr2.Read() == true)
                     {
                         MessageBox.Show("Witaj ponownie " + textBoxLogUzytkownik.Text.ToString());
+                        labelZalogowanyJako.Text += " " + textBoxLogUzytkownik.Text;
+                        isUserAuthenticated = true;
                     }
                     else
                     {
