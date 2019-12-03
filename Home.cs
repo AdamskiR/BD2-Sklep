@@ -96,8 +96,46 @@ namespace Sklep
         }
         private void buttonZaloguj_Click(object sender, EventArgs e)
         {
+            using (SqlConnection cnn3 = new SqlConnection(connectionString))
+            {
 
+                try
+                {
+                    cnn3.Open();
+
+                    string querry3 = "SELECT Username,Password FROM [Users] where Username = @Username AND Password = @Password";
+                    SqlCommand cmd3 = new SqlCommand(querry3, cnn3);
+                    SqlParameter uName = new SqlParameter("@Username", SqlDbType.VarChar);
+                    SqlParameter uPassword = new SqlParameter("@Password", SqlDbType.VarChar);
+
+                    uName.Value = textBoxLogUzytkownik.Text;
+                    uPassword.Value = textBoxLogHaslo.Text;
+
+                    cmd3.Parameters.Add(uName);
+                    cmd3.Parameters.Add(uPassword);
+
+
+                    SqlDataReader dr2 = cmd3.ExecuteReader();
+
+                    if (dr2.Read() == true)
+                    {
+                        MessageBox.Show("Witaj ponownie " + textBoxLogUzytkownik.Text.ToString());
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nieprawidłowy login lub hasło");
+                    }
+                    cnn3.Close();
+                }
+                catch (Exception ex)
+                {
+                    // We should log the error somewhere, 
+                    // for this example let's just show a message
+                    MessageBox.Show("ERROR:" + ex.Message);
+                }
+            }
         }
+    
         private void label22_Click(object sender, EventArgs e)
         {
 
@@ -162,6 +200,7 @@ namespace Sklep
                                     isUsernameTaken = false;
                                     LoginValidation.Text = " ";
                                 }
+                                cnn2.Close();
                             }
                             catch (Exception ex)
                             {
@@ -180,12 +219,12 @@ namespace Sklep
                         {
                             cmd.ExecuteNonQuery();
                             MessageBox.Show("Twoje konto zostało założone. Witaj " + textBoxNazwaUzytkownika.Text.ToString());
-                            isUsernameTaken = true;
                         }
                         else
                         {
                             MessageBox.Show("Wprowadzone dane są nieprawidłowe lub brakuje wymaganych informacji, spróbuj ponownie!");
                         }
+                        cnn.Close();
                     }
                 }
                 catch (Exception ex)
