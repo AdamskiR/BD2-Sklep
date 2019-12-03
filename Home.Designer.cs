@@ -163,10 +163,10 @@
             // 
             // edytujSwojeDaneToolStripMenuItem
             // 
-            this.edytujSwojeDaneToolStripMenuItem.Enabled = false;
             this.edytujSwojeDaneToolStripMenuItem.Name = "edytujSwojeDaneToolStripMenuItem";
             this.edytujSwojeDaneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.edytujSwojeDaneToolStripMenuItem.Text = "Edytuj swoje dane";
+            this.edytujSwojeDaneToolStripMenuItem.Visible = false;
             this.edytujSwojeDaneToolStripMenuItem.Click += new System.EventHandler(this.edytujSwojeDaneToolStripMenuItem_Click);
             // 
             // toolStripSeparator1

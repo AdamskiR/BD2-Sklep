@@ -125,6 +125,7 @@ namespace Sklep
                         isUserAuthenticated = true;
                         buttonZaloguj.Visible = false;
                         wylogujToolStripMenuItem.Visible = true;
+                        edytujSwojeDaneToolStripMenuItem.Visible = true;
                     }
                     else
                     {
