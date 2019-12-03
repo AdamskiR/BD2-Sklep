@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.Label label25;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -112,12 +113,34 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
+            this.panelNaszaOferta = new System.Windows.Forms.Panel();
+            this.buttonNOdodajDokoszyka = new System.Windows.Forms.Button();
+            this.textBoxNOIleKupic = new System.Windows.Forms.TextBox();
+            this.labelNOProducent = new System.Windows.Forms.Label();
+            this.labelKupteraz = new System.Windows.Forms.Label();
+            this.labelNOkategorie = new System.Windows.Forms.Label();
+            this.labelNOwMagazynie = new System.Windows.Forms.Label();
+            this.labelNOCena = new System.Windows.Forms.Label();
+            this.labelNOopisProd = new System.Windows.Forms.Label();
+            this.listBoxNOProdukty = new System.Windows.Forms.ListBox();
+            label25 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
             this.panelRejestracja.SuspendLayout();
             this.panelLogin.SuspendLayout();
             this.panelEdytujSwojeDane.SuspendLayout();
+            this.panelNaszaOferta.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // label25
+            // 
+            label25.AutoSize = true;
+            label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            label25.Location = new System.Drawing.Point(109, 26);
+            label25.Name = "label25";
+            label25.Size = new System.Drawing.Size(588, 31);
+            label25.TabIndex = 1;
+            label25.Text = "Kliknij w produkt, by wyświetlić informacje o nim";
             // 
             // menuStrip1
             // 
@@ -147,7 +170,7 @@
             // zalogujToolStripMenuItem
             // 
             this.zalogujToolStripMenuItem.Name = "zalogujToolStripMenuItem";
-            this.zalogujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.zalogujToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.zalogujToolStripMenuItem.Text = "Zaloguj";
             this.zalogujToolStripMenuItem.Click += new System.EventHandler(this.zalogujToolStripMenuItem_Click);
             // 
@@ -155,7 +178,7 @@
             // 
             this.wylogujToolStripMenuItem.Name = "wylogujToolStripMenuItem";
             this.wylogujToolStripMenuItem.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded;
-            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.wylogujToolStripMenuItem.Text = "Wyloguj";
             this.wylogujToolStripMenuItem.Visible = false;
             this.wylogujToolStripMenuItem.Click += new System.EventHandler(this.wylogujToolStripMenuItem_Click);
@@ -163,7 +186,7 @@
             // edytujSwojeDaneToolStripMenuItem
             // 
             this.edytujSwojeDaneToolStripMenuItem.Name = "edytujSwojeDaneToolStripMenuItem";
-            this.edytujSwojeDaneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.edytujSwojeDaneToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.edytujSwojeDaneToolStripMenuItem.Text = "Edytuj swoje dane";
             this.edytujSwojeDaneToolStripMenuItem.Visible = false;
             this.edytujSwojeDaneToolStripMenuItem.Click += new System.EventHandler(this.edytujSwojeDaneToolStripMenuItem_Click);
@@ -171,12 +194,12 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(166, 6);
             // 
             // zarejestrujToolStripMenuItem
             // 
             this.zarejestrujToolStripMenuItem.Name = "zarejestrujToolStripMenuItem";
-            this.zarejestrujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.zarejestrujToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.zarejestrujToolStripMenuItem.Text = "Zarejestruj";
             this.zarejestrujToolStripMenuItem.Click += new System.EventHandler(this.zarejestrujToolStripMenuItem_Click);
             // 
@@ -195,6 +218,7 @@
             this.naszaOfertaToolStripMenuItem.Name = "naszaOfertaToolStripMenuItem";
             this.naszaOfertaToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.naszaOfertaToolStripMenuItem.Text = "Nasza oferta";
+            this.naszaOfertaToolStripMenuItem.Click += new System.EventHandler(this.naszaOfertaToolStripMenuItem_Click_1);
             // 
             // wyszukajToolStripMenuItem
             // 
@@ -881,11 +905,119 @@
             this.label27.TabIndex = 0;
             this.label27.Text = "Edytuj swoje dane";
             // 
+            // panelNaszaOferta
+            // 
+            this.panelNaszaOferta.Controls.Add(this.buttonNOdodajDokoszyka);
+            this.panelNaszaOferta.Controls.Add(this.textBoxNOIleKupic);
+            this.panelNaszaOferta.Controls.Add(this.labelNOProducent);
+            this.panelNaszaOferta.Controls.Add(this.labelKupteraz);
+            this.panelNaszaOferta.Controls.Add(this.labelNOkategorie);
+            this.panelNaszaOferta.Controls.Add(this.labelNOwMagazynie);
+            this.panelNaszaOferta.Controls.Add(this.labelNOCena);
+            this.panelNaszaOferta.Controls.Add(this.labelNOopisProd);
+            this.panelNaszaOferta.Controls.Add(label25);
+            this.panelNaszaOferta.Controls.Add(this.listBoxNOProdukty);
+            this.panelNaszaOferta.Location = new System.Drawing.Point(3, 24);
+            this.panelNaszaOferta.Name = "panelNaszaOferta";
+            this.panelNaszaOferta.Size = new System.Drawing.Size(800, 424);
+            this.panelNaszaOferta.TabIndex = 9;
+            this.panelNaszaOferta.Paint += new System.Windows.Forms.PaintEventHandler(this.panelNaszaOferta_Paint);
+            // 
+            // buttonNOdodajDokoszyka
+            // 
+            this.buttonNOdodajDokoszyka.Location = new System.Drawing.Point(256, 311);
+            this.buttonNOdodajDokoszyka.Name = "buttonNOdodajDokoszyka";
+            this.buttonNOdodajDokoszyka.Size = new System.Drawing.Size(115, 54);
+            this.buttonNOdodajDokoszyka.TabIndex = 4;
+            this.buttonNOdodajDokoszyka.Text = "Dodaj do koszyka";
+            this.buttonNOdodajDokoszyka.UseVisualStyleBackColor = true;
+            this.buttonNOdodajDokoszyka.Visible = false;
+            // 
+            // textBoxNOIleKupic
+            // 
+            this.textBoxNOIleKupic.Location = new System.Drawing.Point(290, 278);
+            this.textBoxNOIleKupic.Name = "textBoxNOIleKupic";
+            this.textBoxNOIleKupic.Size = new System.Drawing.Size(51, 20);
+            this.textBoxNOIleKupic.TabIndex = 3;
+            this.textBoxNOIleKupic.Visible = false;
+            this.textBoxNOIleKupic.TextChanged += new System.EventHandler(this.textBoxNOIleKupic_TextChanged);
+            // 
+            // labelNOProducent
+            // 
+            this.labelNOProducent.AutoSize = true;
+            this.labelNOProducent.Location = new System.Drawing.Point(242, 120);
+            this.labelNOProducent.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.labelNOProducent.Name = "labelNOProducent";
+            this.labelNOProducent.Size = new System.Drawing.Size(10, 13);
+            this.labelNOProducent.TabIndex = 2;
+            this.labelNOProducent.Text = " ";
+            // 
+            // labelKupteraz
+            // 
+            this.labelKupteraz.AutoSize = true;
+            this.labelKupteraz.Location = new System.Drawing.Point(242, 248);
+            this.labelKupteraz.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.labelKupteraz.Name = "labelKupteraz";
+            this.labelKupteraz.Size = new System.Drawing.Size(0, 13);
+            this.labelKupteraz.TabIndex = 2;
+            // 
+            // labelNOkategorie
+            // 
+            this.labelNOkategorie.AutoSize = true;
+            this.labelNOkategorie.Location = new System.Drawing.Point(242, 191);
+            this.labelNOkategorie.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.labelNOkategorie.Name = "labelNOkategorie";
+            this.labelNOkategorie.Size = new System.Drawing.Size(52, 13);
+            this.labelNOkategorie.TabIndex = 2;
+            this.labelNOkategorie.Text = "Kategorie";
+            // 
+            // labelNOwMagazynie
+            // 
+            this.labelNOwMagazynie.AutoSize = true;
+            this.labelNOwMagazynie.Location = new System.Drawing.Point(242, 166);
+            this.labelNOwMagazynie.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.labelNOwMagazynie.Name = "labelNOwMagazynie";
+            this.labelNOwMagazynie.Size = new System.Drawing.Size(10, 13);
+            this.labelNOwMagazynie.TabIndex = 2;
+            this.labelNOwMagazynie.Text = " ";
+            // 
+            // labelNOCena
+            // 
+            this.labelNOCena.AutoSize = true;
+            this.labelNOCena.Location = new System.Drawing.Point(242, 143);
+            this.labelNOCena.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.labelNOCena.Name = "labelNOCena";
+            this.labelNOCena.Size = new System.Drawing.Size(10, 13);
+            this.labelNOCena.TabIndex = 2;
+            this.labelNOCena.Text = " ";
+            // 
+            // labelNOopisProd
+            // 
+            this.labelNOopisProd.AutoSize = true;
+            this.labelNOopisProd.Location = new System.Drawing.Point(242, 97);
+            this.labelNOopisProd.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.labelNOopisProd.Name = "labelNOopisProd";
+            this.labelNOopisProd.Size = new System.Drawing.Size(10, 13);
+            this.labelNOopisProd.TabIndex = 2;
+            this.labelNOopisProd.Text = " ";
+            // 
+            // listBoxNOProdukty
+            // 
+            this.listBoxNOProdukty.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.listBoxNOProdukty.FormattingEnabled = true;
+            this.listBoxNOProdukty.ItemHeight = 16;
+            this.listBoxNOProdukty.Location = new System.Drawing.Point(51, 92);
+            this.listBoxNOProdukty.Name = "listBoxNOProdukty";
+            this.listBoxNOProdukty.Size = new System.Drawing.Size(150, 276);
+            this.listBoxNOProdukty.TabIndex = 0;
+            this.listBoxNOProdukty.SelectedIndexChanged += new System.EventHandler(this.listBoxNOProdukty_SelectedIndexChanged);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panelNaszaOferta);
             this.Controls.Add(this.panelRejestracja);
             this.Controls.Add(this.panelEdytujSwojeDane);
             this.Controls.Add(this.panelWelcome);
@@ -906,6 +1038,8 @@
             this.panelLogin.PerformLayout();
             this.panelEdytujSwojeDane.ResumeLayout(false);
             this.panelEdytujSwojeDane.PerformLayout();
+            this.panelNaszaOferta.ResumeLayout(false);
+            this.panelNaszaOferta.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -995,5 +1129,15 @@
         private System.Windows.Forms.TextBox EmailValidation;
         private System.Windows.Forms.TextBox PasswordValidation;
         private System.Windows.Forms.TextBox LoginValidation;
+        private System.Windows.Forms.Panel panelNaszaOferta;
+        private System.Windows.Forms.Button buttonNOdodajDokoszyka;
+        private System.Windows.Forms.TextBox textBoxNOIleKupic;
+        private System.Windows.Forms.Label labelNOProducent;
+        private System.Windows.Forms.Label labelKupteraz;
+        private System.Windows.Forms.Label labelNOkategorie;
+        private System.Windows.Forms.Label labelNOwMagazynie;
+        private System.Windows.Forms.Label labelNOCena;
+        private System.Windows.Forms.Label labelNOopisProd;
+        private System.Windows.Forms.ListBox listBoxNOProdukty;
     }
 }

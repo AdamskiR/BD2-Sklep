@@ -274,5 +274,153 @@ namespace Sklep
             edytujSwojeDaneToolStripMenuItem.Visible = false;
             MessageBox.Show("Do zobaczenia!");
         }
+
+        private void naszaOfertaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panelNaszaOferta.BringToFront();
+            wylistujProdukty();
+        }
+
+        private void ListBoxNOProdukty_Load(object sender, EventArgs e)
+        {
+
+
+        }
+
+
+        private void panelNaszaOferta_Paint(object sender, PaintEventArgs e)
+        {
+            Pen pen = new Pen(Color.FromArgb(255, 0, 0, 0));
+            e.Graphics.DrawLine(pen, 220, 228, 415, 228);
+        }
+
+        private void listBoxNOProdukty_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            wyswDaneOProdukcie();
+        }
+
+    
+
+        private void wylistujProdukty()
+        {
+            string querry = "SELECT ID, ProductName FROM Products ";// + "INNER JOIN Vendors b ON b.ID = a.VendorID " + "WHERE a.VendorID = @VendorID";
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(querry, connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            {
+                // command.Parameters.AddWithValue("@VendorID", listBoxNOProdukty.SelectedValue);
+
+
+                DataTable tabela_prod = new DataTable();
+                adapter.Fill(tabela_prod);
+
+                listBoxNOProdukty.DisplayMember = "ProductName";
+                listBoxNOProdukty.ValueMember = "ID";
+                listBoxNOProdukty.DataSource = tabela_prod;
+
+            }
+        }
+
+        private void label25_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void wyswDaneOProdukcie()
+        {
+            string querry = "SELECT " +
+                            "dbo.Products.ProductName, dbo.Products.ProductDesc, dbo.Products.ProductPrice, dbo.Products.ProductImage, dbo.Products.ProductStock, dbo.Vendors.Vendor, dbo.Categories.CategoryName, dbo.Products.ID " +
+                            "FROM " +
+                            "dbo.Categories INNER JOIN " +
+                            "dbo.ProdCat ON dbo.Categories.ID = dbo.ProdCat.IDCat INNER JOIN " +
+                            "dbo.Products ON dbo.ProdCat.IDProd = dbo.Products.ID INNER JOIN " +
+                            "dbo.Vendors ON dbo.Products.VendorID = dbo.Vendors.ID " +
+                            "WHERE " +
+                            "dbo.Products.ID = @id";
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(querry, connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            {
+                command.Parameters.AddWithValue("@id", listBoxNOProdukty.SelectedValue);
+
+
+                DataTable tabela_prod = new DataTable();
+                adapter.Fill(tabela_prod);
+
+                labelNOopisProd.Text = "Opis Produktu: " + (string)tabela_prod.Rows[0]["ProductDesc"];
+                labelNOProducent.Text = "Producent: " + (string)tabela_prod.Rows[0]["Vendor"];
+                labelNOCena.Text = "Cena: " + (decimal)tabela_prod.Rows[0]["ProductPrice"];
+                labelNOwMagazynie.Text = "Ilośc w magzynie: " + (double)tabela_prod.Rows[0]["ProductStock"];
+                string temp = "Kategorie: | ";
+
+                foreach (DataRow row in tabela_prod.Rows)
+                {
+                    temp += row["CategoryName"].ToString() + " | ";
+                }
+
+                labelNOkategorie.Text = temp;
+
+                labelKupteraz.Text = "Wybierz ilość jaką chcesz kupić";
+                textBoxNOIleKupic.Visible = true;
+                buttonNOdodajDokoszyka.Visible = true;
+            }
+        }
+
+        private void labelNOopisProd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label28_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //TODO 04.12 
+
+        //private void buttonNOdodajDokoszyka_Click(object sender, EventArgs e)
+        //{
+        //    bool czystarczy = CzyWystarczajacoTowaru()
+        //    //wczytaniie wartosci z pola
+        //    //sprawdzenie czy nie jest wieksza niz stan agazynu
+        //    // dodanie wartosci do tablicy globals.IDkupionych wraz  z id
+        //}
+
+        //private bool CzyWystarczajacoTowaru(double kupione)
+        //{
+        //    if (int.Parse(textBoxNOIleKupic.Text) != 0 || double.Parse(textBoxNOIleKupic.Text) <= kupione)
+        //        return true;
+        //    else
+        //        return false;
+        //}
+
+        private void textBoxNOIleKupic_Leave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxNOIleKupic_TextChanged(object sender, EventArgs e)
+        {
+            string pattern = "^([1-9][0-9]+|[1-9])$";
+            if (Regex.IsMatch(textBoxNOIleKupic.Text, pattern))
+            {
+                buttonNOdodajDokoszyka.Enabled = true;
+            }
+            else
+            {
+                buttonNOdodajDokoszyka.Enabled = false;
+                MessageBox.Show("Wprowadź dane w postaci liczbowej", "Błąd",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void naszaOfertaToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            panelNaszaOferta.BringToFront();
+            wylistujProdukty();
+
+        }
     }
 }
