@@ -18,7 +18,7 @@ namespace Sklep
         SqlConnection connection;
         string connectionString;
         bool isUsernameTaken;
-        bool isUserAuthenticated = false;
+        bool isUserAuthenticated;
 
         public Home()
         {
@@ -118,11 +118,13 @@ namespace Sklep
 
                     SqlDataReader dr2 = cmd3.ExecuteReader();
 
-                    if (dr2.Read() == true)
+                    if (dr2.Read() == true && isUserAuthenticated == false)
                     {
                         MessageBox.Show("Witaj ponownie " + textBoxLogUzytkownik.Text.ToString());
                         labelZalogowanyJako.Text += " " + textBoxLogUzytkownik.Text;
                         isUserAuthenticated = true;
+                        buttonZaloguj.Visible = false;
+                        wylogujToolStripMenuItem.Visible = true;
                     }
                     else
                     {
@@ -266,7 +268,5 @@ namespace Sklep
                 PasswordValidation.Text = "Hasła muszą być identyczne!";
             }
         }
-
-      
     }
 }

@@ -57,6 +57,7 @@
             this.panelLogo = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panelRejestracja = new System.Windows.Forms.Panel();
+            this.LoginValidation = new System.Windows.Forms.TextBox();
             this.PasswordValidation = new System.Windows.Forms.TextBox();
             this.EmailValidation = new System.Windows.Forms.TextBox();
             this.buttonRejestracja = new System.Windows.Forms.Button();
@@ -112,7 +113,6 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.LoginValidation = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
             this.panelRejestracja.SuspendLayout();
@@ -149,34 +149,35 @@
             // zalogujToolStripMenuItem
             // 
             this.zalogujToolStripMenuItem.Name = "zalogujToolStripMenuItem";
-            this.zalogujToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.zalogujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.zalogujToolStripMenuItem.Text = "Zaloguj";
             this.zalogujToolStripMenuItem.Click += new System.EventHandler(this.zalogujToolStripMenuItem_Click);
             // 
             // wylogujToolStripMenuItem
             // 
-            this.wylogujToolStripMenuItem.Enabled = false;
             this.wylogujToolStripMenuItem.Name = "wylogujToolStripMenuItem";
-            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.wylogujToolStripMenuItem.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded;
+            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.wylogujToolStripMenuItem.Text = "Wyloguj";
+            this.wylogujToolStripMenuItem.Visible = false;
             // 
             // edytujSwojeDaneToolStripMenuItem
             // 
             this.edytujSwojeDaneToolStripMenuItem.Enabled = false;
             this.edytujSwojeDaneToolStripMenuItem.Name = "edytujSwojeDaneToolStripMenuItem";
-            this.edytujSwojeDaneToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.edytujSwojeDaneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.edytujSwojeDaneToolStripMenuItem.Text = "Edytuj swoje dane";
             this.edytujSwojeDaneToolStripMenuItem.Click += new System.EventHandler(this.edytujSwojeDaneToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(166, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // zarejestrujToolStripMenuItem
             // 
             this.zarejestrujToolStripMenuItem.Name = "zarejestrujToolStripMenuItem";
-            this.zarejestrujToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.zarejestrujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.zarejestrujToolStripMenuItem.Text = "Zarejestruj";
             this.zarejestrujToolStripMenuItem.Click += new System.EventHandler(this.zarejestrujToolStripMenuItem_Click);
             // 
@@ -361,6 +362,16 @@
             this.panelRejestracja.Size = new System.Drawing.Size(800, 424);
             this.panelRejestracja.TabIndex = 5;
             this.panelRejestracja.Paint += new System.Windows.Forms.PaintEventHandler(this.panelRejestracja_Paint);
+            // 
+            // LoginValidation
+            // 
+            this.LoginValidation.AccessibleName = "LoginValidation";
+            this.LoginValidation.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.LoginValidation.Cursor = System.Windows.Forms.Cursors.No;
+            this.LoginValidation.Location = new System.Drawing.Point(478, 245);
+            this.LoginValidation.Name = "LoginValidation";
+            this.LoginValidation.Size = new System.Drawing.Size(197, 13);
+            this.LoginValidation.TabIndex = 7;
             // 
             // PasswordValidation
             // 
@@ -875,16 +886,6 @@
             this.label27.Size = new System.Drawing.Size(234, 31);
             this.label27.TabIndex = 0;
             this.label27.Text = "Edytuj swoje dane";
-            // 
-            // LoginValidation
-            // 
-            this.LoginValidation.AccessibleName = "LoginValidation";
-            this.LoginValidation.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.LoginValidation.Cursor = System.Windows.Forms.Cursors.No;
-            this.LoginValidation.Location = new System.Drawing.Point(478, 245);
-            this.LoginValidation.Name = "LoginValidation";
-            this.LoginValidation.Size = new System.Drawing.Size(197, 13);
-            this.LoginValidation.TabIndex = 7;
             // 
             // Home
             // 
