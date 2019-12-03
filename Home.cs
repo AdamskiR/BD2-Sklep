@@ -212,12 +212,42 @@ namespace Sklep
                         }
                         cmd.Parameters.Add("@pass", SqlDbType.NChar).Value = textBoxHaslo.Text;
                         cmd.Parameters.Add("@email", SqlDbType.NChar).Value = textBoxEmail.Text;
-                        cmd.Parameters.Add("@nazwisko", SqlDbType.NChar).Value = textBoxNazwisko.Text;
-                        cmd.Parameters.Add("@imie", SqlDbType.NChar).Value = textBoxImie.Text;
-                        cmd.Parameters.Add("@zipcode", SqlDbType.NChar).Value = textBoxKod.Text;
-                        cmd.Parameters.Add("@miasto", SqlDbType.NChar).Value = textBoxMiasto.Text;
-                        cmd.Parameters.Add("@ulica", SqlDbType.NChar).Value = textBoxUlica.Text;
-                        cmd.Parameters.Add("@telefon", SqlDbType.Int).Value = textBoxNrTelefonu.Text;
+                        if (string.IsNullOrEmpty(textBoxNazwisko.Text))
+                            cmd.Parameters.Add("@nazwisko", SqlDbType.NChar).Value = DBNull.Value;
+                        else
+                        {
+                            cmd.Parameters.Add("@nazwisko", SqlDbType.NChar).Value = textBoxNazwisko.Text;
+                        }
+                        if (string.IsNullOrEmpty(textBoxImie.Text))
+                            cmd.Parameters.Add("@imie", SqlDbType.NChar).Value = DBNull.Value;
+                        else
+                        {
+                            cmd.Parameters.Add("@imie", SqlDbType.NChar).Value = textBoxImie.Text;
+                        }
+                        if (string.IsNullOrEmpty(textBoxKod.Text))
+                            cmd.Parameters.Add("@zipcode", SqlDbType.NChar).Value = DBNull.Value;
+                        else
+                        {
+                            cmd.Parameters.Add("@zipcode", SqlDbType.NChar).Value = textBoxKod.Text;
+                        }
+                        if (string.IsNullOrEmpty(textBoxMiasto.Text))
+                            cmd.Parameters.Add("@miasto", SqlDbType.NChar).Value = DBNull.Value;
+                        else
+                        {
+                            cmd.Parameters.Add("@miasto", SqlDbType.NChar).Value = textBoxMiasto.Text;
+                        }
+                        if (string.IsNullOrEmpty(textBoxUlica.Text))
+                            cmd.Parameters.Add("@ulica", SqlDbType.NChar).Value = DBNull.Value;
+                        else
+                        {
+                            cmd.Parameters.Add("@ulica", SqlDbType.NChar).Value = textBoxUlica.Text;
+                        }
+                        if (string.IsNullOrEmpty(textBoxNrTelefonu.Text))
+                            cmd.Parameters.Add("@telefon", SqlDbType.Int).Value = DBNull.Value;
+                        else
+                        {
+                            cmd.Parameters.Add("@telefon", SqlDbType.Int).Value = Convert.ToInt32(textBoxUlica.Text);
+                        }
 
                         string pattern = "^([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$)";
 
