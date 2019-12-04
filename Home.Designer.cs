@@ -95,12 +95,12 @@
             this.label14 = new System.Windows.Forms.Label();
             this.labelZalogowanyJako = new System.Windows.Forms.Label();
             this.panelEdytujSwojeDane = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.ZmianaHasla = new System.Windows.Forms.Button();
             this.buttonZmienDane = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.noweHaslo = new System.Windows.Forms.TextBox();
+            this.potwierdzHaslo = new System.Windows.Forms.TextBox();
+            this.aktualneHaslo = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
@@ -196,7 +196,7 @@
             // zalogujToolStripMenuItem
             // 
             this.zalogujToolStripMenuItem.Name = "zalogujToolStripMenuItem";
-            this.zalogujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.zalogujToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.zalogujToolStripMenuItem.Text = "Zaloguj";
             this.zalogujToolStripMenuItem.Click += new System.EventHandler(this.zalogujToolStripMenuItem_Click);
             // 
@@ -204,7 +204,7 @@
             // 
             this.wylogujToolStripMenuItem.Name = "wylogujToolStripMenuItem";
             this.wylogujToolStripMenuItem.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded;
-            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.wylogujToolStripMenuItem.Text = "Wyloguj";
             this.wylogujToolStripMenuItem.Visible = false;
             this.wylogujToolStripMenuItem.Click += new System.EventHandler(this.wylogujToolStripMenuItem_Click);
@@ -212,7 +212,7 @@
             // edytujSwojeDaneToolStripMenuItem
             // 
             this.edytujSwojeDaneToolStripMenuItem.Name = "edytujSwojeDaneToolStripMenuItem";
-            this.edytujSwojeDaneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.edytujSwojeDaneToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.edytujSwojeDaneToolStripMenuItem.Text = "Edytuj swoje dane";
             this.edytujSwojeDaneToolStripMenuItem.Visible = false;
             this.edytujSwojeDaneToolStripMenuItem.Click += new System.EventHandler(this.edytujSwojeDaneToolStripMenuItem_Click);
@@ -220,12 +220,12 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(166, 6);
             // 
             // zarejestrujToolStripMenuItem
             // 
             this.zarejestrujToolStripMenuItem.Name = "zarejestrujToolStripMenuItem";
-            this.zarejestrujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.zarejestrujToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.zarejestrujToolStripMenuItem.Text = "Zarejestruj";
             this.zarejestrujToolStripMenuItem.Click += new System.EventHandler(this.zarejestrujToolStripMenuItem_Click);
             // 
@@ -730,12 +730,12 @@
             // panelEdytujSwojeDane
             // 
             this.panelEdytujSwojeDane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelEdytujSwojeDane.Controls.Add(this.button2);
+            this.panelEdytujSwojeDane.Controls.Add(this.ZmianaHasla);
             this.panelEdytujSwojeDane.Controls.Add(this.buttonZmienDane);
             this.panelEdytujSwojeDane.Controls.Add(this.textBox1);
-            this.panelEdytujSwojeDane.Controls.Add(this.textBox2);
-            this.panelEdytujSwojeDane.Controls.Add(this.textBox3);
-            this.panelEdytujSwojeDane.Controls.Add(this.textBox4);
+            this.panelEdytujSwojeDane.Controls.Add(this.noweHaslo);
+            this.panelEdytujSwojeDane.Controls.Add(this.potwierdzHaslo);
+            this.panelEdytujSwojeDane.Controls.Add(this.aktualneHaslo);
             this.panelEdytujSwojeDane.Controls.Add(this.textBox6);
             this.panelEdytujSwojeDane.Controls.Add(this.textBox7);
             this.panelEdytujSwojeDane.Controls.Add(this.textBox8);
@@ -757,14 +757,15 @@
             this.panelEdytujSwojeDane.TabIndex = 6;
             this.panelEdytujSwojeDane.Paint += new System.Windows.Forms.PaintEventHandler(this.panelEdytujSwojeDane_Paint);
             // 
-            // button2
+            // ZmianaHasla
             // 
-            this.button2.Location = new System.Drawing.Point(472, 218);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(203, 46);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Zmień hasło";
-            this.button2.UseVisualStyleBackColor = true;
+            this.ZmianaHasla.Location = new System.Drawing.Point(472, 218);
+            this.ZmianaHasla.Name = "ZmianaHasla";
+            this.ZmianaHasla.Size = new System.Drawing.Size(203, 46);
+            this.ZmianaHasla.TabIndex = 4;
+            this.ZmianaHasla.Text = "Zmień hasło";
+            this.ZmianaHasla.UseVisualStyleBackColor = true;
+            this.ZmianaHasla.Click += new System.EventHandler(this.ZmianaHasla_Click);
             // 
             // buttonZmienDane
             // 
@@ -783,26 +784,26 @@
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 3;
             // 
-            // textBox2
+            // noweHaslo
             // 
-            this.textBox2.Location = new System.Drawing.Point(575, 173);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 3;
+            this.noweHaslo.Location = new System.Drawing.Point(575, 173);
+            this.noweHaslo.Name = "noweHaslo";
+            this.noweHaslo.Size = new System.Drawing.Size(100, 20);
+            this.noweHaslo.TabIndex = 3;
             // 
-            // textBox3
+            // potwierdzHaslo
             // 
-            this.textBox3.Location = new System.Drawing.Point(575, 149);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 3;
+            this.potwierdzHaslo.Location = new System.Drawing.Point(575, 149);
+            this.potwierdzHaslo.Name = "potwierdzHaslo";
+            this.potwierdzHaslo.Size = new System.Drawing.Size(100, 20);
+            this.potwierdzHaslo.TabIndex = 3;
             // 
-            // textBox4
+            // aktualneHaslo
             // 
-            this.textBox4.Location = new System.Drawing.Point(575, 126);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 3;
+            this.aktualneHaslo.Location = new System.Drawing.Point(575, 126);
+            this.aktualneHaslo.Name = "aktualneHaslo";
+            this.aktualneHaslo.Size = new System.Drawing.Size(100, 20);
+            this.aktualneHaslo.TabIndex = 3;
             // 
             // textBox6
             // 
@@ -1371,8 +1372,8 @@
         private System.Windows.Forms.Panel panelEdytujSwojeDane;
         private System.Windows.Forms.Button buttonZmienDane;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox potwierdzHaslo;
+        private System.Windows.Forms.TextBox aktualneHaslo;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox textBox8;
@@ -1388,8 +1389,8 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button ZmianaHasla;
+        private System.Windows.Forms.TextBox noweHaslo;
         private System.Windows.Forms.ToolStripMenuItem panelAdministracyjnyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodajProduktToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modyfikujProduktToolStripMenuItem;

@@ -108,7 +108,7 @@ namespace Sklep
         private void edytujSwojeDaneToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panelEdytujSwojeDane.BringToFront();
-            string querry = "SELECT [FirstName], [LastName], [ZipCode], [City], [Street], [TelephoneNumber] FROM Users WHERE Username=" + "'"+currentUsername+"'";
+            string querry = "SELECT [FirstName], [LastName], [ZipCode], [City], [Street], [TelephoneNumber] FROM Users WHERE Username=" + "'" + currentUsername + "'";
             using (connection = new SqlConnection(connectionString))
             using (SqlConnection cnn4 = new SqlConnection(connectionString))
             {
@@ -139,7 +139,7 @@ namespace Sklep
             }
         }
 
-    private void ądzajUżytkownikamiToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ądzajUżytkownikamiToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
@@ -158,7 +158,7 @@ namespace Sklep
                     using (SqlCommand cmd = new SqlCommand(querry, cnn))
                     {
 
-                       
+
                         using (SqlConnection cnn2 = new SqlConnection(connectionString))
                         {
 
@@ -194,7 +194,7 @@ namespace Sklep
                         cmd.Parameters.Add("@login", SqlDbType.NChar).Value = textBoxNazwaUzytkownika.Text;
                         cmd.Parameters.Add("@pass", SqlDbType.NChar).Value = textBoxHaslo.Text;
                         cmd.Parameters.Add("@email", SqlDbType.NChar).Value = textBoxEmail.Text;
-                        
+
                         if (string.IsNullOrEmpty(textBoxImie.Text))
                             cmd.Parameters.Add("@imie", SqlDbType.NChar).Value = DBNull.Value;
                         else
@@ -234,7 +234,7 @@ namespace Sklep
 
                         string pattern = "^([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$)";
 
-                        
+
                         if (!string.IsNullOrWhiteSpace(textBoxNazwaUzytkownika.Text) && !string.IsNullOrWhiteSpace(textBoxHaslo.Text) && !string.IsNullOrWhiteSpace(textBoxEmail.Text) && Regex.IsMatch(textBoxEmail.Text, pattern) && isUsernameTaken == false && textBoxHaslo.Text == textHaslo2.Text)
                         {
                             cmd.ExecuteNonQuery();
@@ -310,7 +310,7 @@ namespace Sklep
             wyswDaneOProdukcie();
         }
 
-    
+
 
         private void wylistujProdukty()
         {
@@ -450,7 +450,7 @@ namespace Sklep
                 DataTable tabela_prod = new DataTable();
                 adapter.Fill(tabela_prod);
 
-                labelIloscSztuk .Text = "Pozostało: " + (double)tabela_prod.Rows[0]["ProductStock"] + " sztuk";
+                labelIloscSztuk.Text = "Pozostało: " + (double)tabela_prod.Rows[0]["ProductStock"] + " sztuk";
                 labelOpisProd.Text = "Opis Produktu: " + (string)tabela_prod.Rows[0]["ProductDesc"];
                 labelProducent.Text = "Producent: " + (string)tabela_prod.Rows[0]["Vendor"];
                 labelCena.Text = "Cena: " + (decimal)tabela_prod.Rows[0]["ProductPrice"];
@@ -485,7 +485,7 @@ namespace Sklep
                 while (dr.Read())
                 {
                     idTop1 = dr.GetInt32(0);
-                }              
+                }
             }
 
             using (connection = new SqlConnection(connectionString))
@@ -495,12 +495,12 @@ namespace Sklep
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add("@id", SqlDbType.Int);
                 command.Parameters["@id"].Value = idTop1;
-                
+
                 DataTable tabela_prod = new DataTable();
                 adapter.Fill(tabela_prod);
 
-                labelNOpisProd .Text = "Opis Produktu: " + (string)tabela_prod.Rows[0]["ProductDesc"];
-                labelNProducent .Text = "Producent: " + (string)tabela_prod.Rows[0]["Vendor"];
+                labelNOpisProd.Text = "Opis Produktu: " + (string)tabela_prod.Rows[0]["ProductDesc"];
+                labelNProducent.Text = "Producent: " + (string)tabela_prod.Rows[0]["Vendor"];
                 labelNCena.Text = "Cena: " + (decimal)tabela_prod.Rows[0]["ProductPrice"];
                 labelNNazwaProd.Text = "Nazwa produktu: " + (string)tabela_prod.Rows[0]["ProductName"];
                 string temp = "Kategorie: | ";
@@ -550,6 +550,43 @@ namespace Sklep
                     cmd.ExecuteNonQuery();
                     cnn4.Close();
                     MessageBox.Show("Dane zostały zmienione!");
+                }
+                catch (Exception ex)
+                {
+                    // We should log the error somewhere, 
+                    // for this example let's just show a message
+                    MessageBox.Show("ERROR:" + ex.Message);
+                }
+            }
+        }
+
+        private void ZmianaHasla_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection cnn2 = new SqlConnection(connectionString))
+            {
+
+                try
+                {
+                    cnn2.Open();
+
+                    string querry2 = "SELECT Password from [Users] where Username=@Username";
+                    SqlCommand cmd2 = new SqlCommand(querry2, cnn2);
+                    cmd2.Parameters.AddWithValue("@Username", currentUsername);
+                    string value = cmd2.ExecuteScalar().ToString().TrimEnd();
+
+                    if (aktualneHaslo.Text.Equals(value) && potwierdzHaslo.Text.Equals(value))
+                    {
+                        string query = "UPDATE Users SET Password=@password WHERE Username=" + "'" + currentUsername + "'";
+                        SqlCommand cmd3 = new SqlCommand(query, cnn2);
+                        cmd3.Parameters.Add("@password", SqlDbType.NChar).Value = noweHaslo.Text;
+                        cmd3.ExecuteNonQuery();
+                        MessageBox.Show("Hasło zostało zmienione!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Podane hasło jest niepoprawne!");
+                    }
+                    cnn2.Close();
                 }
                 catch (Exception ex)
                 {
