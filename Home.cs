@@ -121,12 +121,12 @@ namespace Sklep
 
                     while (dr2.Read())
                     {
-                        textBox10.Text = dr2.GetValue(0).ToString();
-                        textBox9.Text = dr2.GetValue(1).ToString();
-                        textBox1.Text = dr2.GetValue(2).ToString();
-                        textBox8.Text = dr2.GetValue(3).ToString();
-                        textBox7.Text = dr2.GetValue(4).ToString();
-                        textBox6.Text = dr2.GetValue(5).ToString();
+                        textBox10.Text = dr2.GetValue(0).ToString().TrimEnd();
+                        textBox9.Text = dr2.GetValue(1).ToString().TrimEnd();
+                        textBox1.Text = dr2.GetValue(2).ToString().TrimEnd();
+                        textBox8.Text = dr2.GetValue(3).ToString().TrimEnd();
+                        textBox7.Text = dr2.GetValue(4).ToString().TrimEnd();
+                        textBox6.Text = dr2.GetValue(5).ToString().TrimEnd();
                     }
                     cnn4.Close();
                 }
@@ -145,7 +145,7 @@ namespace Sklep
         }
         private void buttonRejestracja_Click(object sender, EventArgs e)
         {
-            string querry = "INSERT INTO [Users] ([Username], [Password], [Email], [FirstName], [LastName], [ZipCode], [City], [Street], [TelephoneNumber]) VALUES(@login, @pass, @email, @nazwisko, @imie, @zipcode, @miasto, @ulica, @telefon)";
+            string querry = "INSERT INTO [Users] ([Username], [Password], [Email], [FirstName], [LastName], [ZipCode], [City], [Street], [TelephoneNumber]) VALUES(@login, @pass, @email, @imie, @nazwisko, @zipcode, @miasto, @ulica, @telefon)";
 
 
             using (SqlConnection cnn = new SqlConnection(connectionString))
@@ -158,7 +158,7 @@ namespace Sklep
                     using (SqlCommand cmd = new SqlCommand(querry, cnn))
                     {
 
-                        cmd.Parameters.Add("@login", SqlDbType.NChar).Value = textBoxNazwaUzytkownika.Text;
+                       
                         using (SqlConnection cnn2 = new SqlConnection(connectionString))
                         {
 
@@ -191,6 +191,7 @@ namespace Sklep
                                 MessageBox.Show("ERROR:" + ex.Message);
                             }
                         }
+                        cmd.Parameters.Add("@login", SqlDbType.NChar).Value = textBoxNazwaUzytkownika.Text;
                         cmd.Parameters.Add("@pass", SqlDbType.NChar).Value = textBoxHaslo.Text;
                         cmd.Parameters.Add("@email", SqlDbType.NChar).Value = textBoxEmail.Text;
                         
