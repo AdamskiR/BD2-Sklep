@@ -19,6 +19,7 @@ namespace Sklep
         string connectionString;
         bool isUsernameTaken;
         bool isUserAuthenticated = false;
+       string currentUsername;
 
         public Home()
         {
@@ -121,6 +122,7 @@ namespace Sklep
                         buttonZaloguj.Visible = false;
                         wylogujToolStripMenuItem.Visible = true;
                         edytujSwojeDaneToolStripMenuItem.Visible = true;
+                        currentUsername = textBoxLogUzytkownik.Text;
                     }
                     else
                     {
@@ -156,9 +158,38 @@ namespace Sklep
         private void edytujSwojeDaneToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panelEdytujSwojeDane.BringToFront();
+            string querry = "SELECT [FirstName], [LastName], [ZipCode], [City], [Street], [TelephoneNumber] FROM Users WHERE Username=" + "'"+currentUsername+"'";
+            using (connection = new SqlConnection(connectionString))
+            using (SqlConnection cnn4 = new SqlConnection(connectionString))
+            {
+
+                try
+                {
+                    cnn4.Open();
+                    SqlCommand cmd = new SqlCommand(querry, cnn4);
+                    SqlDataReader dr2 = cmd.ExecuteReader();
+
+                    while (dr2.Read())
+                    {
+                        textBox10.Text = dr2.GetValue(0).ToString();
+                        textBox9.Text = dr2.GetValue(1).ToString();
+                        textBox1.Text = dr2.GetValue(2).ToString();
+                        textBox8.Text = dr2.GetValue(3).ToString();
+                        textBox7.Text = dr2.GetValue(4).ToString();
+                        textBox6.Text = dr2.GetValue(5).ToString();
+                    }
+                    cnn4.Close();
+                }
+                catch (Exception ex)
+                {
+                    // We should log the error somewhere, 
+                    // for this example let's just show a message
+                    MessageBox.Show("ERROR:" + ex.Message);
+                }
+            }
         }
 
-        private void ądzajUżytkownikamiToolStripMenuItem_Click(object sender, EventArgs e)
+    private void ądzajUżytkownikamiToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
@@ -185,7 +216,7 @@ namespace Sklep
                             {
                                 cnn2.Open();
 
-                                string querry2 = "SELECT * from [Users] where Username= @Username";
+                                string querry2 = "SELECT * from [Users] where Username=@Username";
                                 SqlCommand cmd2 = new SqlCommand(querry2, cnn2);
                                 cmd2.Parameters.AddWithValue("@Username", this.textBoxNazwaUzytkownika.Text);
                                 SqlDataReader dr = cmd2.ExecuteReader();
@@ -212,17 +243,18 @@ namespace Sklep
                         }
                         cmd.Parameters.Add("@pass", SqlDbType.NChar).Value = textBoxHaslo.Text;
                         cmd.Parameters.Add("@email", SqlDbType.NChar).Value = textBoxEmail.Text;
-                        if (string.IsNullOrEmpty(textBoxNazwisko.Text))
-                            cmd.Parameters.Add("@nazwisko", SqlDbType.NChar).Value = DBNull.Value;
-                        else
-                        {
-                            cmd.Parameters.Add("@nazwisko", SqlDbType.NChar).Value = textBoxNazwisko.Text;
-                        }
+                        
                         if (string.IsNullOrEmpty(textBoxImie.Text))
                             cmd.Parameters.Add("@imie", SqlDbType.NChar).Value = DBNull.Value;
                         else
                         {
                             cmd.Parameters.Add("@imie", SqlDbType.NChar).Value = textBoxImie.Text;
+                        }
+                        if (string.IsNullOrEmpty(textBoxNazwisko.Text))
+                            cmd.Parameters.Add("@nazwisko", SqlDbType.NChar).Value = DBNull.Value;
+                        else
+                        {
+                            cmd.Parameters.Add("@nazwisko", SqlDbType.NChar).Value = textBoxNazwisko.Text;
                         }
                         if (string.IsNullOrEmpty(textBoxKod.Text))
                             cmd.Parameters.Add("@zipcode", SqlDbType.NChar).Value = DBNull.Value;
@@ -246,7 +278,7 @@ namespace Sklep
                             cmd.Parameters.Add("@telefon", SqlDbType.Int).Value = DBNull.Value;
                         else
                         {
-                            cmd.Parameters.Add("@telefon", SqlDbType.Int).Value = Convert.ToInt32(textBoxUlica.Text);
+                            cmd.Parameters.Add("@telefon", SqlDbType.Int).Value = Convert.ToInt32(textBoxNrTelefonu.Text);
                         }
 
                         string pattern = "^([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$)";
