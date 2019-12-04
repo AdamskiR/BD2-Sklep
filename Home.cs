@@ -19,16 +19,15 @@ namespace Sklep
         string connectionString;
         bool isUsernameTaken;
         bool isUserAuthenticated = false;
-       string currentUsername;
+        string currentUsername;
+        int[] Top3id = new int[3];
+
 
         public Home()
         {
             InitializeComponent();
             connectionString = ConfigurationManager.ConnectionStrings["Sklep.Properties.Settings.ShopConnectionString"].ConnectionString;
-
-
         }
-
 
         private void Home_Load(object sender, EventArgs e)
         {
@@ -36,55 +35,15 @@ namespace Sklep
             panelWelcome.BringToFront();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panelWelcome_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void zarejestrujToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panelRejestracja.BringToFront();
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-
         }
 
         private void panelRejestracja_Paint(object sender, PaintEventArgs e)
         {
             Pen pen = new Pen(Color.FromArgb(255, 0, 0, 0));
             e.Graphics.DrawLine(pen, 250, 225, 500, 225);
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label14_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label15_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panelLogin_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void zalogujToolStripMenuItem_Click(object sender, EventArgs e)
@@ -138,16 +97,7 @@ namespace Sklep
                 }
             }
         }
-    
-        private void label22_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void panelEdytujSwojeDane_Paint(object sender, PaintEventArgs e)
         {
@@ -305,8 +255,6 @@ namespace Sklep
             }
         }
 
-
-
         private void textBoxEmail_Validating(object sender, CancelEventArgs e)
         {
             string pattern = "^([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$)";
@@ -349,12 +297,6 @@ namespace Sklep
             wylistujProdukty();
         }
 
-        private void ListBoxNOProdukty_Load(object sender, EventArgs e)
-        {
-
-
-        }
-
 
         private void panelNaszaOferta_Paint(object sender, PaintEventArgs e)
         {
@@ -390,28 +332,17 @@ namespace Sklep
             }
         }
 
-        private void label25_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void wyswDaneOProdukcie()
         {
-            string querry = "SELECT " +
-                            "dbo.Products.ProductName, dbo.Products.ProductDesc, dbo.Products.ProductPrice, dbo.Products.ProductImage, dbo.Products.ProductStock, dbo.Vendors.Vendor, dbo.Categories.CategoryName, dbo.Products.ID " +
-                            "FROM " +
-                            "dbo.Categories INNER JOIN " +
-                            "dbo.ProdCat ON dbo.Categories.ID = dbo.ProdCat.IDCat INNER JOIN " +
-                            "dbo.Products ON dbo.ProdCat.IDProd = dbo.Products.ID INNER JOIN " +
-                            "dbo.Vendors ON dbo.Products.VendorID = dbo.Vendors.ID " +
-                            "WHERE " +
-                            "dbo.Products.ID = @id";
+
             using (connection = new SqlConnection(connectionString))
-            using (SqlCommand command = new SqlCommand(querry, connection))
+            using (SqlCommand command = new SqlCommand("DisplaySpecificProduct", connection))
             using (SqlDataAdapter adapter = new SqlDataAdapter(command))
             {
-                command.Parameters.AddWithValue("@id", listBoxNOProdukty.SelectedValue);
 
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@id", SqlDbType.Int);
+                command.Parameters["@id"].Value = listBoxNOProdukty.SelectedValue;
 
                 DataTable tabela_prod = new DataTable();
                 adapter.Fill(tabela_prod);
@@ -435,16 +366,6 @@ namespace Sklep
             }
         }
 
-        private void labelNOopisProd_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label28_Click(object sender, EventArgs e)
-        {
-
-        }
-
         //TODO 04.12 
 
         //private void buttonNOdodajDokoszyka_Click(object sender, EventArgs e)
@@ -462,11 +383,6 @@ namespace Sklep
         //    else
         //        return false;
         //}
-
-        private void textBoxNOIleKupic_Leave(object sender, EventArgs e)
-        {
-
-        }
 
         private void textBoxNOIleKupic_TextChanged(object sender, EventArgs e)
         {
@@ -494,13 +410,65 @@ namespace Sklep
         private void tOP3ZamawianeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panelNowosci.BringToFront();
+
+            string querry = "Select * from Get3RecentProdID";
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(querry, connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            {
+                DataTable tabela_prod = new DataTable();
+                adapter.Fill(tabela_prod);
+
+                connection.Open();
+                SqlDataReader dr = command.ExecuteReader();
+
+                int temp = 0;
+                while (dr.Read())
+                {
+                    Top3id[temp] = dr.GetInt32(0);
+                    temp++;
+                }
+            }
+            Wyswietlprodukt(Top3id[0]);
+
         }
+
+        private void Wyswietlprodukt(int id)
+        {
+            panelWyswProdukt.BringToFront();
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand("DisplaySpecificProduct", connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@id", SqlDbType.Int);
+                command.Parameters["@id"].Value = id;
+
+                DataTable tabela_prod = new DataTable();
+                adapter.Fill(tabela_prod);
+
+                labelIloscSztuk .Text = "Pozostało: " + (double)tabela_prod.Rows[0]["ProductStock"] + " sztuk";
+                labelOpisProd.Text = "Opis Produktu: " + (string)tabela_prod.Rows[0]["ProductDesc"];
+                labelProducent.Text = "Producent: " + (string)tabela_prod.Rows[0]["Vendor"];
+                labelCena.Text = "Cena: " + (decimal)tabela_prod.Rows[0]["ProductPrice"];
+                labelNazwaProd.Text = "Nazwa produktu: " + (string)tabela_prod.Rows[0]["ProductName"];
+                string temp = "Kategorie: | ";
+
+                foreach (DataRow row in tabela_prod.Rows)
+                {
+                    temp += row["CategoryName"].ToString() + " | ";
+                }
+
+                labelKategorie.Text = temp;
+            }
+        }
+
 
         private void najpopularniejszyZOstatnich5ZakupówToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             Int32 idTop1 = 0;
-
             panelTop1.BringToFront();
 
             string querry = "Select * from Top1OutOfRecent5";
@@ -510,7 +478,6 @@ namespace Sklep
             {
                 DataTable tabela_prod = new DataTable();
                 adapter.Fill(tabela_prod);
-
                 connection.Open();
 
                 SqlDataReader dr = command.ExecuteReader();
@@ -523,7 +490,6 @@ namespace Sklep
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand("DisplaySpecificProduct", connection))
             using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-
             {
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add("@id", SqlDbType.Int);
@@ -531,7 +497,6 @@ namespace Sklep
                 
                 DataTable tabela_prod = new DataTable();
                 adapter.Fill(tabela_prod);
-
 
                 labelNOpisProd .Text = "Opis Produktu: " + (string)tabela_prod.Rows[0]["ProductDesc"];
                 labelNProducent .Text = "Producent: " + (string)tabela_prod.Rows[0]["Vendor"];
@@ -546,15 +511,21 @@ namespace Sklep
 
                 labelNKategorie.Text = temp;
             }
-
-
-
-
         }
 
-        private void panelTop1_Paint(object sender, PaintEventArgs e)
+        private void buttonN1_Click(object sender, EventArgs e)
         {
+            Wyswietlprodukt(Top3id[0]);
+        }
 
+        private void buttonN2_Click(object sender, EventArgs e)
+        {
+            Wyswietlprodukt(Top3id[1]);
+        }
+
+        private void buttonN3_Click(object sender, EventArgs e)
+        {
+            Wyswietlprodukt(Top3id[2]);
         }
     }
 }

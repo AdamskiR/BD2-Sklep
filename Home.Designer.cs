@@ -127,17 +127,25 @@
             this.labelNOopisProd = new System.Windows.Forms.Label();
             this.listBoxNOProdukty = new System.Windows.Forms.ListBox();
             this.panelNowosci = new System.Windows.Forms.Panel();
-            this.buttonNstarsze = new System.Windows.Forms.Button();
-            this.buttonNnowsze = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panelWyswProdukt = new System.Windows.Forms.Panel();
+            this.labelIloscSztuk = new System.Windows.Forms.Label();
+            this.labelCena = new System.Windows.Forms.Label();
+            this.labelKategorie = new System.Windows.Forms.Label();
+            this.labelProducent = new System.Windows.Forms.Label();
+            this.labelOpisProd = new System.Windows.Forms.Label();
+            this.labelNazwaProd = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.buttonN3 = new System.Windows.Forms.Button();
+            this.buttonN2 = new System.Windows.Forms.Button();
+            this.buttonN1 = new System.Windows.Forms.Button();
             this.panelTop1 = new System.Windows.Forms.Panel();
-            this.labelNNazwaProd = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.labelNOpisProd = new System.Windows.Forms.Label();
-            this.labelNProducent = new System.Windows.Forms.Label();
-            this.labelNCena = new System.Windows.Forms.Label();
             this.labelNKategorie = new System.Windows.Forms.Label();
+            this.labelNCena = new System.Windows.Forms.Label();
+            this.labelNProducent = new System.Windows.Forms.Label();
+            this.labelNOpisProd = new System.Windows.Forms.Label();
+            this.labelNNazwaProd = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
             label25 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
@@ -146,6 +154,7 @@
             this.panelEdytujSwojeDane.SuspendLayout();
             this.panelNaszaOferta.SuspendLayout();
             this.panelNowosci.SuspendLayout();
+            this.panelWyswProdukt.SuspendLayout();
             this.panelTop1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -356,7 +365,6 @@
             this.panelWelcome.Name = "panelWelcome";
             this.panelWelcome.Size = new System.Drawing.Size(752, 386);
             this.panelWelcome.TabIndex = 1;
-            this.panelWelcome.Paint += new System.Windows.Forms.PaintEventHandler(this.panelWelcome_Paint);
             // 
             // label2
             // 
@@ -384,7 +392,6 @@
             this.label1.Size = new System.Drawing.Size(363, 37);
             this.label1.TabIndex = 2;
             this.label1.Text = "Witaj w naszym serwisie";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // panelRejestracja
             // 
@@ -543,7 +550,6 @@
             this.label9.Size = new System.Drawing.Size(62, 13);
             this.label9.TabIndex = 1;
             this.label9.Text = "Nr telefonu:";
-            this.label9.Click += new System.EventHandler(this.label6_Click);
             // 
             // label8
             // 
@@ -554,7 +560,6 @@
             this.label8.Size = new System.Drawing.Size(34, 13);
             this.label8.TabIndex = 1;
             this.label8.Text = "Ulica:";
-            this.label8.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
@@ -565,7 +570,6 @@
             this.label7.Size = new System.Drawing.Size(41, 13);
             this.label7.TabIndex = 1;
             this.label7.Text = "Miasto:";
-            this.label7.Click += new System.EventHandler(this.label6_Click);
             // 
             // label6
             // 
@@ -576,7 +580,6 @@
             this.label6.Size = new System.Drawing.Size(77, 13);
             this.label6.TabIndex = 1;
             this.label6.Text = "Kod pocztowy:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label5
             // 
@@ -597,7 +600,6 @@
             this.label13.Size = new System.Drawing.Size(35, 13);
             this.label13.TabIndex = 1;
             this.label13.Text = "Email:";
-            this.label13.Click += new System.EventHandler(this.label12_Click);
             // 
             // label12
             // 
@@ -608,7 +610,6 @@
             this.label12.Size = new System.Drawing.Size(86, 13);
             this.label12.TabIndex = 1;
             this.label12.Text = "Potwierdź hasło:";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // label11
             // 
@@ -650,7 +651,6 @@
             // 
             // backgroundWorker1
             // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
             // panelLogin
             // 
@@ -665,7 +665,6 @@
             this.panelLogin.Name = "panelLogin";
             this.panelLogin.Size = new System.Drawing.Size(788, 409);
             this.panelLogin.TabIndex = 5;
-            this.panelLogin.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLogin_Paint);
             // 
             // buttonZaloguj
             // 
@@ -711,7 +710,6 @@
             this.label15.Size = new System.Drawing.Size(105, 13);
             this.label15.TabIndex = 1;
             this.label15.Text = "Nazwa użytkownika:";
-            this.label15.Click += new System.EventHandler(this.label15_Click);
             // 
             // label14
             // 
@@ -731,7 +729,6 @@
             this.labelZalogowanyJako.Name = "labelZalogowanyJako";
             this.labelZalogowanyJako.Size = new System.Drawing.Size(0, 13);
             this.labelZalogowanyJako.TabIndex = 6;
-            this.labelZalogowanyJako.Click += new System.EventHandler(this.label14_Click);
             // 
             // panelEdytujSwojeDane
             // 
@@ -794,7 +791,6 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 3;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // textBox3
             // 
@@ -802,7 +798,6 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 3;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // textBox4
             // 
@@ -905,7 +900,6 @@
             this.label22.Size = new System.Drawing.Size(68, 13);
             this.label22.TabIndex = 1;
             this.label22.Text = "Nowe hasło:";
-            this.label22.Click += new System.EventHandler(this.label22_Click);
             // 
             // label23
             // 
@@ -1055,38 +1049,134 @@
             // 
             // panelNowosci
             // 
-            this.panelNowosci.Controls.Add(this.buttonNstarsze);
-            this.panelNowosci.Controls.Add(this.buttonNnowsze);
-            this.panelNowosci.Controls.Add(this.flowLayoutPanel1);
+            this.panelNowosci.Controls.Add(this.panelWyswProdukt);
+            this.panelNowosci.Controls.Add(this.label30);
+            this.panelNowosci.Controls.Add(this.buttonN3);
+            this.panelNowosci.Controls.Add(this.buttonN2);
+            this.panelNowosci.Controls.Add(this.buttonN1);
             this.panelNowosci.Location = new System.Drawing.Point(1, 24);
             this.panelNowosci.Name = "panelNowosci";
             this.panelNowosci.Size = new System.Drawing.Size(802, 425);
             this.panelNowosci.TabIndex = 10;
             // 
-            // buttonNstarsze
+            // panelWyswProdukt
             // 
-            this.buttonNstarsze.Location = new System.Drawing.Point(431, 336);
-            this.buttonNstarsze.Name = "buttonNstarsze";
-            this.buttonNstarsze.Size = new System.Drawing.Size(105, 32);
-            this.buttonNstarsze.TabIndex = 1;
-            this.buttonNstarsze.Text = "->";
-            this.buttonNstarsze.UseVisualStyleBackColor = true;
+            this.panelWyswProdukt.Controls.Add(this.labelIloscSztuk);
+            this.panelWyswProdukt.Controls.Add(this.labelCena);
+            this.panelWyswProdukt.Controls.Add(this.labelKategorie);
+            this.panelWyswProdukt.Controls.Add(this.labelProducent);
+            this.panelWyswProdukt.Controls.Add(this.labelOpisProd);
+            this.panelWyswProdukt.Controls.Add(this.labelNazwaProd);
+            this.panelWyswProdukt.Location = new System.Drawing.Point(183, 87);
+            this.panelWyswProdukt.Name = "panelWyswProdukt";
+            this.panelWyswProdukt.Size = new System.Drawing.Size(423, 224);
+            this.panelWyswProdukt.TabIndex = 2;
             // 
-            // buttonNnowsze
+            // labelIloscSztuk
             // 
-            this.buttonNnowsze.Location = new System.Drawing.Point(258, 336);
-            this.buttonNnowsze.Name = "buttonNnowsze";
-            this.buttonNnowsze.Size = new System.Drawing.Size(105, 32);
-            this.buttonNnowsze.TabIndex = 1;
-            this.buttonNnowsze.Text = "<-";
-            this.buttonNnowsze.UseVisualStyleBackColor = true;
+            this.labelIloscSztuk.AutoSize = true;
+            this.labelIloscSztuk.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelIloscSztuk.Location = new System.Drawing.Point(11, 190);
+            this.labelIloscSztuk.Margin = new System.Windows.Forms.Padding(3, 15, 3, 0);
+            this.labelIloscSztuk.Name = "labelIloscSztuk";
+            this.labelIloscSztuk.Size = new System.Drawing.Size(60, 20);
+            this.labelIloscSztuk.TabIndex = 0;
+            this.labelIloscSztuk.Text = "label31";
             // 
-            // flowLayoutPanel1
+            // labelCena
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(593, 155);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(200, 100);
-            this.flowLayoutPanel1.TabIndex = 0;
+            this.labelCena.AutoSize = true;
+            this.labelCena.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelCena.Location = new System.Drawing.Point(11, 155);
+            this.labelCena.Margin = new System.Windows.Forms.Padding(3, 15, 3, 0);
+            this.labelCena.Name = "labelCena";
+            this.labelCena.Size = new System.Drawing.Size(60, 20);
+            this.labelCena.TabIndex = 0;
+            this.labelCena.Text = "label31";
+            // 
+            // labelKategorie
+            // 
+            this.labelKategorie.AutoSize = true;
+            this.labelKategorie.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelKategorie.Location = new System.Drawing.Point(11, 120);
+            this.labelKategorie.Margin = new System.Windows.Forms.Padding(3, 15, 3, 0);
+            this.labelKategorie.Name = "labelKategorie";
+            this.labelKategorie.Size = new System.Drawing.Size(60, 20);
+            this.labelKategorie.TabIndex = 0;
+            this.labelKategorie.Text = "label31";
+            // 
+            // labelProducent
+            // 
+            this.labelProducent.AutoSize = true;
+            this.labelProducent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelProducent.Location = new System.Drawing.Point(11, 85);
+            this.labelProducent.Margin = new System.Windows.Forms.Padding(3, 15, 3, 0);
+            this.labelProducent.Name = "labelProducent";
+            this.labelProducent.Size = new System.Drawing.Size(60, 20);
+            this.labelProducent.TabIndex = 0;
+            this.labelProducent.Text = "label31";
+            // 
+            // labelOpisProd
+            // 
+            this.labelOpisProd.AutoSize = true;
+            this.labelOpisProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelOpisProd.Location = new System.Drawing.Point(11, 50);
+            this.labelOpisProd.Margin = new System.Windows.Forms.Padding(3, 15, 3, 0);
+            this.labelOpisProd.Name = "labelOpisProd";
+            this.labelOpisProd.Size = new System.Drawing.Size(60, 20);
+            this.labelOpisProd.TabIndex = 0;
+            this.labelOpisProd.Text = "label31";
+            // 
+            // labelNazwaProd
+            // 
+            this.labelNazwaProd.AutoSize = true;
+            this.labelNazwaProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelNazwaProd.Location = new System.Drawing.Point(11, 15);
+            this.labelNazwaProd.Margin = new System.Windows.Forms.Padding(3, 15, 3, 0);
+            this.labelNazwaProd.Name = "labelNazwaProd";
+            this.labelNazwaProd.Size = new System.Drawing.Size(60, 20);
+            this.labelNazwaProd.TabIndex = 0;
+            this.labelNazwaProd.Text = "label31";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label30.Location = new System.Drawing.Point(207, 40);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(392, 31);
+            this.label30.TabIndex = 0;
+            this.label30.Text = "Oto ostanio dodane 3 produkty:";
+            // 
+            // buttonN3
+            // 
+            this.buttonN3.Location = new System.Drawing.Point(476, 336);
+            this.buttonN3.Name = "buttonN3";
+            this.buttonN3.Size = new System.Drawing.Size(105, 32);
+            this.buttonN3.TabIndex = 1;
+            this.buttonN3.Text = "3";
+            this.buttonN3.UseVisualStyleBackColor = true;
+            this.buttonN3.Click += new System.EventHandler(this.buttonN3_Click);
+            // 
+            // buttonN2
+            // 
+            this.buttonN2.Location = new System.Drawing.Point(357, 336);
+            this.buttonN2.Name = "buttonN2";
+            this.buttonN2.Size = new System.Drawing.Size(105, 32);
+            this.buttonN2.TabIndex = 1;
+            this.buttonN2.Text = "2";
+            this.buttonN2.UseVisualStyleBackColor = true;
+            this.buttonN2.Click += new System.EventHandler(this.buttonN2_Click);
+            // 
+            // buttonN1
+            // 
+            this.buttonN1.Location = new System.Drawing.Point(237, 336);
+            this.buttonN1.Name = "buttonN1";
+            this.buttonN1.Size = new System.Drawing.Size(105, 32);
+            this.buttonN1.TabIndex = 1;
+            this.buttonN1.Text = "1";
+            this.buttonN1.UseVisualStyleBackColor = true;
+            this.buttonN1.Click += new System.EventHandler(this.buttonN1_Click);
             // 
             // panelTop1
             // 
@@ -1102,65 +1192,6 @@
             this.panelTop1.Name = "panelTop1";
             this.panelTop1.Size = new System.Drawing.Size(796, 425);
             this.panelTop1.TabIndex = 2;
-            this.panelTop1.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTop1_Paint);
-            // 
-            // labelNNazwaProd
-            // 
-            this.labelNNazwaProd.AutoSize = true;
-            this.labelNNazwaProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelNNazwaProd.ForeColor = System.Drawing.Color.Black;
-            this.labelNNazwaProd.Location = new System.Drawing.Point(252, 119);
-            this.labelNNazwaProd.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.labelNNazwaProd.Name = "labelNNazwaProd";
-            this.labelNNazwaProd.Size = new System.Drawing.Size(60, 20);
-            this.labelNNazwaProd.TabIndex = 1;
-            this.labelNNazwaProd.Text = "label29";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Impact", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label28.Location = new System.Drawing.Point(96, 47);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(633, 36);
-            this.label28.TabIndex = 0;
-            this.label28.Text = "Najczęsciej kupowane spośród ostatnich 5 zakupów";
-            // 
-            // labelNOpisProd
-            // 
-            this.labelNOpisProd.AutoSize = true;
-            this.labelNOpisProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelNOpisProd.ForeColor = System.Drawing.Color.Black;
-            this.labelNOpisProd.Location = new System.Drawing.Point(253, 159);
-            this.labelNOpisProd.Margin = new System.Windows.Forms.Padding(3, 20, 3, 0);
-            this.labelNOpisProd.Name = "labelNOpisProd";
-            this.labelNOpisProd.Size = new System.Drawing.Size(60, 20);
-            this.labelNOpisProd.TabIndex = 1;
-            this.labelNOpisProd.Text = "label29";
-            // 
-            // labelNProducent
-            // 
-            this.labelNProducent.AutoSize = true;
-            this.labelNProducent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelNProducent.ForeColor = System.Drawing.Color.Black;
-            this.labelNProducent.Location = new System.Drawing.Point(253, 199);
-            this.labelNProducent.Margin = new System.Windows.Forms.Padding(3, 20, 3, 0);
-            this.labelNProducent.Name = "labelNProducent";
-            this.labelNProducent.Size = new System.Drawing.Size(60, 20);
-            this.labelNProducent.TabIndex = 1;
-            this.labelNProducent.Text = "label29";
-            // 
-            // labelNCena
-            // 
-            this.labelNCena.AutoSize = true;
-            this.labelNCena.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelNCena.ForeColor = System.Drawing.Color.Black;
-            this.labelNCena.Location = new System.Drawing.Point(253, 239);
-            this.labelNCena.Margin = new System.Windows.Forms.Padding(3, 20, 3, 0);
-            this.labelNCena.Name = "labelNCena";
-            this.labelNCena.Size = new System.Drawing.Size(60, 20);
-            this.labelNCena.TabIndex = 1;
-            this.labelNCena.Text = "label29";
             // 
             // labelNKategorie
             // 
@@ -1174,6 +1205,54 @@
             this.labelNKategorie.TabIndex = 1;
             this.labelNKategorie.Text = "label29";
             // 
+            // labelNCena
+            // 
+            this.labelNCena.AutoSize = true;
+            this.labelNCena.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelNCena.ForeColor = System.Drawing.Color.Black;
+            this.labelNCena.Location = new System.Drawing.Point(253, 239);
+            this.labelNCena.Margin = new System.Windows.Forms.Padding(3, 20, 3, 0);
+            this.labelNCena.Name = "labelNCena";
+            this.labelNCena.Size = new System.Drawing.Size(60, 20);
+            this.labelNCena.TabIndex = 1;
+            this.labelNCena.Text = "label29";
+            // 
+            // labelNProducent
+            // 
+            this.labelNProducent.AutoSize = true;
+            this.labelNProducent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelNProducent.ForeColor = System.Drawing.Color.Black;
+            this.labelNProducent.Location = new System.Drawing.Point(253, 199);
+            this.labelNProducent.Margin = new System.Windows.Forms.Padding(3, 20, 3, 0);
+            this.labelNProducent.Name = "labelNProducent";
+            this.labelNProducent.Size = new System.Drawing.Size(60, 20);
+            this.labelNProducent.TabIndex = 1;
+            this.labelNProducent.Text = "label29";
+            // 
+            // labelNOpisProd
+            // 
+            this.labelNOpisProd.AutoSize = true;
+            this.labelNOpisProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelNOpisProd.ForeColor = System.Drawing.Color.Black;
+            this.labelNOpisProd.Location = new System.Drawing.Point(253, 159);
+            this.labelNOpisProd.Margin = new System.Windows.Forms.Padding(3, 20, 3, 0);
+            this.labelNOpisProd.Name = "labelNOpisProd";
+            this.labelNOpisProd.Size = new System.Drawing.Size(60, 20);
+            this.labelNOpisProd.TabIndex = 1;
+            this.labelNOpisProd.Text = "label29";
+            // 
+            // labelNNazwaProd
+            // 
+            this.labelNNazwaProd.AutoSize = true;
+            this.labelNNazwaProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelNNazwaProd.ForeColor = System.Drawing.Color.Black;
+            this.labelNNazwaProd.Location = new System.Drawing.Point(252, 119);
+            this.labelNNazwaProd.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.labelNNazwaProd.Name = "labelNNazwaProd";
+            this.labelNNazwaProd.Size = new System.Drawing.Size(60, 20);
+            this.labelNNazwaProd.TabIndex = 1;
+            this.labelNNazwaProd.Text = "label29";
+            // 
             // label29
             // 
             this.label29.AutoSize = true;
@@ -1185,13 +1264,23 @@
             this.label29.TabIndex = 0;
             this.label29.Text = "By kupić produkt przejdź do wszystkich ofert";
             // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Impact", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label28.Location = new System.Drawing.Point(96, 47);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(633, 36);
+            this.label28.TabIndex = 0;
+            this.label28.Text = "Najczęsciej kupowane spośród ostatnich 5 zakupów";
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panelTop1);
             this.Controls.Add(this.panelNowosci);
+            this.Controls.Add(this.panelTop1);
             this.Controls.Add(this.labelZalogowanyJako);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panelRejestracja);
@@ -1216,6 +1305,9 @@
             this.panelNaszaOferta.ResumeLayout(false);
             this.panelNaszaOferta.PerformLayout();
             this.panelNowosci.ResumeLayout(false);
+            this.panelNowosci.PerformLayout();
+            this.panelWyswProdukt.ResumeLayout(false);
+            this.panelWyswProdukt.PerformLayout();
             this.panelTop1.ResumeLayout(false);
             this.panelTop1.PerformLayout();
             this.ResumeLayout(false);
@@ -1321,9 +1413,8 @@
         private System.Windows.Forms.ToolStripMenuItem nowosciToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem najpopularniejszyZOstatnich5ZakupówToolStripMenuItem;
         private System.Windows.Forms.Panel panelNowosci;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button buttonNstarsze;
-        private System.Windows.Forms.Button buttonNnowsze;
+        private System.Windows.Forms.Button buttonN2;
+        private System.Windows.Forms.Button buttonN1;
         private System.Windows.Forms.Panel panelTop1;
         private System.Windows.Forms.Label labelNNazwaProd;
         private System.Windows.Forms.Label label28;
@@ -1332,5 +1423,14 @@
         private System.Windows.Forms.Label labelNOpisProd;
         private System.Windows.Forms.Label labelNKategorie;
         private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Panel panelWyswProdukt;
+        private System.Windows.Forms.Label labelCena;
+        private System.Windows.Forms.Label labelKategorie;
+        private System.Windows.Forms.Label labelProducent;
+        private System.Windows.Forms.Label labelOpisProd;
+        private System.Windows.Forms.Label labelNazwaProd;
+        private System.Windows.Forms.Label labelIloscSztuk;
+        private System.Windows.Forms.Button buttonN3;
     }
 }
