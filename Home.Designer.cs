@@ -40,6 +40,9 @@
             this.zarejestrujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zakupyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.naszaOfertaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zobaczWszystkoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nowosciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wyszukajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.twojeZamówieniaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wszystkieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -123,6 +126,18 @@
             this.labelNOCena = new System.Windows.Forms.Label();
             this.labelNOopisProd = new System.Windows.Forms.Label();
             this.listBoxNOProdukty = new System.Windows.Forms.ListBox();
+            this.panelNowosci = new System.Windows.Forms.Panel();
+            this.buttonNstarsze = new System.Windows.Forms.Button();
+            this.buttonNnowsze = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panelTop1 = new System.Windows.Forms.Panel();
+            this.labelNNazwaProd = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.labelNOpisProd = new System.Windows.Forms.Label();
+            this.labelNProducent = new System.Windows.Forms.Label();
+            this.labelNCena = new System.Windows.Forms.Label();
+            this.labelNKategorie = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
             label25 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
@@ -130,6 +145,8 @@
             this.panelLogin.SuspendLayout();
             this.panelEdytujSwojeDane.SuspendLayout();
             this.panelNaszaOferta.SuspendLayout();
+            this.panelNowosci.SuspendLayout();
+            this.panelTop1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label25
@@ -215,10 +232,34 @@
             // 
             // naszaOfertaToolStripMenuItem
             // 
+            this.naszaOfertaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.zobaczWszystkoToolStripMenuItem,
+            this.nowosciToolStripMenuItem,
+            this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem});
             this.naszaOfertaToolStripMenuItem.Name = "naszaOfertaToolStripMenuItem";
             this.naszaOfertaToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.naszaOfertaToolStripMenuItem.Text = "Nasza oferta";
-            this.naszaOfertaToolStripMenuItem.Click += new System.EventHandler(this.naszaOfertaToolStripMenuItem_Click_1);
+            // 
+            // zobaczWszystkoToolStripMenuItem
+            // 
+            this.zobaczWszystkoToolStripMenuItem.Name = "zobaczWszystkoToolStripMenuItem";
+            this.zobaczWszystkoToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.zobaczWszystkoToolStripMenuItem.Text = "Zobacz Wszystko";
+            this.zobaczWszystkoToolStripMenuItem.Click += new System.EventHandler(this.zobaczWszystkoToolStripMenuItem_Click);
+            // 
+            // nowosciToolStripMenuItem
+            // 
+            this.nowosciToolStripMenuItem.Name = "nowosciToolStripMenuItem";
+            this.nowosciToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.nowosciToolStripMenuItem.Text = "Nowości";
+            this.nowosciToolStripMenuItem.Click += new System.EventHandler(this.tOP3ZamawianeToolStripMenuItem_Click);
+            // 
+            // najpopularniejszyZOstatnich5ZakupówToolStripMenuItem
+            // 
+            this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem.Name = "najpopularniejszyZOstatnich5ZakupówToolStripMenuItem";
+            this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem.Text = "Top 1 ostatnio";
+            this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem.Click += new System.EventHandler(this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem_Click);
             // 
             // wyszukajToolStripMenuItem
             // 
@@ -1012,11 +1053,145 @@
             this.listBoxNOProdukty.TabIndex = 0;
             this.listBoxNOProdukty.SelectedIndexChanged += new System.EventHandler(this.listBoxNOProdukty_SelectedIndexChanged);
             // 
+            // panelNowosci
+            // 
+            this.panelNowosci.Controls.Add(this.buttonNstarsze);
+            this.panelNowosci.Controls.Add(this.buttonNnowsze);
+            this.panelNowosci.Controls.Add(this.flowLayoutPanel1);
+            this.panelNowosci.Location = new System.Drawing.Point(1, 24);
+            this.panelNowosci.Name = "panelNowosci";
+            this.panelNowosci.Size = new System.Drawing.Size(802, 425);
+            this.panelNowosci.TabIndex = 10;
+            // 
+            // buttonNstarsze
+            // 
+            this.buttonNstarsze.Location = new System.Drawing.Point(431, 336);
+            this.buttonNstarsze.Name = "buttonNstarsze";
+            this.buttonNstarsze.Size = new System.Drawing.Size(105, 32);
+            this.buttonNstarsze.TabIndex = 1;
+            this.buttonNstarsze.Text = "->";
+            this.buttonNstarsze.UseVisualStyleBackColor = true;
+            // 
+            // buttonNnowsze
+            // 
+            this.buttonNnowsze.Location = new System.Drawing.Point(258, 336);
+            this.buttonNnowsze.Name = "buttonNnowsze";
+            this.buttonNnowsze.Size = new System.Drawing.Size(105, 32);
+            this.buttonNnowsze.TabIndex = 1;
+            this.buttonNnowsze.Text = "<-";
+            this.buttonNnowsze.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(593, 155);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(200, 100);
+            this.flowLayoutPanel1.TabIndex = 0;
+            // 
+            // panelTop1
+            // 
+            this.panelTop1.Controls.Add(this.labelNKategorie);
+            this.panelTop1.Controls.Add(this.labelNCena);
+            this.panelTop1.Controls.Add(this.labelNProducent);
+            this.panelTop1.Controls.Add(this.labelNOpisProd);
+            this.panelTop1.Controls.Add(this.labelNNazwaProd);
+            this.panelTop1.Controls.Add(this.label29);
+            this.panelTop1.Controls.Add(this.label28);
+            this.panelTop1.ForeColor = System.Drawing.Color.Red;
+            this.panelTop1.Location = new System.Drawing.Point(2, 23);
+            this.panelTop1.Name = "panelTop1";
+            this.panelTop1.Size = new System.Drawing.Size(796, 425);
+            this.panelTop1.TabIndex = 2;
+            this.panelTop1.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTop1_Paint);
+            // 
+            // labelNNazwaProd
+            // 
+            this.labelNNazwaProd.AutoSize = true;
+            this.labelNNazwaProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelNNazwaProd.ForeColor = System.Drawing.Color.Black;
+            this.labelNNazwaProd.Location = new System.Drawing.Point(252, 119);
+            this.labelNNazwaProd.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.labelNNazwaProd.Name = "labelNNazwaProd";
+            this.labelNNazwaProd.Size = new System.Drawing.Size(60, 20);
+            this.labelNNazwaProd.TabIndex = 1;
+            this.labelNNazwaProd.Text = "label29";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Impact", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label28.Location = new System.Drawing.Point(96, 47);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(633, 36);
+            this.label28.TabIndex = 0;
+            this.label28.Text = "Najczęsciej kupowane spośród ostatnich 5 zakupów";
+            // 
+            // labelNOpisProd
+            // 
+            this.labelNOpisProd.AutoSize = true;
+            this.labelNOpisProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelNOpisProd.ForeColor = System.Drawing.Color.Black;
+            this.labelNOpisProd.Location = new System.Drawing.Point(253, 159);
+            this.labelNOpisProd.Margin = new System.Windows.Forms.Padding(3, 20, 3, 0);
+            this.labelNOpisProd.Name = "labelNOpisProd";
+            this.labelNOpisProd.Size = new System.Drawing.Size(60, 20);
+            this.labelNOpisProd.TabIndex = 1;
+            this.labelNOpisProd.Text = "label29";
+            // 
+            // labelNProducent
+            // 
+            this.labelNProducent.AutoSize = true;
+            this.labelNProducent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelNProducent.ForeColor = System.Drawing.Color.Black;
+            this.labelNProducent.Location = new System.Drawing.Point(253, 199);
+            this.labelNProducent.Margin = new System.Windows.Forms.Padding(3, 20, 3, 0);
+            this.labelNProducent.Name = "labelNProducent";
+            this.labelNProducent.Size = new System.Drawing.Size(60, 20);
+            this.labelNProducent.TabIndex = 1;
+            this.labelNProducent.Text = "label29";
+            // 
+            // labelNCena
+            // 
+            this.labelNCena.AutoSize = true;
+            this.labelNCena.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelNCena.ForeColor = System.Drawing.Color.Black;
+            this.labelNCena.Location = new System.Drawing.Point(253, 239);
+            this.labelNCena.Margin = new System.Windows.Forms.Padding(3, 20, 3, 0);
+            this.labelNCena.Name = "labelNCena";
+            this.labelNCena.Size = new System.Drawing.Size(60, 20);
+            this.labelNCena.TabIndex = 1;
+            this.labelNCena.Text = "label29";
+            // 
+            // labelNKategorie
+            // 
+            this.labelNKategorie.AutoSize = true;
+            this.labelNKategorie.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelNKategorie.ForeColor = System.Drawing.Color.Black;
+            this.labelNKategorie.Location = new System.Drawing.Point(252, 279);
+            this.labelNKategorie.Margin = new System.Windows.Forms.Padding(3, 20, 3, 0);
+            this.labelNKategorie.Name = "labelNKategorie";
+            this.labelNKategorie.Size = new System.Drawing.Size(60, 20);
+            this.labelNKategorie.TabIndex = 1;
+            this.labelNKategorie.Text = "label29";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label29.ForeColor = System.Drawing.Color.Black;
+            this.label29.Location = new System.Drawing.Point(208, 356);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(380, 22);
+            this.label29.TabIndex = 0;
+            this.label29.Text = "By kupić produkt przejdź do wszystkich ofert";
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panelTop1);
+            this.Controls.Add(this.panelNowosci);
             this.Controls.Add(this.labelZalogowanyJako);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panelRejestracja);
@@ -1040,6 +1215,9 @@
             this.panelEdytujSwojeDane.PerformLayout();
             this.panelNaszaOferta.ResumeLayout(false);
             this.panelNaszaOferta.PerformLayout();
+            this.panelNowosci.ResumeLayout(false);
+            this.panelTop1.ResumeLayout(false);
+            this.panelTop1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1139,5 +1317,20 @@
         private System.Windows.Forms.Label labelNOCena;
         private System.Windows.Forms.Label labelNOopisProd;
         private System.Windows.Forms.ListBox listBoxNOProdukty;
+        private System.Windows.Forms.ToolStripMenuItem zobaczWszystkoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nowosciToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem najpopularniejszyZOstatnich5ZakupówToolStripMenuItem;
+        private System.Windows.Forms.Panel panelNowosci;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button buttonNstarsze;
+        private System.Windows.Forms.Button buttonNnowsze;
+        private System.Windows.Forms.Panel panelTop1;
+        private System.Windows.Forms.Label labelNNazwaProd;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label labelNCena;
+        private System.Windows.Forms.Label labelNProducent;
+        private System.Windows.Forms.Label labelNOpisProd;
+        private System.Windows.Forms.Label labelNKategorie;
+        private System.Windows.Forms.Label label29;
     }
 }

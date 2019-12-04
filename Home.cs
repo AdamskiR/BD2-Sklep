@@ -484,10 +484,76 @@ namespace Sklep
             }
         }
 
-        private void naszaOfertaToolStripMenuItem_Click_1(object sender, EventArgs e)
+
+        private void zobaczWszystkoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panelNaszaOferta.BringToFront();
             wylistujProdukty();
+        }
+
+        private void tOP3ZamawianeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panelNowosci.BringToFront();
+        }
+
+        private void najpopularniejszyZOstatnich5ZakupówToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            Int32 idTop1 = 0;
+
+            panelTop1.BringToFront();
+
+            string querry = "Select * from Top1OutOfRecent5";
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(querry, connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            {
+                DataTable tabela_prod = new DataTable();
+                adapter.Fill(tabela_prod);
+
+                connection.Open();
+
+                SqlDataReader dr = command.ExecuteReader();
+                while (dr.Read())
+                {
+                    idTop1 = dr.GetInt32(0);
+                }              
+            }
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand("DisplaySpecificProduct", connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@id", SqlDbType.Int);
+                command.Parameters["@id"].Value = idTop1;
+                
+                DataTable tabela_prod = new DataTable();
+                adapter.Fill(tabela_prod);
+
+
+                labelNOpisProd .Text = "Opis Produktu: " + (string)tabela_prod.Rows[0]["ProductDesc"];
+                labelNProducent .Text = "Producent: " + (string)tabela_prod.Rows[0]["Vendor"];
+                labelNCena.Text = "Cena: " + (decimal)tabela_prod.Rows[0]["ProductPrice"];
+                labelNNazwaProd.Text = "Nazwa produktu: " + (string)tabela_prod.Rows[0]["ProductName"];
+                string temp = "Kategorie: | ";
+
+                foreach (DataRow row in tabela_prod.Rows)
+                {
+                    temp += row["CategoryName"].ToString() + " | ";
+                }
+
+                labelNKategorie.Text = temp;
+            }
+
+
+
+
+        }
+
+        private void panelTop1_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }

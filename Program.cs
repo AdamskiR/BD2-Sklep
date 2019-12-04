@@ -11,9 +11,7 @@ namespace Sklep
 {
     public class globals
     {
-        
-
-
+               
         public static int userID;
 
         public static void setLogin(int id, System.Windows.Forms.Label label)
