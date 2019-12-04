@@ -528,5 +528,36 @@ namespace Sklep
         {
             Wyswietlprodukt(Top3id[2]);
         }
+
+        private void buttonZmienDane_Click(object sender, EventArgs e)
+        {
+            string querry = "UPDATE Users SET FirstName=@imie, LastName=@nazwisko, ZipCode=@zipcode, City=@miasto, Street=@ulica, TelephoneNumber=@telefon WHERE Username=" + "'" + currentUsername + "'";
+            using (connection = new SqlConnection(connectionString))
+            using (SqlConnection cnn4 = new SqlConnection(connectionString))
+            {
+
+                try
+                {
+                    cnn4.Open();
+                    SqlCommand cmd = new SqlCommand(querry, cnn4);
+                    cmd.Parameters.Add("@imie", SqlDbType.NChar).Value = textBox10.Text;
+                    cmd.Parameters.Add("@nazwisko", SqlDbType.NChar).Value = textBox9.Text;
+                    cmd.Parameters.Add("@zipcode", SqlDbType.NChar).Value = textBox1.Text;
+                    cmd.Parameters.Add("@miasto", SqlDbType.NChar).Value = textBox8.Text;
+                    cmd.Parameters.Add("@ulica", SqlDbType.NChar).Value = textBox7.Text;
+                    cmd.Parameters.Add("@telefon", SqlDbType.Int).Value = Convert.ToInt32(textBox6.Text);
+
+                    cmd.ExecuteNonQuery();
+                    cnn4.Close();
+                    MessageBox.Show("Dane zostały zmienione!");
+                }
+                catch (Exception ex)
+                {
+                    // We should log the error somewhere, 
+                    // for this example let's just show a message
+                    MessageBox.Show("ERROR:" + ex.Message);
+                }
+            }
+        }
     }
 }

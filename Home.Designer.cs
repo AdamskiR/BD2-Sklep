@@ -96,7 +96,7 @@
             this.labelZalogowanyJako = new System.Windows.Forms.Label();
             this.panelEdytujSwojeDane = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonZmienDane = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -196,7 +196,7 @@
             // zalogujToolStripMenuItem
             // 
             this.zalogujToolStripMenuItem.Name = "zalogujToolStripMenuItem";
-            this.zalogujToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.zalogujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.zalogujToolStripMenuItem.Text = "Zaloguj";
             this.zalogujToolStripMenuItem.Click += new System.EventHandler(this.zalogujToolStripMenuItem_Click);
             // 
@@ -204,7 +204,7 @@
             // 
             this.wylogujToolStripMenuItem.Name = "wylogujToolStripMenuItem";
             this.wylogujToolStripMenuItem.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded;
-            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.wylogujToolStripMenuItem.Text = "Wyloguj";
             this.wylogujToolStripMenuItem.Visible = false;
             this.wylogujToolStripMenuItem.Click += new System.EventHandler(this.wylogujToolStripMenuItem_Click);
@@ -212,7 +212,7 @@
             // edytujSwojeDaneToolStripMenuItem
             // 
             this.edytujSwojeDaneToolStripMenuItem.Name = "edytujSwojeDaneToolStripMenuItem";
-            this.edytujSwojeDaneToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.edytujSwojeDaneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.edytujSwojeDaneToolStripMenuItem.Text = "Edytuj swoje dane";
             this.edytujSwojeDaneToolStripMenuItem.Visible = false;
             this.edytujSwojeDaneToolStripMenuItem.Click += new System.EventHandler(this.edytujSwojeDaneToolStripMenuItem_Click);
@@ -220,12 +220,12 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(166, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // zarejestrujToolStripMenuItem
             // 
             this.zarejestrujToolStripMenuItem.Name = "zarejestrujToolStripMenuItem";
-            this.zarejestrujToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.zarejestrujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.zarejestrujToolStripMenuItem.Text = "Zarejestruj";
             this.zarejestrujToolStripMenuItem.Click += new System.EventHandler(this.zarejestrujToolStripMenuItem_Click);
             // 
@@ -649,9 +649,6 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Podaj swoje dane";
             // 
-            // backgroundWorker1
-            // 
-            // 
             // panelLogin
             // 
             this.panelLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
@@ -734,7 +731,7 @@
             // 
             this.panelEdytujSwojeDane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelEdytujSwojeDane.Controls.Add(this.button2);
-            this.panelEdytujSwojeDane.Controls.Add(this.button1);
+            this.panelEdytujSwojeDane.Controls.Add(this.buttonZmienDane);
             this.panelEdytujSwojeDane.Controls.Add(this.textBox1);
             this.panelEdytujSwojeDane.Controls.Add(this.textBox2);
             this.panelEdytujSwojeDane.Controls.Add(this.textBox3);
@@ -769,14 +766,15 @@
             this.button2.Text = "Zmień hasło";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // buttonZmienDane
             // 
-            this.button1.Location = new System.Drawing.Point(104, 269);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(204, 46);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Zmień dane";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonZmienDane.Location = new System.Drawing.Point(104, 269);
+            this.buttonZmienDane.Name = "buttonZmienDane";
+            this.buttonZmienDane.Size = new System.Drawing.Size(204, 46);
+            this.buttonZmienDane.TabIndex = 4;
+            this.buttonZmienDane.Text = "Zmień dane";
+            this.buttonZmienDane.UseVisualStyleBackColor = true;
+            this.buttonZmienDane.Click += new System.EventHandler(this.buttonZmienDane_Click);
             // 
             // textBox1
             // 
@@ -1279,15 +1277,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panelNowosci);
-            this.Controls.Add(this.panelTop1);
             this.Controls.Add(this.labelZalogowanyJako);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.panelRejestracja);
             this.Controls.Add(this.panelEdytujSwojeDane);
             this.Controls.Add(this.panelWelcome);
             this.Controls.Add(this.panelLogin);
             this.Controls.Add(this.panelNaszaOferta);
+            this.Controls.Add(this.panelNowosci);
+            this.Controls.Add(this.panelTop1);
+            this.Controls.Add(this.panelRejestracja);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Home";
             this.Text = "Alledrogo";
@@ -1371,7 +1369,7 @@
         private System.Windows.Forms.TextBox textBoxLogUzytkownik;
         private System.Windows.Forms.Panel panelLogin;
         private System.Windows.Forms.Panel panelEdytujSwojeDane;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonZmienDane;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
