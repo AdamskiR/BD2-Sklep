@@ -146,6 +146,7 @@
             this.labelNNazwaProd = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
+            this.buttonUsunKonto = new System.Windows.Forms.Button();
             label25 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
@@ -246,34 +247,34 @@
             this.nowosciToolStripMenuItem,
             this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem});
             this.naszaOfertaToolStripMenuItem.Name = "naszaOfertaToolStripMenuItem";
-            this.naszaOfertaToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.naszaOfertaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.naszaOfertaToolStripMenuItem.Text = "Nasza oferta";
             // 
             // zobaczWszystkoToolStripMenuItem
             // 
             this.zobaczWszystkoToolStripMenuItem.Name = "zobaczWszystkoToolStripMenuItem";
-            this.zobaczWszystkoToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.zobaczWszystkoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.zobaczWszystkoToolStripMenuItem.Text = "Zobacz Wszystko";
             this.zobaczWszystkoToolStripMenuItem.Click += new System.EventHandler(this.zobaczWszystkoToolStripMenuItem_Click);
             // 
             // nowosciToolStripMenuItem
             // 
             this.nowosciToolStripMenuItem.Name = "nowosciToolStripMenuItem";
-            this.nowosciToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.nowosciToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.nowosciToolStripMenuItem.Text = "Nowości";
             this.nowosciToolStripMenuItem.Click += new System.EventHandler(this.tOP3ZamawianeToolStripMenuItem_Click);
             // 
             // najpopularniejszyZOstatnich5ZakupówToolStripMenuItem
             // 
             this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem.Name = "najpopularniejszyZOstatnich5ZakupówToolStripMenuItem";
-            this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem.Text = "Top 1 ostatnio";
             this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem.Click += new System.EventHandler(this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem_Click);
             // 
             // wyszukajToolStripMenuItem
             // 
             this.wyszukajToolStripMenuItem.Name = "wyszukajToolStripMenuItem";
-            this.wyszukajToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.wyszukajToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.wyszukajToolStripMenuItem.Text = "Wyszukaj";
             // 
             // twojeZamówieniaToolStripMenuItem
@@ -283,7 +284,7 @@
             this.ostatnieToolStripMenuItem});
             this.twojeZamówieniaToolStripMenuItem.Enabled = false;
             this.twojeZamówieniaToolStripMenuItem.Name = "twojeZamówieniaToolStripMenuItem";
-            this.twojeZamówieniaToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.twojeZamówieniaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.twojeZamówieniaToolStripMenuItem.Text = "Twoje zamówienia";
             // 
             // wszystkieToolStripMenuItem
@@ -334,19 +335,19 @@
             // dodajProduktToolStripMenuItem
             // 
             this.dodajProduktToolStripMenuItem.Name = "dodajProduktToolStripMenuItem";
-            this.dodajProduktToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.dodajProduktToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.dodajProduktToolStripMenuItem.Text = "Dodaj Produkt";
             // 
             // modyfikujProduktToolStripMenuItem
             // 
             this.modyfikujProduktToolStripMenuItem.Name = "modyfikujProduktToolStripMenuItem";
-            this.modyfikujProduktToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.modyfikujProduktToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.modyfikujProduktToolStripMenuItem.Text = "Modyfikuj Produkt";
             // 
             // ądzajUżytkownikamiToolStripMenuItem
             // 
             this.ądzajUżytkownikamiToolStripMenuItem.Name = "ądzajUżytkownikamiToolStripMenuItem";
-            this.ądzajUżytkownikamiToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.ądzajUżytkownikamiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ądzajUżytkownikamiToolStripMenuItem.Text = "Edytuj userów";
             this.ądzajUżytkownikamiToolStripMenuItem.Click += new System.EventHandler(this.ądzajUżytkownikamiToolStripMenuItem_Click);
             // 
@@ -730,6 +731,7 @@
             // panelEdytujSwojeDane
             // 
             this.panelEdytujSwojeDane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelEdytujSwojeDane.Controls.Add(this.buttonUsunKonto);
             this.panelEdytujSwojeDane.Controls.Add(this.ZmianaHasla);
             this.panelEdytujSwojeDane.Controls.Add(this.buttonZmienDane);
             this.panelEdytujSwojeDane.Controls.Add(this.textBox1);
@@ -1273,6 +1275,16 @@
             this.label28.TabIndex = 0;
             this.label28.Text = "Najczęsciej kupowane spośród ostatnich 5 zakupów";
             // 
+            // buttonUsunKonto
+            // 
+            this.buttonUsunKonto.Location = new System.Drawing.Point(472, 279);
+            this.buttonUsunKonto.Name = "buttonUsunKonto";
+            this.buttonUsunKonto.Size = new System.Drawing.Size(203, 51);
+            this.buttonUsunKonto.TabIndex = 5;
+            this.buttonUsunKonto.Text = "Usuń Konto";
+            this.buttonUsunKonto.UseVisualStyleBackColor = true;
+            this.buttonUsunKonto.Click += new System.EventHandler(this.buttonUsunKonto_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1431,5 +1443,6 @@
         private System.Windows.Forms.Label labelNazwaProd;
         private System.Windows.Forms.Label labelIloscSztuk;
         private System.Windows.Forms.Button buttonN3;
+        private System.Windows.Forms.Button buttonUsunKonto;
     }
 }

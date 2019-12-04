@@ -91,8 +91,6 @@ namespace Sklep
                 }
                 catch (Exception ex)
                 {
-                    // We should log the error somewhere, 
-                    // for this example let's just show a message
                     MessageBox.Show("ERROR:" + ex.Message);
                 }
             }
@@ -132,8 +130,6 @@ namespace Sklep
                 }
                 catch (Exception ex)
                 {
-                    // We should log the error somewhere, 
-                    // for this example let's just show a message
                     MessageBox.Show("ERROR:" + ex.Message);
                 }
             }
@@ -186,8 +182,6 @@ namespace Sklep
                             }
                             catch (Exception ex)
                             {
-                                // We should log the error somewhere, 
-                                // for this example let's just show a message
                                 MessageBox.Show("ERROR:" + ex.Message);
                             }
                         }
@@ -249,8 +243,6 @@ namespace Sklep
                 }
                 catch (Exception ex)
                 {
-                    // We should log the error somewhere, 
-                    // for this example let's just show a message
                     MessageBox.Show("ERROR:" + ex.Message);
                 }
             }
@@ -553,8 +545,6 @@ namespace Sklep
                 }
                 catch (Exception ex)
                 {
-                    // We should log the error somewhere, 
-                    // for this example let's just show a message
                     MessageBox.Show("ERROR:" + ex.Message);
                 }
             }
@@ -590,11 +580,44 @@ namespace Sklep
                 }
                 catch (Exception ex)
                 {
-                    // We should log the error somewhere, 
-                    // for this example let's just show a message
                     MessageBox.Show("ERROR:" + ex.Message);
                 }
             }
         }
+
+        private void buttonUsunKonto_Click(object sender, EventArgs e)
+        {
+           var confirm = MessageBox.Show("Czy na pewno chcesz usunąć konto?", "Usuń konto",MessageBoxButtons.YesNo);
+            if (confirm == DialogResult.Yes)
+            {
+                using (SqlConnection cnn2 = new SqlConnection(connectionString))
+                {
+                    try
+                    {
+                        cnn2.Open();
+                        string querry2 = "DELETE from [Users] where Username="+"'"+currentUsername+"'";
+                        SqlCommand cmd2 = new SqlCommand(querry2, cnn2);
+                        cmd2.ExecuteNonQuery();
+                        MessageBox.Show("Konto usunięte!");
+                        currentUsername = null;
+                        isUserAuthenticated = false;
+                        labelZalogowanyJako.ResetText();
+                        panelWelcome.BringToFront();
+                        wylogujToolStripMenuItem.Visible = false;
+                        edytujSwojeDaneToolStripMenuItem.Visible = false;
+                        
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("ERROR:" + ex.Message);
+                    }
+                }
+            }
+            else
+            {
+                //do nothing
+            }
+             
+        }    
     }
 }
