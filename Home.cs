@@ -107,7 +107,8 @@ namespace Sklep
         private void edytujSwojeDaneToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panelEdytujSwojeDane.BringToFront();
-            string querry = "SELECT [FirstName], [LastName], [ZipCode], [City], [Street], [TelephoneNumber] FROM Users WHERE Username=" + "'" + currentUsername + "'";
+            string querry = "dbo.GetUserData";
+
             using (connection = new SqlConnection(connectionString))
             using (SqlConnection cnn4 = new SqlConnection(connectionString))
             {
@@ -116,6 +117,8 @@ namespace Sklep
                 {
                     cnn4.Open();
                     SqlCommand cmd = new SqlCommand(querry, cnn4);
+                    cmd.Parameters.Add("@login", SqlDbType.NChar).Value = currentUsername;
+                    cmd.CommandType = CommandType.StoredProcedure;
                     SqlDataReader dr2 = cmd.ExecuteReader();
 
                     while (dr2.Read())
