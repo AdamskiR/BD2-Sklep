@@ -191,8 +191,8 @@
             this.toolStripSeparator1,
             this.zarejestrujToolStripMenuItem});
             this.użytkownikToolStripMenuItem.Name = "użytkownikToolStripMenuItem";
-            this.użytkownikToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
-            this.użytkownikToolStripMenuItem.Text = "Użytkownik";
+            this.użytkownikToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.użytkownikToolStripMenuItem.Text = "Menu";
             // 
             // zalogujToolStripMenuItem
             // 
