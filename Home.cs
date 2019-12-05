@@ -162,9 +162,10 @@ namespace Sklep
                             {
                                 cnn2.Open();
 
-                                string querry2 = "SELECT * from [Users] where Username=@Username";
+                                string querry2 = "dbo.LoginTaken";
                                 SqlCommand cmd2 = new SqlCommand(querry2, cnn2);
-                                cmd2.Parameters.AddWithValue("@Username", this.textBoxNazwaUzytkownika.Text);
+                                cmd2.CommandType = CommandType.StoredProcedure;
+                                cmd2.Parameters.AddWithValue("@login", this.textBoxNazwaUzytkownika.Text);
                                 SqlDataReader dr = cmd2.ExecuteReader();
                                 dr.Read();
 
