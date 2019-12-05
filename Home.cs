@@ -59,14 +59,15 @@ namespace Sklep
                 {
                     cnn3.Open();
 
-                    string querry3 = "SELECT Username,Password FROM [Users] where Username = @Username AND Password = @Password";
+                    string querry3 = "dbo.LoginProcedure";
                     SqlCommand cmd3 = new SqlCommand(querry3, cnn3);
-                    SqlParameter uName = new SqlParameter("@Username", SqlDbType.VarChar);
-                    SqlParameter uPassword = new SqlParameter("@Password", SqlDbType.VarChar);
+
+                    SqlParameter uName = new SqlParameter("@login", SqlDbType.VarChar);
+                    SqlParameter uPassword = new SqlParameter("@password", SqlDbType.VarChar);
 
                     uName.Value = textBoxLogUzytkownik.Text;
                     uPassword.Value = textBoxLogHaslo.Text;
-
+                    cmd3.CommandType = CommandType.StoredProcedure;
                     cmd3.Parameters.Add(uName);
                     cmd3.Parameters.Add(uPassword);
 
