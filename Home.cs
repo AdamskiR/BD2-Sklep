@@ -141,7 +141,7 @@ namespace Sklep
         }
         private void buttonRejestracja_Click(object sender, EventArgs e)
         {
-            string querry = "INSERT INTO [Users] ([Username], [Password], [Email], [FirstName], [LastName], [ZipCode], [City], [Street], [TelephoneNumber]) VALUES(@login, @pass, @email, @imie, @nazwisko, @zipcode, @miasto, @ulica, @telefon)";
+            string querry = "dbo.DodajUzytkownika";
 
 
             using (SqlConnection cnn = new SqlConnection(connectionString))
@@ -185,8 +185,9 @@ namespace Sklep
                                 MessageBox.Show("ERROR:" + ex.Message);
                             }
                         }
+                        cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("@login", SqlDbType.NChar).Value = textBoxNazwaUzytkownika.Text;
-                        cmd.Parameters.Add("@pass", SqlDbType.NChar).Value = textBoxHaslo.Text;
+                        cmd.Parameters.Add("@password", SqlDbType.NChar).Value = textBoxHaslo.Text;
                         cmd.Parameters.Add("@email", SqlDbType.NChar).Value = textBoxEmail.Text;
 
                         if (string.IsNullOrEmpty(textBoxImie.Text))
