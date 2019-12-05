@@ -22,6 +22,18 @@ namespace Sklep
         string currentUsername;
         int[] Top3id = new int[3];
 
+        struct coIile
+        {
+            public int id, ilosc;
+
+            public override string ToString()
+            {
+                return "ID: " + this.id + ", Ilosc: " + this.ilosc;
+            }
+
+        }
+        List<coIile> koszyk = new List<coIile>();
+
 
         public Home()
         {
@@ -654,7 +666,29 @@ namespace Sklep
             {
                 //do nothing
             }
-             
-        }    
+        }
+
+        private void buttonNOdodajDokoszyka_Click(object sender, EventArgs e)
+        {
+            {
+                if (Convert.ToInt32(textBoxNOIleKupic.Text) > 0)
+                {
+                    coIile kupno;
+                    kupno.id = Convert.ToInt32(listBoxNOProdukty.SelectedValue);
+                    kupno.ilosc = Convert.ToInt32(textBoxNOIleKupic.Text);
+                    koszyk.Add(kupno);
+
+                    for (int i = 0; i < koszyk.Count(); i++)
+                        MessageBox.Show(koszyk[i].ToString());
+                }
+                else
+                    MessageBox.Show("Musisz wprowadzić ilość!");
+            }
+        }
+
+        private void usuńProduktyZKoszykaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            koszyk.Clear();
+        }
     }
 }

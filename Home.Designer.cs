@@ -321,6 +321,7 @@
             this.usuńProduktyZKoszykaToolStripMenuItem.Name = "usuńProduktyZKoszykaToolStripMenuItem";
             this.usuńProduktyZKoszykaToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.usuńProduktyZKoszykaToolStripMenuItem.Text = "Usuń produkty z koszyka";
+            this.usuńProduktyZKoszykaToolStripMenuItem.Click += new System.EventHandler(this.usuńProduktyZKoszykaToolStripMenuItem_Click);
             // 
             // panelAdministracyjnyToolStripMenuItem
             // 
@@ -978,6 +979,7 @@
             this.buttonNOdodajDokoszyka.Text = "Dodaj do koszyka";
             this.buttonNOdodajDokoszyka.UseVisualStyleBackColor = true;
             this.buttonNOdodajDokoszyka.Visible = false;
+            this.buttonNOdodajDokoszyka.Click += new System.EventHandler(this.buttonNOdodajDokoszyka_Click);
             // 
             // textBoxNOIleKupic
             // 
@@ -1290,12 +1292,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panelNaszaOferta);
             this.Controls.Add(this.labelZalogowanyJako);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panelEdytujSwojeDane);
             this.Controls.Add(this.panelWelcome);
             this.Controls.Add(this.panelLogin);
-            this.Controls.Add(this.panelNaszaOferta);
             this.Controls.Add(this.panelNowosci);
             this.Controls.Add(this.panelTop1);
             this.Controls.Add(this.panelRejestracja);
