@@ -84,13 +84,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Alledrogo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Alledrogo.Designer.cs">
-      <DependentUpon>Alledrogo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GetUserID.cs" />
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,9 +97,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ShopDataSet.xsd</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Alledrogo.resx">
-      <DependentUpon>Alledrogo.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
