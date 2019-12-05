@@ -108,8 +108,6 @@ namespace Sklep
         {
             panelEdytujSwojeDane.BringToFront();
             string querry = "dbo.GetUserData";
-
-            using (connection = new SqlConnection(connectionString))
             using (SqlConnection cnn4 = new SqlConnection(connectionString))
             {
 
@@ -283,11 +281,12 @@ namespace Sklep
         private void wylogujToolStripMenuItem_Click(object sender, EventArgs e)
         {
             isUserAuthenticated = false;
-            labelZalogowanyJako.Text = " ";
+            labelZalogowanyJako.ResetText();
             buttonZaloguj.Visible = true;
             wylogujToolStripMenuItem.Visible = false;
             edytujSwojeDaneToolStripMenuItem.Visible = false;
             MessageBox.Show("Do zobaczenia!");
+            panelWelcome.BringToFront();
         }
 
         private void naszaOfertaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -530,7 +529,6 @@ namespace Sklep
         private void buttonZmienDane_Click(object sender, EventArgs e)
         {
             string querry = "UPDATE Users SET FirstName=@imie, LastName=@nazwisko, ZipCode=@zipcode, City=@miasto, Street=@ulica, TelephoneNumber=@telefon WHERE Username=" + "'" + currentUsername + "'";
-            using (connection = new SqlConnection(connectionString))
             using (SqlConnection cnn4 = new SqlConnection(connectionString))
             {
 
@@ -538,12 +536,42 @@ namespace Sklep
                 {
                     cnn4.Open();
                     SqlCommand cmd = new SqlCommand(querry, cnn4);
-                    cmd.Parameters.Add("@imie", SqlDbType.NChar).Value = textBox10.Text;
-                    cmd.Parameters.Add("@nazwisko", SqlDbType.NChar).Value = textBox9.Text;
-                    cmd.Parameters.Add("@zipcode", SqlDbType.NChar).Value = textBox1.Text;
-                    cmd.Parameters.Add("@miasto", SqlDbType.NChar).Value = textBox8.Text;
-                    cmd.Parameters.Add("@ulica", SqlDbType.NChar).Value = textBox7.Text;
-                    cmd.Parameters.Add("@telefon", SqlDbType.Int).Value = Convert.ToInt32(textBox6.Text);
+                    if (string.IsNullOrEmpty(textBox10.Text))
+                        cmd.Parameters.Add("@imie", SqlDbType.NChar).Value = DBNull.Value;
+                    else
+                    {
+                        cmd.Parameters.Add("@imie", SqlDbType.NChar).Value = textBox10.Text;
+                    }
+                    if (string.IsNullOrEmpty(textBox9.Text))
+                        cmd.Parameters.Add("@nazwisko", SqlDbType.NChar).Value = DBNull.Value;
+                    else
+                    {
+                        cmd.Parameters.Add("@nazwisko", SqlDbType.NChar).Value = textBox9.Text;
+                    }
+                    if (string.IsNullOrEmpty(textBox1.Text))
+                        cmd.Parameters.Add("@zipcode", SqlDbType.NChar).Value = DBNull.Value;
+                    else
+                    {
+                        cmd.Parameters.Add("@zipcode", SqlDbType.NChar).Value = textBox1.Text;
+                    }
+                    if (string.IsNullOrEmpty(textBox8.Text))
+                        cmd.Parameters.Add("@miasto", SqlDbType.NChar).Value = DBNull.Value;
+                    else
+                    {
+                        cmd.Parameters.Add("@miasto", SqlDbType.NChar).Value = textBox8.Text;
+                    }
+                    if (string.IsNullOrEmpty(textBox7.Text))
+                        cmd.Parameters.Add("@ulica", SqlDbType.NChar).Value = DBNull.Value;
+                    else
+                    {
+                        cmd.Parameters.Add("@ulica", SqlDbType.NChar).Value = textBox7.Text;
+                    }
+                    if (string.IsNullOrEmpty(textBox6.Text))
+                        cmd.Parameters.Add("@telefon", SqlDbType.Int).Value = DBNull.Value;
+                    else
+                    {
+                        cmd.Parameters.Add("@telefon", SqlDbType.Int).Value = Convert.ToInt32(textBox6.Text);
+                    }
 
                     cmd.ExecuteNonQuery();
                     cnn4.Close();
@@ -565,15 +593,18 @@ namespace Sklep
                 {
                     cnn2.Open();
 
-                    string querry2 = "SELECT Password from [Users] where Username=@Username";
+                    string querry2 = "dbo.VerifyPassword";
                     SqlCommand cmd2 = new SqlCommand(querry2, cnn2);
-                    cmd2.Parameters.AddWithValue("@Username", currentUsername);
+                    cmd2.CommandType = CommandType.StoredProcedure;
+                    cmd2.Parameters.AddWithValue("@login", currentUsername);
                     string value = cmd2.ExecuteScalar().ToString().TrimEnd();
 
                     if (aktualneHaslo.Text.Equals(value) && potwierdzHaslo.Text.Equals(value))
                     {
-                        string query = "UPDATE Users SET Password=@password WHERE Username=" + "'" + currentUsername + "'";
+                        string query = "dbo.PasswordChange";
                         SqlCommand cmd3 = new SqlCommand(query, cnn2);
+                        cmd3.CommandType = CommandType.StoredProcedure;
+                        cmd3.Parameters.Add("@login", SqlDbType.NChar).Value = currentUsername;
                         cmd3.Parameters.Add("@password", SqlDbType.NChar).Value = noweHaslo.Text;
                         cmd3.ExecuteNonQuery();
                         MessageBox.Show("Hasło zostało zmienione!");
