@@ -45,8 +45,6 @@
             this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wyszukajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.twojeZamówieniaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.wszystkieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ostatnieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.koszykToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.przejdźDoKasyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuńProduktyZKoszykaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -147,6 +145,18 @@
             this.labelNNazwaProd = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
+            this.panelTwojeZamowienia = new System.Windows.Forms.Panel();
+            this.labelTZCenaZaWszystko = new System.Windows.Forms.Label();
+            this.dataGridViewOrder = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTZZamowienia = new System.Windows.Forms.DataGridView();
+            this.label31 = new System.Windows.Forms.Label();
+            this.prod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ilosc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ZamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cenazacalosc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
             label25 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
@@ -157,6 +167,9 @@
             this.panelNowosci.SuspendLayout();
             this.panelWyswProdukt.SuspendLayout();
             this.panelTop1.SuspendLayout();
+            this.panelTwojeZamowienia.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTZZamowienia)).BeginInit();
             this.SuspendLayout();
             // 
             // label25
@@ -279,25 +292,11 @@
             // 
             // twojeZamówieniaToolStripMenuItem
             // 
-            this.twojeZamówieniaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.wszystkieToolStripMenuItem,
-            this.ostatnieToolStripMenuItem});
             this.twojeZamówieniaToolStripMenuItem.Enabled = false;
             this.twojeZamówieniaToolStripMenuItem.Name = "twojeZamówieniaToolStripMenuItem";
-            this.twojeZamówieniaToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.twojeZamówieniaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.twojeZamówieniaToolStripMenuItem.Text = "Twoje zamówienia";
-            // 
-            // wszystkieToolStripMenuItem
-            // 
-            this.wszystkieToolStripMenuItem.Name = "wszystkieToolStripMenuItem";
-            this.wszystkieToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-            this.wszystkieToolStripMenuItem.Text = "Wszystkie";
-            // 
-            // ostatnieToolStripMenuItem
-            // 
-            this.ostatnieToolStripMenuItem.Name = "ostatnieToolStripMenuItem";
-            this.ostatnieToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-            this.ostatnieToolStripMenuItem.Text = "Ostatnie";
+            this.twojeZamówieniaToolStripMenuItem.Click += new System.EventHandler(this.twojeZamówieniaToolStripMenuItem_Click);
             // 
             // koszykToolStripMenuItem
             // 
@@ -1287,11 +1286,123 @@
             this.label28.TabIndex = 0;
             this.label28.Text = "Najczęsciej kupowane spośród ostatnich 5 zakupów";
             // 
+            // panelTwojeZamowienia
+            // 
+            this.panelTwojeZamowienia.Controls.Add(this.labelTZCenaZaWszystko);
+            this.panelTwojeZamowienia.Controls.Add(this.dataGridViewOrder);
+            this.panelTwojeZamowienia.Controls.Add(this.dataGridViewTZZamowienia);
+            this.panelTwojeZamowienia.Controls.Add(this.label31);
+            this.panelTwojeZamowienia.Location = new System.Drawing.Point(2, 27);
+            this.panelTwojeZamowienia.Name = "panelTwojeZamowienia";
+            this.panelTwojeZamowienia.Size = new System.Drawing.Size(798, 420);
+            this.panelTwojeZamowienia.TabIndex = 5;
+            this.panelTwojeZamowienia.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTwojeZamowienia_Paint);
+            // 
+            // labelTZCenaZaWszystko
+            // 
+            this.labelTZCenaZaWszystko.AutoSize = true;
+            this.labelTZCenaZaWszystko.Location = new System.Drawing.Point(436, 240);
+            this.labelTZCenaZaWszystko.Name = "labelTZCenaZaWszystko";
+            this.labelTZCenaZaWszystko.Size = new System.Drawing.Size(0, 13);
+            this.labelTZCenaZaWszystko.TabIndex = 3;
+            // 
+            // dataGridViewOrder
+            // 
+            this.dataGridViewOrder.AllowUserToAddRows = false;
+            this.dataGridViewOrder.AllowUserToDeleteRows = false;
+            this.dataGridViewOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewOrder.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.prod,
+            this.Cena,
+            this.Ilosc});
+            this.dataGridViewOrder.Location = new System.Drawing.Point(439, 71);
+            this.dataGridViewOrder.Name = "dataGridViewOrder";
+            this.dataGridViewOrder.ReadOnly = true;
+            this.dataGridViewOrder.RowHeadersVisible = false;
+            this.dataGridViewOrder.Size = new System.Drawing.Size(304, 156);
+            this.dataGridViewOrder.TabIndex = 2;
+            // 
+            // dataGridViewTZZamowienia
+            // 
+            this.dataGridViewTZZamowienia.AllowUserToAddRows = false;
+            this.dataGridViewTZZamowienia.AllowUserToDeleteRows = false;
+            this.dataGridViewTZZamowienia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewTZZamowienia.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ZamID,
+            this.Cenazacalosc,
+            this.status,
+            this.Data});
+            this.dataGridViewTZZamowienia.Location = new System.Drawing.Point(62, 71);
+            this.dataGridViewTZZamowienia.MultiSelect = false;
+            this.dataGridViewTZZamowienia.Name = "dataGridViewTZZamowienia";
+            this.dataGridViewTZZamowienia.ReadOnly = true;
+            this.dataGridViewTZZamowienia.RowHeadersVisible = false;
+            this.dataGridViewTZZamowienia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewTZZamowienia.Size = new System.Drawing.Size(306, 303);
+            this.dataGridViewTZZamowienia.TabIndex = 1;
+            this.dataGridViewTZZamowienia.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTZZamowienia_CellClick);
+            this.dataGridViewTZZamowienia.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTZZamowienia_CellContentClick);
+            this.dataGridViewTZZamowienia.SelectionChanged += new System.EventHandler(this.dataGridViewTZZamowienia_SelectionChanged);
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.label31.Location = new System.Drawing.Point(242, 26);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(287, 31);
+            this.label31.TabIndex = 0;
+            this.label31.Text = "Oto twoje zamówienia:";
+            // 
+            // prod
+            // 
+            this.prod.DataPropertyName = "ProductName";
+            this.prod.HeaderText = "Produkt";
+            this.prod.Name = "prod";
+            // 
+            // Cena
+            // 
+            this.Cena.DataPropertyName = "ProductPrice";
+            this.Cena.HeaderText = "Cena";
+            this.Cena.Name = "Cena";
+            // 
+            // Ilosc
+            // 
+            this.Ilosc.DataPropertyName = "Amount";
+            this.Ilosc.HeaderText = "Ilosc";
+            this.Ilosc.Name = "Ilosc";
+            // 
+            // ZamID
+            // 
+            this.ZamID.DataPropertyName = "ID";
+            this.ZamID.HeaderText = "ID";
+            this.ZamID.Name = "ZamID";
+            // 
+            // Cenazacalosc
+            // 
+            this.Cenazacalosc.DataPropertyName = "OrderTotal";
+            this.Cenazacalosc.HeaderText = "Cenazacalosc";
+            this.Cenazacalosc.Name = "Cenazacalosc";
+            this.Cenazacalosc.Visible = false;
+            // 
+            // status
+            // 
+            this.status.DataPropertyName = "Status";
+            this.status.HeaderText = "Status";
+            this.status.Name = "status";
+            // 
+            // Data
+            // 
+            this.Data.DataPropertyName = "OrderDate";
+            this.Data.HeaderText = "Data złożenia";
+            this.Data.Name = "Data";
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panelTwojeZamowienia);
             this.Controls.Add(this.panelNaszaOferta);
             this.Controls.Add(this.labelZalogowanyJako);
             this.Controls.Add(this.menuStrip1);
@@ -1323,6 +1434,10 @@
             this.panelWyswProdukt.PerformLayout();
             this.panelTop1.ResumeLayout(false);
             this.panelTop1.PerformLayout();
+            this.panelTwojeZamowienia.ResumeLayout(false);
+            this.panelTwojeZamowienia.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTZZamowienia)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1341,8 +1456,6 @@
         private System.Windows.Forms.ToolStripMenuItem naszaOfertaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wyszukajToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem twojeZamówieniaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem wszystkieToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ostatnieToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem koszykToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem przejdźDoKasyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuńProduktyZKoszykaToolStripMenuItem;
@@ -1446,5 +1559,17 @@
         private System.Windows.Forms.Label labelIloscSztuk;
         private System.Windows.Forms.Button buttonN3;
         private System.Windows.Forms.Button buttonUsunKonto;
+        private System.Windows.Forms.Panel panelTwojeZamowienia;
+        private System.Windows.Forms.DataGridView dataGridViewTZZamowienia;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label labelTZCenaZaWszystko;
+        private System.Windows.Forms.DataGridView dataGridViewOrder;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cena;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ilosc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ZamID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cenazacalosc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Data;
     }
 }

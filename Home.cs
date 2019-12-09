@@ -89,11 +89,13 @@ namespace Sklep
                     if (dr2.Read() == true && isUserAuthenticated == false)
                     {
                         MessageBox.Show("Witaj ponownie " + textBoxLogUzytkownik.Text.ToString());
+                        globals.GetUserID(textBoxLogUzytkownik.Text);
                         labelZalogowanyJako.Text = "Zalogowany jako: " + textBoxLogUzytkownik.Text;
                         isUserAuthenticated = true;
                         buttonZaloguj.Visible = false;
                         wylogujToolStripMenuItem.Visible = true;
                         edytujSwojeDaneToolStripMenuItem.Visible = true;
+                        twojeZamówieniaToolStripMenuItem.Enabled = true;
                         currentUsername = textBoxLogUzytkownik.Text;
                     }
                     else
@@ -375,24 +377,6 @@ namespace Sklep
                 buttonNOdodajDokoszyka.Visible = true;
             }
         }
-
-        //TODO 04.12 
-
-        //private void buttonNOdodajDokoszyka_Click(object sender, EventArgs e)
-        //{
-        //    bool czystarczy = CzyWystarczajacoTowaru()
-        //    //wczytaniie wartosci z pola
-        //    //sprawdzenie czy nie jest wieksza niz stan agazynu
-        //    // dodanie wartosci do tablicy globals.IDkupionych wraz  z id
-        //}
-
-        //private bool CzyWystarczajacoTowaru(double kupione)
-        //{
-        //    if (int.Parse(textBoxNOIleKupic.Text) != 0 || double.Parse(textBoxNOIleKupic.Text) <= kupione)
-        //        return true;
-        //    else
-        //        return false;
-        //}
 
         private void textBoxNOIleKupic_TextChanged(object sender, EventArgs e)
         {
@@ -689,6 +673,69 @@ namespace Sklep
         private void usuńProduktyZKoszykaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             koszyk.Clear();
+        }
+
+        private void twojeZamówieniaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panelTwojeZamowienia.BringToFront();
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand("ListUserOrders", connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@userID", SqlDbType.Int);
+                command.Parameters["@userID"].Value = globals.userID;                       //Do zmiany
+
+                DataTable zam_uz = new DataTable();
+                adapter.Fill(zam_uz);
+
+
+                dataGridViewTZZamowienia.AutoGenerateColumns = false;
+                dataGridViewTZZamowienia.DataSource = zam_uz;
+
+            }
+
+        }
+
+        private void panelTwojeZamowienia_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dataGridViewTZZamowienia_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridViewTZZamowienia_SelectionChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridViewTZZamowienia_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int orderno = 0;
+            float totprice = 1;
+            Int32.TryParse(dataGridViewTZZamowienia.Rows[e.RowIndex].Cells[0].Value.ToString(), out orderno);
+            float.TryParse(dataGridViewTZZamowienia.Rows[e.RowIndex].Cells[1].Value.ToString(), out totprice);
+            labelTZCenaZaWszystko.Text = "Cena za całość: " + totprice.ToString();
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand("DisplayOrder", connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@orderID", SqlDbType.Int);
+                command.Parameters["@orderID"].Value = orderno;
+
+                DataTable konkretneZamowienie = new DataTable();
+                adapter.Fill(konkretneZamowienie);
+
+                dataGridViewOrder.AutoGenerateColumns = false;
+                dataGridViewOrder.DataSource = konkretneZamowienie;
+            }
+
         }
     }
 }
