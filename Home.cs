@@ -38,6 +38,7 @@ namespace Sklep
         public Home()
         {
             InitializeComponent();
+            isUserAuthenticatedView();
             connectionString = ConfigurationManager.ConnectionStrings["Sklep.Properties.Settings.ShopConnectionString"].ConnectionString;
         }
 
@@ -62,6 +63,43 @@ namespace Sklep
         {
             panelLogin.BringToFront();
         }
+
+        private void isUserAuthenticatedView()
+        {
+            if (isUserAuthenticated == false)
+            {
+                labelZalogowanyJako.ResetText();
+                buttonZaloguj.Visible = true;
+                wylogujToolStripMenuItem.Visible = false;
+                edytujSwojeDaneToolStripMenuItem.Visible = false;
+                panelAdministracyjnyToolStripMenuItem.Visible = false;
+                zalogujToolStripMenuItem.Visible = true;
+                koszykToolStripMenuItem.Visible = false;
+                twojeZamówieniaToolStripMenuItem.Visible = false;
+                textBoxNOIleKupic.Visible = false;
+                buttonNOdodajDokoszyka.Visible = false;
+
+           
+            }
+            else
+            {
+                panelAdministracyjnyToolStripMenuItem.Visible = true;
+                buttonZaloguj.Visible = false;
+                zalogujToolStripMenuItem.Visible = false;
+                wylogujToolStripMenuItem.Visible = true;
+                edytujSwojeDaneToolStripMenuItem.Visible = true;
+                twojeZamówieniaToolStripMenuItem.Enabled = true;
+                currentUsername = textBoxLogUzytkownik.Text;
+                koszykToolStripMenuItem.Visible = true;
+                twojeZamówieniaToolStripMenuItem.Visible = true;
+                labelZalogowanyJako.Text = "Zalogowany jako: " + textBoxLogUzytkownik.Text;
+                zarejestrujToolStripMenuItem.Visible = false;
+                textBoxNOIleKupic.Visible = true;
+                buttonNOdodajDokoszyka.Visible = true;
+                labelKupteraz.Text = "Wybierz ilość jaką chcesz kupić";
+            }
+        }
+
         private void buttonZaloguj_Click(object sender, EventArgs e)
         {
             using (SqlConnection cnn3 = new SqlConnection(connectionString))
@@ -90,13 +128,8 @@ namespace Sklep
                     {
                         MessageBox.Show("Witaj ponownie " + textBoxLogUzytkownik.Text.ToString());
                         globals.GetUserID(textBoxLogUzytkownik.Text);
-                        labelZalogowanyJako.Text = "Zalogowany jako: " + textBoxLogUzytkownik.Text;
                         isUserAuthenticated = true;
-                        buttonZaloguj.Visible = false;
-                        wylogujToolStripMenuItem.Visible = true;
-                        edytujSwojeDaneToolStripMenuItem.Visible = true;
-                        twojeZamówieniaToolStripMenuItem.Enabled = true;
-                        currentUsername = textBoxLogUzytkownik.Text;
+                        isUserAuthenticatedView();
                     }
                     else
                     {
@@ -251,6 +284,7 @@ namespace Sklep
                         {
                             cmd.ExecuteNonQuery();
                             MessageBox.Show("Twoje konto zostało założone. Witaj " + textBoxNazwaUzytkownika.Text.ToString());
+                            panelLogin.BringToFront();
                         }
                         else
                         {
@@ -295,10 +329,7 @@ namespace Sklep
         private void wylogujToolStripMenuItem_Click(object sender, EventArgs e)
         {
             isUserAuthenticated = false;
-            labelZalogowanyJako.ResetText();
-            buttonZaloguj.Visible = true;
-            wylogujToolStripMenuItem.Visible = false;
-            edytujSwojeDaneToolStripMenuItem.Visible = false;
+            isUserAuthenticatedView();
             MessageBox.Show("Do zobaczenia!");
             panelWelcome.BringToFront();
         }
@@ -371,10 +402,6 @@ namespace Sklep
                 }
 
                 labelNOkategorie.Text = temp;
-
-                labelKupteraz.Text = "Wybierz ilość jaką chcesz kupić";
-                textBoxNOIleKupic.Visible = true;
-                buttonNOdodajDokoszyka.Visible = true;
             }
         }
 
@@ -634,10 +661,8 @@ namespace Sklep
                         MessageBox.Show("Konto usunięte!");
                         currentUsername = null;
                         isUserAuthenticated = false;
-                        labelZalogowanyJako.ResetText();
+                        isUserAuthenticatedView();
                         panelWelcome.BringToFront();
-                        wylogujToolStripMenuItem.Visible = false;
-                        edytujSwojeDaneToolStripMenuItem.Visible = false;
                         
                     }
                     catch (Exception ex)

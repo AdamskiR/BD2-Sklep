@@ -148,15 +148,15 @@
             this.panelTwojeZamowienia = new System.Windows.Forms.Panel();
             this.labelTZCenaZaWszystko = new System.Windows.Forms.Label();
             this.dataGridViewOrder = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTZZamowienia = new System.Windows.Forms.DataGridView();
-            this.label31 = new System.Windows.Forms.Label();
             this.prod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ilosc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTZZamowienia = new System.Windows.Forms.DataGridView();
             this.ZamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cenazacalosc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label31 = new System.Windows.Forms.Label();
             label25 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
@@ -294,7 +294,7 @@
             // 
             this.twojeZamówieniaToolStripMenuItem.Enabled = false;
             this.twojeZamówieniaToolStripMenuItem.Name = "twojeZamówieniaToolStripMenuItem";
-            this.twojeZamówieniaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.twojeZamówieniaToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.twojeZamówieniaToolStripMenuItem.Text = "Twoje zamówienia";
             this.twojeZamówieniaToolStripMenuItem.Click += new System.EventHandler(this.twojeZamówieniaToolStripMenuItem_Click);
             // 
@@ -1322,6 +1322,27 @@
             this.dataGridViewOrder.Size = new System.Drawing.Size(304, 156);
             this.dataGridViewOrder.TabIndex = 2;
             // 
+            // prod
+            // 
+            this.prod.DataPropertyName = "ProductName";
+            this.prod.HeaderText = "Produkt";
+            this.prod.Name = "prod";
+            this.prod.ReadOnly = true;
+            // 
+            // Cena
+            // 
+            this.Cena.DataPropertyName = "ProductPrice";
+            this.Cena.HeaderText = "Cena";
+            this.Cena.Name = "Cena";
+            this.Cena.ReadOnly = true;
+            // 
+            // Ilosc
+            // 
+            this.Ilosc.DataPropertyName = "Amount";
+            this.Ilosc.HeaderText = "Ilosc";
+            this.Ilosc.Name = "Ilosc";
+            this.Ilosc.ReadOnly = true;
+            // 
             // dataGridViewTZZamowienia
             // 
             this.dataGridViewTZZamowienia.AllowUserToAddRows = false;
@@ -1344,6 +1365,35 @@
             this.dataGridViewTZZamowienia.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTZZamowienia_CellContentClick);
             this.dataGridViewTZZamowienia.SelectionChanged += new System.EventHandler(this.dataGridViewTZZamowienia_SelectionChanged);
             // 
+            // ZamID
+            // 
+            this.ZamID.DataPropertyName = "ID";
+            this.ZamID.HeaderText = "ID";
+            this.ZamID.Name = "ZamID";
+            this.ZamID.ReadOnly = true;
+            // 
+            // Cenazacalosc
+            // 
+            this.Cenazacalosc.DataPropertyName = "OrderTotal";
+            this.Cenazacalosc.HeaderText = "Cenazacalosc";
+            this.Cenazacalosc.Name = "Cenazacalosc";
+            this.Cenazacalosc.ReadOnly = true;
+            this.Cenazacalosc.Visible = false;
+            // 
+            // status
+            // 
+            this.status.DataPropertyName = "Status";
+            this.status.HeaderText = "Status";
+            this.status.Name = "status";
+            this.status.ReadOnly = true;
+            // 
+            // Data
+            // 
+            this.Data.DataPropertyName = "OrderDate";
+            this.Data.HeaderText = "Data złożenia";
+            this.Data.Name = "Data";
+            this.Data.ReadOnly = true;
+            // 
             // label31
             // 
             this.label31.AutoSize = true;
@@ -1354,55 +1404,11 @@
             this.label31.TabIndex = 0;
             this.label31.Text = "Oto twoje zamówienia:";
             // 
-            // prod
-            // 
-            this.prod.DataPropertyName = "ProductName";
-            this.prod.HeaderText = "Produkt";
-            this.prod.Name = "prod";
-            // 
-            // Cena
-            // 
-            this.Cena.DataPropertyName = "ProductPrice";
-            this.Cena.HeaderText = "Cena";
-            this.Cena.Name = "Cena";
-            // 
-            // Ilosc
-            // 
-            this.Ilosc.DataPropertyName = "Amount";
-            this.Ilosc.HeaderText = "Ilosc";
-            this.Ilosc.Name = "Ilosc";
-            // 
-            // ZamID
-            // 
-            this.ZamID.DataPropertyName = "ID";
-            this.ZamID.HeaderText = "ID";
-            this.ZamID.Name = "ZamID";
-            // 
-            // Cenazacalosc
-            // 
-            this.Cenazacalosc.DataPropertyName = "OrderTotal";
-            this.Cenazacalosc.HeaderText = "Cenazacalosc";
-            this.Cenazacalosc.Name = "Cenazacalosc";
-            this.Cenazacalosc.Visible = false;
-            // 
-            // status
-            // 
-            this.status.DataPropertyName = "Status";
-            this.status.HeaderText = "Status";
-            this.status.Name = "status";
-            // 
-            // Data
-            // 
-            this.Data.DataPropertyName = "OrderDate";
-            this.Data.HeaderText = "Data złożenia";
-            this.Data.Name = "Data";
-            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panelTwojeZamowienia);
             this.Controls.Add(this.panelNaszaOferta);
             this.Controls.Add(this.labelZalogowanyJako);
             this.Controls.Add(this.menuStrip1);
@@ -1412,6 +1418,7 @@
             this.Controls.Add(this.panelNowosci);
             this.Controls.Add(this.panelTop1);
             this.Controls.Add(this.panelRejestracja);
+            this.Controls.Add(this.panelTwojeZamowienia);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Home";
             this.Text = "Alledrogo";
