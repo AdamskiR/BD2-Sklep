@@ -551,7 +551,7 @@ namespace Sklep
 
         private void buttonZmienDane_Click(object sender, EventArgs e)
         {
-            string querry = "UPDATE Users SET FirstName=@imie, LastName=@nazwisko, ZipCode=@zipcode, City=@miasto, Street=@ulica, TelephoneNumber=@telefon WHERE Username=" + "'" + currentUsername + "'";
+            string querry = "dbo.UserDataUpdate";
             using (SqlConnection cnn4 = new SqlConnection(connectionString))
             {
 
@@ -559,6 +559,8 @@ namespace Sklep
                 {
                     cnn4.Open();
                     SqlCommand cmd = new SqlCommand(querry, cnn4);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@login", SqlDbType.NChar).Value = currentUsername;
                     if (string.IsNullOrEmpty(textBox10.Text))
                         cmd.Parameters.Add("@imie", SqlDbType.NChar).Value = DBNull.Value;
                     else
