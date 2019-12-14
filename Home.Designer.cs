@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label label25;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zalogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -157,6 +158,18 @@
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label31 = new System.Windows.Forms.Label();
+            this.panelPrzejdzDoKasy = new System.Windows.Forms.Panel();
+            this.labelPDKsumaZaZakupy = new System.Windows.Forms.Label();
+            this.dataGridViewWKoszyku = new System.Windows.Forms.DataGridView();
+            this.labelBrakWKoszyku = new System.Windows.Forms.Label();
+            this.labelOTK = new System.Windows.Forms.Label();
+            this.buttonPDKKup = new System.Windows.Forms.Button();
+            this.NAme = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ven = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.howmuch = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelPDKInformacja = new System.Windows.Forms.Label();
             label25 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
@@ -170,6 +183,8 @@
             this.panelTwojeZamowienia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTZZamowienia)).BeginInit();
+            this.panelPrzejdzDoKasy.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWKoszyku)).BeginInit();
             this.SuspendLayout();
             // 
             // label25
@@ -287,8 +302,9 @@
             // wyszukajToolStripMenuItem
             // 
             this.wyszukajToolStripMenuItem.Name = "wyszukajToolStripMenuItem";
-            this.wyszukajToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.wyszukajToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.wyszukajToolStripMenuItem.Text = "Wyszukaj";
+            this.wyszukajToolStripMenuItem.Click += new System.EventHandler(this.wyszukajToolStripMenuItem_Click);
             // 
             // twojeZamówieniaToolStripMenuItem
             // 
@@ -309,14 +325,13 @@
             // 
             // przejdźDoKasyToolStripMenuItem
             // 
-            this.przejdźDoKasyToolStripMenuItem.Enabled = false;
             this.przejdźDoKasyToolStripMenuItem.Name = "przejdźDoKasyToolStripMenuItem";
             this.przejdźDoKasyToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.przejdźDoKasyToolStripMenuItem.Text = "Przejdź do kasy";
+            this.przejdźDoKasyToolStripMenuItem.Click += new System.EventHandler(this.przejdźDoKasyToolStripMenuItem_Click);
             // 
             // usuńProduktyZKoszykaToolStripMenuItem
             // 
-            this.usuńProduktyZKoszykaToolStripMenuItem.Enabled = false;
             this.usuńProduktyZKoszykaToolStripMenuItem.Name = "usuńProduktyZKoszykaToolStripMenuItem";
             this.usuńProduktyZKoszykaToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.usuńProduktyZKoszykaToolStripMenuItem.Text = "Usuń produkty z koszyka";
@@ -977,7 +992,6 @@
             this.buttonNOdodajDokoszyka.TabIndex = 4;
             this.buttonNOdodajDokoszyka.Text = "Dodaj do koszyka";
             this.buttonNOdodajDokoszyka.UseVisualStyleBackColor = true;
-            this.buttonNOdodajDokoszyka.Visible = false;
             this.buttonNOdodajDokoszyka.Click += new System.EventHandler(this.buttonNOdodajDokoszyka_Click);
             // 
             // textBoxNOIleKupic
@@ -986,7 +1000,6 @@
             this.textBoxNOIleKupic.Name = "textBoxNOIleKupic";
             this.textBoxNOIleKupic.Size = new System.Drawing.Size(51, 20);
             this.textBoxNOIleKupic.TabIndex = 3;
-            this.textBoxNOIleKupic.Visible = false;
             this.textBoxNOIleKupic.TextChanged += new System.EventHandler(this.textBoxNOIleKupic_TextChanged);
             // 
             // labelNOProducent
@@ -1295,9 +1308,7 @@
             this.panelTwojeZamowienia.Location = new System.Drawing.Point(2, 27);
             this.panelTwojeZamowienia.Name = "panelTwojeZamowienia";
             this.panelTwojeZamowienia.Size = new System.Drawing.Size(798, 420);
-            this.panelTwojeZamowienia.TabIndex = 5;
-            this.panelTwojeZamowienia.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTwojeZamowienia_Paint);
-            // 
+            this.panelTwojeZamowienia.TabIndex = 5;            // 
             // labelTZCenaZaWszystko
             // 
             this.labelTZCenaZaWszystko.AutoSize = true;
@@ -1362,8 +1373,6 @@
             this.dataGridViewTZZamowienia.Size = new System.Drawing.Size(306, 303);
             this.dataGridViewTZZamowienia.TabIndex = 1;
             this.dataGridViewTZZamowienia.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTZZamowienia_CellClick);
-            this.dataGridViewTZZamowienia.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTZZamowienia_CellContentClick);
-            this.dataGridViewTZZamowienia.SelectionChanged += new System.EventHandler(this.dataGridViewTZZamowienia_SelectionChanged);
             // 
             // ZamID
             // 
@@ -1404,11 +1413,136 @@
             this.label31.TabIndex = 0;
             this.label31.Text = "Oto twoje zamówienia:";
             // 
+            // panelPrzejdzDoKasy
+            // 
+            this.panelPrzejdzDoKasy.Controls.Add(this.labelPDKInformacja);
+            this.panelPrzejdzDoKasy.Controls.Add(this.labelPDKsumaZaZakupy);
+            this.panelPrzejdzDoKasy.Controls.Add(this.dataGridViewWKoszyku);
+            this.panelPrzejdzDoKasy.Controls.Add(this.labelBrakWKoszyku);
+            this.panelPrzejdzDoKasy.Controls.Add(this.labelOTK);
+            this.panelPrzejdzDoKasy.Controls.Add(this.buttonPDKKup);
+            this.panelPrzejdzDoKasy.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.panelPrzejdzDoKasy.Location = new System.Drawing.Point(1, 23);
+            this.panelPrzejdzDoKasy.Name = "panelPrzejdzDoKasy";
+            this.panelPrzejdzDoKasy.Size = new System.Drawing.Size(799, 428);
+            // 
+            // labelPDKsumaZaZakupy
+            // 
+            this.labelPDKsumaZaZakupy.AutoEllipsis = true;
+            this.labelPDKsumaZaZakupy.AutoSize = true;
+            this.labelPDKsumaZaZakupy.Location = new System.Drawing.Point(260, 290);
+            this.labelPDKsumaZaZakupy.Name = "labelPDKsumaZaZakupy";
+            this.labelPDKsumaZaZakupy.Size = new System.Drawing.Size(171, 25);
+            this.labelPDKsumaZaZakupy.TabIndex = 4;
+            this.labelPDKsumaZaZakupy.Text = "Ostateczna cena: ";
+            this.labelPDKsumaZaZakupy.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // dataGridViewWKoszyku
+            // 
+            this.dataGridViewWKoszyku.AllowUserToAddRows = false;
+            this.dataGridViewWKoszyku.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewWKoszyku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewWKoszyku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NAme,
+            this.Ven,
+            this.price,
+            this.howmuch,
+            this.total});
+            this.dataGridViewWKoszyku.Location = new System.Drawing.Point(103, 64);
+            this.dataGridViewWKoszyku.Name = "dataGridViewWKoszyku";
+            this.dataGridViewWKoszyku.RowHeadersVisible = false;
+            this.dataGridViewWKoszyku.Size = new System.Drawing.Size(606, 217);
+            this.dataGridViewWKoszyku.StandardTab = true;
+            this.dataGridViewWKoszyku.TabIndex = 3;
+            this.dataGridViewWKoszyku.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewWKoszyku_CellValidated);
+            // 
+            // labelBrakWKoszyku
+            // 
+            this.labelBrakWKoszyku.AutoSize = true;
+            this.labelBrakWKoszyku.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelBrakWKoszyku.ForeColor = System.Drawing.Color.Red;
+            this.labelBrakWKoszyku.Location = new System.Drawing.Point(231, 173);
+            this.labelBrakWKoszyku.Name = "labelBrakWKoszyku";
+            this.labelBrakWKoszyku.Size = new System.Drawing.Size(345, 31);
+            this.labelBrakWKoszyku.TabIndex = 2;
+            this.labelBrakWKoszyku.Text = "Brak produktów w koszyku!";
+            // 
+            // labelOTK
+            // 
+            this.labelOTK.AutoSize = true;
+            this.labelOTK.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelOTK.Location = new System.Drawing.Point(296, 15);
+            this.labelOTK.Name = "labelOTK";
+            this.labelOTK.Size = new System.Drawing.Size(214, 31);
+            this.labelOTK.TabIndex = 1;
+            this.labelOTK.Text = "Oto twój koszyk:";
+            // 
+            // buttonPDKKup
+            // 
+            this.buttonPDKKup.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.buttonPDKKup.Location = new System.Drawing.Point(277, 327);
+            this.buttonPDKKup.Name = "buttonPDKKup";
+            this.buttonPDKKup.Size = new System.Drawing.Size(245, 74);
+            this.buttonPDKKup.TabIndex = 0;
+            this.buttonPDKKup.Text = "Kup teraz";
+            this.buttonPDKKup.UseVisualStyleBackColor = true;
+            this.buttonPDKKup.Click += new System.EventHandler(this.buttonPDKKup_Click);
+            // 
+            // NAme
+            // 
+            this.NAme.DataPropertyName = "ProductName";
+            this.NAme.HeaderText = "Produkt";
+            this.NAme.Name = "NAme";
+            this.NAme.ReadOnly = true;
+            this.NAme.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.NAme.Width = 150;
+            // 
+            // Ven
+            // 
+            this.Ven.DataPropertyName = "Vendor";
+            this.Ven.HeaderText = "Producent";
+            this.Ven.Name = "Ven";
+            this.Ven.ReadOnly = true;
+            this.Ven.Width = 150;
+            // 
+            // price
+            // 
+            this.price.DataPropertyName = "ProductPrice";
+            this.price.HeaderText = "Cena";
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
+            // 
+            // howmuch
+            // 
+            this.howmuch.DataPropertyName = "Pro";
+            this.howmuch.HeaderText = "Ilość";
+            this.howmuch.Name = "howmuch";
+            // 
+            // total
+            // 
+            this.total.HeaderText = "Suma";
+            this.total.Name = "total";
+            this.total.ReadOnly = true;
+            // 
+            // labelPDKInformacja
+            // 
+            this.labelPDKInformacja.AutoSize = true;
+            this.labelPDKInformacja.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.labelPDKInformacja.Location = new System.Drawing.Point(250, 47);
+            this.labelPDKInformacja.Name = "labelPDKInformacja";
+            this.labelPDKInformacja.Size = new System.Drawing.Size(331, 13);
+            this.labelPDKInformacja.TabIndex = 5;
+            this.labelPDKInformacja.Text = "Możesz zmieniać ilość zamówionych rzeczy klikając dwukrotnie w pole";
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panelPrzejdzDoKasy);
+            this.Controls.Add(this.panelTwojeZamowienia);
             this.Controls.Add(this.panelNaszaOferta);
             this.Controls.Add(this.labelZalogowanyJako);
             this.Controls.Add(this.menuStrip1);
@@ -1418,7 +1552,6 @@
             this.Controls.Add(this.panelNowosci);
             this.Controls.Add(this.panelTop1);
             this.Controls.Add(this.panelRejestracja);
-            this.Controls.Add(this.panelTwojeZamowienia);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Home";
             this.Text = "Alledrogo";
@@ -1445,6 +1578,9 @@
             this.panelTwojeZamowienia.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTZZamowienia)).EndInit();
+            this.panelPrzejdzDoKasy.ResumeLayout(false);
+            this.panelPrzejdzDoKasy.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWKoszyku)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1578,5 +1714,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Cenazacalosc;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
         private System.Windows.Forms.DataGridViewTextBoxColumn Data;
+        private System.Windows.Forms.Panel panelPrzejdzDoKasy;
+        private System.Windows.Forms.Label labelOTK;
+        private System.Windows.Forms.Button buttonPDKKup;
+        private System.Windows.Forms.Label labelBrakWKoszyku;
+        private System.Windows.Forms.DataGridView dataGridViewWKoszyku;
+        private System.Windows.Forms.Label labelPDKsumaZaZakupy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NAme;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ven;
+        private System.Windows.Forms.DataGridViewTextBoxColumn price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn howmuch;
+        private System.Windows.Forms.DataGridViewTextBoxColumn total;
+        private System.Windows.Forms.Label labelPDKInformacja;
     }
 }

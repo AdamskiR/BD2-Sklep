@@ -22,7 +22,7 @@ namespace Sklep
         string currentUsername;
         int[] Top3id = new int[3];
 
-        struct coIile
+        public class coIile
         {
             public int id, ilosc;
 
@@ -32,7 +32,8 @@ namespace Sklep
             }
 
         }
-        List<coIile> koszyk = new List<coIile>();
+
+        public List<coIile> koszyk = new List<coIile>();
 
 
         public Home()
@@ -88,7 +89,7 @@ namespace Sklep
                 zalogujToolStripMenuItem.Visible = false;
                 wylogujToolStripMenuItem.Visible = true;
                 edytujSwojeDaneToolStripMenuItem.Visible = true;
-                twojeZamówieniaToolStripMenuItem.Enabled = true;
+                twojeZamówieniaToolStripMenuItem.Visible = true;
                 currentUsername = textBoxLogUzytkownik.Text;
                 koszykToolStripMenuItem.Visible = true;
                 twojeZamówieniaToolStripMenuItem.Visible = true;
@@ -678,28 +679,59 @@ namespace Sklep
                 //do nothing
             }
         }
-
+        //Poprawic dodawanie tych samych elemnetów do listy
         private void buttonNOdodajDokoszyka_Click(object sender, EventArgs e)
         {
             {
                 if (Convert.ToInt32(textBoxNOIleKupic.Text) > 0)
                 {
-                    coIile kupno;
+
+                    coIile kupno = new coIile();
                     kupno.id = Convert.ToInt32(listBoxNOProdukty.SelectedValue);
                     kupno.ilosc = Convert.ToInt32(textBoxNOIleKupic.Text);
                     koszyk.Add(kupno);
+                    MessageBox.Show("Dodano do koszyka");
 
-                    for (int i = 0; i < koszyk.Count(); i++)
-                        MessageBox.Show(koszyk[i].ToString());
+
+                    // coIile kupno = new coIile();
+                    // int ids = Convert.ToInt32(listBoxNOProdukty.SelectedValue);
+                    // int ilosc = Convert.ToInt32(textBoxNOIleKupic.Text);
+
+                    //List<coIile> result = koszyk.FindAll(x => x.id == ids);
+
+                    // if (result.Count() > 0)
+                    // {
+                    //     for (int i = 0; i < koszyk.Count(); i++)
+                    //     {
+                    //         if (koszyk[i].id == ids)
+                    //         {
+                    //             koszyk[i].ilosc += ilosc;
+                    //         }
+
+                    //     }
+
+                    // } 
+                    // else
+                    // {
+                    //     kupno.id = ids;
+                    //     kupno.ilosc = ilosc;
+                    //     koszyk.Add(kupno);
+                    // }
+                    // result.Clear();
+                    //Sprawdzenie czy się dodało do koszyka
+                    //for (int i = 0; i < koszyk.Count(); i++)
+                    //    MessageBox.Show(koszyk[i].ToString());
                 }
                 else
-                    MessageBox.Show("Musisz wprowadzić ilość!");
+                  MessageBox.Show("Musisz wprowadzić ilość!");
             }
         }
 
         private void usuńProduktyZKoszykaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             koszyk.Clear();
+            sprawdzKoszyk();
+            panelPrzejdzDoKasy.Refresh();
         }
 
         private void twojeZamówieniaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -716,29 +748,13 @@ namespace Sklep
 
                 DataTable zam_uz = new DataTable();
                 adapter.Fill(zam_uz);
-
-
+                
                 dataGridViewTZZamowienia.AutoGenerateColumns = false;
                 dataGridViewTZZamowienia.DataSource = zam_uz;
-
             }
 
         }
 
-        private void panelTwojeZamowienia_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void dataGridViewTZZamowienia_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dataGridViewTZZamowienia_SelectionChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void dataGridViewTZZamowienia_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -763,6 +779,93 @@ namespace Sklep
                 dataGridViewOrder.DataSource = konkretneZamowienie;
             }
 
+        }
+        private void przejdźDoKasyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            sprawdzKoszyk();
+            dataGridViewWKoszyku.AutoGenerateColumns = false;
+
+            DataTable produktywkoszyku = new DataTable();
+            if (koszyk.Count() > 0)
+            {
+                using (connection = new SqlConnection(connectionString))
+                using (SqlCommand command = new SqlCommand("DisplaySPecificProductWOCategories", connection))
+                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("@id", SqlDbType.Int);
+
+                    for (int i = 0; i < koszyk.Count(); i++)
+                    {
+                        command.Parameters["@id"].Value = koszyk[i].id;
+                        adapter.Fill(produktywkoszyku);
+                    }
+                    dataGridViewWKoszyku.DataSource = produktywkoszyku;
+                    
+                }
+            }
+            DGVwKoszykuAktualizuj();
+            panelPrzejdzDoKasy.BringToFront();
+
+            
+        }
+
+        private void DGVwKoszykuAktualizuj()
+        {
+            float ileZaZakupy = 0;
+            for (int i = 0; i < koszyk.Count(); i++)
+            {
+                dataGridViewWKoszyku.Rows[i].Cells[3].Value = koszyk[i].ilosc;
+                float temp;
+                float.TryParse(dataGridViewWKoszyku.Rows[i].Cells[2].Value.ToString(), out temp);
+                ileZaZakupy += temp * koszyk[i].ilosc;
+                dataGridViewWKoszyku.Rows[i].Cells[4].Value = koszyk[i].ilosc * temp;
+                labelPDKsumaZaZakupy.Text = "Cena za wszystko: " + ileZaZakupy.ToString() + " zł";
+            }
+
+
+        }
+
+        private void sprawdzKoszyk()
+        {
+            if (koszyk.Count() == 0)
+            {
+                labelPDKInformacja.Visible = false;
+                labelPDKsumaZaZakupy.Visible = false;
+                labelBrakWKoszyku.Visible = true;
+                buttonPDKKup.Visible = false;
+                labelOTK.Visible = false;
+                dataGridViewWKoszyku.Visible = false;
+            }
+            else
+            {
+                labelPDKInformacja.Visible = true;
+                labelPDKsumaZaZakupy.Visible = true;
+                labelBrakWKoszyku.Visible = false;
+                labelOTK.Visible = true;
+                buttonPDKKup.Visible = true;
+                dataGridViewWKoszyku.Visible = true;
+            }
+        }
+
+
+        private void buttonPDKKup_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not implemented yet");
+        }
+
+
+        private void dataGridViewWKoszyku_CellValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            int temp;
+            int.TryParse(dataGridViewWKoszyku.Rows[e.RowIndex].Cells[3].Value.ToString(), out temp);
+            koszyk[e.RowIndex].ilosc = temp;
+            DGVwKoszykuAktualizuj();
+        }
+
+        private void wyszukajToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not implemented yet");
         }
     }
 }
