@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label label25;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zalogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -153,23 +153,70 @@
             this.Cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ilosc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTZZamowienia = new System.Windows.Forms.DataGridView();
-            this.ZamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cenazacalosc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label31 = new System.Windows.Forms.Label();
             this.panelPrzejdzDoKasy = new System.Windows.Forms.Panel();
+            this.labelPDKInformacja = new System.Windows.Forms.Label();
             this.labelPDKsumaZaZakupy = new System.Windows.Forms.Label();
             this.dataGridViewWKoszyku = new System.Windows.Forms.DataGridView();
-            this.labelBrakWKoszyku = new System.Windows.Forms.Label();
-            this.labelOTK = new System.Windows.Forms.Label();
-            this.buttonPDKKup = new System.Windows.Forms.Button();
             this.NAme = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ven = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.howmuch = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.labelPDKInformacja = new System.Windows.Forms.Label();
+            this.labelBrakWKoszyku = new System.Windows.Forms.Label();
+            this.labelOTK = new System.Windows.Forms.Label();
+            this.buttonPDKKup = new System.Windows.Forms.Button();
+            this.panelDodajProdukt = new System.Windows.Forms.Panel();
+            this.DodajOpis = new System.Windows.Forms.TextBox();
+            this.DodajIlosc = new System.Windows.Forms.TextBox();
+            this.DodajCena = new System.Windows.Forms.TextBox();
+            this.DodajNazwa = new System.Windows.Forms.TextBox();
+            this.buttonDodajProd = new System.Windows.Forms.Button();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.panelModyfikujProdukt = new System.Windows.Forms.Panel();
+            this.label44 = new System.Windows.Forms.Label();
+            this.ModyfikujOpis = new System.Windows.Forms.TextBox();
+            this.ModyfikujIlosc = new System.Windows.Forms.TextBox();
+            this.ModyfikujCena = new System.Windows.Forms.TextBox();
+            this.ModyfikujNazwa = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
+            this.panelEdytujUzytkownikow = new System.Windows.Forms.Panel();
+            this.label45 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.buttonAdminEdytujUzytkownika = new System.Windows.Forms.Button();
+            this.label46 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.label52 = new System.Windows.Forms.Label();
+            this.label53 = new System.Windows.Forms.Label();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.label54 = new System.Windows.Forms.Label();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.label55 = new System.Windows.Forms.Label();
+            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.ZamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cenazacalosc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
             label25 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
@@ -185,6 +232,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTZZamowienia)).BeginInit();
             this.panelPrzejdzDoKasy.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWKoszyku)).BeginInit();
+            this.panelDodajProdukt.SuspendLayout();
+            this.panelModyfikujProdukt.SuspendLayout();
+            this.panelEdytujUzytkownikow.SuspendLayout();
             this.SuspendLayout();
             // 
             // label25
@@ -275,7 +325,7 @@
             this.nowosciToolStripMenuItem,
             this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem});
             this.naszaOfertaToolStripMenuItem.Name = "naszaOfertaToolStripMenuItem";
-            this.naszaOfertaToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.naszaOfertaToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.naszaOfertaToolStripMenuItem.Text = "Nasza oferta";
             // 
             // zobaczWszystkoToolStripMenuItem
@@ -302,7 +352,7 @@
             // wyszukajToolStripMenuItem
             // 
             this.wyszukajToolStripMenuItem.Name = "wyszukajToolStripMenuItem";
-            this.wyszukajToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.wyszukajToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.wyszukajToolStripMenuItem.Text = "Wyszukaj";
             this.wyszukajToolStripMenuItem.Click += new System.EventHandler(this.wyszukajToolStripMenuItem_Click);
             // 
@@ -310,7 +360,7 @@
             // 
             this.twojeZamówieniaToolStripMenuItem.Enabled = false;
             this.twojeZamówieniaToolStripMenuItem.Name = "twojeZamówieniaToolStripMenuItem";
-            this.twojeZamówieniaToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.twojeZamówieniaToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.twojeZamówieniaToolStripMenuItem.Text = "Twoje zamówienia";
             this.twojeZamówieniaToolStripMenuItem.Click += new System.EventHandler(this.twojeZamówieniaToolStripMenuItem_Click);
             // 
@@ -350,19 +400,21 @@
             // dodajProduktToolStripMenuItem
             // 
             this.dodajProduktToolStripMenuItem.Name = "dodajProduktToolStripMenuItem";
-            this.dodajProduktToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.dodajProduktToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.dodajProduktToolStripMenuItem.Text = "Dodaj Produkt";
+            this.dodajProduktToolStripMenuItem.Click += new System.EventHandler(this.dodajProduktToolStripMenuItem_Click);
             // 
             // modyfikujProduktToolStripMenuItem
             // 
             this.modyfikujProduktToolStripMenuItem.Name = "modyfikujProduktToolStripMenuItem";
-            this.modyfikujProduktToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.modyfikujProduktToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.modyfikujProduktToolStripMenuItem.Text = "Modyfikuj Produkt";
+            this.modyfikujProduktToolStripMenuItem.Click += new System.EventHandler(this.modyfikujProduktToolStripMenuItem_Click);
             // 
             // ądzajUżytkownikamiToolStripMenuItem
             // 
             this.ądzajUżytkownikamiToolStripMenuItem.Name = "ądzajUżytkownikamiToolStripMenuItem";
-            this.ądzajUżytkownikamiToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.ądzajUżytkownikamiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ądzajUżytkownikamiToolStripMenuItem.Text = "Edytuj userów";
             this.ądzajUżytkownikamiToolStripMenuItem.Click += new System.EventHandler(this.ądzajUżytkownikamiToolStripMenuItem_Click);
             // 
@@ -1308,7 +1360,8 @@
             this.panelTwojeZamowienia.Location = new System.Drawing.Point(2, 27);
             this.panelTwojeZamowienia.Name = "panelTwojeZamowienia";
             this.panelTwojeZamowienia.Size = new System.Drawing.Size(798, 420);
-            this.panelTwojeZamowienia.TabIndex = 5;            // 
+            this.panelTwojeZamowienia.TabIndex = 5;
+            // 
             // labelTZCenaZaWszystko
             // 
             this.labelTZCenaZaWszystko.AutoSize = true;
@@ -1374,35 +1427,6 @@
             this.dataGridViewTZZamowienia.TabIndex = 1;
             this.dataGridViewTZZamowienia.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTZZamowienia_CellClick);
             // 
-            // ZamID
-            // 
-            this.ZamID.DataPropertyName = "ID";
-            this.ZamID.HeaderText = "ID";
-            this.ZamID.Name = "ZamID";
-            this.ZamID.ReadOnly = true;
-            // 
-            // Cenazacalosc
-            // 
-            this.Cenazacalosc.DataPropertyName = "OrderTotal";
-            this.Cenazacalosc.HeaderText = "Cenazacalosc";
-            this.Cenazacalosc.Name = "Cenazacalosc";
-            this.Cenazacalosc.ReadOnly = true;
-            this.Cenazacalosc.Visible = false;
-            // 
-            // status
-            // 
-            this.status.DataPropertyName = "Status";
-            this.status.HeaderText = "Status";
-            this.status.Name = "status";
-            this.status.ReadOnly = true;
-            // 
-            // Data
-            // 
-            this.Data.DataPropertyName = "OrderDate";
-            this.Data.HeaderText = "Data złożenia";
-            this.Data.Name = "Data";
-            this.Data.ReadOnly = true;
-            // 
             // label31
             // 
             this.label31.AutoSize = true;
@@ -1425,6 +1449,17 @@
             this.panelPrzejdzDoKasy.Location = new System.Drawing.Point(1, 23);
             this.panelPrzejdzDoKasy.Name = "panelPrzejdzDoKasy";
             this.panelPrzejdzDoKasy.Size = new System.Drawing.Size(799, 428);
+            this.panelPrzejdzDoKasy.TabIndex = 0;
+            // 
+            // labelPDKInformacja
+            // 
+            this.labelPDKInformacja.AutoSize = true;
+            this.labelPDKInformacja.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.labelPDKInformacja.Location = new System.Drawing.Point(250, 47);
+            this.labelPDKInformacja.Name = "labelPDKInformacja";
+            this.labelPDKInformacja.Size = new System.Drawing.Size(331, 13);
+            this.labelPDKInformacja.TabIndex = 5;
+            this.labelPDKInformacja.Text = "Możesz zmieniać ilość zamówionych rzeczy klikając dwukrotnie w pole";
             // 
             // labelPDKsumaZaZakupy
             // 
@@ -1441,8 +1476,8 @@
             // 
             this.dataGridViewWKoszyku.AllowUserToAddRows = false;
             this.dataGridViewWKoszyku.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewWKoszyku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWKoszyku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NAme,
@@ -1457,38 +1492,6 @@
             this.dataGridViewWKoszyku.StandardTab = true;
             this.dataGridViewWKoszyku.TabIndex = 3;
             this.dataGridViewWKoszyku.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewWKoszyku_CellValidated);
-            // 
-            // labelBrakWKoszyku
-            // 
-            this.labelBrakWKoszyku.AutoSize = true;
-            this.labelBrakWKoszyku.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelBrakWKoszyku.ForeColor = System.Drawing.Color.Red;
-            this.labelBrakWKoszyku.Location = new System.Drawing.Point(231, 173);
-            this.labelBrakWKoszyku.Name = "labelBrakWKoszyku";
-            this.labelBrakWKoszyku.Size = new System.Drawing.Size(345, 31);
-            this.labelBrakWKoszyku.TabIndex = 2;
-            this.labelBrakWKoszyku.Text = "Brak produktów w koszyku!";
-            // 
-            // labelOTK
-            // 
-            this.labelOTK.AutoSize = true;
-            this.labelOTK.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelOTK.Location = new System.Drawing.Point(296, 15);
-            this.labelOTK.Name = "labelOTK";
-            this.labelOTK.Size = new System.Drawing.Size(214, 31);
-            this.labelOTK.TabIndex = 1;
-            this.labelOTK.Text = "Oto twój koszyk:";
-            // 
-            // buttonPDKKup
-            // 
-            this.buttonPDKKup.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonPDKKup.Location = new System.Drawing.Point(277, 327);
-            this.buttonPDKKup.Name = "buttonPDKKup";
-            this.buttonPDKKup.Size = new System.Drawing.Size(245, 74);
-            this.buttonPDKKup.TabIndex = 0;
-            this.buttonPDKKup.Text = "Kup teraz";
-            this.buttonPDKKup.UseVisualStyleBackColor = true;
-            this.buttonPDKKup.Click += new System.EventHandler(this.buttonPDKKup_Click);
             // 
             // NAme
             // 
@@ -1526,32 +1529,515 @@
             this.total.Name = "total";
             this.total.ReadOnly = true;
             // 
-            // labelPDKInformacja
+            // labelBrakWKoszyku
             // 
-            this.labelPDKInformacja.AutoSize = true;
-            this.labelPDKInformacja.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.labelPDKInformacja.Location = new System.Drawing.Point(250, 47);
-            this.labelPDKInformacja.Name = "labelPDKInformacja";
-            this.labelPDKInformacja.Size = new System.Drawing.Size(331, 13);
-            this.labelPDKInformacja.TabIndex = 5;
-            this.labelPDKInformacja.Text = "Możesz zmieniać ilość zamówionych rzeczy klikając dwukrotnie w pole";
+            this.labelBrakWKoszyku.AutoSize = true;
+            this.labelBrakWKoszyku.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelBrakWKoszyku.ForeColor = System.Drawing.Color.Red;
+            this.labelBrakWKoszyku.Location = new System.Drawing.Point(231, 173);
+            this.labelBrakWKoszyku.Name = "labelBrakWKoszyku";
+            this.labelBrakWKoszyku.Size = new System.Drawing.Size(345, 31);
+            this.labelBrakWKoszyku.TabIndex = 2;
+            this.labelBrakWKoszyku.Text = "Brak produktów w koszyku!";
+            // 
+            // labelOTK
+            // 
+            this.labelOTK.AutoSize = true;
+            this.labelOTK.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelOTK.Location = new System.Drawing.Point(296, 15);
+            this.labelOTK.Name = "labelOTK";
+            this.labelOTK.Size = new System.Drawing.Size(214, 31);
+            this.labelOTK.TabIndex = 1;
+            this.labelOTK.Text = "Oto twój koszyk:";
+            // 
+            // buttonPDKKup
+            // 
+            this.buttonPDKKup.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.buttonPDKKup.Location = new System.Drawing.Point(277, 327);
+            this.buttonPDKKup.Name = "buttonPDKKup";
+            this.buttonPDKKup.Size = new System.Drawing.Size(245, 74);
+            this.buttonPDKKup.TabIndex = 0;
+            this.buttonPDKKup.Text = "Kup teraz";
+            this.buttonPDKKup.UseVisualStyleBackColor = true;
+            this.buttonPDKKup.Click += new System.EventHandler(this.buttonPDKKup_Click);
+            // 
+            // panelDodajProdukt
+            // 
+            this.panelDodajProdukt.Controls.Add(this.DodajOpis);
+            this.panelDodajProdukt.Controls.Add(this.DodajIlosc);
+            this.panelDodajProdukt.Controls.Add(this.DodajCena);
+            this.panelDodajProdukt.Controls.Add(this.DodajNazwa);
+            this.panelDodajProdukt.Controls.Add(this.buttonDodajProd);
+            this.panelDodajProdukt.Controls.Add(this.label37);
+            this.panelDodajProdukt.Controls.Add(this.label36);
+            this.panelDodajProdukt.Controls.Add(this.label35);
+            this.panelDodajProdukt.Controls.Add(this.label34);
+            this.panelDodajProdukt.Controls.Add(this.label33);
+            this.panelDodajProdukt.Controls.Add(this.label32);
+            this.panelDodajProdukt.Location = new System.Drawing.Point(2, 21);
+            this.panelDodajProdukt.Name = "panelDodajProdukt";
+            this.panelDodajProdukt.Size = new System.Drawing.Size(797, 429);
+            this.panelDodajProdukt.TabIndex = 12;
+            // 
+            // DodajOpis
+            // 
+            this.DodajOpis.Location = new System.Drawing.Point(422, 65);
+            this.DodajOpis.Name = "DodajOpis";
+            this.DodajOpis.Size = new System.Drawing.Size(345, 20);
+            this.DodajOpis.TabIndex = 10;
+            // 
+            // DodajIlosc
+            // 
+            this.DodajIlosc.Location = new System.Drawing.Point(158, 112);
+            this.DodajIlosc.Name = "DodajIlosc";
+            this.DodajIlosc.Size = new System.Drawing.Size(100, 20);
+            this.DodajIlosc.TabIndex = 9;
+            // 
+            // DodajCena
+            // 
+            this.DodajCena.Location = new System.Drawing.Point(158, 87);
+            this.DodajCena.Name = "DodajCena";
+            this.DodajCena.Size = new System.Drawing.Size(100, 20);
+            this.DodajCena.TabIndex = 8;
+            // 
+            // DodajNazwa
+            // 
+            this.DodajNazwa.Location = new System.Drawing.Point(158, 63);
+            this.DodajNazwa.Name = "DodajNazwa";
+            this.DodajNazwa.Size = new System.Drawing.Size(100, 20);
+            this.DodajNazwa.TabIndex = 7;
+            // 
+            // buttonDodajProd
+            // 
+            this.buttonDodajProd.Location = new System.Drawing.Point(596, 318);
+            this.buttonDodajProd.Name = "buttonDodajProd";
+            this.buttonDodajProd.Size = new System.Drawing.Size(111, 31);
+            this.buttonDodajProd.TabIndex = 6;
+            this.buttonDodajProd.Text = "Dodaj";
+            this.buttonDodajProd.UseVisualStyleBackColor = true;
+            this.buttonDodajProd.Click += new System.EventHandler(this.buttonDodajProd_Click);
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(27, 216);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(157, 13);
+            this.label37.TabIndex = 5;
+            this.label37.Text = "Kategorie: (na razie na sztywno)";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(114, 114);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(32, 13);
+            this.label36.TabIndex = 4;
+            this.label36.Text = "Ilość:";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(366, 68);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(31, 13);
+            this.label35.TabIndex = 3;
+            this.label35.Text = "Opis:";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(113, 90);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(35, 13);
+            this.label34.TabIndex = 2;
+            this.label34.Text = "Cena:";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(64, 66);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(91, 13);
+            this.label33.TabIndex = 1;
+            this.label33.Text = "Nazwa produktu: ";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(123, 21);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(102, 13);
+            this.label32.TabIndex = 0;
+            this.label32.Text = "Dodaj nowy produkt";
+            // 
+            // panelModyfikujProdukt
+            // 
+            this.panelModyfikujProdukt.Controls.Add(this.label44);
+            this.panelModyfikujProdukt.Controls.Add(this.ModyfikujOpis);
+            this.panelModyfikujProdukt.Controls.Add(this.ModyfikujIlosc);
+            this.panelModyfikujProdukt.Controls.Add(this.ModyfikujCena);
+            this.panelModyfikujProdukt.Controls.Add(this.ModyfikujNazwa);
+            this.panelModyfikujProdukt.Controls.Add(this.button1);
+            this.panelModyfikujProdukt.Controls.Add(this.label38);
+            this.panelModyfikujProdukt.Controls.Add(this.label39);
+            this.panelModyfikujProdukt.Controls.Add(this.label40);
+            this.panelModyfikujProdukt.Controls.Add(this.label41);
+            this.panelModyfikujProdukt.Controls.Add(this.label42);
+            this.panelModyfikujProdukt.Controls.Add(this.label43);
+            this.panelModyfikujProdukt.Location = new System.Drawing.Point(5, 19);
+            this.panelModyfikujProdukt.Name = "panelModyfikujProdukt";
+            this.panelModyfikujProdukt.Size = new System.Drawing.Size(797, 429);
+            this.panelModyfikujProdukt.TabIndex = 14;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(374, 220);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(374, 13);
+            this.label44.TabIndex = 11;
+            this.label44.Text = "Tutaj wyświetlimy liste z produktami, po kliknięciu dane będą ładowane do pól";
+            // 
+            // ModyfikujOpis
+            // 
+            this.ModyfikujOpis.Location = new System.Drawing.Point(422, 65);
+            this.ModyfikujOpis.Name = "ModyfikujOpis";
+            this.ModyfikujOpis.Size = new System.Drawing.Size(345, 20);
+            this.ModyfikujOpis.TabIndex = 10;
+            // 
+            // ModyfikujIlosc
+            // 
+            this.ModyfikujIlosc.Location = new System.Drawing.Point(143, 114);
+            this.ModyfikujIlosc.Name = "ModyfikujIlosc";
+            this.ModyfikujIlosc.Size = new System.Drawing.Size(100, 20);
+            this.ModyfikujIlosc.TabIndex = 9;
+            // 
+            // ModyfikujCena
+            // 
+            this.ModyfikujCena.Location = new System.Drawing.Point(143, 88);
+            this.ModyfikujCena.Name = "ModyfikujCena";
+            this.ModyfikujCena.Size = new System.Drawing.Size(100, 20);
+            this.ModyfikujCena.TabIndex = 8;
+            // 
+            // ModyfikujNazwa
+            // 
+            this.ModyfikujNazwa.Location = new System.Drawing.Point(143, 63);
+            this.ModyfikujNazwa.Name = "ModyfikujNazwa";
+            this.ModyfikujNazwa.Size = new System.Drawing.Size(100, 20);
+            this.ModyfikujNazwa.TabIndex = 7;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(596, 318);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(111, 31);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Zapisz";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(27, 216);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(157, 13);
+            this.label38.TabIndex = 5;
+            this.label38.Text = "Kategorie: (na razie na sztywno)";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(98, 117);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(32, 13);
+            this.label39.TabIndex = 4;
+            this.label39.Text = "Ilość:";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(366, 68);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(31, 13);
+            this.label40.TabIndex = 3;
+            this.label40.Text = "Opis:";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(96, 94);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(35, 13);
+            this.label41.TabIndex = 2;
+            this.label41.Text = "Cena:";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(46, 66);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(91, 13);
+            this.label42.TabIndex = 1;
+            this.label42.Text = "Nazwa produktu: ";
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(123, 21);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(191, 13);
+            this.label43.TabIndex = 0;
+            this.label43.Text = "Modyfikuj produkt(not implemented yet)";
+            // 
+            // panelEdytujUzytkownikow
+            // 
+            this.panelEdytujUzytkownikow.Controls.Add(this.textBox15);
+            this.panelEdytujUzytkownikow.Controls.Add(this.label55);
+            this.panelEdytujUzytkownikow.Controls.Add(this.textBox14);
+            this.panelEdytujUzytkownikow.Controls.Add(this.label54);
+            this.panelEdytujUzytkownikow.Controls.Add(this.textBox13);
+            this.panelEdytujUzytkownikow.Controls.Add(this.textBox12);
+            this.panelEdytujUzytkownikow.Controls.Add(this.label53);
+            this.panelEdytujUzytkownikow.Controls.Add(this.label52);
+            this.panelEdytujUzytkownikow.Controls.Add(this.textBox11);
+            this.panelEdytujUzytkownikow.Controls.Add(this.label45);
+            this.panelEdytujUzytkownikow.Controls.Add(this.textBox2);
+            this.panelEdytujUzytkownikow.Controls.Add(this.textBox3);
+            this.panelEdytujUzytkownikow.Controls.Add(this.textBox4);
+            this.panelEdytujUzytkownikow.Controls.Add(this.textBox5);
+            this.panelEdytujUzytkownikow.Controls.Add(this.buttonAdminEdytujUzytkownika);
+            this.panelEdytujUzytkownikow.Controls.Add(this.label46);
+            this.panelEdytujUzytkownikow.Controls.Add(this.label47);
+            this.panelEdytujUzytkownikow.Controls.Add(this.label48);
+            this.panelEdytujUzytkownikow.Controls.Add(this.label49);
+            this.panelEdytujUzytkownikow.Controls.Add(this.label50);
+            this.panelEdytujUzytkownikow.Controls.Add(this.label51);
+            this.panelEdytujUzytkownikow.Location = new System.Drawing.Point(4, 18);
+            this.panelEdytujUzytkownikow.Name = "panelEdytujUzytkownikow";
+            this.panelEdytujUzytkownikow.Size = new System.Drawing.Size(797, 429);
+            this.panelEdytujUzytkownikow.TabIndex = 15;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(374, 220);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(381, 13);
+            this.label45.TabIndex = 11;
+            this.label45.Text = "Tutaj wyświetlimy liste użytkowników, po kliknięciu dane będą ładowane do pól";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(422, 65);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(85, 20);
+            this.textBox2.TabIndex = 10;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(100, 113);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.TabIndex = 9;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(100, 89);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(100, 20);
+            this.textBox4.TabIndex = 8;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(100, 67);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(100, 20);
+            this.textBox5.TabIndex = 7;
+            // 
+            // buttonAdminEdytujUzytkownika
+            // 
+            this.buttonAdminEdytujUzytkownika.Location = new System.Drawing.Point(596, 318);
+            this.buttonAdminEdytujUzytkownika.Name = "buttonAdminEdytujUzytkownika";
+            this.buttonAdminEdytujUzytkownika.Size = new System.Drawing.Size(111, 31);
+            this.buttonAdminEdytujUzytkownika.TabIndex = 6;
+            this.buttonAdminEdytujUzytkownika.Text = "Zapisz";
+            this.buttonAdminEdytujUzytkownika.UseVisualStyleBackColor = true;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(23, 143);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(41, 13);
+            this.label46.TabIndex = 5;
+            this.label46.Text = "Miasto:";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(22, 118);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(77, 13);
+            this.label47.TabIndex = 4;
+            this.label47.Text = "Kod pocztowy:";
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(366, 68);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(36, 13);
+            this.label48.TabIndex = 3;
+            this.label48.Text = "Login:";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(23, 95);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(56, 13);
+            this.label49.TabIndex = 2;
+            this.label49.Text = "Nazwisko:";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(22, 68);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(29, 13);
+            this.label50.TabIndex = 1;
+            this.label50.Text = "Imie:";
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(123, 21);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(206, 13);
+            this.label51.TabIndex = 0;
+            this.label51.Text = "Edytuj użytkowników(not implemented yet)";
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(100, 139);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(100, 20);
+            this.textBox11.TabIndex = 12;
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(23, 170);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(34, 13);
+            this.label52.TabIndex = 13;
+            this.label52.Text = "Ulica:";
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Location = new System.Drawing.Point(23, 193);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(82, 13);
+            this.label53.TabIndex = 14;
+            this.label53.Text = "Numer telefonu:";
+            // 
+            // textBox12
+            // 
+            this.textBox12.Location = new System.Drawing.Point(100, 167);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(100, 20);
+            this.textBox12.TabIndex = 15;
+            // 
+            // textBox13
+            // 
+            this.textBox13.Location = new System.Drawing.Point(100, 190);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(100, 20);
+            this.textBox13.TabIndex = 16;
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(366, 92);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(39, 13);
+            this.label54.TabIndex = 17;
+            this.label54.Text = "Hasło:";
+            // 
+            // textBox14
+            // 
+            this.textBox14.Location = new System.Drawing.Point(422, 89);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(85, 20);
+            this.textBox14.TabIndex = 18;
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Location = new System.Drawing.Point(367, 120);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(38, 13);
+            this.label55.TabIndex = 19;
+            this.label55.Text = "E-mail:";
+            // 
+            // textBox15
+            // 
+            this.textBox15.Location = new System.Drawing.Point(422, 115);
+            this.textBox15.Name = "textBox15";
+            this.textBox15.Size = new System.Drawing.Size(85, 20);
+            this.textBox15.TabIndex = 20;
+            // 
+            // ZamID
+            // 
+            this.ZamID.DataPropertyName = "ID";
+            this.ZamID.HeaderText = "ID";
+            this.ZamID.Name = "ZamID";
+            this.ZamID.ReadOnly = true;
+            // 
+            // Cenazacalosc
+            // 
+            this.Cenazacalosc.DataPropertyName = "OrderTotal";
+            this.Cenazacalosc.HeaderText = "Cenazacalosc";
+            this.Cenazacalosc.Name = "Cenazacalosc";
+            this.Cenazacalosc.ReadOnly = true;
+            this.Cenazacalosc.Visible = false;
+            // 
+            // status
+            // 
+            this.status.DataPropertyName = "Status";
+            this.status.HeaderText = "Status";
+            this.status.Name = "status";
+            this.status.ReadOnly = true;
+            // 
+            // Data
+            // 
+            this.Data.DataPropertyName = "OrderDate";
+            this.Data.HeaderText = "Data złożenia";
+            this.Data.Name = "Data";
+            this.Data.ReadOnly = true;
+            this.Data.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panelPrzejdzDoKasy);
-            this.Controls.Add(this.panelTwojeZamowienia);
-            this.Controls.Add(this.panelNaszaOferta);
             this.Controls.Add(this.labelZalogowanyJako);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.panelTwojeZamowienia);
+            this.Controls.Add(this.panelNaszaOferta);
             this.Controls.Add(this.panelEdytujSwojeDane);
             this.Controls.Add(this.panelWelcome);
             this.Controls.Add(this.panelLogin);
             this.Controls.Add(this.panelNowosci);
             this.Controls.Add(this.panelTop1);
             this.Controls.Add(this.panelRejestracja);
+            this.Controls.Add(this.panelEdytujUzytkownikow);
+            this.Controls.Add(this.panelModyfikujProdukt);
+            this.Controls.Add(this.panelDodajProdukt);
+            this.Controls.Add(this.panelPrzejdzDoKasy);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Home";
             this.Text = "Alledrogo";
@@ -1581,6 +2067,12 @@
             this.panelPrzejdzDoKasy.ResumeLayout(false);
             this.panelPrzejdzDoKasy.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWKoszyku)).EndInit();
+            this.panelDodajProdukt.ResumeLayout(false);
+            this.panelDodajProdukt.PerformLayout();
+            this.panelModyfikujProdukt.ResumeLayout(false);
+            this.panelModyfikujProdukt.PerformLayout();
+            this.panelEdytujUzytkownikow.ResumeLayout(false);
+            this.panelEdytujUzytkownikow.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1710,10 +2202,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn prod;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cena;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ilosc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ZamID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cenazacalosc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn status;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Data;
         private System.Windows.Forms.Panel panelPrzejdzDoKasy;
         private System.Windows.Forms.Label labelOTK;
         private System.Windows.Forms.Button buttonPDKKup;
@@ -1726,5 +2214,56 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn howmuch;
         private System.Windows.Forms.DataGridViewTextBoxColumn total;
         private System.Windows.Forms.Label labelPDKInformacja;
+        private System.Windows.Forms.Panel panelDodajProdukt;
+        private System.Windows.Forms.TextBox DodajOpis;
+        private System.Windows.Forms.TextBox DodajIlosc;
+        private System.Windows.Forms.TextBox DodajCena;
+        private System.Windows.Forms.TextBox DodajNazwa;
+        private System.Windows.Forms.Button buttonDodajProd;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Panel panelModyfikujProdukt;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.TextBox ModyfikujOpis;
+        private System.Windows.Forms.TextBox ModyfikujIlosc;
+        private System.Windows.Forms.TextBox ModyfikujCena;
+        private System.Windows.Forms.TextBox ModyfikujNazwa;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.Panel panelEdytujUzytkownikow;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Button buttonAdminEdytujUzytkownika;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ZamID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cenazacalosc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Data;
     }
 }

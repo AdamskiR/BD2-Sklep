@@ -79,8 +79,8 @@ namespace Sklep
                 twojeZamówieniaToolStripMenuItem.Visible = false;
                 textBoxNOIleKupic.Visible = false;
                 buttonNOdodajDokoszyka.Visible = false;
+                zarejestrujToolStripMenuItem.Visible = true;
 
-           
             }
             else
             {
@@ -90,6 +90,7 @@ namespace Sklep
                 wylogujToolStripMenuItem.Visible = true;
                 edytujSwojeDaneToolStripMenuItem.Visible = true;
                 twojeZamówieniaToolStripMenuItem.Visible = true;
+                twojeZamówieniaToolStripMenuItem.Enabled = true;
                 currentUsername = textBoxLogUzytkownik.Text;
                 koszykToolStripMenuItem.Visible = true;
                 twojeZamówieniaToolStripMenuItem.Visible = true;
@@ -187,7 +188,7 @@ namespace Sklep
 
         private void ądzajUżytkownikamiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            panelEdytujUzytkownikow.BringToFront();
         }
         private void buttonRejestracja_Click(object sender, EventArgs e)
         {
@@ -452,7 +453,7 @@ namespace Sklep
                 }
             }
             Wyswietlprodukt(Top3id[0]);
-
+            connection.Close();
         }
 
         private void Wyswietlprodukt(int id)
@@ -460,16 +461,15 @@ namespace Sklep
             panelWyswProdukt.BringToFront();
 
             using (connection = new SqlConnection(connectionString))
-            using (SqlCommand command = new SqlCommand("DisplaySpecificProduct", connection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            using (SqlCommand command = new SqlCommand("dbo.DisplaySpecificProduct", connection))
+            using (SqlDataAdapter adapter1 = new SqlDataAdapter(command))
 
             {
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add("@id", SqlDbType.Int);
-                command.Parameters["@id"].Value = id;
+                command.Parameters.Add("@id", SqlDbType.Int).Value = id;
 
                 DataTable tabela_prod = new DataTable();
-                adapter.Fill(tabela_prod);
+                adapter1.Fill(tabela_prod);
 
                 labelIloscSztuk.Text = "Pozostało: " + (double)tabela_prod.Rows[0]["ProductStock"] + " sztuk";
                 labelOpisProd.Text = "Opis Produktu: " + (string)tabela_prod.Rows[0]["ProductDesc"];
@@ -658,8 +658,11 @@ namespace Sklep
                     try
                     {
                         cnn2.Open();
-                        string querry2 = "DELETE from [Users] where Username="+"'"+currentUsername+"'";
+                        string querry2 = "dbo.DeleteAccount";
+
                         SqlCommand cmd2 = new SqlCommand(querry2, cnn2);
+                        cmd2.CommandType = CommandType.StoredProcedure;
+                        cmd2.Parameters.Add("@login", SqlDbType.NChar).Value = currentUsername;
                         cmd2.ExecuteNonQuery();
                         MessageBox.Show("Konto usunięte!");
                         currentUsername = null;
@@ -867,5 +870,42 @@ namespace Sklep
         {
             MessageBox.Show("Not implemented yet");
         }
+
+        private void dodajProduktToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panelDodajProdukt.BringToFront();
+        }
+
+        private void buttonDodajProd_Click(object sender, EventArgs e)
+        {
+            string querry = "INSERT INTO Products(ProductName, ProductDesc, ProductPrice, ProductStock, ProductCategoryID, VendorID) Values(@nazwa, @opis,@cena,@ilosc,@kategoria,@vendor)";
+            using (SqlConnection cnn4 = new SqlConnection(connectionString))
+            {
+
+                try
+                {
+                    cnn4.Open();
+                    SqlCommand cmd = new SqlCommand(querry, cnn4);
+                    cmd.Parameters.Add("@nazwa", SqlDbType.NChar).Value = DodajNazwa.Text;
+                    cmd.Parameters.Add("@opis", SqlDbType.NChar).Value = DodajOpis.Text;
+                    cmd.Parameters.Add("@cena", SqlDbType.Decimal).Value = Convert.ToDecimal(DodajCena.Text);
+                    cmd.Parameters.Add("@ilosc", SqlDbType.Float).Value = Convert.ToDouble(DodajIlosc.Text);
+                    cmd.Parameters.Add("@kategoria", SqlDbType.Int).Value = 1;
+                    cmd.Parameters.Add("@vendor", SqlDbType.Int).Value = 1;
+                    cmd.ExecuteNonQuery();
+                    cnn4.Close();
+                    MessageBox.Show("Produkt dodany!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                }
+            }
+        }
+        private void modyfikujProduktToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panelModyfikujProdukt.BringToFront();
+        }
     }
+    
 }
