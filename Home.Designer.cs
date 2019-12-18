@@ -1361,6 +1361,7 @@
             this.panelTwojeZamowienia.Name = "panelTwojeZamowienia";
             this.panelTwojeZamowienia.Size = new System.Drawing.Size(798, 420);
             this.panelTwojeZamowienia.TabIndex = 5;
+            this.panelTwojeZamowienia.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTwojeZamowienia_Paint);
             // 
             // labelTZCenaZaWszystko
             // 

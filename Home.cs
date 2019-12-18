@@ -863,6 +863,9 @@ namespace Sklep
         private void buttonPDKKup_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Not implemented yet");
+            //dbo.DodajZamowienie
+            //TODO: dbo.DodajSzczegolyZamowienia
+            //dbo.USUNzMAGAZynu
         }
 
 
@@ -924,8 +927,10 @@ namespace Sklep
             panelModyfikujProdukt.BringToFront();
         }
 
+        private void panelTwojeZamowienia_Paint(object sender, PaintEventArgs e)
+        {
 
-       
+        }
     }
     
 }
