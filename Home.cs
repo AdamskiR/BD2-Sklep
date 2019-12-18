@@ -688,42 +688,37 @@ namespace Sklep
             {
                 if (Convert.ToInt32(textBoxNOIleKupic.Text) > 0)
                 {
+                    //Dodanie do koszyka jako nowej pozycji, nawet gdy jest juz na liscie
+                    //coIile kupno = new coIile();
+                    //kupno.id = Convert.ToInt32(listBoxNOProdukty.SelectedValue);
+                    //kupno.ilosc = Convert.ToInt32(textBoxNOIleKupic.Text);
+                    //koszyk.Add(kupno);
+                   
+                    //Dodanie do koszyka z aktualizacja stanu gdy przedmiot jest już na liscie
+                     coIile kupno = new coIile();
+                     int ids = Convert.ToInt32(listBoxNOProdukty.SelectedValue);
+                     int ilosc = Convert.ToInt32(textBoxNOIleKupic.Text);
+                     List<coIile> result = koszyk.FindAll(x => x.id == ids);
+                     if (result.Count() > 0)
+                     {
+                         for (int i = 0; i < koszyk.Count(); i++)
+                         {
+                             if (koszyk[i].id == ids)
+                             {
+                                 koszyk[i].ilosc += ilosc;
+                             }
 
-                    coIile kupno = new coIile();
-                    kupno.id = Convert.ToInt32(listBoxNOProdukty.SelectedValue);
-                    kupno.ilosc = Convert.ToInt32(textBoxNOIleKupic.Text);
-                    koszyk.Add(kupno);
-                    MessageBox.Show("Dodano do koszyka");
+                         }
 
-
-                    // coIile kupno = new coIile();
-                    // int ids = Convert.ToInt32(listBoxNOProdukty.SelectedValue);
-                    // int ilosc = Convert.ToInt32(textBoxNOIleKupic.Text);
-
-                    //List<coIile> result = koszyk.FindAll(x => x.id == ids);
-
-                    // if (result.Count() > 0)
-                    // {
-                    //     for (int i = 0; i < koszyk.Count(); i++)
-                    //     {
-                    //         if (koszyk[i].id == ids)
-                    //         {
-                    //             koszyk[i].ilosc += ilosc;
-                    //         }
-
-                    //     }
-
-                    // } 
-                    // else
-                    // {
-                    //     kupno.id = ids;
-                    //     kupno.ilosc = ilosc;
-                    //     koszyk.Add(kupno);
-                    // }
-                    // result.Clear();
-                    //Sprawdzenie czy się dodało do koszyka
-                    //for (int i = 0; i < koszyk.Count(); i++)
-                    //    MessageBox.Show(koszyk[i].ToString());
+                     } 
+                     else
+                     {
+                         kupno.id = ids;
+                         kupno.ilosc = ilosc;
+                         koszyk.Add(kupno);
+                     }
+                     result.Clear();
+                     MessageBox.Show("Dodano do koszyka");
                 }
                 else
                   MessageBox.Show("Musisz wprowadzić ilość!");
@@ -761,27 +756,33 @@ namespace Sklep
 
         private void dataGridViewTZZamowienia_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int orderno = 0;
-            float totprice = 1;
-            Int32.TryParse(dataGridViewTZZamowienia.Rows[e.RowIndex].Cells[0].Value.ToString(), out orderno);
-            float.TryParse(dataGridViewTZZamowienia.Rows[e.RowIndex].Cells[1].Value.ToString(), out totprice);
-            labelTZCenaZaWszystko.Text = "Cena za całość: " + totprice.ToString();
 
-            using (connection = new SqlConnection(connectionString))
-            using (SqlCommand command = new SqlCommand("DisplayOrder", connection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            try
             {
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add("@orderID", SqlDbType.Int);
-                command.Parameters["@orderID"].Value = orderno;
+                int orderno = 0;
+                float totprice = 1;
+                Int32.TryParse(dataGridViewTZZamowienia.Rows[e.RowIndex].Cells[0].Value.ToString(), out orderno);
+                float.TryParse(dataGridViewTZZamowienia.Rows[e.RowIndex].Cells[1].Value.ToString(), out totprice);
+                labelTZCenaZaWszystko.Text = "Cena za całość: " + totprice.ToString();
 
-                DataTable konkretneZamowienie = new DataTable();
-                adapter.Fill(konkretneZamowienie);
+                using (connection = new SqlConnection(connectionString))
+                using (SqlCommand command = new SqlCommand("DisplayOrder", connection))
+                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("@orderID", SqlDbType.Int);
+                    command.Parameters["@orderID"].Value = orderno;
 
-                dataGridViewOrder.AutoGenerateColumns = false;
-                dataGridViewOrder.DataSource = konkretneZamowienie;
+                    DataTable konkretneZamowienie = new DataTable();
+                    adapter.Fill(konkretneZamowienie);
+
+                    dataGridViewOrder.AutoGenerateColumns = false;
+                    dataGridViewOrder.DataSource = konkretneZamowienie;
+                }
             }
-
+            catch
+            {
+            }
         }
         private void przejdźDoKasyToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -812,20 +813,27 @@ namespace Sklep
 
             
         }
-
+        //jebie sie
         private void DGVwKoszykuAktualizuj()
         {
-            float ileZaZakupy = 0;
-            for (int i = 0; i < koszyk.Count(); i++)
+            try
             {
-                dataGridViewWKoszyku.Rows[i].Cells[3].Value = koszyk[i].ilosc;
-                float temp;
-                float.TryParse(dataGridViewWKoszyku.Rows[i].Cells[2].Value.ToString(), out temp);
-                ileZaZakupy += temp * koszyk[i].ilosc;
-                dataGridViewWKoszyku.Rows[i].Cells[4].Value = koszyk[i].ilosc * temp;
-                labelPDKsumaZaZakupy.Text = "Cena za wszystko: " + ileZaZakupy.ToString() + " zł";
+                float ileZaZakupy = 0;
+                for (int i = 0; i < koszyk.Count(); i++)
+                {
+                    dataGridViewWKoszyku.Rows[i].Cells[3].Value = koszyk[i].ilosc;
+                    float temp;
+                    float.TryParse(dataGridViewWKoszyku.Rows[i].Cells[2].Value.ToString(), out temp);
+                    ileZaZakupy += temp * koszyk[i].ilosc;
+                    dataGridViewWKoszyku.Rows[i].Cells[4].Value = koszyk[i].ilosc * temp;
+                    labelPDKsumaZaZakupy.Text = "Cena za wszystko: " + ileZaZakupy.ToString() + " zł";
+                }
             }
-
+            catch
+            {
+                //Z pewnych nieznanych przyczyn podczas edycji ilości w koszyku i nie "odkliknieciu" pola, chcac dodac nową rzecz do koszyka wyskakuje błąd System.ArgumentOutOfRangeException 
+                Console.WriteLine("ERROR");
+            }
 
         }
 
@@ -858,13 +866,22 @@ namespace Sklep
         }
 
 
-        private void dataGridViewWKoszyku_CellValidated(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewWKoszyku_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
         {
-            int temp;
-            int.TryParse(dataGridViewWKoszyku.Rows[e.RowIndex].Cells[3].Value.ToString(), out temp);
-            koszyk[e.RowIndex].ilosc = temp;
-            DGVwKoszykuAktualizuj();
+            if(e.Cell.ColumnIndex == 3)
+            {
+                if (e.Cell.Value != null)
+                {
+                    int.TryParse(e.Cell.Value.ToString(), out int temp);
+
+                    // int.TryParse(dataGridViewWKoszyku.Rows[e.Cell. .Value.ToString(), out temp);
+
+                    koszyk[e.Cell.RowIndex].ilosc = temp;
+                    DGVwKoszykuAktualizuj();
+                }
+            }
         }
+
 
         private void wyszukajToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -906,6 +923,9 @@ namespace Sklep
         {
             panelModyfikujProdukt.BringToFront();
         }
+
+
+       
     }
     
 }
