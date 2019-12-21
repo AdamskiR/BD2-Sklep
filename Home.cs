@@ -188,6 +188,7 @@ namespace Sklep
 
         private void ądzajUżytkownikamiToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            wylistujUserow();
             panelEdytujUzytkownikow.BringToFront();
         }
         private void buttonRejestracja_Click(object sender, EventArgs e)
@@ -976,6 +977,26 @@ namespace Sklep
 
             }
         }
+        private void wylistujUserow()
+        {
+            string querry = "SELECT ID, Username FROM Users";
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(querry, connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            {
+
+
+
+                DataTable tabela_usr = new DataTable();
+                adapter.Fill(tabela_usr);
+
+                listBoxNOUsers.DisplayMember = "Username";
+                listBoxNOUsers.ValueMember = "ID";
+                listBoxNOUsers.DataSource = tabela_usr;
+
+            }
+        }
         private void modyfikujProduktToolStripMenuItem_Click(object sender, EventArgs e)
         {
             wylistujProdukty();
@@ -1013,7 +1034,39 @@ namespace Sklep
                 }
                 cnn4.Close();
             }
+        }
+        private void wczytajDaneUzytkownikow()
+        {
+            string querry = "SELECT Username, Password, Email, FirstName, LastName,ZipCode, City, Street, TelephoneNumber FROM Users WHERE ID = @id";
+            using (SqlConnection cnn4 = new SqlConnection(connectionString))
+            {
 
+                try
+                {
+                    cnn4.Open();
+                    SqlCommand cmd = new SqlCommand(querry, cnn4);
+                    cmd.Parameters.Add("@id", SqlDbType.NChar).Value = listBoxNOUsers.SelectedValue;
+                    SqlDataReader dr2 = cmd.ExecuteReader();
+
+                    while (dr2.Read())
+                    {
+                        adminEdytujLogin.Text = dr2.GetValue(0).ToString().TrimEnd();
+                        adminEdytujHaslo.Text = dr2.GetValue(1).ToString().TrimEnd();
+                        adminEdytujMail.Text = dr2.GetValue(2).ToString().TrimEnd();
+                        adminEdytujImie.Text = dr2.GetValue(3).ToString().TrimEnd();
+                        adminEdytujNazwisko.Text = dr2.GetValue(4).ToString().TrimEnd();
+                        adminEdytujZip.Text = dr2.GetValue(5).ToString().TrimEnd();
+                        adminEdytujMiasto.Text = dr2.GetValue(6).ToString().TrimEnd();
+                        adminEdytujUlica.Text = dr2.GetValue(7).ToString().TrimEnd();
+                        adminEdytujTel.Text = dr2.GetValue(8).ToString().TrimEnd();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                }
+                cnn4.Close();
+            }
         }
 
         private void panelTwojeZamowienia_Paint(object sender, PaintEventArgs e)
@@ -1054,6 +1107,43 @@ namespace Sklep
 
             }
 
+        }
+
+        private void listBoxNOUsers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            wczytajDaneUzytkownikow();
+        }
+
+        private void buttonAdminEdytujUzytkownika_Click(object sender, EventArgs e)
+        {
+            string querry = "UPDATE Users SET Username=@username, Password=@password, Email=@email, FirstName=@firstname, LastName=@lastname,ZipCode=@zipcode, City=@city, Street=@street, TelephoneNumber=@telephone WHERE ID = @id";
+            using (SqlConnection cnn4 = new SqlConnection(connectionString))
+            {
+
+                try
+                {
+                    cnn4.Open();
+                    SqlCommand cmd = new SqlCommand(querry, cnn4);
+                    cmd.Parameters.Add("@id", SqlDbType.NChar).Value = listBoxNOUsers.SelectedValue;
+                    cmd.Parameters.Add("@username", SqlDbType.NChar).Value = adminEdytujLogin.Text;
+                    cmd.Parameters.Add("@password", SqlDbType.NChar).Value = adminEdytujHaslo.Text;
+                    cmd.Parameters.Add("@email", SqlDbType.NChar).Value = adminEdytujMail.Text;
+                    cmd.Parameters.Add("@firstname", SqlDbType.NChar).Value = adminEdytujImie.Text;
+                    cmd.Parameters.Add("@lastname", SqlDbType.NChar).Value = adminEdytujNazwisko.Text;
+                    cmd.Parameters.Add("@zipcode", SqlDbType.NChar).Value = adminEdytujZip.Text;
+                    cmd.Parameters.Add("@city", SqlDbType.NChar).Value = adminEdytujMiasto.Text;
+                    cmd.Parameters.Add("@street", SqlDbType.NChar).Value = adminEdytujUlica.Text;
+                    cmd.Parameters.Add("@telephone", SqlDbType.Int).Value = Convert.ToInt32(adminEdytujTel.Text);
+                    cmd.ExecuteNonQuery();
+                    cnn4.Close();
+                    MessageBox.Show("Uzytkownik zmodyfikowany!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                }
+
+            }
         }
     }
 }

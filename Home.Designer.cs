@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label label25;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zalogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -203,20 +203,20 @@
             this.label42 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.panelEdytujUzytkownikow = new System.Windows.Forms.Panel();
-            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.adminEdytujMail = new System.Windows.Forms.TextBox();
             this.label55 = new System.Windows.Forms.Label();
-            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.adminEdytujHaslo = new System.Windows.Forms.TextBox();
             this.label54 = new System.Windows.Forms.Label();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.adminEdytujTel = new System.Windows.Forms.TextBox();
+            this.adminEdytujUlica = new System.Windows.Forms.TextBox();
             this.label53 = new System.Windows.Forms.Label();
             this.label52 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.adminEdytujMiasto = new System.Windows.Forms.TextBox();
             this.label45 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.adminEdytujLogin = new System.Windows.Forms.TextBox();
+            this.adminEdytujZip = new System.Windows.Forms.TextBox();
+            this.adminEdytujNazwisko = new System.Windows.Forms.TextBox();
+            this.adminEdytujImie = new System.Windows.Forms.TextBox();
             this.buttonAdminEdytujUzytkownika = new System.Windows.Forms.Button();
             this.label46 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
@@ -224,6 +224,7 @@
             this.label49 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
+            this.listBoxNOUsers = new System.Windows.Forms.ListBox();
             label25 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
@@ -1520,8 +1521,8 @@
             // 
             this.dataGridViewWKoszyku.AllowUserToAddRows = false;
             this.dataGridViewWKoszyku.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewWKoszyku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWKoszyku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NAme,
@@ -1909,20 +1910,21 @@
             // 
             // panelEdytujUzytkownikow
             // 
-            this.panelEdytujUzytkownikow.Controls.Add(this.textBox15);
+            this.panelEdytujUzytkownikow.Controls.Add(this.listBoxNOUsers);
+            this.panelEdytujUzytkownikow.Controls.Add(this.adminEdytujMail);
             this.panelEdytujUzytkownikow.Controls.Add(this.label55);
-            this.panelEdytujUzytkownikow.Controls.Add(this.textBox14);
+            this.panelEdytujUzytkownikow.Controls.Add(this.adminEdytujHaslo);
             this.panelEdytujUzytkownikow.Controls.Add(this.label54);
-            this.panelEdytujUzytkownikow.Controls.Add(this.textBox13);
-            this.panelEdytujUzytkownikow.Controls.Add(this.textBox12);
+            this.panelEdytujUzytkownikow.Controls.Add(this.adminEdytujTel);
+            this.panelEdytujUzytkownikow.Controls.Add(this.adminEdytujUlica);
             this.panelEdytujUzytkownikow.Controls.Add(this.label53);
             this.panelEdytujUzytkownikow.Controls.Add(this.label52);
-            this.panelEdytujUzytkownikow.Controls.Add(this.textBox11);
+            this.panelEdytujUzytkownikow.Controls.Add(this.adminEdytujMiasto);
             this.panelEdytujUzytkownikow.Controls.Add(this.label45);
-            this.panelEdytujUzytkownikow.Controls.Add(this.textBox2);
-            this.panelEdytujUzytkownikow.Controls.Add(this.textBox3);
-            this.panelEdytujUzytkownikow.Controls.Add(this.textBox4);
-            this.panelEdytujUzytkownikow.Controls.Add(this.textBox5);
+            this.panelEdytujUzytkownikow.Controls.Add(this.adminEdytujLogin);
+            this.panelEdytujUzytkownikow.Controls.Add(this.adminEdytujZip);
+            this.panelEdytujUzytkownikow.Controls.Add(this.adminEdytujNazwisko);
+            this.panelEdytujUzytkownikow.Controls.Add(this.adminEdytujImie);
             this.panelEdytujUzytkownikow.Controls.Add(this.buttonAdminEdytujUzytkownika);
             this.panelEdytujUzytkownikow.Controls.Add(this.label46);
             this.panelEdytujUzytkownikow.Controls.Add(this.label47);
@@ -1935,12 +1937,12 @@
             this.panelEdytujUzytkownikow.Size = new System.Drawing.Size(797, 429);
             this.panelEdytujUzytkownikow.TabIndex = 15;
             // 
-            // textBox15
+            // adminEdytujMail
             // 
-            this.textBox15.Location = new System.Drawing.Point(422, 115);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(85, 20);
-            this.textBox15.TabIndex = 20;
+            this.adminEdytujMail.Location = new System.Drawing.Point(422, 115);
+            this.adminEdytujMail.Name = "adminEdytujMail";
+            this.adminEdytujMail.Size = new System.Drawing.Size(85, 20);
+            this.adminEdytujMail.TabIndex = 20;
             // 
             // label55
             // 
@@ -1951,12 +1953,12 @@
             this.label55.TabIndex = 19;
             this.label55.Text = "E-mail:";
             // 
-            // textBox14
+            // adminEdytujHaslo
             // 
-            this.textBox14.Location = new System.Drawing.Point(422, 89);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(85, 20);
-            this.textBox14.TabIndex = 18;
+            this.adminEdytujHaslo.Location = new System.Drawing.Point(422, 89);
+            this.adminEdytujHaslo.Name = "adminEdytujHaslo";
+            this.adminEdytujHaslo.Size = new System.Drawing.Size(85, 20);
+            this.adminEdytujHaslo.TabIndex = 18;
             // 
             // label54
             // 
@@ -1967,19 +1969,19 @@
             this.label54.TabIndex = 17;
             this.label54.Text = "Hasło:";
             // 
-            // textBox13
+            // adminEdytujTel
             // 
-            this.textBox13.Location = new System.Drawing.Point(100, 190);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(100, 20);
-            this.textBox13.TabIndex = 16;
+            this.adminEdytujTel.Location = new System.Drawing.Point(100, 190);
+            this.adminEdytujTel.Name = "adminEdytujTel";
+            this.adminEdytujTel.Size = new System.Drawing.Size(100, 20);
+            this.adminEdytujTel.TabIndex = 16;
             // 
-            // textBox12
+            // adminEdytujUlica
             // 
-            this.textBox12.Location = new System.Drawing.Point(100, 167);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(100, 20);
-            this.textBox12.TabIndex = 15;
+            this.adminEdytujUlica.Location = new System.Drawing.Point(100, 167);
+            this.adminEdytujUlica.Name = "adminEdytujUlica";
+            this.adminEdytujUlica.Size = new System.Drawing.Size(100, 20);
+            this.adminEdytujUlica.TabIndex = 15;
             // 
             // label53
             // 
@@ -1999,49 +2001,49 @@
             this.label52.TabIndex = 13;
             this.label52.Text = "Ulica:";
             // 
-            // textBox11
+            // adminEdytujMiasto
             // 
-            this.textBox11.Location = new System.Drawing.Point(100, 139);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(100, 20);
-            this.textBox11.TabIndex = 12;
+            this.adminEdytujMiasto.Location = new System.Drawing.Point(100, 139);
+            this.adminEdytujMiasto.Name = "adminEdytujMiasto";
+            this.adminEdytujMiasto.Size = new System.Drawing.Size(100, 20);
+            this.adminEdytujMiasto.TabIndex = 12;
             // 
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(374, 220);
+            this.label45.Location = new System.Drawing.Point(327, 165);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(381, 13);
+            this.label45.Size = new System.Drawing.Size(155, 13);
             this.label45.TabIndex = 11;
-            this.label45.Text = "Tutaj wyświetlimy liste użytkowników, po kliknięciu dane będą ładowane do pól";
+            this.label45.Text = "Wybierz użytkownika do edycji:";
             // 
-            // textBox2
+            // adminEdytujLogin
             // 
-            this.textBox2.Location = new System.Drawing.Point(422, 65);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(85, 20);
-            this.textBox2.TabIndex = 10;
+            this.adminEdytujLogin.Location = new System.Drawing.Point(422, 65);
+            this.adminEdytujLogin.Name = "adminEdytujLogin";
+            this.adminEdytujLogin.Size = new System.Drawing.Size(85, 20);
+            this.adminEdytujLogin.TabIndex = 10;
             // 
-            // textBox3
+            // adminEdytujZip
             // 
-            this.textBox3.Location = new System.Drawing.Point(100, 113);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 9;
+            this.adminEdytujZip.Location = new System.Drawing.Point(100, 113);
+            this.adminEdytujZip.Name = "adminEdytujZip";
+            this.adminEdytujZip.Size = new System.Drawing.Size(100, 20);
+            this.adminEdytujZip.TabIndex = 9;
             // 
-            // textBox4
+            // adminEdytujNazwisko
             // 
-            this.textBox4.Location = new System.Drawing.Point(100, 89);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 8;
+            this.adminEdytujNazwisko.Location = new System.Drawing.Point(100, 89);
+            this.adminEdytujNazwisko.Name = "adminEdytujNazwisko";
+            this.adminEdytujNazwisko.Size = new System.Drawing.Size(100, 20);
+            this.adminEdytujNazwisko.TabIndex = 8;
             // 
-            // textBox5
+            // adminEdytujImie
             // 
-            this.textBox5.Location = new System.Drawing.Point(100, 67);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 7;
+            this.adminEdytujImie.Location = new System.Drawing.Point(100, 67);
+            this.adminEdytujImie.Name = "adminEdytujImie";
+            this.adminEdytujImie.Size = new System.Drawing.Size(100, 20);
+            this.adminEdytujImie.TabIndex = 7;
             // 
             // buttonAdminEdytujUzytkownika
             // 
@@ -2051,6 +2053,7 @@
             this.buttonAdminEdytujUzytkownika.TabIndex = 6;
             this.buttonAdminEdytujUzytkownika.Text = "Zapisz";
             this.buttonAdminEdytujUzytkownika.UseVisualStyleBackColor = true;
+            this.buttonAdminEdytujUzytkownika.Click += new System.EventHandler(this.buttonAdminEdytujUzytkownika_Click);
             // 
             // label46
             // 
@@ -2106,6 +2109,15 @@
             this.label51.TabIndex = 0;
             this.label51.Text = "Edytuj użytkowników(not implemented yet)";
             // 
+            // listBoxNOUsers
+            // 
+            this.listBoxNOUsers.FormattingEnabled = true;
+            this.listBoxNOUsers.Location = new System.Drawing.Point(322, 186);
+            this.listBoxNOUsers.Name = "listBoxNOUsers";
+            this.listBoxNOUsers.Size = new System.Drawing.Size(197, 225);
+            this.listBoxNOUsers.TabIndex = 21;
+            this.listBoxNOUsers.SelectedIndexChanged += new System.EventHandler(this.listBoxNOUsers_SelectedIndexChanged);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2113,6 +2125,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.labelZalogowanyJako);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.panelEdytujUzytkownikow);
             this.Controls.Add(this.panelModyfikujProdukt);
             this.Controls.Add(this.panelDodajProdukt);
             this.Controls.Add(this.panelTwojeZamowienia);
@@ -2124,7 +2137,6 @@
             this.Controls.Add(this.panelNowosci);
             this.Controls.Add(this.panelTop1);
             this.Controls.Add(this.panelRejestracja);
-            this.Controls.Add(this.panelEdytujUzytkownikow);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Home";
@@ -2320,10 +2332,10 @@
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Panel panelEdytujUzytkownikow;
         private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox adminEdytujLogin;
+        private System.Windows.Forms.TextBox adminEdytujZip;
+        private System.Windows.Forms.TextBox adminEdytujNazwisko;
+        private System.Windows.Forms.TextBox adminEdytujImie;
         private System.Windows.Forms.Button buttonAdminEdytujUzytkownika;
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.Label label47;
@@ -2331,14 +2343,14 @@
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.Label label50;
         private System.Windows.Forms.Label label51;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox adminEdytujMiasto;
         private System.Windows.Forms.Label label52;
-        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.TextBox adminEdytujMail;
         private System.Windows.Forms.Label label55;
-        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.TextBox adminEdytujHaslo;
         private System.Windows.Forms.Label label54;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox adminEdytujTel;
+        private System.Windows.Forms.TextBox adminEdytujUlica;
         private System.Windows.Forms.Label label53;
         private System.Windows.Forms.DataGridViewTextBoxColumn NAme;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ven;
@@ -2360,5 +2372,6 @@
         private System.Windows.Forms.ListBox listBoxNOProducts2;
         private System.Windows.Forms.ListBox listBoxNOVendors2;
         private System.Windows.Forms.ListBox listBoxNOCategories2;
+        private System.Windows.Forms.ListBox listBoxNOUsers;
     }
 }
