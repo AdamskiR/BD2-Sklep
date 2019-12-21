@@ -653,7 +653,7 @@ namespace Sklep
 
         private void buttonUsunKonto_Click(object sender, EventArgs e)
         {
-           var confirm = MessageBox.Show("Czy na pewno chcesz usunąć konto?", "Usuń konto",MessageBoxButtons.YesNo);
+            var confirm = MessageBox.Show("Czy na pewno chcesz usunąć konto?", "Usuń konto", MessageBoxButtons.YesNo);
             if (confirm == DialogResult.Yes)
             {
                 using (SqlConnection cnn2 = new SqlConnection(connectionString))
@@ -672,7 +672,7 @@ namespace Sklep
                         isUserAuthenticated = false;
                         isUserAuthenticatedView();
                         panelWelcome.BringToFront();
-                        
+
                     }
                     catch (Exception ex)
                     {
@@ -696,35 +696,35 @@ namespace Sklep
                     //kupno.id = Convert.ToInt32(listBoxNOProdukty.SelectedValue);
                     //kupno.ilosc = Convert.ToInt32(textBoxNOIleKupic.Text);
                     //koszyk.Add(kupno);
-                   
+
                     //Dodanie do koszyka z aktualizacja stanu gdy przedmiot jest już na liscie
-                     coIile kupno = new coIile();
-                     int ids = Convert.ToInt32(listBoxNOProdukty.SelectedValue);
-                     int ilosc = Convert.ToInt32(textBoxNOIleKupic.Text);
-                     List<coIile> result = koszyk.FindAll(x => x.id == ids);
-                     if (result.Count() > 0)
-                     {
-                         for (int i = 0; i < koszyk.Count(); i++)
-                         {
-                             if (koszyk[i].id == ids)
-                             {
-                                 koszyk[i].ilosc += ilosc;
-                             }
+                    coIile kupno = new coIile();
+                    int ids = Convert.ToInt32(listBoxNOProdukty.SelectedValue);
+                    int ilosc = Convert.ToInt32(textBoxNOIleKupic.Text);
+                    List<coIile> result = koszyk.FindAll(x => x.id == ids);
+                    if (result.Count() > 0)
+                    {
+                        for (int i = 0; i < koszyk.Count(); i++)
+                        {
+                            if (koszyk[i].id == ids)
+                            {
+                                koszyk[i].ilosc += ilosc;
+                            }
 
-                         }
+                        }
 
-                     } 
-                     else
-                     {
-                         kupno.id = ids;
-                         kupno.ilosc = ilosc;
-                         koszyk.Add(kupno);
-                     }
-                     result.Clear();
-                     MessageBox.Show("Dodano do koszyka");
+                    }
+                    else
+                    {
+                        kupno.id = ids;
+                        kupno.ilosc = ilosc;
+                        koszyk.Add(kupno);
+                    }
+                    result.Clear();
+                    MessageBox.Show("Dodano do koszyka");
                 }
                 else
-                  MessageBox.Show("Musisz wprowadzić ilość!");
+                    MessageBox.Show("Musisz wprowadzić ilość!");
             }
         }
 
@@ -749,7 +749,7 @@ namespace Sklep
 
                 DataTable zam_uz = new DataTable();
                 adapter.Fill(zam_uz);
-                
+
                 dataGridViewTZZamowienia.AutoGenerateColumns = false;
                 dataGridViewTZZamowienia.DataSource = zam_uz;
             }
@@ -808,13 +808,13 @@ namespace Sklep
                         adapter.Fill(produktywkoszyku);
                     }
                     dataGridViewWKoszyku.DataSource = produktywkoszyku;
-                    
+
                 }
             }
             DGVwKoszykuAktualizuj();
             panelPrzejdzDoKasy.BringToFront();
 
-            
+
         }
         //jebie sie
         private void DGVwKoszykuAktualizuj()
@@ -874,7 +874,7 @@ namespace Sklep
 
         private void dataGridViewWKoszyku_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
         {
-            if(e.Cell.ColumnIndex == 3)
+            if (e.Cell.ColumnIndex == 3)
             {
                 if (e.Cell.Value != null)
                 {
@@ -937,7 +937,7 @@ namespace Sklep
             using (SqlCommand command = new SqlCommand(querry, connection))
             using (SqlDataAdapter adapter = new SqlDataAdapter(command))
             {
-       
+
 
 
                 DataTable tabela_cat = new DataTable();
@@ -1015,7 +1015,7 @@ namespace Sklep
             }
 
         }
-    
+
         private void panelTwojeZamowienia_Paint(object sender, PaintEventArgs e)
         {
 
@@ -1025,6 +1025,35 @@ namespace Sklep
         {
             wczytajModyfikacje();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string querry = "UPDATE Products SET ProductName=@productname, ProductPrice=@productprice, ProductDesc=@productdesc, ProductStock=@productstock, ProductCategoryID=@categoryid, VendorID=@vendorid WHERE ID = @id";
+            using (SqlConnection cnn4 = new SqlConnection(connectionString))
+            {
+
+                try
+                {
+                    cnn4.Open();
+                    SqlCommand cmd = new SqlCommand(querry, cnn4);
+                    cmd.Parameters.Add("@id", SqlDbType.NChar).Value = listBoxNOProducts2.SelectedValue;
+                    cmd.Parameters.Add("@productname", SqlDbType.NChar).Value = ModyfikujNazwa.Text;
+                    cmd.Parameters.Add("@productprice", SqlDbType.Decimal).Value = ModyfikujCena.Text;
+                    cmd.Parameters.Add("@productdesc", SqlDbType.NChar).Value = ModyfikujOpis.Text;
+                    cmd.Parameters.Add("@productstock", SqlDbType.NChar).Value = ModyfikujIlosc.Text;
+                    cmd.Parameters.Add("@categoryid", SqlDbType.NChar).Value = listBoxNOCategories2.SelectedValue;
+                    cmd.Parameters.Add("@vendorid", SqlDbType.NChar).Value = listBoxNOVendors2.SelectedValue;
+                    cmd.ExecuteNonQuery();
+                    cnn4.Close();
+                    MessageBox.Show("Produkt zmodyfikowany!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                }
+
+            }
+
+        }
     }
-    
 }
