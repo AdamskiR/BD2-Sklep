@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label label25;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zalogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -203,6 +203,8 @@
             this.label42 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.panelEdytujUzytkownikow = new System.Windows.Forms.Panel();
+            this.refreshList = new System.Windows.Forms.Button();
+            this.listBoxNOUsers = new System.Windows.Forms.ListBox();
             this.adminEdytujMail = new System.Windows.Forms.TextBox();
             this.label55 = new System.Windows.Forms.Label();
             this.adminEdytujHaslo = new System.Windows.Forms.TextBox();
@@ -224,8 +226,6 @@
             this.label49 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
-            this.listBoxNOUsers = new System.Windows.Forms.ListBox();
-            this.refreshList = new System.Windows.Forms.Button();
             label25 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
@@ -409,21 +409,21 @@
             // dodajProduktToolStripMenuItem
             // 
             this.dodajProduktToolStripMenuItem.Name = "dodajProduktToolStripMenuItem";
-            this.dodajProduktToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dodajProduktToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.dodajProduktToolStripMenuItem.Text = "Dodaj Produkt";
             this.dodajProduktToolStripMenuItem.Click += new System.EventHandler(this.dodajProduktToolStripMenuItem_Click);
             // 
             // modyfikujProduktToolStripMenuItem
             // 
             this.modyfikujProduktToolStripMenuItem.Name = "modyfikujProduktToolStripMenuItem";
-            this.modyfikujProduktToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.modyfikujProduktToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.modyfikujProduktToolStripMenuItem.Text = "Modyfikuj Produkt";
             this.modyfikujProduktToolStripMenuItem.Click += new System.EventHandler(this.modyfikujProduktToolStripMenuItem_Click);
             // 
             // ądzajUżytkownikamiToolStripMenuItem
             // 
             this.ądzajUżytkownikamiToolStripMenuItem.Name = "ądzajUżytkownikamiToolStripMenuItem";
-            this.ądzajUżytkownikamiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ądzajUżytkownikamiToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.ądzajUżytkownikamiToolStripMenuItem.Text = "Edytuj userów";
             this.ądzajUżytkownikamiToolStripMenuItem.Click += new System.EventHandler(this.ądzajUżytkownikamiToolStripMenuItem_Click);
             // 
@@ -1522,8 +1522,8 @@
             // 
             this.dataGridViewWKoszyku.AllowUserToAddRows = false;
             this.dataGridViewWKoszyku.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewWKoszyku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWKoszyku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NAme,
@@ -1939,9 +1939,28 @@
             this.panelEdytujUzytkownikow.Size = new System.Drawing.Size(797, 429);
             this.panelEdytujUzytkownikow.TabIndex = 15;
             // 
+            // refreshList
+            // 
+            this.refreshList.Location = new System.Drawing.Point(144, 322);
+            this.refreshList.Name = "refreshList";
+            this.refreshList.Size = new System.Drawing.Size(75, 23);
+            this.refreshList.TabIndex = 22;
+            this.refreshList.Text = "Odśwież";
+            this.refreshList.UseVisualStyleBackColor = true;
+            this.refreshList.Click += new System.EventHandler(this.refreshList_Click);
+            // 
+            // listBoxNOUsers
+            // 
+            this.listBoxNOUsers.FormattingEnabled = true;
+            this.listBoxNOUsers.Location = new System.Drawing.Point(22, 83);
+            this.listBoxNOUsers.Name = "listBoxNOUsers";
+            this.listBoxNOUsers.Size = new System.Drawing.Size(197, 225);
+            this.listBoxNOUsers.TabIndex = 21;
+            this.listBoxNOUsers.SelectedIndexChanged += new System.EventHandler(this.listBoxNOUsers_SelectedIndexChanged);
+            // 
             // adminEdytujMail
             // 
-            this.adminEdytujMail.Location = new System.Drawing.Point(422, 115);
+            this.adminEdytujMail.Location = new System.Drawing.Point(390, 97);
             this.adminEdytujMail.Name = "adminEdytujMail";
             this.adminEdytujMail.Size = new System.Drawing.Size(85, 20);
             this.adminEdytujMail.TabIndex = 20;
@@ -1949,7 +1968,7 @@
             // label55
             // 
             this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(367, 120);
+            this.label55.Location = new System.Drawing.Point(335, 102);
             this.label55.Name = "label55";
             this.label55.Size = new System.Drawing.Size(38, 13);
             this.label55.TabIndex = 19;
@@ -1957,7 +1976,7 @@
             // 
             // adminEdytujHaslo
             // 
-            this.adminEdytujHaslo.Location = new System.Drawing.Point(422, 89);
+            this.adminEdytujHaslo.Location = new System.Drawing.Point(390, 71);
             this.adminEdytujHaslo.Name = "adminEdytujHaslo";
             this.adminEdytujHaslo.Size = new System.Drawing.Size(85, 20);
             this.adminEdytujHaslo.TabIndex = 18;
@@ -1965,7 +1984,7 @@
             // label54
             // 
             this.label54.AutoSize = true;
-            this.label54.Location = new System.Drawing.Point(366, 92);
+            this.label54.Location = new System.Drawing.Point(334, 74);
             this.label54.Name = "label54";
             this.label54.Size = new System.Drawing.Size(39, 13);
             this.label54.TabIndex = 17;
@@ -1973,14 +1992,14 @@
             // 
             // adminEdytujTel
             // 
-            this.adminEdytujTel.Location = new System.Drawing.Point(100, 190);
+            this.adminEdytujTel.Location = new System.Drawing.Point(585, 167);
             this.adminEdytujTel.Name = "adminEdytujTel";
             this.adminEdytujTel.Size = new System.Drawing.Size(100, 20);
             this.adminEdytujTel.TabIndex = 16;
             // 
             // adminEdytujUlica
             // 
-            this.adminEdytujUlica.Location = new System.Drawing.Point(100, 167);
+            this.adminEdytujUlica.Location = new System.Drawing.Point(585, 144);
             this.adminEdytujUlica.Name = "adminEdytujUlica";
             this.adminEdytujUlica.Size = new System.Drawing.Size(100, 20);
             this.adminEdytujUlica.TabIndex = 15;
@@ -1988,7 +2007,7 @@
             // label53
             // 
             this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(23, 193);
+            this.label53.Location = new System.Drawing.Point(502, 170);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(82, 13);
             this.label53.TabIndex = 14;
@@ -1997,7 +2016,7 @@
             // label52
             // 
             this.label52.AutoSize = true;
-            this.label52.Location = new System.Drawing.Point(23, 170);
+            this.label52.Location = new System.Drawing.Point(502, 147);
             this.label52.Name = "label52";
             this.label52.Size = new System.Drawing.Size(34, 13);
             this.label52.TabIndex = 13;
@@ -2005,7 +2024,7 @@
             // 
             // adminEdytujMiasto
             // 
-            this.adminEdytujMiasto.Location = new System.Drawing.Point(100, 139);
+            this.adminEdytujMiasto.Location = new System.Drawing.Point(585, 116);
             this.adminEdytujMiasto.Name = "adminEdytujMiasto";
             this.adminEdytujMiasto.Size = new System.Drawing.Size(100, 20);
             this.adminEdytujMiasto.TabIndex = 12;
@@ -2013,7 +2032,7 @@
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(327, 165);
+            this.label45.Location = new System.Drawing.Point(27, 62);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(155, 13);
             this.label45.TabIndex = 11;
@@ -2021,35 +2040,35 @@
             // 
             // adminEdytujLogin
             // 
-            this.adminEdytujLogin.Location = new System.Drawing.Point(422, 65);
+            this.adminEdytujLogin.Location = new System.Drawing.Point(390, 47);
             this.adminEdytujLogin.Name = "adminEdytujLogin";
             this.adminEdytujLogin.Size = new System.Drawing.Size(85, 20);
             this.adminEdytujLogin.TabIndex = 10;
             // 
             // adminEdytujZip
             // 
-            this.adminEdytujZip.Location = new System.Drawing.Point(100, 113);
+            this.adminEdytujZip.Location = new System.Drawing.Point(585, 89);
             this.adminEdytujZip.Name = "adminEdytujZip";
             this.adminEdytujZip.Size = new System.Drawing.Size(100, 20);
             this.adminEdytujZip.TabIndex = 9;
             // 
             // adminEdytujNazwisko
             // 
-            this.adminEdytujNazwisko.Location = new System.Drawing.Point(100, 89);
+            this.adminEdytujNazwisko.Location = new System.Drawing.Point(585, 65);
             this.adminEdytujNazwisko.Name = "adminEdytujNazwisko";
             this.adminEdytujNazwisko.Size = new System.Drawing.Size(100, 20);
             this.adminEdytujNazwisko.TabIndex = 8;
             // 
             // adminEdytujImie
             // 
-            this.adminEdytujImie.Location = new System.Drawing.Point(100, 67);
+            this.adminEdytujImie.Location = new System.Drawing.Point(585, 43);
             this.adminEdytujImie.Name = "adminEdytujImie";
             this.adminEdytujImie.Size = new System.Drawing.Size(100, 20);
             this.adminEdytujImie.TabIndex = 7;
             // 
             // buttonAdminEdytujUzytkownika
             // 
-            this.buttonAdminEdytujUzytkownika.Location = new System.Drawing.Point(665, 366);
+            this.buttonAdminEdytujUzytkownika.Location = new System.Drawing.Point(585, 314);
             this.buttonAdminEdytujUzytkownika.Name = "buttonAdminEdytujUzytkownika";
             this.buttonAdminEdytujUzytkownika.Size = new System.Drawing.Size(111, 31);
             this.buttonAdminEdytujUzytkownika.TabIndex = 6;
@@ -2060,7 +2079,7 @@
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(23, 143);
+            this.label46.Location = new System.Drawing.Point(502, 120);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(41, 13);
             this.label46.TabIndex = 5;
@@ -2069,7 +2088,7 @@
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(22, 118);
+            this.label47.Location = new System.Drawing.Point(501, 95);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(77, 13);
             this.label47.TabIndex = 4;
@@ -2078,7 +2097,7 @@
             // label48
             // 
             this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(366, 68);
+            this.label48.Location = new System.Drawing.Point(334, 50);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(36, 13);
             this.label48.TabIndex = 3;
@@ -2087,7 +2106,7 @@
             // label49
             // 
             this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(23, 95);
+            this.label49.Location = new System.Drawing.Point(502, 72);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(56, 13);
             this.label49.TabIndex = 2;
@@ -2096,7 +2115,7 @@
             // label50
             // 
             this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(22, 68);
+            this.label50.Location = new System.Drawing.Point(504, 45);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(29, 13);
             this.label50.TabIndex = 1;
@@ -2111,25 +2130,6 @@
             this.label51.TabIndex = 0;
             this.label51.Text = "Edytuj użytkowników";
             // 
-            // listBoxNOUsers
-            // 
-            this.listBoxNOUsers.FormattingEnabled = true;
-            this.listBoxNOUsers.Location = new System.Drawing.Point(322, 186);
-            this.listBoxNOUsers.Name = "listBoxNOUsers";
-            this.listBoxNOUsers.Size = new System.Drawing.Size(197, 225);
-            this.listBoxNOUsers.TabIndex = 21;
-            this.listBoxNOUsers.SelectedIndexChanged += new System.EventHandler(this.listBoxNOUsers_SelectedIndexChanged);
-            // 
-            // refreshList
-            // 
-            this.refreshList.Location = new System.Drawing.Point(525, 198);
-            this.refreshList.Name = "refreshList";
-            this.refreshList.Size = new System.Drawing.Size(75, 23);
-            this.refreshList.TabIndex = 22;
-            this.refreshList.Text = "Odśwież";
-            this.refreshList.UseVisualStyleBackColor = true;
-            this.refreshList.Click += new System.EventHandler(this.refreshList_Click);
-            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2137,8 +2137,6 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.labelZalogowanyJako);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.panelEdytujUzytkownikow);
-            this.Controls.Add(this.panelModyfikujProdukt);
             this.Controls.Add(this.panelDodajProdukt);
             this.Controls.Add(this.panelTwojeZamowienia);
             this.Controls.Add(this.panelPrzejdzDoKasy);
@@ -2149,6 +2147,8 @@
             this.Controls.Add(this.panelNowosci);
             this.Controls.Add(this.panelTop1);
             this.Controls.Add(this.panelRejestracja);
+            this.Controls.Add(this.panelEdytujUzytkownikow);
+            this.Controls.Add(this.panelModyfikujProdukt);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Home";
