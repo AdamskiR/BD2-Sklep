@@ -1090,7 +1090,7 @@ namespace Sklep
                     cnn4.Open();
                     SqlCommand cmd = new SqlCommand(querry, cnn4);
                     cmd.Parameters.Add("@id", SqlDbType.NChar).Value = listBoxNOProducts2.SelectedValue;
-                    cmd.Parameters.Add("@productname", SqlDbType.NChar).Value = ModyfikujNazwa.Text;
+                    cmd.Parameters.Add("@productname", SqlDbType.NChar).Value = ModyfikujNazwa.Text; //dodać sprawdzanie czy produkt o podanej nazwie istnieje
                     cmd.Parameters.Add("@productprice", SqlDbType.Decimal).Value = ModyfikujCena.Text;
                     cmd.Parameters.Add("@productdesc", SqlDbType.NChar).Value = ModyfikujOpis.Text;
                     cmd.Parameters.Add("@productstock", SqlDbType.NChar).Value = ModyfikujIlosc.Text;
@@ -1125,7 +1125,7 @@ namespace Sklep
                     cnn4.Open();
                     SqlCommand cmd = new SqlCommand(querry, cnn4);
                     cmd.Parameters.Add("@id", SqlDbType.NChar).Value = listBoxNOUsers.SelectedValue;
-                    cmd.Parameters.Add("@username", SqlDbType.NChar).Value = adminEdytujLogin.Text;
+                    cmd.Parameters.Add("@username", SqlDbType.NChar).Value = adminEdytujLogin.Text; //dodać sprawdzanie czy login jest zajęty
                     cmd.Parameters.Add("@password", SqlDbType.NChar).Value = adminEdytujHaslo.Text;
                     cmd.Parameters.Add("@email", SqlDbType.NChar).Value = adminEdytujMail.Text;
                     cmd.Parameters.Add("@firstname", SqlDbType.NChar).Value = adminEdytujImie.Text;
@@ -1144,6 +1144,11 @@ namespace Sklep
                 }
 
             }
+        }
+
+        private void refreshList_Click(object sender, EventArgs e)
+        {
+            wylistujUserow();
         }
     }
 }

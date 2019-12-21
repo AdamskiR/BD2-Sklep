@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label label25;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zalogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -225,6 +225,7 @@
             this.label50 = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
             this.listBoxNOUsers = new System.Windows.Forms.ListBox();
+            this.refreshList = new System.Windows.Forms.Button();
             label25 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
@@ -408,21 +409,21 @@
             // dodajProduktToolStripMenuItem
             // 
             this.dodajProduktToolStripMenuItem.Name = "dodajProduktToolStripMenuItem";
-            this.dodajProduktToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.dodajProduktToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.dodajProduktToolStripMenuItem.Text = "Dodaj Produkt";
             this.dodajProduktToolStripMenuItem.Click += new System.EventHandler(this.dodajProduktToolStripMenuItem_Click);
             // 
             // modyfikujProduktToolStripMenuItem
             // 
             this.modyfikujProduktToolStripMenuItem.Name = "modyfikujProduktToolStripMenuItem";
-            this.modyfikujProduktToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.modyfikujProduktToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.modyfikujProduktToolStripMenuItem.Text = "Modyfikuj Produkt";
             this.modyfikujProduktToolStripMenuItem.Click += new System.EventHandler(this.modyfikujProduktToolStripMenuItem_Click);
             // 
             // ądzajUżytkownikamiToolStripMenuItem
             // 
             this.ądzajUżytkownikamiToolStripMenuItem.Name = "ądzajUżytkownikamiToolStripMenuItem";
-            this.ądzajUżytkownikamiToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.ądzajUżytkownikamiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ądzajUżytkownikamiToolStripMenuItem.Text = "Edytuj userów";
             this.ądzajUżytkownikamiToolStripMenuItem.Click += new System.EventHandler(this.ądzajUżytkownikamiToolStripMenuItem_Click);
             // 
@@ -1521,8 +1522,8 @@
             // 
             this.dataGridViewWKoszyku.AllowUserToAddRows = false;
             this.dataGridViewWKoszyku.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewWKoszyku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWKoszyku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NAme,
@@ -1910,6 +1911,7 @@
             // 
             // panelEdytujUzytkownikow
             // 
+            this.panelEdytujUzytkownikow.Controls.Add(this.refreshList);
             this.panelEdytujUzytkownikow.Controls.Add(this.listBoxNOUsers);
             this.panelEdytujUzytkownikow.Controls.Add(this.adminEdytujMail);
             this.panelEdytujUzytkownikow.Controls.Add(this.label55);
@@ -2047,7 +2049,7 @@
             // 
             // buttonAdminEdytujUzytkownika
             // 
-            this.buttonAdminEdytujUzytkownika.Location = new System.Drawing.Point(596, 318);
+            this.buttonAdminEdytujUzytkownika.Location = new System.Drawing.Point(665, 366);
             this.buttonAdminEdytujUzytkownika.Name = "buttonAdminEdytujUzytkownika";
             this.buttonAdminEdytujUzytkownika.Size = new System.Drawing.Size(111, 31);
             this.buttonAdminEdytujUzytkownika.TabIndex = 6;
@@ -2103,11 +2105,11 @@
             // label51
             // 
             this.label51.AutoSize = true;
-            this.label51.Location = new System.Drawing.Point(123, 21);
+            this.label51.Location = new System.Drawing.Point(27, 32);
             this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(206, 13);
+            this.label51.Size = new System.Drawing.Size(106, 13);
             this.label51.TabIndex = 0;
-            this.label51.Text = "Edytuj użytkowników(not implemented yet)";
+            this.label51.Text = "Edytuj użytkowników";
             // 
             // listBoxNOUsers
             // 
@@ -2117,6 +2119,16 @@
             this.listBoxNOUsers.Size = new System.Drawing.Size(197, 225);
             this.listBoxNOUsers.TabIndex = 21;
             this.listBoxNOUsers.SelectedIndexChanged += new System.EventHandler(this.listBoxNOUsers_SelectedIndexChanged);
+            // 
+            // refreshList
+            // 
+            this.refreshList.Location = new System.Drawing.Point(525, 198);
+            this.refreshList.Name = "refreshList";
+            this.refreshList.Size = new System.Drawing.Size(75, 23);
+            this.refreshList.TabIndex = 22;
+            this.refreshList.Text = "Odśwież";
+            this.refreshList.UseVisualStyleBackColor = true;
+            this.refreshList.Click += new System.EventHandler(this.refreshList_Click);
             // 
             // Home
             // 
@@ -2373,5 +2385,6 @@
         private System.Windows.Forms.ListBox listBoxNOVendors2;
         private System.Windows.Forms.ListBox listBoxNOCategories2;
         private System.Windows.Forms.ListBox listBoxNOUsers;
+        private System.Windows.Forms.Button refreshList;
     }
 }
