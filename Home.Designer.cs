@@ -171,6 +171,8 @@
             this.labelOTK = new System.Windows.Forms.Label();
             this.buttonPDKKup = new System.Windows.Forms.Button();
             this.panelDodajProdukt = new System.Windows.Forms.Panel();
+            this.listBoxNOVendors = new System.Windows.Forms.ListBox();
+            this.listBoxNOCategories = new System.Windows.Forms.ListBox();
             this.DodajOpis = new System.Windows.Forms.TextBox();
             this.DodajIlosc = new System.Windows.Forms.TextBox();
             this.DodajCena = new System.Windows.Forms.TextBox();
@@ -217,6 +219,7 @@
             this.label49 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
+            this.label56 = new System.Windows.Forms.Label();
             label25 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
@@ -1606,6 +1609,9 @@
             // 
             // panelDodajProdukt
             // 
+            this.panelDodajProdukt.Controls.Add(this.label56);
+            this.panelDodajProdukt.Controls.Add(this.listBoxNOVendors);
+            this.panelDodajProdukt.Controls.Add(this.listBoxNOCategories);
             this.panelDodajProdukt.Controls.Add(this.DodajOpis);
             this.panelDodajProdukt.Controls.Add(this.DodajIlosc);
             this.panelDodajProdukt.Controls.Add(this.DodajCena);
@@ -1621,6 +1627,22 @@
             this.panelDodajProdukt.Name = "panelDodajProdukt";
             this.panelDodajProdukt.Size = new System.Drawing.Size(797, 429);
             this.panelDodajProdukt.TabIndex = 12;
+            // 
+            // listBoxNOVendors
+            // 
+            this.listBoxNOVendors.FormattingEnabled = true;
+            this.listBoxNOVendors.Location = new System.Drawing.Point(323, 173);
+            this.listBoxNOVendors.Name = "listBoxNOVendors";
+            this.listBoxNOVendors.Size = new System.Drawing.Size(244, 238);
+            this.listBoxNOVendors.TabIndex = 12;
+            // 
+            // listBoxNOCategories
+            // 
+            this.listBoxNOCategories.FormattingEnabled = true;
+            this.listBoxNOCategories.Location = new System.Drawing.Point(80, 172);
+            this.listBoxNOCategories.Name = "listBoxNOCategories";
+            this.listBoxNOCategories.Size = new System.Drawing.Size(237, 238);
+            this.listBoxNOCategories.TabIndex = 11;
             // 
             // DodajOpis
             // 
@@ -1663,11 +1685,11 @@
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(27, 216);
+            this.label37.Location = new System.Drawing.Point(80, 156);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(157, 13);
+            this.label37.Size = new System.Drawing.Size(55, 13);
             this.label37.TabIndex = 5;
-            this.label37.Text = "Kategorie: (na razie na sztywno)";
+            this.label37.Text = "Kategorie:";
             // 
             // label36
             // 
@@ -2032,15 +2054,25 @@
             this.label51.TabIndex = 0;
             this.label51.Text = "Edytuj użytkowników(not implemented yet)";
             // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(329, 156);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(59, 13);
+            this.label56.TabIndex = 13;
+            this.label56.Text = "Producent:";
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panelTwojeZamowienia);
             this.Controls.Add(this.labelZalogowanyJako);
-            this.Controls.Add(this.panelPrzejdzDoKasy);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.panelDodajProdukt);
+            this.Controls.Add(this.panelTwojeZamowienia);
+            this.Controls.Add(this.panelPrzejdzDoKasy);
             this.Controls.Add(this.panelNaszaOferta);
             this.Controls.Add(this.panelEdytujSwojeDane);
             this.Controls.Add(this.panelWelcome);
@@ -2050,7 +2082,6 @@
             this.Controls.Add(this.panelRejestracja);
             this.Controls.Add(this.panelEdytujUzytkownikow);
             this.Controls.Add(this.panelModyfikujProdukt);
-            this.Controls.Add(this.panelDodajProdukt);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Home";
@@ -2279,5 +2310,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Cenazacalosc;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
         private System.Windows.Forms.DataGridViewTextBoxColumn Data;
+        private System.Windows.Forms.ListBox listBoxNOVendors;
+        private System.Windows.Forms.ListBox listBoxNOCategories;
+        private System.Windows.Forms.Label label56;
     }
 }

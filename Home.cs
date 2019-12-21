@@ -893,7 +893,10 @@ namespace Sklep
 
         private void dodajProduktToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            wylistujKategorie();
+            wylistujVendorow();
             panelDodajProdukt.BringToFront();
+
         }
 
         private void buttonDodajProd_Click(object sender, EventArgs e)
@@ -911,8 +914,8 @@ namespace Sklep
                     cmd.Parameters.Add("@opis", SqlDbType.NChar).Value = DodajOpis.Text;
                     cmd.Parameters.Add("@cena", SqlDbType.Decimal).Value = Convert.ToDecimal(DodajCena.Text);
                     cmd.Parameters.Add("@ilosc", SqlDbType.Float).Value = Convert.ToDouble(DodajIlosc.Text);
-                    cmd.Parameters.Add("@kategoria", SqlDbType.Int).Value = 1;
-                    cmd.Parameters.Add("@vendor", SqlDbType.Int).Value = 1;
+                    cmd.Parameters.Add("@kategoria", SqlDbType.Int).Value = listBoxNOCategories.SelectedValue;
+                    cmd.Parameters.Add("@vendor", SqlDbType.Int).Value = listBoxNOVendors.SelectedValue;
                     cmd.ExecuteNonQuery();
                     cnn4.Close();
                     MessageBox.Show("Produkt dodany!");
@@ -921,6 +924,46 @@ namespace Sklep
                 {
                     MessageBox.Show("ERROR:" + ex.Message);
                 }
+            }
+        }
+        private void wylistujKategorie()
+        {
+            string querry = "SELECT ID, CategoryName FROM Categories";
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(querry, connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            {
+       
+
+
+                DataTable tabela_cat = new DataTable();
+                adapter.Fill(tabela_cat);
+
+                listBoxNOCategories.DisplayMember = "CategoryName";
+                listBoxNOCategories.ValueMember = "ID";
+                listBoxNOCategories.DataSource = tabela_cat;
+
+            }
+        }
+        private void wylistujVendorow()
+        {
+            string querry = "SELECT ID, Vendor FROM Vendors";
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(querry, connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            {
+
+
+
+                DataTable tabela_ven = new DataTable();
+                adapter.Fill(tabela_ven);
+
+                listBoxNOVendors.DisplayMember = "Vendor";
+                listBoxNOVendors.ValueMember = "ID";
+                listBoxNOVendors.DataSource = tabela_ven;
+
             }
         }
         private void modyfikujProduktToolStripMenuItem_Click(object sender, EventArgs e)
