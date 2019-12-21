@@ -898,7 +898,7 @@ namespace Sklep
 
         private void buttonDodajProd_Click(object sender, EventArgs e)
         {
-            string querry = "INSERT INTO Products(ProductName, ProductDesc, ProductPrice, ProductStock, ProductCategoryID, VendorID) Values(@nazwa, @opis,@cena,@ilosc,@kategoria,@vendor)";
+            string querry = "dbo.AddNewProductTransaction";
             using (SqlConnection cnn4 = new SqlConnection(connectionString))
             {
 
@@ -906,6 +906,7 @@ namespace Sklep
                 {
                     cnn4.Open();
                     SqlCommand cmd = new SqlCommand(querry, cnn4);
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@nazwa", SqlDbType.NChar).Value = DodajNazwa.Text;
                     cmd.Parameters.Add("@opis", SqlDbType.NChar).Value = DodajOpis.Text;
                     cmd.Parameters.Add("@cena", SqlDbType.Decimal).Value = Convert.ToDecimal(DodajCena.Text);
