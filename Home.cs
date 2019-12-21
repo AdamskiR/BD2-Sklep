@@ -1011,6 +1011,7 @@ namespace Sklep
                 {
                     MessageBox.Show("ERROR:" + ex.Message);
                 }
+                cnn4.Close();
             }
 
         }
