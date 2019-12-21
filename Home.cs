@@ -373,6 +373,9 @@ namespace Sklep
                 listBoxNOProdukty.DisplayMember = "ProductName";
                 listBoxNOProdukty.ValueMember = "ID";
                 listBoxNOProdukty.DataSource = tabela_prod;
+                listBoxNOProducts2.DisplayMember = "ProductName";
+                listBoxNOProducts2.ValueMember = "ID";
+                listBoxNOProducts2.DataSource = tabela_prod;
 
             }
         }
@@ -943,6 +946,9 @@ namespace Sklep
                 listBoxNOCategories.DisplayMember = "CategoryName";
                 listBoxNOCategories.ValueMember = "ID";
                 listBoxNOCategories.DataSource = tabela_cat;
+                listBoxNOCategories2.DisplayMember = "CategoryName";
+                listBoxNOCategories2.ValueMember = "ID";
+                listBoxNOCategories2.DataSource = tabela_cat;
 
             }
         }
@@ -964,16 +970,59 @@ namespace Sklep
                 listBoxNOVendors.ValueMember = "ID";
                 listBoxNOVendors.DataSource = tabela_ven;
 
+                listBoxNOVendors2.DisplayMember = "Vendor";
+                listBoxNOVendors2.ValueMember = "ID";
+                listBoxNOVendors2.DataSource = tabela_ven;
+
             }
         }
         private void modyfikujProduktToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            wylistujProdukty();
+            wylistujKategorie();
+            wylistujVendorow();
             panelModyfikujProdukt.BringToFront();
         }
 
+        private void wczytajModyfikacje()
+        {
+            string querry = "SELECT ProductName, ProductPrice, ProductDesc, ProductStock, ProductCategoryID, VendorID FROM Products WHERE ID = @id";
+            using (SqlConnection cnn4 = new SqlConnection(connectionString))
+            {
+
+                try
+                {
+                    cnn4.Open();
+                    SqlCommand cmd = new SqlCommand(querry, cnn4);
+                    cmd.Parameters.Add("@id", SqlDbType.NChar).Value = listBoxNOProducts2.SelectedValue;
+                    SqlDataReader dr2 = cmd.ExecuteReader();
+
+                    while (dr2.Read())
+                    {
+                        ModyfikujNazwa.Text = dr2.GetValue(0).ToString().TrimEnd();
+                        ModyfikujCena.Text = dr2.GetValue(1).ToString().TrimEnd();
+                        ModyfikujOpis.Text = dr2.GetValue(2).ToString().TrimEnd();
+                        ModyfikujIlosc.Text = dr2.GetValue(3).ToString().TrimEnd();
+                        listBoxNOCategories2.SelectedValue = dr2.GetValue(4);
+                        listBoxNOVendors2.SelectedValue = dr2.GetValue(5);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                }
+            }
+
+        }
+    
         private void panelTwojeZamowienia_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void listBoxNOProducts2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            wczytajModyfikacje();
         }
     }
     

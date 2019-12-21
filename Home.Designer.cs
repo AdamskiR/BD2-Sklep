@@ -171,6 +171,7 @@
             this.labelOTK = new System.Windows.Forms.Label();
             this.buttonPDKKup = new System.Windows.Forms.Button();
             this.panelDodajProdukt = new System.Windows.Forms.Panel();
+            this.label56 = new System.Windows.Forms.Label();
             this.listBoxNOVendors = new System.Windows.Forms.ListBox();
             this.listBoxNOCategories = new System.Windows.Forms.ListBox();
             this.DodajOpis = new System.Windows.Forms.TextBox();
@@ -186,6 +187,10 @@
             this.label32 = new System.Windows.Forms.Label();
             this.panelModyfikujProdukt = new System.Windows.Forms.Panel();
             this.label44 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
+            this.listBoxNOProducts2 = new System.Windows.Forms.ListBox();
+            this.listBoxNOVendors2 = new System.Windows.Forms.ListBox();
+            this.listBoxNOCategories2 = new System.Windows.Forms.ListBox();
             this.ModyfikujOpis = new System.Windows.Forms.TextBox();
             this.ModyfikujIlosc = new System.Windows.Forms.TextBox();
             this.ModyfikujCena = new System.Windows.Forms.TextBox();
@@ -219,7 +224,6 @@
             this.label49 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
-            this.label56 = new System.Windows.Forms.Label();
             label25 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
@@ -1628,6 +1632,15 @@
             this.panelDodajProdukt.Size = new System.Drawing.Size(797, 429);
             this.panelDodajProdukt.TabIndex = 12;
             // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(329, 156);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(59, 13);
+            this.label56.TabIndex = 13;
+            this.label56.Text = "Producent:";
+            // 
             // listBoxNOVendors
             // 
             this.listBoxNOVendors.FormattingEnabled = true;
@@ -1739,6 +1752,10 @@
             // panelModyfikujProdukt
             // 
             this.panelModyfikujProdukt.Controls.Add(this.label44);
+            this.panelModyfikujProdukt.Controls.Add(this.label57);
+            this.panelModyfikujProdukt.Controls.Add(this.listBoxNOProducts2);
+            this.panelModyfikujProdukt.Controls.Add(this.listBoxNOVendors2);
+            this.panelModyfikujProdukt.Controls.Add(this.listBoxNOCategories2);
             this.panelModyfikujProdukt.Controls.Add(this.ModyfikujOpis);
             this.panelModyfikujProdukt.Controls.Add(this.ModyfikujIlosc);
             this.panelModyfikujProdukt.Controls.Add(this.ModyfikujCena);
@@ -1758,36 +1775,70 @@
             // label44
             // 
             this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(374, 220);
+            this.label44.Location = new System.Drawing.Point(415, 169);
             this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(374, 13);
-            this.label44.TabIndex = 11;
-            this.label44.Text = "Tutaj wyświetlimy liste z produktami, po kliknięciu dane będą ładowane do pól";
+            this.label44.Size = new System.Drawing.Size(59, 13);
+            this.label44.TabIndex = 16;
+            this.label44.Text = "Producent:";
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(26, 44);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(87, 13);
+            this.label57.TabIndex = 15;
+            this.label57.Text = "Wybierz produkt:";
+            // 
+            // listBoxNOProducts2
+            // 
+            this.listBoxNOProducts2.FormattingEnabled = true;
+            this.listBoxNOProducts2.Location = new System.Drawing.Point(23, 60);
+            this.listBoxNOProducts2.Name = "listBoxNOProducts2";
+            this.listBoxNOProducts2.Size = new System.Drawing.Size(198, 225);
+            this.listBoxNOProducts2.TabIndex = 14;
+            this.listBoxNOProducts2.SelectedIndexChanged += new System.EventHandler(this.listBoxNOProducts2_SelectedIndexChanged);
+            // 
+            // listBoxNOVendors2
+            // 
+            this.listBoxNOVendors2.FormattingEnabled = true;
+            this.listBoxNOVendors2.Location = new System.Drawing.Point(412, 188);
+            this.listBoxNOVendors2.Name = "listBoxNOVendors2";
+            this.listBoxNOVendors2.Size = new System.Drawing.Size(138, 186);
+            this.listBoxNOVendors2.TabIndex = 13;
+            // 
+            // listBoxNOCategories2
+            // 
+            this.listBoxNOCategories2.FormattingEnabled = true;
+            this.listBoxNOCategories2.Location = new System.Drawing.Point(249, 189);
+            this.listBoxNOCategories2.Name = "listBoxNOCategories2";
+            this.listBoxNOCategories2.Size = new System.Drawing.Size(145, 186);
+            this.listBoxNOCategories2.TabIndex = 12;
             // 
             // ModyfikujOpis
             // 
-            this.ModyfikujOpis.Location = new System.Drawing.Point(422, 65);
+            this.ModyfikujOpis.Location = new System.Drawing.Point(264, 125);
             this.ModyfikujOpis.Name = "ModyfikujOpis";
             this.ModyfikujOpis.Size = new System.Drawing.Size(345, 20);
             this.ModyfikujOpis.TabIndex = 10;
             // 
             // ModyfikujIlosc
             // 
-            this.ModyfikujIlosc.Location = new System.Drawing.Point(143, 114);
+            this.ModyfikujIlosc.Location = new System.Drawing.Point(348, 102);
             this.ModyfikujIlosc.Name = "ModyfikujIlosc";
             this.ModyfikujIlosc.Size = new System.Drawing.Size(100, 20);
             this.ModyfikujIlosc.TabIndex = 9;
             // 
             // ModyfikujCena
             // 
-            this.ModyfikujCena.Location = new System.Drawing.Point(143, 88);
+            this.ModyfikujCena.Location = new System.Drawing.Point(348, 79);
             this.ModyfikujCena.Name = "ModyfikujCena";
             this.ModyfikujCena.Size = new System.Drawing.Size(100, 20);
             this.ModyfikujCena.TabIndex = 8;
             // 
             // ModyfikujNazwa
             // 
-            this.ModyfikujNazwa.Location = new System.Drawing.Point(143, 63);
+            this.ModyfikujNazwa.Location = new System.Drawing.Point(348, 57);
             this.ModyfikujNazwa.Name = "ModyfikujNazwa";
             this.ModyfikujNazwa.Size = new System.Drawing.Size(100, 20);
             this.ModyfikujNazwa.TabIndex = 7;
@@ -1804,16 +1855,16 @@
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(27, 216);
+            this.label38.Location = new System.Drawing.Point(246, 169);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(157, 13);
+            this.label38.Size = new System.Drawing.Size(55, 13);
             this.label38.TabIndex = 5;
-            this.label38.Text = "Kategorie: (na razie na sztywno)";
+            this.label38.Text = "Kategoria:";
             // 
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(98, 117);
+            this.label39.Location = new System.Drawing.Point(306, 107);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(32, 13);
             this.label39.TabIndex = 4;
@@ -1822,7 +1873,7 @@
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(366, 68);
+            this.label40.Location = new System.Drawing.Point(230, 128);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(31, 13);
             this.label40.TabIndex = 3;
@@ -1831,7 +1882,7 @@
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(96, 94);
+            this.label41.Location = new System.Drawing.Point(306, 81);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(35, 13);
             this.label41.TabIndex = 2;
@@ -1840,7 +1891,7 @@
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(46, 66);
+            this.label42.Location = new System.Drawing.Point(256, 60);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(91, 13);
             this.label42.TabIndex = 1;
@@ -2054,15 +2105,6 @@
             this.label51.TabIndex = 0;
             this.label51.Text = "Edytuj użytkowników(not implemented yet)";
             // 
-            // label56
-            // 
-            this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(329, 156);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(59, 13);
-            this.label56.TabIndex = 13;
-            this.label56.Text = "Producent:";
-            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2070,6 +2112,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.labelZalogowanyJako);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.panelModyfikujProdukt);
             this.Controls.Add(this.panelDodajProdukt);
             this.Controls.Add(this.panelTwojeZamowienia);
             this.Controls.Add(this.panelPrzejdzDoKasy);
@@ -2081,7 +2124,6 @@
             this.Controls.Add(this.panelTop1);
             this.Controls.Add(this.panelRejestracja);
             this.Controls.Add(this.panelEdytujUzytkownikow);
-            this.Controls.Add(this.panelModyfikujProdukt);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Home";
@@ -2264,7 +2306,6 @@
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Panel panelModyfikujProdukt;
-        private System.Windows.Forms.Label label44;
         private System.Windows.Forms.TextBox ModyfikujOpis;
         private System.Windows.Forms.TextBox ModyfikujIlosc;
         private System.Windows.Forms.TextBox ModyfikujCena;
@@ -2313,5 +2354,10 @@
         private System.Windows.Forms.ListBox listBoxNOVendors;
         private System.Windows.Forms.ListBox listBoxNOCategories;
         private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.ListBox listBoxNOProducts2;
+        private System.Windows.Forms.ListBox listBoxNOVendors2;
+        private System.Windows.Forms.ListBox listBoxNOCategories2;
     }
 }
