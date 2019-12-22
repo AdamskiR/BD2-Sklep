@@ -171,6 +171,7 @@
             this.labelOTK = new System.Windows.Forms.Label();
             this.buttonPDKKup = new System.Windows.Forms.Button();
             this.panelDodajProdukt = new System.Windows.Forms.Panel();
+            this.NazwaDodajAlert = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
             this.listBoxNOVendors = new System.Windows.Forms.ListBox();
             this.listBoxNOCategories = new System.Windows.Forms.ListBox();
@@ -186,6 +187,8 @@
             this.label33 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.panelModyfikujProdukt = new System.Windows.Forms.Panel();
+            this.OdswiezProdukty = new System.Windows.Forms.Button();
+            this.NazwaAlert = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
             this.label57 = new System.Windows.Forms.Label();
             this.listBoxNOProducts2 = new System.Windows.Forms.ListBox();
@@ -226,6 +229,7 @@
             this.label49 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
+            this.EditLoginValidation = new System.Windows.Forms.Label();
             label25 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
@@ -1615,6 +1619,7 @@
             // 
             // panelDodajProdukt
             // 
+            this.panelDodajProdukt.Controls.Add(this.NazwaDodajAlert);
             this.panelDodajProdukt.Controls.Add(this.label56);
             this.panelDodajProdukt.Controls.Add(this.listBoxNOVendors);
             this.panelDodajProdukt.Controls.Add(this.listBoxNOCategories);
@@ -1633,6 +1638,14 @@
             this.panelDodajProdukt.Name = "panelDodajProdukt";
             this.panelDodajProdukt.Size = new System.Drawing.Size(797, 429);
             this.panelDodajProdukt.TabIndex = 12;
+            // 
+            // NazwaDodajAlert
+            // 
+            this.NazwaDodajAlert.AutoSize = true;
+            this.NazwaDodajAlert.Location = new System.Drawing.Point(266, 68);
+            this.NazwaDodajAlert.Name = "NazwaDodajAlert";
+            this.NazwaDodajAlert.Size = new System.Drawing.Size(0, 13);
+            this.NazwaDodajAlert.TabIndex = 14;
             // 
             // label56
             // 
@@ -1661,7 +1674,7 @@
             // 
             // DodajOpis
             // 
-            this.DodajOpis.Location = new System.Drawing.Point(422, 65);
+            this.DodajOpis.Location = new System.Drawing.Point(384, 110);
             this.DodajOpis.Name = "DodajOpis";
             this.DodajOpis.Size = new System.Drawing.Size(345, 20);
             this.DodajOpis.TabIndex = 10;
@@ -1718,7 +1731,7 @@
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(366, 68);
+            this.label35.Location = new System.Drawing.Point(347, 114);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(31, 13);
             this.label35.TabIndex = 3;
@@ -1745,7 +1758,7 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(123, 21);
+            this.label32.Location = new System.Drawing.Point(64, 36);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(102, 13);
             this.label32.TabIndex = 0;
@@ -1753,6 +1766,8 @@
             // 
             // panelModyfikujProdukt
             // 
+            this.panelModyfikujProdukt.Controls.Add(this.OdswiezProdukty);
+            this.panelModyfikujProdukt.Controls.Add(this.NazwaAlert);
             this.panelModyfikujProdukt.Controls.Add(this.label44);
             this.panelModyfikujProdukt.Controls.Add(this.label57);
             this.panelModyfikujProdukt.Controls.Add(this.listBoxNOProducts2);
@@ -1773,6 +1788,24 @@
             this.panelModyfikujProdukt.Name = "panelModyfikujProdukt";
             this.panelModyfikujProdukt.Size = new System.Drawing.Size(797, 429);
             this.panelModyfikujProdukt.TabIndex = 14;
+            // 
+            // OdswiezProdukty
+            // 
+            this.OdswiezProdukty.Location = new System.Drawing.Point(23, 291);
+            this.OdswiezProdukty.Name = "OdswiezProdukty";
+            this.OdswiezProdukty.Size = new System.Drawing.Size(75, 23);
+            this.OdswiezProdukty.TabIndex = 18;
+            this.OdswiezProdukty.Text = "Odśwież";
+            this.OdswiezProdukty.UseVisualStyleBackColor = true;
+            this.OdswiezProdukty.Click += new System.EventHandler(this.OdswiezProdukty_Click);
+            // 
+            // NazwaAlert
+            // 
+            this.NazwaAlert.AutoSize = true;
+            this.NazwaAlert.Location = new System.Drawing.Point(454, 60);
+            this.NazwaAlert.Name = "NazwaAlert";
+            this.NazwaAlert.Size = new System.Drawing.Size(0, 13);
+            this.NazwaAlert.TabIndex = 17;
             // 
             // label44
             // 
@@ -1911,6 +1944,7 @@
             // 
             // panelEdytujUzytkownikow
             // 
+            this.panelEdytujUzytkownikow.Controls.Add(this.EditLoginValidation);
             this.panelEdytujUzytkownikow.Controls.Add(this.refreshList);
             this.panelEdytujUzytkownikow.Controls.Add(this.listBoxNOUsers);
             this.panelEdytujUzytkownikow.Controls.Add(this.adminEdytujMail);
@@ -1992,22 +2026,22 @@
             // 
             // adminEdytujTel
             // 
-            this.adminEdytujTel.Location = new System.Drawing.Point(585, 167);
+            this.adminEdytujTel.Location = new System.Drawing.Point(390, 247);
             this.adminEdytujTel.Name = "adminEdytujTel";
-            this.adminEdytujTel.Size = new System.Drawing.Size(100, 20);
+            this.adminEdytujTel.Size = new System.Drawing.Size(85, 20);
             this.adminEdytujTel.TabIndex = 16;
             // 
             // adminEdytujUlica
             // 
-            this.adminEdytujUlica.Location = new System.Drawing.Point(585, 144);
+            this.adminEdytujUlica.Location = new System.Drawing.Point(390, 219);
             this.adminEdytujUlica.Name = "adminEdytujUlica";
-            this.adminEdytujUlica.Size = new System.Drawing.Size(100, 20);
+            this.adminEdytujUlica.Size = new System.Drawing.Size(85, 20);
             this.adminEdytujUlica.TabIndex = 15;
             // 
             // label53
             // 
             this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(502, 170);
+            this.label53.Location = new System.Drawing.Point(302, 250);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(82, 13);
             this.label53.TabIndex = 14;
@@ -2016,7 +2050,7 @@
             // label52
             // 
             this.label52.AutoSize = true;
-            this.label52.Location = new System.Drawing.Point(502, 147);
+            this.label52.Location = new System.Drawing.Point(339, 222);
             this.label52.Name = "label52";
             this.label52.Size = new System.Drawing.Size(34, 13);
             this.label52.TabIndex = 13;
@@ -2024,9 +2058,9 @@
             // 
             // adminEdytujMiasto
             // 
-            this.adminEdytujMiasto.Location = new System.Drawing.Point(585, 116);
+            this.adminEdytujMiasto.Location = new System.Drawing.Point(390, 193);
             this.adminEdytujMiasto.Name = "adminEdytujMiasto";
-            this.adminEdytujMiasto.Size = new System.Drawing.Size(100, 20);
+            this.adminEdytujMiasto.Size = new System.Drawing.Size(85, 20);
             this.adminEdytujMiasto.TabIndex = 12;
             // 
             // label45
@@ -2047,23 +2081,23 @@
             // 
             // adminEdytujZip
             // 
-            this.adminEdytujZip.Location = new System.Drawing.Point(585, 89);
+            this.adminEdytujZip.Location = new System.Drawing.Point(390, 169);
             this.adminEdytujZip.Name = "adminEdytujZip";
-            this.adminEdytujZip.Size = new System.Drawing.Size(100, 20);
+            this.adminEdytujZip.Size = new System.Drawing.Size(85, 20);
             this.adminEdytujZip.TabIndex = 9;
             // 
             // adminEdytujNazwisko
             // 
-            this.adminEdytujNazwisko.Location = new System.Drawing.Point(585, 65);
+            this.adminEdytujNazwisko.Location = new System.Drawing.Point(390, 147);
             this.adminEdytujNazwisko.Name = "adminEdytujNazwisko";
-            this.adminEdytujNazwisko.Size = new System.Drawing.Size(100, 20);
+            this.adminEdytujNazwisko.Size = new System.Drawing.Size(85, 20);
             this.adminEdytujNazwisko.TabIndex = 8;
             // 
             // adminEdytujImie
             // 
-            this.adminEdytujImie.Location = new System.Drawing.Point(585, 43);
+            this.adminEdytujImie.Location = new System.Drawing.Point(390, 121);
             this.adminEdytujImie.Name = "adminEdytujImie";
-            this.adminEdytujImie.Size = new System.Drawing.Size(100, 20);
+            this.adminEdytujImie.Size = new System.Drawing.Size(85, 20);
             this.adminEdytujImie.TabIndex = 7;
             // 
             // buttonAdminEdytujUzytkownika
@@ -2079,7 +2113,7 @@
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(502, 120);
+            this.label46.Location = new System.Drawing.Point(335, 196);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(41, 13);
             this.label46.TabIndex = 5;
@@ -2088,7 +2122,7 @@
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(501, 95);
+            this.label47.Location = new System.Drawing.Point(299, 173);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(77, 13);
             this.label47.TabIndex = 4;
@@ -2106,7 +2140,7 @@
             // label49
             // 
             this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(502, 72);
+            this.label49.Location = new System.Drawing.Point(317, 152);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(56, 13);
             this.label49.TabIndex = 2;
@@ -2115,7 +2149,7 @@
             // label50
             // 
             this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(504, 45);
+            this.label50.Location = new System.Drawing.Point(341, 126);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(29, 13);
             this.label50.TabIndex = 1;
@@ -2130,6 +2164,14 @@
             this.label51.TabIndex = 0;
             this.label51.Text = "Edytuj użytkowników";
             // 
+            // EditLoginValidation
+            // 
+            this.EditLoginValidation.AutoSize = true;
+            this.EditLoginValidation.Location = new System.Drawing.Point(481, 51);
+            this.EditLoginValidation.Name = "EditLoginValidation";
+            this.EditLoginValidation.Size = new System.Drawing.Size(0, 13);
+            this.EditLoginValidation.TabIndex = 23;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2137,6 +2179,8 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.labelZalogowanyJako);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.panelEdytujUzytkownikow);
+            this.Controls.Add(this.panelModyfikujProdukt);
             this.Controls.Add(this.panelDodajProdukt);
             this.Controls.Add(this.panelTwojeZamowienia);
             this.Controls.Add(this.panelPrzejdzDoKasy);
@@ -2147,8 +2191,6 @@
             this.Controls.Add(this.panelNowosci);
             this.Controls.Add(this.panelTop1);
             this.Controls.Add(this.panelRejestracja);
-            this.Controls.Add(this.panelEdytujUzytkownikow);
-            this.Controls.Add(this.panelModyfikujProdukt);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Home";
@@ -2386,5 +2428,9 @@
         private System.Windows.Forms.ListBox listBoxNOCategories2;
         private System.Windows.Forms.ListBox listBoxNOUsers;
         private System.Windows.Forms.Button refreshList;
+        private System.Windows.Forms.Label NazwaDodajAlert;
+        private System.Windows.Forms.Label NazwaAlert;
+        private System.Windows.Forms.Button OdswiezProdukty;
+        private System.Windows.Forms.Label EditLoginValidation;
     }
 }

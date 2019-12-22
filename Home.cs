@@ -909,6 +909,24 @@ namespace Sklep
             using (SqlConnection cnn4 = new SqlConnection(connectionString))
             {
 
+                bool productNameTaken;
+                string querry2 = "SELECT ProductName, ID FROM Products WHERE ProductName=" + "'" + DodajNazwa.Text + "'";
+                SqlConnection cnn = new SqlConnection(connectionString);
+                cnn.Open();
+                SqlCommand cmd2 = new SqlCommand(querry2, cnn);
+                SqlDataReader dr = cmd2.ExecuteReader();
+                dr.Read();
+
+                if (dr.HasRows == true)
+                {
+                    NazwaDodajAlert.Text = "Nazwa produktu jest zajęta!";
+                    productNameTaken = true;
+                }
+                else
+                {
+                    NazwaDodajAlert.Text = " ";
+                    productNameTaken = false;
+                }
                 try
                 {
                     cnn4.Open();
@@ -920,9 +938,18 @@ namespace Sklep
                     cmd.Parameters.Add("@ilosc", SqlDbType.Float).Value = Convert.ToDouble(DodajIlosc.Text);
                     cmd.Parameters.Add("@kategoria", SqlDbType.Int).Value = listBoxNOCategories.SelectedValue;
                     cmd.Parameters.Add("@vendor", SqlDbType.Int).Value = listBoxNOVendors.SelectedValue;
-                    cmd.ExecuteNonQuery();
+                    if (productNameTaken == false)
+                    {
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Produkt dodany!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Popraw błędne informacje!");
+                    }
+                    
                     cnn4.Close();
-                    MessageBox.Show("Produkt dodany!");
+                    
                 }
                 catch (Exception ex)
                 {
@@ -1087,6 +1114,26 @@ namespace Sklep
 
                 try
                 {
+                    
+                    bool productNameTaken;
+                    string querry2 = "SELECT ProductName, ID FROM Products WHERE ProductName=" + "'" + ModyfikujNazwa.Text + "'";
+                    SqlConnection cnn = new SqlConnection(connectionString);
+                    cnn.Open();
+                    SqlCommand cmd2 = new SqlCommand(querry2, cnn);
+                    SqlDataReader dr = cmd2.ExecuteReader();
+                    dr.Read();
+
+                    if (dr.HasRows == true)
+                    {
+                        NazwaAlert.Text = "Nazwa produktu jest zajęta!";
+                        productNameTaken = true;
+                    }
+                    else
+                    {
+                        NazwaAlert.Text = " ";
+                        productNameTaken = false;
+                    }
+                    cnn.Close();
                     cnn4.Open();
                     SqlCommand cmd = new SqlCommand(querry, cnn4);
                     cmd.Parameters.Add("@id", SqlDbType.NChar).Value = listBoxNOProducts2.SelectedValue;
@@ -1096,9 +1143,18 @@ namespace Sklep
                     cmd.Parameters.Add("@productstock", SqlDbType.NChar).Value = ModyfikujIlosc.Text;
                     cmd.Parameters.Add("@categoryid", SqlDbType.NChar).Value = listBoxNOCategories2.SelectedValue;
                     cmd.Parameters.Add("@vendorid", SqlDbType.NChar).Value = listBoxNOVendors2.SelectedValue;
-                    cmd.ExecuteNonQuery();
+                    if (productNameTaken == false)
+                    {
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Produkt zmodyfikowany!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Popraw błędne informacje!");
+                    }
+
                     cnn4.Close();
-                    MessageBox.Show("Produkt zmodyfikowany!");
+                   
                 }
                 catch (Exception ex)
                 {
@@ -1149,6 +1205,11 @@ namespace Sklep
         private void refreshList_Click(object sender, EventArgs e)
         {
             wylistujUserow();
+        }
+
+        private void OdswiezProdukty_Click(object sender, EventArgs e)
+        {
+            wylistujProdukty();
         }
     }
 }
