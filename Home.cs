@@ -1116,7 +1116,7 @@ namespace Sklep
                 {
                     
                     bool productNameTaken;
-                    string querry2 = "SELECT ProductName, ID FROM Products WHERE ProductName=" + "'" + ModyfikujNazwa.Text + "'";
+                    string querry2 = "SELECT ProductName, ID FROM Products WHERE ID=" + "'" + listBoxNOProducts2.SelectedValue + "'";
                     SqlConnection cnn = new SqlConnection(connectionString);
                     cnn.Open();
                     SqlCommand cmd2 = new SqlCommand(querry2, cnn);
@@ -1125,8 +1125,16 @@ namespace Sklep
 
                     if (dr.HasRows == true)
                     {
-                        NazwaAlert.Text = "Nazwa produktu jest zajęta!";
-                        productNameTaken = true;
+                        if (dr["ProductName"].ToString() == ModyfikujNazwa.Text)
+                        {
+                            NazwaAlert.Text = " ";
+                            productNameTaken = false;
+                        }
+                        else
+                        {
+                            NazwaAlert.Text = "Nazwa produktu jest zajęta!";
+                            productNameTaken = true;
+                        }
                     }
                     else
                     {
