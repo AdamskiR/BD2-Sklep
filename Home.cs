@@ -1196,6 +1196,44 @@ namespace Sklep
 
                 try
                 {
+                    var dataSet = new DataSet();
+                    bool loginTaken;
+                    string querry2 = "SELECT Username, ID FROM Users WHERE ID=" + "'" + listBoxNOUsers.SelectedValue + "'";
+                    SqlConnection cnn = new SqlConnection(connectionString);
+                    cnn.Open();
+                    SqlCommand cmd2 = new SqlCommand(querry2, cnn);
+                    var dataAdapter = new SqlDataAdapter { SelectCommand = cmd2 };
+                    dataAdapter.Fill(dataSet);
+
+
+                    var dataSet2 = new DataSet();
+                    string querry3 = "SELECT Username, ID FROM Users WHERE Username=" + "'" + adminEdytujLogin.Text + "'";
+                    SqlConnection cnn2 = new SqlConnection(connectionString);
+                    cnn2.Open();
+                    SqlCommand cmd3 = new SqlCommand(querry3, cnn2);
+                    var dataAdapter2 = new SqlDataAdapter { SelectCommand = cmd3 };
+                    dataAdapter2.Fill(dataSet2);
+
+                    if (dataSet2.Tables[0].Rows.Count > 0)
+                    {
+                        if (dataSet2.Tables[0].Rows[0]["Username"].ToString() == dataSet.Tables[0].Rows[0]["Username"].ToString())
+                        {
+                            EditLoginValidation.Text = " ";
+                            loginTaken = false;
+                        }
+                        else
+                        {
+                            EditLoginValidation.Text = "Login jest zajęty!";
+                            loginTaken = true;
+                        }
+                    }
+                    else
+                    {
+                        EditLoginValidation.Text = " ";
+                        loginTaken = false;
+                    }
+                    cnn.Close();
+                    cnn2.Close();
                     cnn4.Open();
                     SqlCommand cmd = new SqlCommand(querry, cnn4);
                     cmd.Parameters.Add("@id", SqlDbType.NChar).Value = listBoxNOUsers.SelectedValue;
@@ -1208,9 +1246,16 @@ namespace Sklep
                     cmd.Parameters.Add("@city", SqlDbType.NChar).Value = adminEdytujMiasto.Text;
                     cmd.Parameters.Add("@street", SqlDbType.NChar).Value = adminEdytujUlica.Text;
                     cmd.Parameters.Add("@telephone", SqlDbType.Int).Value = Convert.ToInt32(adminEdytujTel.Text);
-                    cmd.ExecuteNonQuery();
+                    if (loginTaken == false)
+                    {
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Użytkownik zmodyfikowany!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Popraw błędne informacje!");
+                    }
                     cnn4.Close();
-                    MessageBox.Show("Uzytkownik zmodyfikowany!");
                 }
                 catch (Exception ex)
                 {
