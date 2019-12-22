@@ -1123,9 +1123,18 @@ namespace Sklep
                     var dataAdapter = new SqlDataAdapter { SelectCommand = cmd2};
                     dataAdapter.Fill(dataSet);
 
-                    if (dataSet.Tables[0].Rows[0]["ProductName"].ToString().Length > 0)
+
+                    var dataSet2 = new DataSet();
+                    string querry3 = "SELECT ProductName, ID FROM Products WHERE ProductName=" + "'" + ModyfikujNazwa.Text + "'";
+                    SqlConnection cnn2 = new SqlConnection(connectionString);
+                    cnn2.Open();
+                    SqlCommand cmd3 = new SqlCommand(querry3, cnn2);
+                    var dataAdapter2 = new SqlDataAdapter { SelectCommand = cmd3 };
+                    dataAdapter2.Fill(dataSet2);
+
+                    if (dataSet2.Tables[0].Rows.Count > 0)
                     {
-                        if(dataSet.Tables[0].Rows[0]["ProductName"].ToString() == ModyfikujNazwa.Text)
+                        if(dataSet2.Tables[0].Rows[0]["ProductName"].ToString() == dataSet.Tables[0].Rows[0]["ProductName"].ToString())
                         {
                             NazwaAlert.Text = " ";
                             productNameTaken = false;
@@ -1142,6 +1151,7 @@ namespace Sklep
                         productNameTaken = false;
                     }
                     cnn.Close();
+                    cnn2.Close();
                     cnn4.Open();
                     SqlCommand cmd = new SqlCommand(querry, cnn4);
                     cmd.Parameters.Add("@id", SqlDbType.NChar).Value = listBoxNOProducts2.SelectedValue;
