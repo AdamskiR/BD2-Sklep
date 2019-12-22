@@ -1114,34 +1114,6 @@ namespace Sklep
 
                 try
                 {
-                    
-                    bool productNameTaken;
-                    string querry2 = "SELECT ProductName, ID FROM Products WHERE ID=" + "'" + listBoxNOProducts2.SelectedValue + "'";
-                    SqlConnection cnn = new SqlConnection(connectionString);
-                    cnn.Open();
-                    SqlCommand cmd2 = new SqlCommand(querry2, cnn);
-                    SqlDataReader dr = cmd2.ExecuteReader();
-                    dr.Read();
-
-                    if (dr.HasRows == true)
-                    {
-                        if (dr["ProductName"].ToString() == ModyfikujNazwa.Text)
-                        {
-                            NazwaAlert.Text = " ";
-                            productNameTaken = false;
-                        }
-                        else
-                        {
-                            NazwaAlert.Text = "Nazwa produktu jest zajęta!";
-                            productNameTaken = true;
-                        }
-                    }
-                    else
-                    {
-                        NazwaAlert.Text = " ";
-                        productNameTaken = false;
-                    }
-                    cnn.Close();
                     cnn4.Open();
                     SqlCommand cmd = new SqlCommand(querry, cnn4);
                     cmd.Parameters.Add("@id", SqlDbType.NChar).Value = listBoxNOProducts2.SelectedValue;
@@ -1151,19 +1123,12 @@ namespace Sklep
                     cmd.Parameters.Add("@productstock", SqlDbType.NChar).Value = ModyfikujIlosc.Text;
                     cmd.Parameters.Add("@categoryid", SqlDbType.NChar).Value = listBoxNOCategories2.SelectedValue;
                     cmd.Parameters.Add("@vendorid", SqlDbType.NChar).Value = listBoxNOVendors2.SelectedValue;
-                    if (productNameTaken == false)
-                    {
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Produkt zmodyfikowany!");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Popraw błędne informacje!");
-                    }
-
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Produkt zmodyfikowany!");
                     cnn4.Close();
-                   
                 }
+
+                   
                 catch (Exception ex)
                 {
                     MessageBox.Show("ERROR:" + ex.Message);
