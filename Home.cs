@@ -738,6 +738,11 @@ namespace Sklep
 
         private void twojeZamówieniaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            aktualizujZamowienia();
+        }
+
+        private void aktualizujZamowienia()
+        {
             panelTwojeZamowienia.BringToFront();
 
             using (connection = new SqlConnection(connectionString))
@@ -746,7 +751,7 @@ namespace Sklep
             {
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add("@userID", SqlDbType.Int);
-                command.Parameters["@userID"].Value = globals.userID;                       //Do zmiany
+                command.Parameters["@userID"].Value = globals.userID;
 
                 DataTable zam_uz = new DataTable();
                 adapter.Fill(zam_uz);
@@ -754,7 +759,6 @@ namespace Sklep
                 dataGridViewTZZamowienia.AutoGenerateColumns = false;
                 dataGridViewTZZamowienia.DataSource = zam_uz;
             }
-
         }
 
 
@@ -862,49 +866,77 @@ namespace Sklep
             }
         }
 
+        private bool sprawdzstan()
+        {
+            bool zgadzasie = true;
+            string message = "BŁĄD\n\nBrak żądanej ilości produktu na stanie, musisz zmienić ilość\n\nNazwa:\t\t\tMaMaxymalna możliwa ilość do kupienia: ";
+            double por;
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand("DisplaySpecificProduct", connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            {
+                connection.Open();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@id", SqlDbType.Int);
+                DataTable spr_stan = new DataTable();
+
+                for (int i = 0; i<koszyk.Count(); i++)
+                {
+                    command.Parameters["@id"].Value = koszyk[i].id;
+                    adapter.Fill(spr_stan);
+                    por = (double)spr_stan.Rows[i]["ProductStock"];
+                    if (por < koszyk[i].ilosc)
+                    {
+                        zgadzasie = false;
+                        message += "\n" + (string)spr_stan.Rows[0]["ProductName"] + "\t\t\t" + (double)spr_stan.Rows[0]["ProductStock"];
+                    }
+                }
+            }
+            if (!zgadzasie)
+            {
+                MessageBox.Show(message);
+                return zgadzasie;
+            } else return zgadzasie;
+        }
 
         private void buttonPDKKup_Click(object sender, EventArgs e)
         {
-            //using (connection = new SqlConnection(connectionString))
-            //using (SqlCommand command = new SqlCommand("DodajZamowienie", connection))
-            //using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-            //{
-            //    connection.Open();
-            //    command.CommandType = CommandType.StoredProcedure;
-            //    command.Parameters.Add("@userID", SqlDbType.Int);
-            //    command.Parameters["@userID"].Value = globals.userID;
-            //    SqlDataReader reader = command.ExecuteReader();
+            if(sprawdzstan())
+            {
+                using (connection = new SqlConnection(connectionString))
+                using (SqlCommand command = new SqlCommand("DodajZamowienie", connection))
+                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                {
+                    connection.Open();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("@userID", SqlDbType.Int);
+                    command.Parameters["@userID"].Value = globals.userID;
+                    SqlDataReader reader = command.ExecuteReader();
+                }
 
+                using (connection = new SqlConnection(connectionString))
+                using (SqlCommand command2 = new SqlCommand("DodajSzczegolyZamowienia", connection))
+                using (SqlDataAdapter adapter2 = new SqlDataAdapter(command2))
+                {
+                    connection.Open();
+                    command2.CommandType = CommandType.StoredProcedure;
+                    command2.Parameters.Add("@user_id", SqlDbType.Int);
+                    command2.Parameters.Add("@prod_id", SqlDbType.Int);
+                    command2.Parameters.Add("@amount", SqlDbType.Int);
+                    command2.Parameters["@user_id"].Value = globals.userID;
 
-                
-            //        using (SqlCommand command2 = new SqlCommand("DodajSzczegolyZamowienia", connection))
-            //        using (SqlDataAdapter adapter2 = new SqlDataAdapter(command2))
-            //        {
-            //            connection.Open();
-            //            command2.CommandType = CommandType.StoredProcedure;
-            //            command2.Parameters.Add("@user_id", SqlDbType.Int);
-            //            command2.Parameters.Add("@prod_id", SqlDbType.Int);
-            //            command2.Parameters.Add("@amount", SqlDbType.Int);
-            //            command2.Parameters["@userID"].Value = globals.userID;
-
-            //            for (int i = 0; i<koszyk.Count(); i++)
-            //            {
-            //                command2.Parameters["@prod_id"].Value = koszyk[i].id;
-            //                command2.Parameters["@amount"].Value = koszyk[i].ilosc;
-            //                command2.ExecuteNonQuery();
-            //            }
-            //            MessageBox.Show("Gratulacje!\nTwoje zamówienie zostało złożone");
-            //            panelTwojeZamowienia.BringToFront();
-            //            koszyk.Clear();
-            //        }
-
-
-                
-                MessageBox.Show("Not implemented yet");
-                //dbo.DodajZamowienie
-                //TODO: dbo.DodajSzczegolyZamowienia
-                //dbo.USUNzMAGAZynu
-           // }
+                    for (int i = 0; i < koszyk.Count(); i++)
+                    {
+                        command2.Parameters["@prod_id"].Value = koszyk[i].id;
+                        command2.Parameters["@amount"].Value = koszyk[i].ilosc;
+                        command2.ExecuteNonQuery();
+                    }
+                    MessageBox.Show("Gratulacje!\nTwoje zamówienie zostało złożone");
+                    aktualizujZamowienia();
+                    panelTwojeZamowienia.BringToFront();
+                    koszyk.Clear();
+                }
+            }
         }
 
 
@@ -1308,6 +1340,11 @@ namespace Sklep
         private void OdswiezProdukty_Click(object sender, EventArgs e)
         {
             wylistujProdukty();
+        }
+
+        private void panelPrzejdzDoKasy_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
