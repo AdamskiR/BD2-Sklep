@@ -1384,18 +1384,20 @@ namespace Sklep
                     cmd.Parameters.Add("@city", SqlDbType.NChar).Value = adminEdytujMiasto.Text;
                     cmd.Parameters.Add("@street", SqlDbType.NChar).Value = adminEdytujUlica.Text;
                     cmd.Parameters.Add("@telephone", SqlDbType.Int).Value = Convert.ToInt32(adminEdytujTel.Text);
-                    string querry5 = "INSERT INTO UserRole (UserID, RoleID) VALUES(" + listBoxNOUsers.SelectedValue + ", @role)";
+                    string querry5 = "dbo.AddRole";
                     SqlConnection cnn5 = new SqlConnection(connectionString);
                     cnn5.Open();
                     SqlCommand cmd5 = new SqlCommand(querry5, cnn5);
+                    cmd5.CommandType = CommandType.StoredProcedure;
+                    cmd5.Parameters.Add("@id", SqlDbType.Int).Value = Convert.ToInt32(listBoxNOUsers.SelectedValue);
                     if (administrator.Checked)
                     {
-                        cmd5.Parameters.Add("role", SqlDbType.Int).Value = 1;
+                        cmd5.Parameters.Add("@role", SqlDbType.Int).Value = 1;
                         cmd5.ExecuteNonQuery();
                     }
                     else if (manager.Checked)
                     {
-                        cmd5.Parameters.Add("role", SqlDbType.Int).Value = 2;
+                        cmd5.Parameters.Add("@role", SqlDbType.Int).Value = 2;
                         cmd5.ExecuteNonQuery();
                     }
                     else
