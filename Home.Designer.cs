@@ -206,6 +206,9 @@
             this.label42 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.panelEdytujUzytkownikow = new System.Windows.Forms.Panel();
+            this.label58 = new System.Windows.Forms.Label();
+            this.manager = new System.Windows.Forms.RadioButton();
+            this.administrator = new System.Windows.Forms.RadioButton();
             this.EditLoginValidation = new System.Windows.Forms.Label();
             this.refreshList = new System.Windows.Forms.Button();
             this.listBoxNOUsers = new System.Windows.Forms.ListBox();
@@ -230,6 +233,7 @@
             this.label49 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
+            this.NadajUprawnienia = new System.Windows.Forms.Button();
             label25 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
@@ -1945,6 +1949,10 @@
             // 
             // panelEdytujUzytkownikow
             // 
+            this.panelEdytujUzytkownikow.Controls.Add(this.NadajUprawnienia);
+            this.panelEdytujUzytkownikow.Controls.Add(this.label58);
+            this.panelEdytujUzytkownikow.Controls.Add(this.manager);
+            this.panelEdytujUzytkownikow.Controls.Add(this.administrator);
             this.panelEdytujUzytkownikow.Controls.Add(this.EditLoginValidation);
             this.panelEdytujUzytkownikow.Controls.Add(this.refreshList);
             this.panelEdytujUzytkownikow.Controls.Add(this.listBoxNOUsers);
@@ -1973,6 +1981,37 @@
             this.panelEdytujUzytkownikow.Name = "panelEdytujUzytkownikow";
             this.panelEdytujUzytkownikow.Size = new System.Drawing.Size(797, 429);
             this.panelEdytujUzytkownikow.TabIndex = 15;
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(569, 46);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(154, 13);
+            this.label58.TabIndex = 26;
+            this.label58.Text = "Nadaj dodatkowe uprawnienia:";
+            // 
+            // manager
+            // 
+            this.manager.AutoSize = true;
+            this.manager.Location = new System.Drawing.Point(571, 86);
+            this.manager.Name = "manager";
+            this.manager.Size = new System.Drawing.Size(66, 17);
+            this.manager.TabIndex = 25;
+            this.manager.TabStop = true;
+            this.manager.Text = "manager";
+            this.manager.UseVisualStyleBackColor = true;
+            // 
+            // administrator
+            // 
+            this.administrator.AutoSize = true;
+            this.administrator.Location = new System.Drawing.Point(571, 66);
+            this.administrator.Name = "administrator";
+            this.administrator.Size = new System.Drawing.Size(84, 17);
+            this.administrator.TabIndex = 24;
+            this.administrator.TabStop = true;
+            this.administrator.Text = "administrator";
+            this.administrator.UseVisualStyleBackColor = true;
             // 
             // EditLoginValidation
             // 
@@ -2173,13 +2212,20 @@
             this.label51.TabIndex = 0;
             this.label51.Text = "Edytuj użytkowników";
             // 
+            // NadajUprawnienia
+            // 
+            this.NadajUprawnienia.Location = new System.Drawing.Point(571, 109);
+            this.NadajUprawnienia.Name = "NadajUprawnienia";
+            this.NadajUprawnienia.Size = new System.Drawing.Size(75, 23);
+            this.NadajUprawnienia.TabIndex = 27;
+            this.NadajUprawnienia.Text = "Nadaj";
+            this.NadajUprawnienia.UseVisualStyleBackColor = true;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panelPrzejdzDoKasy);
-            this.Controls.Add(this.panelNaszaOferta);
             this.Controls.Add(this.labelZalogowanyJako);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panelEdytujUzytkownikow);
@@ -2192,6 +2238,8 @@
             this.Controls.Add(this.panelNowosci);
             this.Controls.Add(this.panelTop1);
             this.Controls.Add(this.panelRejestracja);
+            this.Controls.Add(this.panelPrzejdzDoKasy);
+            this.Controls.Add(this.panelNaszaOferta);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Home";
@@ -2433,5 +2481,9 @@
         private System.Windows.Forms.Label NazwaAlert;
         private System.Windows.Forms.Button OdswiezProdukty;
         private System.Windows.Forms.Label EditLoginValidation;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.RadioButton manager;
+        private System.Windows.Forms.RadioButton administrator;
+        private System.Windows.Forms.Button NadajUprawnienia;
     }
 }
