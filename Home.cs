@@ -67,39 +67,76 @@ namespace Sklep
 
         private void isUserAuthenticatedView()
         {
-            if (isUserAuthenticated == false)
-            {
-                labelZalogowanyJako.ResetText();
-                buttonZaloguj.Visible = true;
-                wylogujToolStripMenuItem.Visible = false;
-                edytujSwojeDaneToolStripMenuItem.Visible = false;
-                panelAdministracyjnyToolStripMenuItem.Visible = false;
-                zalogujToolStripMenuItem.Visible = true;
-                koszykToolStripMenuItem.Visible = false;
-                twojeZamówieniaToolStripMenuItem.Visible = false;
-                textBoxNOIleKupic.Visible = false;
-                buttonNOdodajDokoszyka.Visible = false;
-                zarejestrujToolStripMenuItem.Visible = true;
+                var dataSet = new DataSet();
+                bool adminUser=false;
+                bool managerUser = false;
+                string querry2 = "SELECT RoleID FROM UserRole WHERE UserID='" + globals.userID + "'";
+            SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["Sklep.Properties.Settings.ShopConnectionString"].ConnectionString);
+            SqlCommand cmd2 = new SqlCommand(querry2, cnn);
+            cnn.Open();
+            var dataAdapter = new SqlDataAdapter { SelectCommand = cmd2 };
+                dataAdapter.Fill(dataSet);
 
-            }
-            else
-            {
-                panelAdministracyjnyToolStripMenuItem.Visible = true;
-                buttonZaloguj.Visible = false;
-                zalogujToolStripMenuItem.Visible = false;
-                wylogujToolStripMenuItem.Visible = true;
-                edytujSwojeDaneToolStripMenuItem.Visible = true;
-                twojeZamówieniaToolStripMenuItem.Visible = true;
-                twojeZamówieniaToolStripMenuItem.Enabled = true;
-                currentUsername = textBoxLogUzytkownik.Text;
-                koszykToolStripMenuItem.Visible = true;
-                twojeZamówieniaToolStripMenuItem.Visible = true;
-                labelZalogowanyJako.Text = "Zalogowany jako: " + textBoxLogUzytkownik.Text;
-                zarejestrujToolStripMenuItem.Visible = false;
-                textBoxNOIleKupic.Visible = true;
-                buttonNOdodajDokoszyka.Visible = true;
-                labelKupteraz.Text = "Wybierz ilość jaką chcesz kupić";
-            }
+
+                if (dataSet.Tables[0].Rows.Count > 0)
+                {
+                    if (Convert.ToInt32(dataSet.Tables[0].Rows[0]["RoleID"]) == 1)
+                    {
+                    adminUser = true;
+                    }
+                    else if(Convert.ToInt32(dataSet.Tables[0].Rows[0]["RoleID"]) == 2)
+                    {
+                    managerUser = true;
+                    }
+                }
+                else
+                {
+                adminUser = false;
+                managerUser = false;
+                }
+            cnn.Close();
+
+            if (isUserAuthenticated == false)
+                {
+                    labelZalogowanyJako.ResetText();
+                    buttonZaloguj.Visible = true;
+                    wylogujToolStripMenuItem.Visible = false;
+                    edytujSwojeDaneToolStripMenuItem.Visible = false;
+                    panelAdministracyjnyToolStripMenuItem.Visible = false;
+                    zalogujToolStripMenuItem.Visible = true;
+                    koszykToolStripMenuItem.Visible = false;
+                    twojeZamówieniaToolStripMenuItem.Visible = false;
+                    textBoxNOIleKupic.Visible = false;
+                    buttonNOdodajDokoszyka.Visible = false;
+                    zarejestrujToolStripMenuItem.Visible = true;
+
+                }
+                else
+                {
+                if (adminUser == true)
+                {
+                    panelAdministracyjnyToolStripMenuItem.Visible = true;
+                }
+                if(managerUser == true)
+                {
+                    panelAdministracyjnyToolStripMenuItem.Visible = true;
+                    ądzajUżytkownikamiToolStripMenuItem.Enabled = false;
+                }
+                    buttonZaloguj.Visible = false;
+                    zalogujToolStripMenuItem.Visible = false;
+                    wylogujToolStripMenuItem.Visible = true;
+                    edytujSwojeDaneToolStripMenuItem.Visible = true;
+                    twojeZamówieniaToolStripMenuItem.Visible = true;
+                    twojeZamówieniaToolStripMenuItem.Enabled = true;
+                    currentUsername = textBoxLogUzytkownik.Text;
+                    koszykToolStripMenuItem.Visible = true;
+                    twojeZamówieniaToolStripMenuItem.Visible = true;
+                    labelZalogowanyJako.Text = "Zalogowany jako: " + textBoxLogUzytkownik.Text;
+                    zarejestrujToolStripMenuItem.Visible = false;
+                    textBoxNOIleKupic.Visible = true;
+                    buttonNOdodajDokoszyka.Visible = true;
+                    labelKupteraz.Text = "Wybierz ilość jaką chcesz kupić";
+                }
         }
 
         private void buttonZaloguj_Click(object sender, EventArgs e)
