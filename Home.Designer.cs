@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label label25;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zalogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -206,6 +206,7 @@
             this.label42 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.panelEdytujUzytkownikow = new System.Windows.Forms.Panel();
+            this.EditLoginValidation = new System.Windows.Forms.Label();
             this.refreshList = new System.Windows.Forms.Button();
             this.listBoxNOUsers = new System.Windows.Forms.ListBox();
             this.adminEdytujMail = new System.Windows.Forms.TextBox();
@@ -229,7 +230,6 @@
             this.label49 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
-            this.EditLoginValidation = new System.Windows.Forms.Label();
             label25 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
@@ -338,34 +338,34 @@
             this.nowosciToolStripMenuItem,
             this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem});
             this.naszaOfertaToolStripMenuItem.Name = "naszaOfertaToolStripMenuItem";
-            this.naszaOfertaToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.naszaOfertaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.naszaOfertaToolStripMenuItem.Text = "Nasza oferta";
             // 
             // zobaczWszystkoToolStripMenuItem
             // 
             this.zobaczWszystkoToolStripMenuItem.Name = "zobaczWszystkoToolStripMenuItem";
-            this.zobaczWszystkoToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.zobaczWszystkoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.zobaczWszystkoToolStripMenuItem.Text = "Zobacz Wszystko";
             this.zobaczWszystkoToolStripMenuItem.Click += new System.EventHandler(this.zobaczWszystkoToolStripMenuItem_Click);
             // 
             // nowosciToolStripMenuItem
             // 
             this.nowosciToolStripMenuItem.Name = "nowosciToolStripMenuItem";
-            this.nowosciToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.nowosciToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.nowosciToolStripMenuItem.Text = "Nowości";
             this.nowosciToolStripMenuItem.Click += new System.EventHandler(this.tOP3ZamawianeToolStripMenuItem_Click);
             // 
             // najpopularniejszyZOstatnich5ZakupówToolStripMenuItem
             // 
             this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem.Name = "najpopularniejszyZOstatnich5ZakupówToolStripMenuItem";
-            this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem.Text = "Top 1 ostatnio";
             this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem.Click += new System.EventHandler(this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem_Click);
             // 
             // wyszukajToolStripMenuItem
             // 
             this.wyszukajToolStripMenuItem.Name = "wyszukajToolStripMenuItem";
-            this.wyszukajToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.wyszukajToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.wyszukajToolStripMenuItem.Text = "Wyszukaj";
             this.wyszukajToolStripMenuItem.Click += new System.EventHandler(this.wyszukajToolStripMenuItem_Click);
             // 
@@ -373,7 +373,7 @@
             // 
             this.twojeZamówieniaToolStripMenuItem.Enabled = false;
             this.twojeZamówieniaToolStripMenuItem.Name = "twojeZamówieniaToolStripMenuItem";
-            this.twojeZamówieniaToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.twojeZamówieniaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.twojeZamówieniaToolStripMenuItem.Text = "Twoje zamówienia";
             this.twojeZamówieniaToolStripMenuItem.Click += new System.EventHandler(this.twojeZamówieniaToolStripMenuItem_Click);
             // 
@@ -1526,8 +1526,8 @@
             // 
             this.dataGridViewWKoszyku.AllowUserToAddRows = false;
             this.dataGridViewWKoszyku.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewWKoszyku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWKoszyku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NAme,
@@ -1973,6 +1973,14 @@
             this.panelEdytujUzytkownikow.Size = new System.Drawing.Size(797, 429);
             this.panelEdytujUzytkownikow.TabIndex = 15;
             // 
+            // EditLoginValidation
+            // 
+            this.EditLoginValidation.AutoSize = true;
+            this.EditLoginValidation.Location = new System.Drawing.Point(481, 51);
+            this.EditLoginValidation.Name = "EditLoginValidation";
+            this.EditLoginValidation.Size = new System.Drawing.Size(0, 13);
+            this.EditLoginValidation.TabIndex = 23;
+            // 
             // refreshList
             // 
             this.refreshList.Location = new System.Drawing.Point(144, 322);
@@ -2164,27 +2172,19 @@
             this.label51.TabIndex = 0;
             this.label51.Text = "Edytuj użytkowników";
             // 
-            // EditLoginValidation
-            // 
-            this.EditLoginValidation.AutoSize = true;
-            this.EditLoginValidation.Location = new System.Drawing.Point(481, 51);
-            this.EditLoginValidation.Name = "EditLoginValidation";
-            this.EditLoginValidation.Size = new System.Drawing.Size(0, 13);
-            this.EditLoginValidation.TabIndex = 23;
-            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panelPrzejdzDoKasy);
+            this.Controls.Add(this.panelNaszaOferta);
             this.Controls.Add(this.labelZalogowanyJako);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panelEdytujUzytkownikow);
             this.Controls.Add(this.panelModyfikujProdukt);
             this.Controls.Add(this.panelDodajProdukt);
             this.Controls.Add(this.panelTwojeZamowienia);
-            this.Controls.Add(this.panelPrzejdzDoKasy);
-            this.Controls.Add(this.panelNaszaOferta);
             this.Controls.Add(this.panelEdytujSwojeDane);
             this.Controls.Add(this.panelWelcome);
             this.Controls.Add(this.panelLogin);

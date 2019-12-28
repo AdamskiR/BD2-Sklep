@@ -686,7 +686,7 @@ namespace Sklep
                 //do nothing
             }
         }
-        //Poprawic dodawanie tych samych elemnetów do listy
+
         private void buttonNOdodajDokoszyka_Click(object sender, EventArgs e)
         {
             {
@@ -817,7 +817,7 @@ namespace Sklep
 
 
         }
-        //jebie sie
+
         private void DGVwKoszykuAktualizuj()
         {
             try
@@ -835,7 +835,6 @@ namespace Sklep
             }
             catch
             {
-                //Z pewnych nieznanych przyczyn podczas edycji ilości w koszyku i nie "odkliknieciu" pola, chcac dodac nową rzecz do koszyka wyskakuje błąd System.ArgumentOutOfRangeException 
                 Console.WriteLine("ERROR");
             }
 
@@ -866,10 +865,46 @@ namespace Sklep
 
         private void buttonPDKKup_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not implemented yet");
-            //dbo.DodajZamowienie
-            //TODO: dbo.DodajSzczegolyZamowienia
-            //dbo.USUNzMAGAZynu
+            //using (connection = new SqlConnection(connectionString))
+            //using (SqlCommand command = new SqlCommand("DodajZamowienie", connection))
+            //using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            //{
+            //    connection.Open();
+            //    command.CommandType = CommandType.StoredProcedure;
+            //    command.Parameters.Add("@userID", SqlDbType.Int);
+            //    command.Parameters["@userID"].Value = globals.userID;
+            //    SqlDataReader reader = command.ExecuteReader();
+
+
+                
+            //        using (SqlCommand command2 = new SqlCommand("DodajSzczegolyZamowienia", connection))
+            //        using (SqlDataAdapter adapter2 = new SqlDataAdapter(command2))
+            //        {
+            //            connection.Open();
+            //            command2.CommandType = CommandType.StoredProcedure;
+            //            command2.Parameters.Add("@user_id", SqlDbType.Int);
+            //            command2.Parameters.Add("@prod_id", SqlDbType.Int);
+            //            command2.Parameters.Add("@amount", SqlDbType.Int);
+            //            command2.Parameters["@userID"].Value = globals.userID;
+
+            //            for (int i = 0; i<koszyk.Count(); i++)
+            //            {
+            //                command2.Parameters["@prod_id"].Value = koszyk[i].id;
+            //                command2.Parameters["@amount"].Value = koszyk[i].ilosc;
+            //                command2.ExecuteNonQuery();
+            //            }
+            //            MessageBox.Show("Gratulacje!\nTwoje zamówienie zostało złożone");
+            //            panelTwojeZamowienia.BringToFront();
+            //            koszyk.Clear();
+            //        }
+
+
+                
+                MessageBox.Show("Not implemented yet");
+                //dbo.DodajZamowienie
+                //TODO: dbo.DodajSzczegolyZamowienia
+                //dbo.USUNzMAGAZynu
+           // }
         }
 
 
