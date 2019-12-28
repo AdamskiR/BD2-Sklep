@@ -690,44 +690,78 @@ namespace Sklep
         private void buttonNOdodajDokoszyka_Click(object sender, EventArgs e)
         {
             {
-                if (Convert.ToInt32(textBoxNOIleKupic.Text) > 0)
+                try
                 {
-                    //Dodanie do koszyka jako nowej pozycji, nawet gdy jest juz na liscie
-                    //coIile kupno = new coIile();
-                    //kupno.id = Convert.ToInt32(listBoxNOProdukty.SelectedValue);
-                    //kupno.ilosc = Convert.ToInt32(textBoxNOIleKupic.Text);
-                    //koszyk.Add(kupno);
-
-                    //Dodanie do koszyka z aktualizacja stanu gdy przedmiot jest już na liscie
+                    var dataSet = new DataSet();
+                    string querry2 = "SELECT ProductStock FROM Products WHERE ID=" + "'" + listBoxNOProdukty.SelectedValue + "'";
+                    SqlConnection cnn = new SqlConnection(connectionString);
+                    cnn.Open();
+                    SqlCommand cmd2 = new SqlCommand(querry2, cnn);
+                    var dataAdapter = new SqlDataAdapter { SelectCommand = cmd2 };
+                    dataAdapter.Fill(dataSet);
                     coIile kupno = new coIile();
                     int ids = Convert.ToInt32(listBoxNOProdukty.SelectedValue);
                     int ilosc = Convert.ToInt32(textBoxNOIleKupic.Text);
                     List<coIile> result = koszyk.FindAll(x => x.id == ids);
-                    if (result.Count() > 0)
+
+                    if (Convert.ToInt32(textBoxNOIleKupic.Text) > 0)
                     {
-                        for (int i = 0; i < koszyk.Count(); i++)
+                        //Dodanie do koszyka jako nowej pozycji, nawet gdy jest juz na liscie
+                        //coIile kupno = new coIile();
+                        //kupno.id = Convert.ToInt32(listBoxNOProdukty.SelectedValue);
+                        //kupno.ilosc = Convert.ToInt32(textBoxNOIleKupic.Text);
+                        //koszyk.Add(kupno);
+
+                        //Dodanie do koszyka z aktualizacja stanu gdy przedmiot jest już na liscie
+
+                        if (Convert.ToInt32(dataSet.Tables[0].Rows[0]["ProductStock"]) >= Convert.ToInt32(textBoxNOIleKupic.Text))
                         {
-                            if (koszyk[i].id == ids)
+                            if (result.Count() > 0)
                             {
-                                koszyk[i].ilosc += ilosc;
+                                for (int i = 0; i < koszyk.Count(); i++)
+                                {
+                                    if (koszyk[i].id == ids)
+                                    {
+                                        if (Convert.ToInt32(koszyk[i].ilosc + ilosc) <= Convert.ToInt32(dataSet.Tables[0].Rows[0]["ProductStock"]))
+                                        {
+                                            koszyk[i].ilosc += ilosc;
+                                            MessageBox.Show("Dodano do koszyka");
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Suma towarów z koszyka i tego zamówienia przekracza ilość towaru w magazynie!");
+                                        }
+                                    }
+                                }
                             }
-
+                            else
+                            {
+                                kupno.id = ids;
+                                kupno.ilosc = ilosc;
+                                koszyk.Add(kupno);
+                                result.Clear();
+                                MessageBox.Show("Dodano do koszyka");
+                            }
                         }
-
+                        else
+                        {
+                            MessageBox.Show("Brak takiej ilości towaru w magazynie!");
+                        }
                     }
                     else
                     {
-                        kupno.id = ids;
-                        kupno.ilosc = ilosc;
-                        koszyk.Add(kupno);
+                        MessageBox.Show("Musisz wprowadzić ilość!");
                     }
-                    result.Clear();
-                    MessageBox.Show("Dodano do koszyka");
+                    cnn.Close();
                 }
-                else
-                    MessageBox.Show("Musisz wprowadzić ilość!");
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                }
             }
         }
+
+
 
         private void usuńProduktyZKoszykaToolStripMenuItem_Click(object sender, EventArgs e)
         {
