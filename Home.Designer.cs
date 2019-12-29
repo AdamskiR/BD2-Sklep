@@ -233,6 +233,7 @@
             this.label49 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
+            this.brak = new System.Windows.Forms.RadioButton();
             label25 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
@@ -1948,6 +1949,7 @@
             // 
             // panelEdytujUzytkownikow
             // 
+            this.panelEdytujUzytkownikow.Controls.Add(this.brak);
             this.panelEdytujUzytkownikow.Controls.Add(this.label58);
             this.panelEdytujUzytkownikow.Controls.Add(this.manager);
             this.panelEdytujUzytkownikow.Controls.Add(this.administrator);
@@ -2209,6 +2211,18 @@
             this.label51.Size = new System.Drawing.Size(106, 13);
             this.label51.TabIndex = 0;
             this.label51.Text = "Edytuj użytkowników";
+            // 
+            // brak
+            // 
+            this.brak.AutoSize = true;
+            this.brak.CheckAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.brak.Location = new System.Drawing.Point(571, 108);
+            this.brak.Name = "brak";
+            this.brak.Size = new System.Drawing.Size(46, 17);
+            this.brak.TabIndex = 27;
+            this.brak.TabStop = true;
+            this.brak.Text = "brak";
+            this.brak.UseVisualStyleBackColor = true;
             // 
             // Home
             // 
@@ -2473,5 +2487,6 @@
         private System.Windows.Forms.Label label58;
         private System.Windows.Forms.RadioButton manager;
         private System.Windows.Forms.RadioButton administrator;
+        private System.Windows.Forms.RadioButton brak;
     }
 }

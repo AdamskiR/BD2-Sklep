@@ -1393,27 +1393,26 @@ namespace Sklep
                     if (administrator.Checked)
                     {
                         cmd5.Parameters.Add("@role", SqlDbType.Int).Value = 1;
-                        cmd5.ExecuteNonQuery();
                     }
                     else if (manager.Checked)
                     {
                         cmd5.Parameters.Add("@role", SqlDbType.Int).Value = 2;
-                        cmd5.ExecuteNonQuery();
                     }
                     else
                     {
-                        //do nothing
+                        cmd5.Parameters.Add("@role", SqlDbType.Int).Value = 3;
                     }
-                    cnn5.Close();
                     if (loginTaken == false)
                     {
                         cmd.ExecuteNonQuery();
+                        cmd5.ExecuteNonQuery();
                         MessageBox.Show("Użytkownik zmodyfikowany!");
                     }
                     else
                     {
                         MessageBox.Show("Popraw błędne informacje!");
                     }
+                    cnn5.Close();
                     cnn4.Close();
                 
                 }
