@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label label25;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zalogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -127,6 +127,10 @@
             this.labelNOopisProd = new System.Windows.Forms.Label();
             this.listBoxNOProdukty = new System.Windows.Forms.ListBox();
             this.panelNowosci = new System.Windows.Forms.Panel();
+            this.label30 = new System.Windows.Forms.Label();
+            this.buttonN3 = new System.Windows.Forms.Button();
+            this.buttonN2 = new System.Windows.Forms.Button();
+            this.buttonN1 = new System.Windows.Forms.Button();
             this.panelWyswProdukt = new System.Windows.Forms.Panel();
             this.labelIloscSztuk = new System.Windows.Forms.Label();
             this.labelCena = new System.Windows.Forms.Label();
@@ -134,10 +138,6 @@
             this.labelProducent = new System.Windows.Forms.Label();
             this.labelOpisProd = new System.Windows.Forms.Label();
             this.labelNazwaProd = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.buttonN3 = new System.Windows.Forms.Button();
-            this.buttonN2 = new System.Windows.Forms.Button();
-            this.buttonN1 = new System.Windows.Forms.Button();
             this.panelTop1 = new System.Windows.Forms.Panel();
             this.labelNKategorie = new System.Windows.Forms.Label();
             this.labelNCena = new System.Windows.Forms.Label();
@@ -206,6 +206,7 @@
             this.label42 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.panelEdytujUzytkownikow = new System.Windows.Forms.Panel();
+            this.brak = new System.Windows.Forms.RadioButton();
             this.label58 = new System.Windows.Forms.Label();
             this.manager = new System.Windows.Forms.RadioButton();
             this.administrator = new System.Windows.Forms.RadioButton();
@@ -233,7 +234,15 @@
             this.label49 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
-            this.brak = new System.Windows.Forms.RadioButton();
+            this.panelWyszukaj = new System.Windows.Forms.Panel();
+            this.listBoxWyszukajWypProd = new System.Windows.Forms.ListBox();
+            this.listBoxWlistaKategorii = new System.Windows.Forms.ListBox();
+            this.label62 = new System.Windows.Forms.Label();
+            this.listBoxWlistaProd = new System.Windows.Forms.ListBox();
+            this.label61 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label60 = new System.Windows.Forms.Label();
+            this.label59 = new System.Windows.Forms.Label();
             label25 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
@@ -252,6 +261,7 @@
             this.panelDodajProdukt.SuspendLayout();
             this.panelModyfikujProdukt.SuspendLayout();
             this.panelEdytujUzytkownikow.SuspendLayout();
+            this.panelWyszukaj.SuspendLayout();
             this.SuspendLayout();
             // 
             // label25
@@ -446,16 +456,16 @@
             this.panelWelcome.Controls.Add(this.label2);
             this.panelWelcome.Controls.Add(this.panelLogo);
             this.panelWelcome.Controls.Add(this.label1);
-            this.panelWelcome.Location = new System.Drawing.Point(28, 41);
+            this.panelWelcome.Location = new System.Drawing.Point(0, 19);
             this.panelWelcome.Name = "panelWelcome";
-            this.panelWelcome.Size = new System.Drawing.Size(752, 386);
+            this.panelWelcome.Size = new System.Drawing.Size(801, 430);
             this.panelWelcome.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label2.Location = new System.Drawing.Point(126, 78);
+            this.label2.Location = new System.Drawing.Point(159, 92);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(483, 25);
             this.label2.TabIndex = 3;
@@ -463,7 +473,7 @@
             // 
             // panelLogo
             // 
-            this.panelLogo.Location = new System.Drawing.Point(239, 118);
+            this.panelLogo.Location = new System.Drawing.Point(272, 132);
             this.panelLogo.Name = "panelLogo";
             this.panelLogo.Size = new System.Drawing.Size(256, 256);
             this.panelLogo.TabIndex = 4;
@@ -472,7 +482,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.label1.Location = new System.Drawing.Point(191, 23);
+            this.label1.Location = new System.Drawing.Point(224, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(363, 37);
             this.label1.TabIndex = 2;
@@ -1143,7 +1153,6 @@
             // 
             // panelNowosci
             // 
-            this.panelNowosci.Controls.Add(this.panelWyswProdukt);
             this.panelNowosci.Controls.Add(this.label30);
             this.panelNowosci.Controls.Add(this.buttonN3);
             this.panelNowosci.Controls.Add(this.buttonN2);
@@ -1153,6 +1162,46 @@
             this.panelNowosci.Size = new System.Drawing.Size(802, 425);
             this.panelNowosci.TabIndex = 10;
             // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label30.Location = new System.Drawing.Point(207, 40);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(392, 31);
+            this.label30.TabIndex = 0;
+            this.label30.Text = "Oto ostanio dodane 3 produkty:";
+            // 
+            // buttonN3
+            // 
+            this.buttonN3.Location = new System.Drawing.Point(476, 336);
+            this.buttonN3.Name = "buttonN3";
+            this.buttonN3.Size = new System.Drawing.Size(105, 32);
+            this.buttonN3.TabIndex = 1;
+            this.buttonN3.Text = "3";
+            this.buttonN3.UseVisualStyleBackColor = true;
+            this.buttonN3.Click += new System.EventHandler(this.buttonN3_Click);
+            // 
+            // buttonN2
+            // 
+            this.buttonN2.Location = new System.Drawing.Point(357, 336);
+            this.buttonN2.Name = "buttonN2";
+            this.buttonN2.Size = new System.Drawing.Size(105, 32);
+            this.buttonN2.TabIndex = 1;
+            this.buttonN2.Text = "2";
+            this.buttonN2.UseVisualStyleBackColor = true;
+            this.buttonN2.Click += new System.EventHandler(this.buttonN2_Click);
+            // 
+            // buttonN1
+            // 
+            this.buttonN1.Location = new System.Drawing.Point(237, 336);
+            this.buttonN1.Name = "buttonN1";
+            this.buttonN1.Size = new System.Drawing.Size(105, 32);
+            this.buttonN1.TabIndex = 1;
+            this.buttonN1.Text = "1";
+            this.buttonN1.UseVisualStyleBackColor = true;
+            this.buttonN1.Click += new System.EventHandler(this.buttonN1_Click);
+            // 
             // panelWyswProdukt
             // 
             this.panelWyswProdukt.Controls.Add(this.labelIloscSztuk);
@@ -1161,9 +1210,9 @@
             this.panelWyswProdukt.Controls.Add(this.labelProducent);
             this.panelWyswProdukt.Controls.Add(this.labelOpisProd);
             this.panelWyswProdukt.Controls.Add(this.labelNazwaProd);
-            this.panelWyswProdukt.Location = new System.Drawing.Point(183, 87);
+            this.panelWyswProdukt.Location = new System.Drawing.Point(226, 108);
             this.panelWyswProdukt.Name = "panelWyswProdukt";
-            this.panelWyswProdukt.Size = new System.Drawing.Size(423, 224);
+            this.panelWyswProdukt.Size = new System.Drawing.Size(420, 224);
             this.panelWyswProdukt.TabIndex = 2;
             // 
             // labelIloscSztuk
@@ -1231,46 +1280,6 @@
             this.labelNazwaProd.Size = new System.Drawing.Size(60, 20);
             this.labelNazwaProd.TabIndex = 0;
             this.labelNazwaProd.Text = "label31";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label30.Location = new System.Drawing.Point(207, 40);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(392, 31);
-            this.label30.TabIndex = 0;
-            this.label30.Text = "Oto ostanio dodane 3 produkty:";
-            // 
-            // buttonN3
-            // 
-            this.buttonN3.Location = new System.Drawing.Point(476, 336);
-            this.buttonN3.Name = "buttonN3";
-            this.buttonN3.Size = new System.Drawing.Size(105, 32);
-            this.buttonN3.TabIndex = 1;
-            this.buttonN3.Text = "3";
-            this.buttonN3.UseVisualStyleBackColor = true;
-            this.buttonN3.Click += new System.EventHandler(this.buttonN3_Click);
-            // 
-            // buttonN2
-            // 
-            this.buttonN2.Location = new System.Drawing.Point(357, 336);
-            this.buttonN2.Name = "buttonN2";
-            this.buttonN2.Size = new System.Drawing.Size(105, 32);
-            this.buttonN2.TabIndex = 1;
-            this.buttonN2.Text = "2";
-            this.buttonN2.UseVisualStyleBackColor = true;
-            this.buttonN2.Click += new System.EventHandler(this.buttonN2_Click);
-            // 
-            // buttonN1
-            // 
-            this.buttonN1.Location = new System.Drawing.Point(237, 336);
-            this.buttonN1.Name = "buttonN1";
-            this.buttonN1.Size = new System.Drawing.Size(105, 32);
-            this.buttonN1.TabIndex = 1;
-            this.buttonN1.Text = "1";
-            this.buttonN1.UseVisualStyleBackColor = true;
-            this.buttonN1.Click += new System.EventHandler(this.buttonN1_Click);
             // 
             // panelTop1
             // 
@@ -1531,8 +1540,8 @@
             // 
             this.dataGridViewWKoszyku.AllowUserToAddRows = false;
             this.dataGridViewWKoszyku.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewWKoszyku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWKoszyku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NAme,
@@ -1789,7 +1798,7 @@
             this.panelModyfikujProdukt.Controls.Add(this.label41);
             this.panelModyfikujProdukt.Controls.Add(this.label42);
             this.panelModyfikujProdukt.Controls.Add(this.label43);
-            this.panelModyfikujProdukt.Location = new System.Drawing.Point(5, 19);
+            this.panelModyfikujProdukt.Location = new System.Drawing.Point(4, 25);
             this.panelModyfikujProdukt.Name = "panelModyfikujProdukt";
             this.panelModyfikujProdukt.Size = new System.Drawing.Size(797, 429);
             this.panelModyfikujProdukt.TabIndex = 14;
@@ -1981,6 +1990,18 @@
             this.panelEdytujUzytkownikow.Name = "panelEdytujUzytkownikow";
             this.panelEdytujUzytkownikow.Size = new System.Drawing.Size(797, 429);
             this.panelEdytujUzytkownikow.TabIndex = 15;
+            // 
+            // brak
+            // 
+            this.brak.AutoSize = true;
+            this.brak.CheckAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.brak.Location = new System.Drawing.Point(571, 108);
+            this.brak.Name = "brak";
+            this.brak.Size = new System.Drawing.Size(46, 17);
+            this.brak.TabIndex = 27;
+            this.brak.TabStop = true;
+            this.brak.Text = "brak";
+            this.brak.UseVisualStyleBackColor = true;
             // 
             // label58
             // 
@@ -2212,37 +2233,114 @@
             this.label51.TabIndex = 0;
             this.label51.Text = "Edytuj użytkowników";
             // 
-            // brak
+            // panelWyszukaj
             // 
-            this.brak.AutoSize = true;
-            this.brak.CheckAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.brak.Location = new System.Drawing.Point(571, 108);
-            this.brak.Name = "brak";
-            this.brak.Size = new System.Drawing.Size(46, 17);
-            this.brak.TabIndex = 27;
-            this.brak.TabStop = true;
-            this.brak.Text = "brak";
-            this.brak.UseVisualStyleBackColor = true;
+            this.panelWyszukaj.Controls.Add(this.listBoxWyszukajWypProd);
+            this.panelWyszukaj.Controls.Add(this.listBoxWlistaKategorii);
+            this.panelWyszukaj.Controls.Add(this.label62);
+            this.panelWyszukaj.Controls.Add(this.listBoxWlistaProd);
+            this.panelWyszukaj.Controls.Add(this.label61);
+            this.panelWyszukaj.Controls.Add(this.textBox2);
+            this.panelWyszukaj.Controls.Add(this.label60);
+            this.panelWyszukaj.Controls.Add(this.label59);
+            this.panelWyszukaj.Location = new System.Drawing.Point(7, 29);
+            this.panelWyszukaj.Name = "panelWyszukaj";
+            this.panelWyszukaj.Size = new System.Drawing.Size(796, 420);
+            this.panelWyszukaj.TabIndex = 16;
+            this.panelWyszukaj.Paint += new System.Windows.Forms.PaintEventHandler(this.panelWyszukaj_Paint);
+            // 
+            // listBoxWyszukajWypProd
+            // 
+            this.listBoxWyszukajWypProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.listBoxWyszukajWypProd.FormattingEnabled = true;
+            this.listBoxWyszukajWypProd.ItemHeight = 16;
+            this.listBoxWyszukajWypProd.Location = new System.Drawing.Point(259, 52);
+            this.listBoxWyszukajWypProd.Name = "listBoxWyszukajWypProd";
+            this.listBoxWyszukajWypProd.Size = new System.Drawing.Size(150, 116);
+            this.listBoxWyszukajWypProd.TabIndex = 6;
+            this.listBoxWyszukajWypProd.Click += new System.EventHandler(this.listBoxWyszukajWypProd_Click);
+            // 
+            // listBoxWlistaKategorii
+            // 
+            this.listBoxWlistaKategorii.FormattingEnabled = true;
+            this.listBoxWlistaKategorii.Location = new System.Drawing.Point(26, 226);
+            this.listBoxWlistaKategorii.Name = "listBoxWlistaKategorii";
+            this.listBoxWlistaKategorii.Size = new System.Drawing.Size(176, 173);
+            this.listBoxWlistaKategorii.TabIndex = 5;
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Location = new System.Drawing.Point(27, 208);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(55, 13);
+            this.label62.TabIndex = 4;
+            this.label62.Text = "Kategoria:";
+            // 
+            // listBoxWlistaProd
+            // 
+            this.listBoxWlistaProd.FormattingEnabled = true;
+            this.listBoxWlistaProd.Location = new System.Drawing.Point(26, 77);
+            this.listBoxWlistaProd.Name = "listBoxWlistaProd";
+            this.listBoxWlistaProd.Size = new System.Drawing.Size(176, 121);
+            this.listBoxWlistaProd.TabIndex = 3;
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Location = new System.Drawing.Point(256, 32);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(108, 13);
+            this.label61.TabIndex = 2;
+            this.label61.Text = "Wynik wyszukiwania:";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(26, 30);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(176, 20);
+            this.textBox2.TabIndex = 1;
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Location = new System.Drawing.Point(23, 13);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(88, 13);
+            this.label60.TabIndex = 0;
+            this.label60.Text = "Nazwa produktu:";
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Location = new System.Drawing.Point(23, 61);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(59, 13);
+            this.label59.TabIndex = 0;
+            this.label59.Text = "Producent:";
+            this.label59.Click += new System.EventHandler(this.label59_Click);
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panelWyszukaj);
+            this.Controls.Add(this.panelNaszaOferta);
+            this.Controls.Add(this.panelModyfikujProdukt);
+            this.Controls.Add(this.panelWyswProdukt);
+            this.Controls.Add(this.panelNowosci);
             this.Controls.Add(this.labelZalogowanyJako);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panelEdytujUzytkownikow);
-            this.Controls.Add(this.panelModyfikujProdukt);
+            this.Controls.Add(this.panelWelcome);
             this.Controls.Add(this.panelDodajProdukt);
             this.Controls.Add(this.panelTwojeZamowienia);
             this.Controls.Add(this.panelEdytujSwojeDane);
-            this.Controls.Add(this.panelWelcome);
             this.Controls.Add(this.panelLogin);
-            this.Controls.Add(this.panelNowosci);
             this.Controls.Add(this.panelTop1);
             this.Controls.Add(this.panelRejestracja);
             this.Controls.Add(this.panelPrzejdzDoKasy);
-            this.Controls.Add(this.panelNaszaOferta);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Home";
@@ -2279,6 +2377,8 @@
             this.panelModyfikujProdukt.PerformLayout();
             this.panelEdytujUzytkownikow.ResumeLayout(false);
             this.panelEdytujUzytkownikow.PerformLayout();
+            this.panelWyszukaj.ResumeLayout(false);
+            this.panelWyszukaj.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2488,5 +2588,14 @@
         private System.Windows.Forms.RadioButton manager;
         private System.Windows.Forms.RadioButton administrator;
         private System.Windows.Forms.RadioButton brak;
+        private System.Windows.Forms.Panel panelWyszukaj;
+        private System.Windows.Forms.Label label61;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.ListBox listBoxWlistaProd;
+        private System.Windows.Forms.ListBox listBoxWlistaKategorii;
+        private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.ListBox listBoxWyszukajWypProd;
     }
 }

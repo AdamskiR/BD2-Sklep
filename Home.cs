@@ -402,8 +402,6 @@ namespace Sklep
             using (SqlCommand command = new SqlCommand(querry, connection))
             using (SqlDataAdapter adapter = new SqlDataAdapter(command))
             {
-                // command.Parameters.AddWithValue("@VendorID", listBoxNOProdukty.SelectedValue);
-
 
                 DataTable tabela_prod = new DataTable();
                 adapter.Fill(tabela_prod);
@@ -414,7 +412,9 @@ namespace Sklep
                 listBoxNOProducts2.DisplayMember = "ProductName";
                 listBoxNOProducts2.ValueMember = "ID";
                 listBoxNOProducts2.DataSource = tabela_prod;
-
+                listBoxWyszukajWypProd.DisplayMember = "ProductName";
+                listBoxWyszukajWypProd.ValueMember = "ID";
+                listBoxWyszukajWypProd.DataSource = tabela_prod;
             }
         }
 
@@ -493,12 +493,14 @@ namespace Sklep
                     temp++;
                 }
             }
-            Wyswietlprodukt(Top3id[0]);
+            Wyswietlprodukt(Top3id[0], 250, 100);
             connection.Close();
         }
 
-        private void Wyswietlprodukt(int id)
+        private void Wyswietlprodukt(int id, int left, int top)
         {
+            panelWyswProdukt.Left = left;
+            panelWyswProdukt.Top = top;
             panelWyswProdukt.BringToFront();
 
             using (connection = new SqlConnection(connectionString))
@@ -578,17 +580,17 @@ namespace Sklep
 
         private void buttonN1_Click(object sender, EventArgs e)
         {
-            Wyswietlprodukt(Top3id[0]);
+            Wyswietlprodukt(Top3id[0], 250, 100);
         }
 
         private void buttonN2_Click(object sender, EventArgs e)
         {
-            Wyswietlprodukt(Top3id[1]);
+            Wyswietlprodukt(Top3id[1], 250, 100);
         }
 
         private void buttonN3_Click(object sender, EventArgs e)
         {
-            Wyswietlprodukt(Top3id[2]);
+            Wyswietlprodukt(Top3id[2], 250, 100);
         }
 
         private void buttonZmienDane_Click(object sender, EventArgs e)
@@ -743,12 +745,6 @@ namespace Sklep
 
                     if (Convert.ToInt32(textBoxNOIleKupic.Text) > 0)
                     {
-                        //Dodanie do koszyka jako nowej pozycji, nawet gdy jest juz na liscie
-                        //coIile kupno = new coIile();
-                        //kupno.id = Convert.ToInt32(listBoxNOProdukty.SelectedValue);
-                        //kupno.ilosc = Convert.ToInt32(textBoxNOIleKupic.Text);
-                        //koszyk.Add(kupno);
-
                         //Dodanie do koszyka z aktualizacja stanu gdy przedmiot jest już na liscie
 
                         if (Convert.ToInt32(dataSet.Tables[0].Rows[0]["ProductStock"]) >= Convert.ToInt32(textBoxNOIleKupic.Text))
@@ -1030,7 +1026,44 @@ namespace Sklep
 
         private void wyszukajToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not implemented yet");
+            string querry = "SELECT ID, Vendor FROM Vendors ";
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(querry, connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            {
+                DataTable ven = new DataTable();
+                adapter.Fill(ven);
+                listBoxWlistaProd.DisplayMember = "Vendor";
+                listBoxWlistaProd.ValueMember = "ID";
+                listBoxWlistaProd.DataSource = ven;
+            }
+
+            querry = "SELECT ID, CategoryName FROM Categories ";
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(querry, connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            {
+                DataTable cat = new DataTable();
+                adapter.Fill(cat);
+
+                listBoxWlistaKategorii.DisplayMember = "CategoryName";
+                listBoxWlistaKategorii.ValueMember = "ID";
+                listBoxWlistaKategorii.DataSource = cat;
+
+
+            }
+            listBoxWlistaProd.SelectedIndex = -1;
+            //listBoxWlistaKategorii.SelectedIndex = -1;
+
+
+
+            panelWyszukaj.BringToFront();
+            wylistujProdukty();
+            Wyswietlprodukt(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 250, 200);
+
+
+            //wyswDaneOProdukcie();
+
         }
 
         private void dodajProduktToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1439,5 +1472,20 @@ namespace Sklep
 
         }
 
+        private void label59_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelWyszukaj_Paint(object sender, PaintEventArgs e)
+        {
+            Pen pen = new Pen(Color.FromArgb(255, 0, 0, 0));
+            e.Graphics.DrawLine(pen, 230, 30, 230, 395);
+        }
+
+        private void listBoxWyszukajWypProd_Click(object sender, EventArgs e)
+        {
+            Wyswietlprodukt(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 250, 200);
+        }
     }
 }
