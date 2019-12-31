@@ -1156,13 +1156,14 @@ namespace Sklep
         }
         private void wylistujVendorow()
         {
-            string querry = "SELECT ID, Vendor FROM Vendors";
+            string querry = "dbo.listVendors";
 
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(querry, connection))
             using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+           
             {
-
+                command.CommandType = CommandType.StoredProcedure;
 
 
                 DataTable tabela_ven = new DataTable();
