@@ -1133,13 +1133,13 @@ namespace Sklep
         }
         private void wylistujKategorie()
         {
-            string querry = "SELECT ID, CategoryName FROM Categories";
+            string querry = "dbo.listCategories";
 
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(querry, connection))
             using (SqlDataAdapter adapter = new SqlDataAdapter(command))
             {
-
+                command.CommandType = CommandType.StoredProcedure;
 
 
                 DataTable tabela_cat = new DataTable();
