@@ -1081,10 +1081,13 @@ namespace Sklep
             {
 
                 bool productNameTaken;
-                string querry2 = "SELECT ProductName, ID FROM Products WHERE ProductName=" + "'" + DodajNazwa.Text + "'";
+                string querry2 = "dbo.checkProductName";
+               
                 SqlConnection cnn = new SqlConnection(connectionString);
                 cnn.Open();
                 SqlCommand cmd2 = new SqlCommand(querry2, cnn);
+                cmd2.CommandType = CommandType.StoredProcedure;
+                cmd2.Parameters.Add("@pname", SqlDbType.NChar).Value = DodajNazwa.Text;
                 SqlDataReader dr = cmd2.ExecuteReader();
                 dr.Read();
 
