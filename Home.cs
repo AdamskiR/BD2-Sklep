@@ -1181,13 +1181,13 @@ namespace Sklep
         }
         private void wylistujUserow()
         {
-            string querry = "SELECT ID, Username FROM Users";
+            string querry = "dbo.listUsers";
 
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(querry, connection))
             using (SqlDataAdapter adapter = new SqlDataAdapter(command))
             {
-
+                command.CommandType = CommandType.StoredProcedure;
 
 
                 DataTable tabela_usr = new DataTable();
