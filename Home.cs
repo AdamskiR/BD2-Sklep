@@ -412,9 +412,7 @@ namespace Sklep
                 listBoxNOProducts2.DisplayMember = "ProductName";
                 listBoxNOProducts2.ValueMember = "ID";
                 listBoxNOProducts2.DataSource = tabela_prod;
-                listBoxWyszukajWypProd.DisplayMember = "ProductName";
-                listBoxWyszukajWypProd.ValueMember = "ID";
-                listBoxWyszukajWypProd.DataSource = tabela_prod;
+                
             }
         }
 
@@ -1049,21 +1047,13 @@ namespace Sklep
                 listBoxWlistaKategorii.DisplayMember = "CategoryName";
                 listBoxWlistaKategorii.ValueMember = "ID";
                 listBoxWlistaKategorii.DataSource = cat;
-
-
             }
-            listBoxWlistaProd.SelectedIndex = -1;
-            //listBoxWlistaKategorii.SelectedIndex = -1;
-
-
-
+           // listBoxWlistaProd.SelectedIndex = -1;
+           // listBoxWlistaKategorii.SelectedIndex = -1;
+            
             panelWyszukaj.BringToFront();
             wylistujProdukty();
-            Wyswietlprodukt(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 250, 200);
-
-
-            //wyswDaneOProdukcie();
-
+           // Wyswietlprodukt(1, 250, 200);
         }
 
         private void dodajProduktToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1489,7 +1479,66 @@ namespace Sklep
 
         private void listBoxWyszukajWypProd_Click(object sender, EventArgs e)
         {
-            Wyswietlprodukt(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 250, 200);
+            try
+            {
+                Wyswietlprodukt(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 250, 200);
+            }
+            catch { }
+        }
+        //Do naprawienia
+        private void odswiezZnalezioneProdukty()
+        {
+            try
+            {
+
+                using (connection = new SqlConnection(connectionString))
+                using (SqlCommand command = new SqlCommand("Search", connection))
+                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                {
+                    connection.Open();
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.Add("@id_kat", SqlDbType.Int);
+                    command.Parameters.Add("@id_ven", SqlDbType.Int);
+                    command.Parameters.Add("@prod_name", SqlDbType.NVarChar);
+
+                    DataTable znalezione = new DataTable();
+
+                    command.Parameters["@prod_name"].Value = textBoxWyszukaj.Text.ToString();
+
+                    if (Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()) > -1)                                          //Do poprawy
+                        command.Parameters["@prod_ven"].Value = Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString());
+
+                    if (Convert.ToInt32(listBoxWlistaKategorii.SelectedValue.ToString()) > -1)
+                        command.Parameters["@prod_kat"].Value = Convert.ToInt32(listBoxWlistaKategorii.SelectedValue.ToString());       //Do poprawy
+
+                    listBoxWyszukajWypProd.DisplayMember = "ProductName";
+                    listBoxWyszukajWypProd.ValueMember = "ID";
+                    listBoxWyszukajWypProd.DataSource = znalezione;
+                }
+            }
+            catch { }
+            
+        }
+
+        private void listBoxWyszukajWypProd_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBoxWlistaProd_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            odswiezZnalezioneProdukty();
+        }
+
+        private void listBoxWlistaKategorii_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            odswiezZnalezioneProdukty();
+        }
+
+        private void textBoxWyszukaj_TextChanged(object sender, EventArgs e)
+        {
+            odswiezZnalezioneProdukty();
         }
     }
 }

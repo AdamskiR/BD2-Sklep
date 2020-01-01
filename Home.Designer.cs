@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label label25;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zalogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -240,7 +240,7 @@
             this.label62 = new System.Windows.Forms.Label();
             this.listBoxWlistaProd = new System.Windows.Forms.ListBox();
             this.label61 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxWyszukaj = new System.Windows.Forms.TextBox();
             this.label60 = new System.Windows.Forms.Label();
             this.label59 = new System.Windows.Forms.Label();
             label25 = new System.Windows.Forms.Label();
@@ -1540,8 +1540,8 @@
             // 
             this.dataGridViewWKoszyku.AllowUserToAddRows = false;
             this.dataGridViewWKoszyku.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewWKoszyku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWKoszyku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NAme,
@@ -2240,7 +2240,7 @@
             this.panelWyszukaj.Controls.Add(this.label62);
             this.panelWyszukaj.Controls.Add(this.listBoxWlistaProd);
             this.panelWyszukaj.Controls.Add(this.label61);
-            this.panelWyszukaj.Controls.Add(this.textBox2);
+            this.panelWyszukaj.Controls.Add(this.textBoxWyszukaj);
             this.panelWyszukaj.Controls.Add(this.label60);
             this.panelWyszukaj.Controls.Add(this.label59);
             this.panelWyszukaj.Location = new System.Drawing.Point(7, 29);
@@ -2259,6 +2259,7 @@
             this.listBoxWyszukajWypProd.Size = new System.Drawing.Size(150, 116);
             this.listBoxWyszukajWypProd.TabIndex = 6;
             this.listBoxWyszukajWypProd.Click += new System.EventHandler(this.listBoxWyszukajWypProd_Click);
+            this.listBoxWyszukajWypProd.SelectedIndexChanged += new System.EventHandler(this.listBoxWyszukajWypProd_SelectedIndexChanged);
             // 
             // listBoxWlistaKategorii
             // 
@@ -2267,6 +2268,7 @@
             this.listBoxWlistaKategorii.Name = "listBoxWlistaKategorii";
             this.listBoxWlistaKategorii.Size = new System.Drawing.Size(176, 173);
             this.listBoxWlistaKategorii.TabIndex = 5;
+            this.listBoxWlistaKategorii.SelectedIndexChanged += new System.EventHandler(this.listBoxWlistaKategorii_SelectedIndexChanged);
             // 
             // label62
             // 
@@ -2284,6 +2286,7 @@
             this.listBoxWlistaProd.Name = "listBoxWlistaProd";
             this.listBoxWlistaProd.Size = new System.Drawing.Size(176, 121);
             this.listBoxWlistaProd.TabIndex = 3;
+            this.listBoxWlistaProd.SelectedIndexChanged += new System.EventHandler(this.listBoxWlistaProd_SelectedIndexChanged);
             // 
             // label61
             // 
@@ -2294,12 +2297,13 @@
             this.label61.TabIndex = 2;
             this.label61.Text = "Wynik wyszukiwania:";
             // 
-            // textBox2
+            // textBoxWyszukaj
             // 
-            this.textBox2.Location = new System.Drawing.Point(26, 30);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(176, 20);
-            this.textBox2.TabIndex = 1;
+            this.textBoxWyszukaj.Location = new System.Drawing.Point(26, 30);
+            this.textBoxWyszukaj.Name = "textBoxWyszukaj";
+            this.textBoxWyszukaj.Size = new System.Drawing.Size(176, 20);
+            this.textBoxWyszukaj.TabIndex = 1;
+            this.textBoxWyszukaj.TextChanged += new System.EventHandler(this.textBoxWyszukaj_TextChanged);
             // 
             // label60
             // 
@@ -2590,7 +2594,7 @@
         private System.Windows.Forms.RadioButton brak;
         private System.Windows.Forms.Panel panelWyszukaj;
         private System.Windows.Forms.Label label61;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxWyszukaj;
         private System.Windows.Forms.Label label60;
         private System.Windows.Forms.Label label59;
         private System.Windows.Forms.ListBox listBoxWlistaProd;
