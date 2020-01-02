@@ -412,7 +412,10 @@ namespace Sklep
                 listBoxNOProducts2.DisplayMember = "ProductName";
                 listBoxNOProducts2.ValueMember = "ID";
                 listBoxNOProducts2.DataSource = tabela_prod;
-                
+                listBoxWyszukajWypProd.DisplayMember = "ProductName";
+                listBoxWyszukajWypProd.ValueMember = "ID";
+                listBoxWyszukajWypProd.DataSource = tabela_prod;
+
             }
         }
 
@@ -1048,12 +1051,11 @@ namespace Sklep
                 listBoxWlistaKategorii.ValueMember = "ID";
                 listBoxWlistaKategorii.DataSource = cat;
             }
-           // listBoxWlistaProd.SelectedIndex = -1;
-           // listBoxWlistaKategorii.SelectedIndex = -1;
-            
-            panelWyszukaj.BringToFront();
             wylistujProdukty();
-           // Wyswietlprodukt(1, 250, 200);
+            panelWyszukaj.BringToFront();
+            listBoxWlistaProd.SelectedIndex = -1;
+            listBoxWlistaKategorii.SelectedIndex = -1;
+            Wyswietlprodukt(1, 250, 200);
         }
 
         private void dodajProduktToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1487,10 +1489,8 @@ namespace Sklep
         }
         //Do naprawienia
         private void odswiezZnalezioneProdukty()
-        {
-            try
-            {
-
+        { 
+           
                 using (connection = new SqlConnection(connectionString))
                 using (SqlCommand command = new SqlCommand("Search", connection))
                 using (SqlDataAdapter adapter = new SqlDataAdapter(command))
@@ -1506,39 +1506,71 @@ namespace Sklep
 
                     command.Parameters["@prod_name"].Value = textBoxWyszukaj.Text.ToString();
 
-                    if (Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()) > -1)                                          //Do poprawy
-                        command.Parameters["@prod_ven"].Value = Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString());
+                    Console.WriteLine("name     : " + textBoxWyszukaj.Text.ToString());
+                    //Console.WriteLine("vendorzy : " + Convert.ToInt32(listBoxWlistaProd.SelectedValue.ToString()));
+                    //Console.WriteLine("kategoria: " + listBoxWlistaKategorii.SelectedValue.ToString());
 
-                    if (Convert.ToInt32(listBoxWlistaKategorii.SelectedValue.ToString()) > -1)
-                        command.Parameters["@prod_kat"].Value = Convert.ToInt32(listBoxWlistaKategorii.SelectedValue.ToString());       //Do poprawy
+                //if (listBoxWyszukajWypProd.SelectedItem == null)
+                //{
+                //    return;
+                //}
 
+                    if(listBoxWlistaProd.SelectedIndex > -1)
+                    command.Parameters["@id_ven"].Value = Convert.ToInt32(listBoxWlistaProd.SelectedValue.ToString());
+                    else
+                        command.Parameters["@id_ven"].Value = DBNull.Value;
+
+
+                    if (listBoxWlistaKategorii.SelectedIndex > -1)
+                        command.Parameters["@id_kat"].Value = Convert.ToInt32(listBoxWlistaKategorii.SelectedValue.ToString());
+                    else
+                        command.Parameters["@id_kat"].Value = DBNull.Value;
+
+
+                    adapter.Fill(znalezione);
                     listBoxWyszukajWypProd.DisplayMember = "ProductName";
                     listBoxWyszukajWypProd.ValueMember = "ID";
                     listBoxWyszukajWypProd.DataSource = znalezione;
-                }
+                    try
+                    {
+                        Wyswietlprodukt(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 250, 200);
+                    }
+                    catch { }
+                //Wyswietlprodukt(1, 250, 200);
+
             }
-            catch { }
+
+
+        }
+
+
+        private void textBoxWyszukaj_TextChanged(object sender, EventArgs e)
+        {
+            odswiezZnalezioneProdukty();
+        }
+
+        private void listBoxWlistaProd_Click(object sender, EventArgs e)
+        {
+            odswiezZnalezioneProdukty();
+        }
+
+        private void listBoxWlistaKategorii_Click(object sender, EventArgs e)
+        {
+            odswiezZnalezioneProdukty();
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            listBoxWlistaProd.SelectedIndex = -1;
+            listBoxWlistaKategorii.SelectedIndex = -1;
+            odswiezZnalezioneProdukty();
             
         }
 
         private void listBoxWyszukajWypProd_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-        }
-
-        private void listBoxWlistaProd_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            odswiezZnalezioneProdukty();
-        }
-
-        private void listBoxWlistaKategorii_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            odswiezZnalezioneProdukty();
-        }
-
-        private void textBoxWyszukaj_TextChanged(object sender, EventArgs e)
-        {
-            odswiezZnalezioneProdukty();
         }
     }
 }

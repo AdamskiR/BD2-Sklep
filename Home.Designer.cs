@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label label25;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zalogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -243,6 +243,7 @@
             this.textBoxWyszukaj = new System.Windows.Forms.TextBox();
             this.label60 = new System.Windows.Forms.Label();
             this.label59 = new System.Windows.Forms.Label();
+            this.buttonWResetujKatiProd = new System.Windows.Forms.Button();
             label25 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
@@ -1540,8 +1541,8 @@
             // 
             this.dataGridViewWKoszyku.AllowUserToAddRows = false;
             this.dataGridViewWKoszyku.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewWKoszyku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWKoszyku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NAme,
@@ -2235,6 +2236,7 @@
             // 
             // panelWyszukaj
             // 
+            this.panelWyszukaj.Controls.Add(this.buttonWResetujKatiProd);
             this.panelWyszukaj.Controls.Add(this.listBoxWyszukajWypProd);
             this.panelWyszukaj.Controls.Add(this.listBoxWlistaKategorii);
             this.panelWyszukaj.Controls.Add(this.label62);
@@ -2266,9 +2268,9 @@
             this.listBoxWlistaKategorii.FormattingEnabled = true;
             this.listBoxWlistaKategorii.Location = new System.Drawing.Point(26, 226);
             this.listBoxWlistaKategorii.Name = "listBoxWlistaKategorii";
-            this.listBoxWlistaKategorii.Size = new System.Drawing.Size(176, 173);
+            this.listBoxWlistaKategorii.Size = new System.Drawing.Size(176, 134);
             this.listBoxWlistaKategorii.TabIndex = 5;
-            this.listBoxWlistaKategorii.SelectedIndexChanged += new System.EventHandler(this.listBoxWlistaKategorii_SelectedIndexChanged);
+            this.listBoxWlistaKategorii.Click += new System.EventHandler(this.listBoxWlistaKategorii_Click);
             // 
             // label62
             // 
@@ -2286,7 +2288,7 @@
             this.listBoxWlistaProd.Name = "listBoxWlistaProd";
             this.listBoxWlistaProd.Size = new System.Drawing.Size(176, 121);
             this.listBoxWlistaProd.TabIndex = 3;
-            this.listBoxWlistaProd.SelectedIndexChanged += new System.EventHandler(this.listBoxWlistaProd_SelectedIndexChanged);
+            this.listBoxWlistaProd.Click += new System.EventHandler(this.listBoxWlistaProd_Click);
             // 
             // label61
             // 
@@ -2323,6 +2325,16 @@
             this.label59.TabIndex = 0;
             this.label59.Text = "Producent:";
             this.label59.Click += new System.EventHandler(this.label59_Click);
+            // 
+            // buttonWResetujKatiProd
+            // 
+            this.buttonWResetujKatiProd.Location = new System.Drawing.Point(26, 371);
+            this.buttonWResetujKatiProd.Name = "buttonWResetujKatiProd";
+            this.buttonWResetujKatiProd.Size = new System.Drawing.Size(176, 31);
+            this.buttonWResetujKatiProd.TabIndex = 7;
+            this.buttonWResetujKatiProd.Text = "Resetuj Kategorie i Producentów";
+            this.buttonWResetujKatiProd.UseVisualStyleBackColor = true;
+            this.buttonWResetujKatiProd.Click += new System.EventHandler(this.button2_Click);
             // 
             // Home
             // 
@@ -2601,5 +2613,6 @@
         private System.Windows.Forms.ListBox listBoxWlistaKategorii;
         private System.Windows.Forms.Label label62;
         private System.Windows.Forms.ListBox listBoxWyszukajWypProd;
+        private System.Windows.Forms.Button buttonWResetujKatiProd;
     }
 }
