@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label label25;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zalogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -235,6 +235,7 @@
             this.label50 = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
             this.panelWyszukaj = new System.Windows.Forms.Panel();
+            this.buttonWResetujKatiProd = new System.Windows.Forms.Button();
             this.listBoxWyszukajWypProd = new System.Windows.Forms.ListBox();
             this.listBoxWlistaKategorii = new System.Windows.Forms.ListBox();
             this.label62 = new System.Windows.Forms.Label();
@@ -243,7 +244,6 @@
             this.textBoxWyszukaj = new System.Windows.Forms.TextBox();
             this.label60 = new System.Windows.Forms.Label();
             this.label59 = new System.Windows.Forms.Label();
-            this.buttonWResetujKatiProd = new System.Windows.Forms.Button();
             label25 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
@@ -1514,7 +1514,6 @@
             this.panelPrzejdzDoKasy.Name = "panelPrzejdzDoKasy";
             this.panelPrzejdzDoKasy.Size = new System.Drawing.Size(799, 428);
             this.panelPrzejdzDoKasy.TabIndex = 0;
-            this.panelPrzejdzDoKasy.Paint += new System.Windows.Forms.PaintEventHandler(this.panelPrzejdzDoKasy_Paint);
             // 
             // labelPDKInformacja
             // 
@@ -1541,8 +1540,8 @@
             // 
             this.dataGridViewWKoszyku.AllowUserToAddRows = false;
             this.dataGridViewWKoszyku.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewWKoszyku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWKoszyku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NAme,
@@ -2251,31 +2250,40 @@
             this.panelWyszukaj.TabIndex = 16;
             this.panelWyszukaj.Paint += new System.Windows.Forms.PaintEventHandler(this.panelWyszukaj_Paint);
             // 
+            // buttonWResetujKatiProd
+            // 
+            this.buttonWResetujKatiProd.Location = new System.Drawing.Point(132, 364);
+            this.buttonWResetujKatiProd.Name = "buttonWResetujKatiProd";
+            this.buttonWResetujKatiProd.Size = new System.Drawing.Size(176, 31);
+            this.buttonWResetujKatiProd.TabIndex = 7;
+            this.buttonWResetujKatiProd.Text = "Resetuj Kategorie i Producentów";
+            this.buttonWResetujKatiProd.UseVisualStyleBackColor = true;
+            this.buttonWResetujKatiProd.Click += new System.EventHandler(this.button2_Click);
+            // 
             // listBoxWyszukajWypProd
             // 
             this.listBoxWyszukajWypProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.listBoxWyszukajWypProd.FormattingEnabled = true;
             this.listBoxWyszukajWypProd.ItemHeight = 16;
-            this.listBoxWyszukajWypProd.Location = new System.Drawing.Point(259, 52);
+            this.listBoxWyszukajWypProd.Location = new System.Drawing.Point(451, 38);
             this.listBoxWyszukajWypProd.Name = "listBoxWyszukajWypProd";
-            this.listBoxWyszukajWypProd.Size = new System.Drawing.Size(150, 116);
+            this.listBoxWyszukajWypProd.Size = new System.Drawing.Size(234, 116);
             this.listBoxWyszukajWypProd.TabIndex = 6;
             this.listBoxWyszukajWypProd.Click += new System.EventHandler(this.listBoxWyszukajWypProd_Click);
-            this.listBoxWyszukajWypProd.SelectedIndexChanged += new System.EventHandler(this.listBoxWyszukajWypProd_SelectedIndexChanged);
             // 
             // listBoxWlistaKategorii
             // 
             this.listBoxWlistaKategorii.FormattingEnabled = true;
-            this.listBoxWlistaKategorii.Location = new System.Drawing.Point(26, 226);
+            this.listBoxWlistaKategorii.Location = new System.Drawing.Point(224, 90);
             this.listBoxWlistaKategorii.Name = "listBoxWlistaKategorii";
-            this.listBoxWlistaKategorii.Size = new System.Drawing.Size(176, 134);
+            this.listBoxWlistaKategorii.Size = new System.Drawing.Size(176, 251);
             this.listBoxWlistaKategorii.TabIndex = 5;
             this.listBoxWlistaKategorii.Click += new System.EventHandler(this.listBoxWlistaKategorii_Click);
             // 
             // label62
             // 
             this.label62.AutoSize = true;
-            this.label62.Location = new System.Drawing.Point(27, 208);
+            this.label62.Location = new System.Drawing.Point(225, 74);
             this.label62.Name = "label62";
             this.label62.Size = new System.Drawing.Size(55, 13);
             this.label62.TabIndex = 4;
@@ -2284,16 +2292,16 @@
             // listBoxWlistaProd
             // 
             this.listBoxWlistaProd.FormattingEnabled = true;
-            this.listBoxWlistaProd.Location = new System.Drawing.Point(26, 77);
+            this.listBoxWlistaProd.Location = new System.Drawing.Point(26, 90);
             this.listBoxWlistaProd.Name = "listBoxWlistaProd";
-            this.listBoxWlistaProd.Size = new System.Drawing.Size(176, 121);
+            this.listBoxWlistaProd.Size = new System.Drawing.Size(176, 251);
             this.listBoxWlistaProd.TabIndex = 3;
             this.listBoxWlistaProd.Click += new System.EventHandler(this.listBoxWlistaProd_Click);
             // 
             // label61
             // 
             this.label61.AutoSize = true;
-            this.label61.Location = new System.Drawing.Point(256, 32);
+            this.label61.Location = new System.Drawing.Point(448, 18);
             this.label61.Name = "label61";
             this.label61.Size = new System.Drawing.Size(108, 13);
             this.label61.TabIndex = 2;
@@ -2301,7 +2309,7 @@
             // 
             // textBoxWyszukaj
             // 
-            this.textBoxWyszukaj.Location = new System.Drawing.Point(26, 30);
+            this.textBoxWyszukaj.Location = new System.Drawing.Point(132, 44);
             this.textBoxWyszukaj.Name = "textBoxWyszukaj";
             this.textBoxWyszukaj.Size = new System.Drawing.Size(176, 20);
             this.textBoxWyszukaj.TabIndex = 1;
@@ -2310,7 +2318,7 @@
             // label60
             // 
             this.label60.AutoSize = true;
-            this.label60.Location = new System.Drawing.Point(23, 13);
+            this.label60.Location = new System.Drawing.Point(173, 28);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(88, 13);
             this.label60.TabIndex = 0;
@@ -2319,22 +2327,11 @@
             // label59
             // 
             this.label59.AutoSize = true;
-            this.label59.Location = new System.Drawing.Point(23, 61);
+            this.label59.Location = new System.Drawing.Point(23, 74);
             this.label59.Name = "label59";
             this.label59.Size = new System.Drawing.Size(59, 13);
             this.label59.TabIndex = 0;
             this.label59.Text = "Producent:";
-            this.label59.Click += new System.EventHandler(this.label59_Click);
-            // 
-            // buttonWResetujKatiProd
-            // 
-            this.buttonWResetujKatiProd.Location = new System.Drawing.Point(26, 371);
-            this.buttonWResetujKatiProd.Name = "buttonWResetujKatiProd";
-            this.buttonWResetujKatiProd.Size = new System.Drawing.Size(176, 31);
-            this.buttonWResetujKatiProd.TabIndex = 7;
-            this.buttonWResetujKatiProd.Text = "Resetuj Kategorie i Producentów";
-            this.buttonWResetujKatiProd.UseVisualStyleBackColor = true;
-            this.buttonWResetujKatiProd.Click += new System.EventHandler(this.button2_Click);
             // 
             // Home
             // 
