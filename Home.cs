@@ -106,8 +106,8 @@ namespace Sklep
                     zalogujToolStripMenuItem.Visible = true;
                     koszykToolStripMenuItem.Visible = false;
                     twojeZamówieniaToolStripMenuItem.Visible = false;
-                    textBoxNOIleKupic.Visible = false;
-                    buttonNOdodajDokoszyka.Visible = false;
+                    textBoxDDK.Visible = false;
+                    buttonDDK.Visible = false;
                     zarejestrujToolStripMenuItem.Visible = true;
 
                 }
@@ -133,9 +133,9 @@ namespace Sklep
                     twojeZamówieniaToolStripMenuItem.Visible = true;
                     labelZalogowanyJako.Text = "Zalogowany jako: " + textBoxLogUzytkownik.Text;
                     zarejestrujToolStripMenuItem.Visible = false;
-                    textBoxNOIleKupic.Visible = true;
-                    buttonNOdodajDokoszyka.Visible = true;
-                    labelKupteraz.Text = "Wybierz ilość jaką chcesz kupić";
+                    textBoxDDK.Visible = true;
+                    buttonDDK.Visible = true;
+                    labelKupTeraz.Text = "Wybierz ilość jaką chcesz kupić";
                 }
         }
 
@@ -387,12 +387,6 @@ namespace Sklep
             e.Graphics.DrawLine(pen, 220, 228, 415, 228);
         }
 
-        private void listBoxNOProdukty_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            wyswDaneOProdukcie();
-        }
-
-
 
         private void wylistujProdukty()
         {
@@ -406,9 +400,6 @@ namespace Sklep
                 DataTable tabela_prod = new DataTable();
                 adapter.Fill(tabela_prod);
 
-                listBoxNOProdukty.DisplayMember = "ProductName";
-                listBoxNOProdukty.ValueMember = "ID";
-                listBoxNOProdukty.DataSource = tabela_prod;
                 listBoxNOProducts2.DisplayMember = "ProductName";
                 listBoxNOProducts2.ValueMember = "ID";
                 listBoxNOProducts2.DataSource = tabela_prod;
@@ -419,46 +410,39 @@ namespace Sklep
             }
         }
 
-        private void wyswDaneOProdukcie()
-        {
-
-            using (connection = new SqlConnection(connectionString))
-            using (SqlCommand command = new SqlCommand("DisplaySpecificProduct", connection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-            {
-
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add("@id", SqlDbType.Int);
-                command.Parameters["@id"].Value = listBoxNOProdukty.SelectedValue;
-
-                DataTable tabela_prod = new DataTable();
-                adapter.Fill(tabela_prod);
-
-                labelNOopisProd.Text = "Opis Produktu: " + (string)tabela_prod.Rows[0]["ProductDesc"];
-                labelNOProducent.Text = "Producent: " + (string)tabela_prod.Rows[0]["Vendor"];
-                labelNOCena.Text = "Cena: " + (decimal)tabela_prod.Rows[0]["ProductPrice"];
-                labelNOwMagazynie.Text = "Ilośc w magzynie: " + (double)tabela_prod.Rows[0]["ProductStock"];
-                string temp = "Kategorie: | ";
-
-                foreach (DataRow row in tabela_prod.Rows)
-                {
-                    temp += row["CategoryName"].ToString() + " | ";
-                }
-
-                labelNOkategorie.Text = temp;
-            }
-        }
-
-        private void textBoxNOIleKupic_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-
+  
         private void zobaczWszystkoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            panelNaszaOferta.BringToFront();
+            string querry = "SELECT ID, Vendor FROM Vendors ";
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(querry, connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            {
+                DataTable ven = new DataTable();
+                adapter.Fill(ven);
+                listBoxWlistaProd.DisplayMember = "Vendor";
+                listBoxWlistaProd.ValueMember = "ID";
+                listBoxWlistaProd.DataSource = ven;
+            }
+
+            querry = "SELECT ID, CategoryName FROM Categories ";
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(querry, connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            {
+                DataTable cat = new DataTable();
+                adapter.Fill(cat);
+
+                listBoxWlistaKategorii.DisplayMember = "CategoryName";
+                listBoxWlistaKategorii.ValueMember = "ID";
+                listBoxWlistaKategorii.DataSource = cat;
+            }
             wylistujProdukty();
+            panelNaszaOferta.BringToFront();
+            listBoxWlistaProd.SelectedIndex = -1;
+            listBoxWlistaKategorii.SelectedIndex = -1;
+            panelNaszaOferta.BringToFront();
+            Wyswietlprodukt(1, 470, 200, 10);
         }
 
         private void tOP3ZamawianeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -487,8 +471,15 @@ namespace Sklep
             connection.Close();
         }
 
-        private void Wyswietlprodukt(int id, int left, int top)
+        private void Wyswietlprodukt(int id, int left, int top, int font_size = 12)
         {
+            labelNazwaProd.Font = new Font("Arial", font_size);
+            labelOpisProd.Font = new Font("Arial", font_size);
+            labelProducent.Font = new Font("Arial", font_size);
+            labelKategorie.Font = new Font("Arial", font_size);
+            labelCena.Font = new Font("Arial", font_size);
+            labelIloscSztuk.Font = new Font("Arial", font_size);
+
             panelWyswProdukt.Left = left;
             panelWyswProdukt.Top = top;
             panelWyswProdukt.BringToFront();
@@ -520,52 +511,10 @@ namespace Sklep
             }
         }
 
-
         private void najpopularniejszyZOstatnich5ZakupówToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Int32 idTop1 = 0;
             panelTop1.BringToFront();
-
-            string querry = "Select * from Top1OutOfRecent5";
-            using (connection = new SqlConnection(connectionString))
-            using (SqlCommand command = new SqlCommand(querry, connection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-            {
-                DataTable tabela_prod = new DataTable();
-                adapter.Fill(tabela_prod);
-                connection.Open();
-
-                SqlDataReader dr = command.ExecuteReader();
-                while (dr.Read())
-                {
-                    idTop1 = dr.GetInt32(0);
-                }
-            }
-
-            using (connection = new SqlConnection(connectionString))
-            using (SqlCommand command = new SqlCommand("DisplaySpecificProduct", connection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-            {
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add("@id", SqlDbType.Int);
-                command.Parameters["@id"].Value = idTop1;
-
-                DataTable tabela_prod = new DataTable();
-                adapter.Fill(tabela_prod);
-
-                labelNOpisProd.Text = "Opis Produktu: " + (string)tabela_prod.Rows[0]["ProductDesc"];
-                labelNProducent.Text = "Producent: " + (string)tabela_prod.Rows[0]["Vendor"];
-                labelNCena.Text = "Cena: " + (decimal)tabela_prod.Rows[0]["ProductPrice"];
-                labelNNazwaProd.Text = "Nazwa produktu: " + (string)tabela_prod.Rows[0]["ProductName"];
-                string temp = "Kategorie: | ";
-
-                foreach (DataRow row in tabela_prod.Rows)
-                {
-                    temp += row["CategoryName"].ToString() + " | ";
-                }
-
-                labelNKategorie.Text = temp;
-            }
+            Wyswietlprodukt(zwrocIdNajpopProduktu(), 250, 130);
         }
 
         private void buttonN1_Click(object sender, EventArgs e)
@@ -716,83 +665,7 @@ namespace Sklep
             }
         }
 
-        private void buttonNOdodajDokoszyka_Click(object sender, EventArgs e)
-        {
-            string pattern = "^([1-9][0-9]+|[1-9])$";
-            if (Regex.IsMatch(textBoxNOIleKupic.Text, pattern))
-            {
-                    try
-                    {
-                        var dataSet = new DataSet();
-                        string querry2 = "SELECT ProductStock FROM Products WHERE ID=" + "'" + listBoxNOProdukty.SelectedValue + "'";
-                        SqlConnection cnn = new SqlConnection(connectionString);
-                        cnn.Open();
-                        SqlCommand cmd2 = new SqlCommand(querry2, cnn);
-                        var dataAdapter = new SqlDataAdapter { SelectCommand = cmd2 };
-                        dataAdapter.Fill(dataSet);
-                        coIile kupno = new coIile();
-                        int ids = Convert.ToInt32(listBoxNOProdukty.SelectedValue);
-                        int ilosc = Convert.ToInt32(textBoxNOIleKupic.Text);
-                        List<coIile> result = koszyk.FindAll(x => x.id == ids);
-
-                        if (Convert.ToInt32(textBoxNOIleKupic.Text) > 0)
-                        {
-                            //Dodanie do koszyka z aktualizacja stanu gdy przedmiot jest już na liscie
-
-                            if (Convert.ToInt32(dataSet.Tables[0].Rows[0]["ProductStock"]) >= Convert.ToInt32(textBoxNOIleKupic.Text))
-                            {
-                                if (result.Count() > 0)
-                                {
-                                    for (int i = 0; i < koszyk.Count(); i++)
-                                    {
-                                        if (koszyk[i].id == ids)
-                                        {
-                                            if (Convert.ToInt32(koszyk[i].ilosc + ilosc) <= Convert.ToInt32(dataSet.Tables[0].Rows[0]["ProductStock"]))
-                                            {
-                                                koszyk[i].ilosc += ilosc;
-                                                MessageBox.Show("Dodano do koszyka");
-                                            }
-                                            else
-                                            {
-                                                MessageBox.Show("Suma towarów z koszyka i tego zamówienia przekracza ilość towaru w magazynie!");
-                                            }
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    kupno.id = ids;
-                                    kupno.ilosc = ilosc;
-                                    koszyk.Add(kupno);
-                                    result.Clear();
-                                    MessageBox.Show("Dodano do koszyka");
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("Brak takiej ilości towaru w magazynie!");
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Musisz wprowadzić ilość!");
-                        }
-                        cnn.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("ERROR:" + ex.Message);
-                    }
-            }
-            else
-            {
-                MessageBox.Show("Wprowadź dane w postaci liczbowej", "Błąd",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-        }
-
-
+ 
 
         private void usuńProduktyZKoszykaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1022,39 +895,7 @@ namespace Sklep
         }
 
 
-        private void wyszukajToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string querry = "SELECT ID, Vendor FROM Vendors ";
-            using (connection = new SqlConnection(connectionString))
-            using (SqlCommand command = new SqlCommand(querry, connection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-            {
-                DataTable ven = new DataTable();
-                adapter.Fill(ven);
-                listBoxWlistaProd.DisplayMember = "Vendor";
-                listBoxWlistaProd.ValueMember = "ID";
-                listBoxWlistaProd.DataSource = ven;
-            }
-
-            querry = "SELECT ID, CategoryName FROM Categories ";
-            using (connection = new SqlConnection(connectionString))
-            using (SqlCommand command = new SqlCommand(querry, connection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-            {
-                DataTable cat = new DataTable();
-                adapter.Fill(cat);
-
-                listBoxWlistaKategorii.DisplayMember = "CategoryName";
-                listBoxWlistaKategorii.ValueMember = "ID";
-                listBoxWlistaKategorii.DataSource = cat;
-            }
-            wylistujProdukty();
-            panelWyszukaj.BringToFront();
-            listBoxWlistaProd.SelectedIndex = -1;
-            listBoxWlistaKategorii.SelectedIndex = -1;
-            Wyswietlprodukt(1, 440, 200);
-        }
-
+      
         private void dodajProduktToolStripMenuItem_Click(object sender, EventArgs e)
         {
             wylistujKategorie();
@@ -1260,11 +1101,6 @@ namespace Sklep
             }
         }
 
-        private void panelTwojeZamowienia_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void listBoxNOProducts2_SelectedIndexChanged(object sender, EventArgs e)
         {
             wczytajModyfikacje();
@@ -1468,7 +1304,7 @@ namespace Sklep
         {
             try
             {
-                Wyswietlprodukt(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 440, 200);
+                Wyswietlprodukt(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 470, 200, 10);
             }
             catch { }
         }
@@ -1529,11 +1365,152 @@ namespace Sklep
             odswiezZnalezioneProdukty();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private Int32 zwrocIdNajpopProduktu()
+        {
+            Int32 idTop1 = 0;
+
+            string querry = "Select * from Top1OutOfRecent5";
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(querry, connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            {
+                DataTable tabela_prod = new DataTable();
+                adapter.Fill(tabela_prod);
+                connection.Open();
+
+                SqlDataReader dr = command.ExecuteReader();
+                while (dr.Read())
+                {
+                    idTop1 = dr.GetInt32(0);
+                }
+            }
+
+            return idTop1;
+        }
+
+        private int odeslijDoProduktu(int id)
+        {
+            int index = 0;
+
+            foreach (object Item in listBoxWyszukajWypProd.Items)
+            {
+                DataRowView dr = (DataRowView)Item;
+                int result = Int16.Parse(dr["ID"].ToString());
+
+                if (result != id)
+                    index++;
+                else break;
+            }
+
+            return index;
+        }
+        private void buttonOdsylacz_Click(object sender, EventArgs e)
+        {
+            zobaczWszystkoToolStripMenuItem_Click(sender, e);
+            int index = zwrocIdNajpopProduktu();
+            listBoxWyszukajWypProd.SelectedIndex = odeslijDoProduktu(index);
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            //Not implemented yet
+        }
+
+        private void buttonDDKClick(object sender, EventArgs e)
+        {
+            
+                {
+                    string pattern = "^([1-9][0-9]+|[1-9])$";
+                    if (Regex.IsMatch(textBoxDDK.Text, pattern))
+                    {
+                        try
+                        {
+                            var dataSet = new DataSet();
+                            string querry2 = "SELECT ProductStock FROM Products WHERE ID=" + "'" + listBoxWyszukajWypProd.SelectedValue + "'";
+                            SqlConnection cnn = new SqlConnection(connectionString);
+                            cnn.Open();
+                            SqlCommand cmd2 = new SqlCommand(querry2, cnn);
+                            var dataAdapter = new SqlDataAdapter { SelectCommand = cmd2 };
+                            dataAdapter.Fill(dataSet);
+                            coIile kupno = new coIile();
+                            int ids = Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue);
+                            int ilosc = Convert.ToInt32(textBoxDDK.Text);
+                            List<coIile> result = koszyk.FindAll(x => x.id == ids);
+
+                            if (Convert.ToInt32(textBoxDDK.Text) > 0)
+                            {
+                                //Dodanie do koszyka z aktualizacja stanu gdy przedmiot jest już na liscie
+
+                                if (Convert.ToInt32(dataSet.Tables[0].Rows[0]["ProductStock"]) >= Convert.ToInt32(textBoxDDK.Text))
+                                {
+                                    if (result.Count() > 0)
+                                    {
+                                        for (int i = 0; i < koszyk.Count(); i++)
+                                        {
+                                            if (koszyk[i].id == ids)
+                                            {
+                                                if (Convert.ToInt32(koszyk[i].ilosc + ilosc) <= Convert.ToInt32(dataSet.Tables[0].Rows[0]["ProductStock"]))
+                                                {
+                                                    koszyk[i].ilosc += ilosc;
+                                                    MessageBox.Show("Dodano do koszyka");
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show("Suma towarów z koszyka i tego zamówienia przekracza ilość towaru w magazynie!");
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        kupno.id = ids;
+                                        kupno.ilosc = ilosc;
+                                        koszyk.Add(kupno);
+                                        result.Clear();
+                                        MessageBox.Show("Dodano do koszyka");
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Brak takiej ilości towaru w magazynie!");
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Musisz wprowadzić ilość!");
+                            }
+                            cnn.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("ERROR:" + ex.Message);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Wprowadź dane w postaci liczbowej", "Błąd",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+            
+        }
+
+        private void buttonWResetujKatiProd_Click(object sender, EventArgs e)
         {
             listBoxWlistaProd.SelectedIndex = -1;
             listBoxWlistaKategorii.SelectedIndex = -1;
-            odswiezZnalezioneProdukty();        }
-        
+            odswiezZnalezioneProdukty();
+        }
+
+
+        private void listBoxWyszukajWypProd_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                Wyswietlprodukt(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 470, 200, 10);
+            }
+            catch { }
+        }
     }
 }

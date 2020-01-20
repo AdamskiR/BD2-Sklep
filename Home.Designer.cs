@@ -29,9 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label label25;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zalogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,12 +39,9 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.zarejestrujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zakupyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.naszaOfertaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.zobaczWszystkoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nowosciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.wyszukajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.twojeZamówieniaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zobaczWszystkoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.top1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nowościToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.koszykToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.przejdźDoKasyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuńProduktyZKoszykaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -116,21 +112,6 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.panelNaszaOferta = new System.Windows.Forms.Panel();
-            this.buttonNOdodajDokoszyka = new System.Windows.Forms.Button();
-            this.textBoxNOIleKupic = new System.Windows.Forms.TextBox();
-            this.labelNOProducent = new System.Windows.Forms.Label();
-            this.labelKupteraz = new System.Windows.Forms.Label();
-            this.labelNOkategorie = new System.Windows.Forms.Label();
-            this.labelNOwMagazynie = new System.Windows.Forms.Label();
-            this.labelNOCena = new System.Windows.Forms.Label();
-            this.labelNOopisProd = new System.Windows.Forms.Label();
-            this.listBoxNOProdukty = new System.Windows.Forms.ListBox();
-            this.panelNowosci = new System.Windows.Forms.Panel();
-            this.label30 = new System.Windows.Forms.Label();
-            this.buttonN3 = new System.Windows.Forms.Button();
-            this.buttonN2 = new System.Windows.Forms.Button();
-            this.buttonN1 = new System.Windows.Forms.Button();
             this.panelWyswProdukt = new System.Windows.Forms.Panel();
             this.labelIloscSztuk = new System.Windows.Forms.Label();
             this.labelCena = new System.Windows.Forms.Label();
@@ -138,14 +119,6 @@
             this.labelProducent = new System.Windows.Forms.Label();
             this.labelOpisProd = new System.Windows.Forms.Label();
             this.labelNazwaProd = new System.Windows.Forms.Label();
-            this.panelTop1 = new System.Windows.Forms.Panel();
-            this.labelNKategorie = new System.Windows.Forms.Label();
-            this.labelNCena = new System.Windows.Forms.Label();
-            this.labelNProducent = new System.Windows.Forms.Label();
-            this.labelNOpisProd = new System.Windows.Forms.Label();
-            this.labelNNazwaProd = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
             this.panelTwojeZamowienia = new System.Windows.Forms.Panel();
             this.labelTZCenaZaWszystko = new System.Windows.Forms.Label();
             this.dataGridViewOrder = new System.Windows.Forms.DataGridView();
@@ -234,7 +207,19 @@
             this.label49 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
-            this.panelWyszukaj = new System.Windows.Forms.Panel();
+            this.panelNowosci = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label30 = new System.Windows.Forms.Label();
+            this.buttonN3 = new System.Windows.Forms.Button();
+            this.buttonN2 = new System.Windows.Forms.Button();
+            this.buttonN1 = new System.Windows.Forms.Button();
+            this.panelTop1 = new System.Windows.Forms.Panel();
+            this.buttonOdsylacz = new System.Windows.Forms.Button();
+            this.label28 = new System.Windows.Forms.Label();
+            this.panelNaszaOferta = new System.Windows.Forms.Panel();
+            this.buttonDDK = new System.Windows.Forms.Button();
+            this.textBoxDDK = new System.Windows.Forms.TextBox();
+            this.labelKupTeraz = new System.Windows.Forms.Label();
             this.buttonWResetujKatiProd = new System.Windows.Forms.Button();
             this.listBoxWyszukajWypProd = new System.Windows.Forms.ListBox();
             this.listBoxWlistaKategorii = new System.Windows.Forms.ListBox();
@@ -244,16 +229,13 @@
             this.textBoxWyszukaj = new System.Windows.Forms.TextBox();
             this.label60 = new System.Windows.Forms.Label();
             this.label59 = new System.Windows.Forms.Label();
-            label25 = new System.Windows.Forms.Label();
+            this.twojeZamówieniaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
             this.panelRejestracja.SuspendLayout();
             this.panelLogin.SuspendLayout();
             this.panelEdytujSwojeDane.SuspendLayout();
-            this.panelNaszaOferta.SuspendLayout();
-            this.panelNowosci.SuspendLayout();
             this.panelWyswProdukt.SuspendLayout();
-            this.panelTop1.SuspendLayout();
             this.panelTwojeZamowienia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTZZamowienia)).BeginInit();
@@ -262,18 +244,10 @@
             this.panelDodajProdukt.SuspendLayout();
             this.panelModyfikujProdukt.SuspendLayout();
             this.panelEdytujUzytkownikow.SuspendLayout();
-            this.panelWyszukaj.SuspendLayout();
+            this.panelNowosci.SuspendLayout();
+            this.panelTop1.SuspendLayout();
+            this.panelNaszaOferta.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label25
-            // 
-            label25.AutoSize = true;
-            label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            label25.Location = new System.Drawing.Point(109, 26);
-            label25.Name = "label25";
-            label25.Size = new System.Drawing.Size(588, 31);
-            label25.TabIndex = 1;
-            label25.Text = "Kliknij w produkt, by wyświetlić informacje o nim";
             // 
             // menuStrip1
             // 
@@ -295,7 +269,8 @@
             this.wylogujToolStripMenuItem,
             this.edytujSwojeDaneToolStripMenuItem,
             this.toolStripSeparator1,
-            this.zarejestrujToolStripMenuItem});
+            this.zarejestrujToolStripMenuItem,
+            this.twojeZamówieniaToolStripMenuItem});
             this.użytkownikToolStripMenuItem.Name = "użytkownikToolStripMenuItem";
             this.użytkownikToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.użytkownikToolStripMenuItem.Text = "Menu";
@@ -303,7 +278,7 @@
             // zalogujToolStripMenuItem
             // 
             this.zalogujToolStripMenuItem.Name = "zalogujToolStripMenuItem";
-            this.zalogujToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.zalogujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.zalogujToolStripMenuItem.Text = "Zaloguj";
             this.zalogujToolStripMenuItem.Click += new System.EventHandler(this.zalogujToolStripMenuItem_Click);
             // 
@@ -311,7 +286,7 @@
             // 
             this.wylogujToolStripMenuItem.Name = "wylogujToolStripMenuItem";
             this.wylogujToolStripMenuItem.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded;
-            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.wylogujToolStripMenuItem.Text = "Wyloguj";
             this.wylogujToolStripMenuItem.Visible = false;
             this.wylogujToolStripMenuItem.Click += new System.EventHandler(this.wylogujToolStripMenuItem_Click);
@@ -319,7 +294,7 @@
             // edytujSwojeDaneToolStripMenuItem
             // 
             this.edytujSwojeDaneToolStripMenuItem.Name = "edytujSwojeDaneToolStripMenuItem";
-            this.edytujSwojeDaneToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.edytujSwojeDaneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.edytujSwojeDaneToolStripMenuItem.Text = "Edytuj swoje dane";
             this.edytujSwojeDaneToolStripMenuItem.Visible = false;
             this.edytujSwojeDaneToolStripMenuItem.Click += new System.EventHandler(this.edytujSwojeDaneToolStripMenuItem_Click);
@@ -327,70 +302,45 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(166, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // zarejestrujToolStripMenuItem
             // 
             this.zarejestrujToolStripMenuItem.Name = "zarejestrujToolStripMenuItem";
-            this.zarejestrujToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.zarejestrujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.zarejestrujToolStripMenuItem.Text = "Zarejestruj";
             this.zarejestrujToolStripMenuItem.Click += new System.EventHandler(this.zarejestrujToolStripMenuItem_Click);
             // 
             // zakupyToolStripMenuItem
             // 
             this.zakupyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.naszaOfertaToolStripMenuItem,
-            this.wyszukajToolStripMenuItem,
-            this.twojeZamówieniaToolStripMenuItem});
+            this.zobaczWszystkoToolStripMenuItem1,
+            this.top1ToolStripMenuItem,
+            this.nowościToolStripMenuItem});
             this.zakupyToolStripMenuItem.Name = "zakupyToolStripMenuItem";
             this.zakupyToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.zakupyToolStripMenuItem.Text = "Zakupy";
             // 
-            // naszaOfertaToolStripMenuItem
+            // zobaczWszystkoToolStripMenuItem1
             // 
-            this.naszaOfertaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.zobaczWszystkoToolStripMenuItem,
-            this.nowosciToolStripMenuItem,
-            this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem});
-            this.naszaOfertaToolStripMenuItem.Name = "naszaOfertaToolStripMenuItem";
-            this.naszaOfertaToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.naszaOfertaToolStripMenuItem.Text = "Nasza oferta";
+            this.zobaczWszystkoToolStripMenuItem1.Name = "zobaczWszystkoToolStripMenuItem1";
+            this.zobaczWszystkoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.zobaczWszystkoToolStripMenuItem1.Text = "Nasza Oferta";
+            this.zobaczWszystkoToolStripMenuItem1.Click += new System.EventHandler(this.zobaczWszystkoToolStripMenuItem_Click);
             // 
-            // zobaczWszystkoToolStripMenuItem
+            // top1ToolStripMenuItem
             // 
-            this.zobaczWszystkoToolStripMenuItem.Name = "zobaczWszystkoToolStripMenuItem";
-            this.zobaczWszystkoToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.zobaczWszystkoToolStripMenuItem.Text = "Zobacz Wszystko";
-            this.zobaczWszystkoToolStripMenuItem.Click += new System.EventHandler(this.zobaczWszystkoToolStripMenuItem_Click);
+            this.top1ToolStripMenuItem.Name = "top1ToolStripMenuItem";
+            this.top1ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.top1ToolStripMenuItem.Text = "Top 1 ostatnio";
+            this.top1ToolStripMenuItem.Click += new System.EventHandler(this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem_Click);
             // 
-            // nowosciToolStripMenuItem
+            // nowościToolStripMenuItem
             // 
-            this.nowosciToolStripMenuItem.Name = "nowosciToolStripMenuItem";
-            this.nowosciToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.nowosciToolStripMenuItem.Text = "Nowości";
-            this.nowosciToolStripMenuItem.Click += new System.EventHandler(this.tOP3ZamawianeToolStripMenuItem_Click);
-            // 
-            // najpopularniejszyZOstatnich5ZakupówToolStripMenuItem
-            // 
-            this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem.Name = "najpopularniejszyZOstatnich5ZakupówToolStripMenuItem";
-            this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem.Text = "Top 1 ostatnio";
-            this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem.Click += new System.EventHandler(this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem_Click);
-            // 
-            // wyszukajToolStripMenuItem
-            // 
-            this.wyszukajToolStripMenuItem.Name = "wyszukajToolStripMenuItem";
-            this.wyszukajToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.wyszukajToolStripMenuItem.Text = "Wyszukaj";
-            this.wyszukajToolStripMenuItem.Click += new System.EventHandler(this.wyszukajToolStripMenuItem_Click);
-            // 
-            // twojeZamówieniaToolStripMenuItem
-            // 
-            this.twojeZamówieniaToolStripMenuItem.Enabled = false;
-            this.twojeZamówieniaToolStripMenuItem.Name = "twojeZamówieniaToolStripMenuItem";
-            this.twojeZamówieniaToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.twojeZamówieniaToolStripMenuItem.Text = "Twoje zamówienia";
-            this.twojeZamówieniaToolStripMenuItem.Click += new System.EventHandler(this.twojeZamówieniaToolStripMenuItem_Click);
+            this.nowościToolStripMenuItem.Name = "nowościToolStripMenuItem";
+            this.nowościToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nowościToolStripMenuItem.Text = "Nowości";
+            this.nowościToolStripMenuItem.Click += new System.EventHandler(this.tOP3ZamawianeToolStripMenuItem_Click);
             // 
             // koszykToolStripMenuItem
             // 
@@ -1046,163 +996,6 @@
             this.label27.TabIndex = 0;
             this.label27.Text = "Edytuj swoje dane";
             // 
-            // panelNaszaOferta
-            // 
-            this.panelNaszaOferta.Controls.Add(this.buttonNOdodajDokoszyka);
-            this.panelNaszaOferta.Controls.Add(this.textBoxNOIleKupic);
-            this.panelNaszaOferta.Controls.Add(this.labelNOProducent);
-            this.panelNaszaOferta.Controls.Add(this.labelKupteraz);
-            this.panelNaszaOferta.Controls.Add(this.labelNOkategorie);
-            this.panelNaszaOferta.Controls.Add(this.labelNOwMagazynie);
-            this.panelNaszaOferta.Controls.Add(this.labelNOCena);
-            this.panelNaszaOferta.Controls.Add(this.labelNOopisProd);
-            this.panelNaszaOferta.Controls.Add(label25);
-            this.panelNaszaOferta.Controls.Add(this.listBoxNOProdukty);
-            this.panelNaszaOferta.Location = new System.Drawing.Point(3, 24);
-            this.panelNaszaOferta.Name = "panelNaszaOferta";
-            this.panelNaszaOferta.Size = new System.Drawing.Size(800, 424);
-            this.panelNaszaOferta.TabIndex = 9;
-            this.panelNaszaOferta.Paint += new System.Windows.Forms.PaintEventHandler(this.panelNaszaOferta_Paint);
-            // 
-            // buttonNOdodajDokoszyka
-            // 
-            this.buttonNOdodajDokoszyka.Location = new System.Drawing.Point(256, 311);
-            this.buttonNOdodajDokoszyka.Name = "buttonNOdodajDokoszyka";
-            this.buttonNOdodajDokoszyka.Size = new System.Drawing.Size(115, 54);
-            this.buttonNOdodajDokoszyka.TabIndex = 4;
-            this.buttonNOdodajDokoszyka.Text = "Dodaj do koszyka";
-            this.buttonNOdodajDokoszyka.UseVisualStyleBackColor = true;
-            this.buttonNOdodajDokoszyka.Click += new System.EventHandler(this.buttonNOdodajDokoszyka_Click);
-            // 
-            // textBoxNOIleKupic
-            // 
-            this.textBoxNOIleKupic.Location = new System.Drawing.Point(290, 278);
-            this.textBoxNOIleKupic.Name = "textBoxNOIleKupic";
-            this.textBoxNOIleKupic.Size = new System.Drawing.Size(51, 20);
-            this.textBoxNOIleKupic.TabIndex = 3;
-            this.textBoxNOIleKupic.TextChanged += new System.EventHandler(this.textBoxNOIleKupic_TextChanged);
-            // 
-            // labelNOProducent
-            // 
-            this.labelNOProducent.AutoSize = true;
-            this.labelNOProducent.Location = new System.Drawing.Point(242, 120);
-            this.labelNOProducent.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.labelNOProducent.Name = "labelNOProducent";
-            this.labelNOProducent.Size = new System.Drawing.Size(10, 13);
-            this.labelNOProducent.TabIndex = 2;
-            this.labelNOProducent.Text = " ";
-            // 
-            // labelKupteraz
-            // 
-            this.labelKupteraz.AutoSize = true;
-            this.labelKupteraz.Location = new System.Drawing.Point(242, 248);
-            this.labelKupteraz.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.labelKupteraz.Name = "labelKupteraz";
-            this.labelKupteraz.Size = new System.Drawing.Size(0, 13);
-            this.labelKupteraz.TabIndex = 2;
-            // 
-            // labelNOkategorie
-            // 
-            this.labelNOkategorie.AutoSize = true;
-            this.labelNOkategorie.Location = new System.Drawing.Point(242, 191);
-            this.labelNOkategorie.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.labelNOkategorie.Name = "labelNOkategorie";
-            this.labelNOkategorie.Size = new System.Drawing.Size(52, 13);
-            this.labelNOkategorie.TabIndex = 2;
-            this.labelNOkategorie.Text = "Kategorie";
-            // 
-            // labelNOwMagazynie
-            // 
-            this.labelNOwMagazynie.AutoSize = true;
-            this.labelNOwMagazynie.Location = new System.Drawing.Point(242, 166);
-            this.labelNOwMagazynie.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.labelNOwMagazynie.Name = "labelNOwMagazynie";
-            this.labelNOwMagazynie.Size = new System.Drawing.Size(10, 13);
-            this.labelNOwMagazynie.TabIndex = 2;
-            this.labelNOwMagazynie.Text = " ";
-            // 
-            // labelNOCena
-            // 
-            this.labelNOCena.AutoSize = true;
-            this.labelNOCena.Location = new System.Drawing.Point(242, 143);
-            this.labelNOCena.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.labelNOCena.Name = "labelNOCena";
-            this.labelNOCena.Size = new System.Drawing.Size(10, 13);
-            this.labelNOCena.TabIndex = 2;
-            this.labelNOCena.Text = " ";
-            // 
-            // labelNOopisProd
-            // 
-            this.labelNOopisProd.AutoSize = true;
-            this.labelNOopisProd.Location = new System.Drawing.Point(242, 97);
-            this.labelNOopisProd.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.labelNOopisProd.Name = "labelNOopisProd";
-            this.labelNOopisProd.Size = new System.Drawing.Size(10, 13);
-            this.labelNOopisProd.TabIndex = 2;
-            this.labelNOopisProd.Text = " ";
-            // 
-            // listBoxNOProdukty
-            // 
-            this.listBoxNOProdukty.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.listBoxNOProdukty.FormattingEnabled = true;
-            this.listBoxNOProdukty.ItemHeight = 16;
-            this.listBoxNOProdukty.Location = new System.Drawing.Point(51, 92);
-            this.listBoxNOProdukty.Name = "listBoxNOProdukty";
-            this.listBoxNOProdukty.Size = new System.Drawing.Size(150, 276);
-            this.listBoxNOProdukty.TabIndex = 0;
-            this.listBoxNOProdukty.SelectedIndexChanged += new System.EventHandler(this.listBoxNOProdukty_SelectedIndexChanged);
-            // 
-            // panelNowosci
-            // 
-            this.panelNowosci.Controls.Add(this.label30);
-            this.panelNowosci.Controls.Add(this.buttonN3);
-            this.panelNowosci.Controls.Add(this.buttonN2);
-            this.panelNowosci.Controls.Add(this.buttonN1);
-            this.panelNowosci.Location = new System.Drawing.Point(1, 24);
-            this.panelNowosci.Name = "panelNowosci";
-            this.panelNowosci.Size = new System.Drawing.Size(802, 425);
-            this.panelNowosci.TabIndex = 10;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label30.Location = new System.Drawing.Point(207, 40);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(392, 31);
-            this.label30.TabIndex = 0;
-            this.label30.Text = "Oto ostanio dodane 3 produkty:";
-            // 
-            // buttonN3
-            // 
-            this.buttonN3.Location = new System.Drawing.Point(476, 336);
-            this.buttonN3.Name = "buttonN3";
-            this.buttonN3.Size = new System.Drawing.Size(105, 32);
-            this.buttonN3.TabIndex = 1;
-            this.buttonN3.Text = "3";
-            this.buttonN3.UseVisualStyleBackColor = true;
-            this.buttonN3.Click += new System.EventHandler(this.buttonN3_Click);
-            // 
-            // buttonN2
-            // 
-            this.buttonN2.Location = new System.Drawing.Point(357, 336);
-            this.buttonN2.Name = "buttonN2";
-            this.buttonN2.Size = new System.Drawing.Size(105, 32);
-            this.buttonN2.TabIndex = 1;
-            this.buttonN2.Text = "2";
-            this.buttonN2.UseVisualStyleBackColor = true;
-            this.buttonN2.Click += new System.EventHandler(this.buttonN2_Click);
-            // 
-            // buttonN1
-            // 
-            this.buttonN1.Location = new System.Drawing.Point(237, 336);
-            this.buttonN1.Name = "buttonN1";
-            this.buttonN1.Size = new System.Drawing.Size(105, 32);
-            this.buttonN1.TabIndex = 1;
-            this.buttonN1.Text = "1";
-            this.buttonN1.UseVisualStyleBackColor = true;
-            this.buttonN1.Click += new System.EventHandler(this.buttonN1_Click);
-            // 
             // panelWyswProdukt
             // 
             this.panelWyswProdukt.Controls.Add(this.labelIloscSztuk);
@@ -1282,102 +1075,6 @@
             this.labelNazwaProd.TabIndex = 0;
             this.labelNazwaProd.Text = "label31";
             // 
-            // panelTop1
-            // 
-            this.panelTop1.Controls.Add(this.labelNKategorie);
-            this.panelTop1.Controls.Add(this.labelNCena);
-            this.panelTop1.Controls.Add(this.labelNProducent);
-            this.panelTop1.Controls.Add(this.labelNOpisProd);
-            this.panelTop1.Controls.Add(this.labelNNazwaProd);
-            this.panelTop1.Controls.Add(this.label29);
-            this.panelTop1.Controls.Add(this.label28);
-            this.panelTop1.ForeColor = System.Drawing.Color.Red;
-            this.panelTop1.Location = new System.Drawing.Point(2, 23);
-            this.panelTop1.Name = "panelTop1";
-            this.panelTop1.Size = new System.Drawing.Size(796, 425);
-            this.panelTop1.TabIndex = 2;
-            // 
-            // labelNKategorie
-            // 
-            this.labelNKategorie.AutoSize = true;
-            this.labelNKategorie.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelNKategorie.ForeColor = System.Drawing.Color.Black;
-            this.labelNKategorie.Location = new System.Drawing.Point(252, 279);
-            this.labelNKategorie.Margin = new System.Windows.Forms.Padding(3, 20, 3, 0);
-            this.labelNKategorie.Name = "labelNKategorie";
-            this.labelNKategorie.Size = new System.Drawing.Size(60, 20);
-            this.labelNKategorie.TabIndex = 1;
-            this.labelNKategorie.Text = "label29";
-            // 
-            // labelNCena
-            // 
-            this.labelNCena.AutoSize = true;
-            this.labelNCena.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelNCena.ForeColor = System.Drawing.Color.Black;
-            this.labelNCena.Location = new System.Drawing.Point(253, 239);
-            this.labelNCena.Margin = new System.Windows.Forms.Padding(3, 20, 3, 0);
-            this.labelNCena.Name = "labelNCena";
-            this.labelNCena.Size = new System.Drawing.Size(60, 20);
-            this.labelNCena.TabIndex = 1;
-            this.labelNCena.Text = "label29";
-            // 
-            // labelNProducent
-            // 
-            this.labelNProducent.AutoSize = true;
-            this.labelNProducent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelNProducent.ForeColor = System.Drawing.Color.Black;
-            this.labelNProducent.Location = new System.Drawing.Point(253, 199);
-            this.labelNProducent.Margin = new System.Windows.Forms.Padding(3, 20, 3, 0);
-            this.labelNProducent.Name = "labelNProducent";
-            this.labelNProducent.Size = new System.Drawing.Size(60, 20);
-            this.labelNProducent.TabIndex = 1;
-            this.labelNProducent.Text = "label29";
-            // 
-            // labelNOpisProd
-            // 
-            this.labelNOpisProd.AutoSize = true;
-            this.labelNOpisProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelNOpisProd.ForeColor = System.Drawing.Color.Black;
-            this.labelNOpisProd.Location = new System.Drawing.Point(253, 159);
-            this.labelNOpisProd.Margin = new System.Windows.Forms.Padding(3, 20, 3, 0);
-            this.labelNOpisProd.Name = "labelNOpisProd";
-            this.labelNOpisProd.Size = new System.Drawing.Size(60, 20);
-            this.labelNOpisProd.TabIndex = 1;
-            this.labelNOpisProd.Text = "label29";
-            // 
-            // labelNNazwaProd
-            // 
-            this.labelNNazwaProd.AutoSize = true;
-            this.labelNNazwaProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelNNazwaProd.ForeColor = System.Drawing.Color.Black;
-            this.labelNNazwaProd.Location = new System.Drawing.Point(252, 119);
-            this.labelNNazwaProd.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.labelNNazwaProd.Name = "labelNNazwaProd";
-            this.labelNNazwaProd.Size = new System.Drawing.Size(60, 20);
-            this.labelNNazwaProd.TabIndex = 1;
-            this.labelNNazwaProd.Text = "label29";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label29.ForeColor = System.Drawing.Color.Black;
-            this.label29.Location = new System.Drawing.Point(208, 356);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(380, 22);
-            this.label29.TabIndex = 0;
-            this.label29.Text = "By kupić produkt przejdź do wszystkich ofert";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Impact", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label28.Location = new System.Drawing.Point(96, 47);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(633, 36);
-            this.label28.TabIndex = 0;
-            this.label28.Text = "Najczęsciej kupowane spośród ostatnich 5 zakupów";
-            // 
             // panelTwojeZamowienia
             // 
             this.panelTwojeZamowienia.Controls.Add(this.labelTZCenaZaWszystko);
@@ -1388,7 +1085,6 @@
             this.panelTwojeZamowienia.Name = "panelTwojeZamowienia";
             this.panelTwojeZamowienia.Size = new System.Drawing.Size(798, 420);
             this.panelTwojeZamowienia.TabIndex = 5;
-            this.panelTwojeZamowienia.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTwojeZamowienia_Paint);
             // 
             // labelTZCenaZaWszystko
             // 
@@ -1540,8 +1236,8 @@
             // 
             this.dataGridViewWKoszyku.AllowUserToAddRows = false;
             this.dataGridViewWKoszyku.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewWKoszyku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWKoszyku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NAme,
@@ -2233,57 +1929,179 @@
             this.label51.TabIndex = 0;
             this.label51.Text = "Edytuj użytkowników";
             // 
-            // panelWyszukaj
+            // panelNowosci
             // 
-            this.panelWyszukaj.Controls.Add(this.buttonWResetujKatiProd);
-            this.panelWyszukaj.Controls.Add(this.listBoxWyszukajWypProd);
-            this.panelWyszukaj.Controls.Add(this.listBoxWlistaKategorii);
-            this.panelWyszukaj.Controls.Add(this.label62);
-            this.panelWyszukaj.Controls.Add(this.listBoxWlistaProd);
-            this.panelWyszukaj.Controls.Add(this.label61);
-            this.panelWyszukaj.Controls.Add(this.textBoxWyszukaj);
-            this.panelWyszukaj.Controls.Add(this.label60);
-            this.panelWyszukaj.Controls.Add(this.label59);
-            this.panelWyszukaj.Location = new System.Drawing.Point(7, 29);
-            this.panelWyszukaj.Name = "panelWyszukaj";
-            this.panelWyszukaj.Size = new System.Drawing.Size(796, 420);
-            this.panelWyszukaj.TabIndex = 16;
-            this.panelWyszukaj.Paint += new System.Windows.Forms.PaintEventHandler(this.panelWyszukaj_Paint);
+            this.panelNowosci.Controls.Add(this.button2);
+            this.panelNowosci.Controls.Add(this.label30);
+            this.panelNowosci.Controls.Add(this.buttonN3);
+            this.panelNowosci.Controls.Add(this.buttonN2);
+            this.panelNowosci.Controls.Add(this.buttonN1);
+            this.panelNowosci.Location = new System.Drawing.Point(0, 18);
+            this.panelNowosci.Name = "panelNowosci";
+            this.panelNowosci.Size = new System.Drawing.Size(802, 425);
+            this.panelNowosci.TabIndex = 17;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(341, 369);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(137, 39);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Przejdź Do Oferty";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label30.Location = new System.Drawing.Point(207, 40);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(392, 31);
+            this.label30.TabIndex = 0;
+            this.label30.Text = "Oto ostanio dodane 3 produkty:";
+            // 
+            // buttonN3
+            // 
+            this.buttonN3.Location = new System.Drawing.Point(476, 324);
+            this.buttonN3.Name = "buttonN3";
+            this.buttonN3.Size = new System.Drawing.Size(105, 32);
+            this.buttonN3.TabIndex = 1;
+            this.buttonN3.Text = "3";
+            this.buttonN3.UseVisualStyleBackColor = true;
+            this.buttonN3.Click += new System.EventHandler(this.buttonN3_Click);
+            // 
+            // buttonN2
+            // 
+            this.buttonN2.Location = new System.Drawing.Point(357, 324);
+            this.buttonN2.Name = "buttonN2";
+            this.buttonN2.Size = new System.Drawing.Size(105, 32);
+            this.buttonN2.TabIndex = 1;
+            this.buttonN2.Text = "2";
+            this.buttonN2.UseVisualStyleBackColor = true;
+            this.buttonN2.Click += new System.EventHandler(this.buttonN2_Click);
+            // 
+            // buttonN1
+            // 
+            this.buttonN1.Location = new System.Drawing.Point(237, 324);
+            this.buttonN1.Name = "buttonN1";
+            this.buttonN1.Size = new System.Drawing.Size(105, 32);
+            this.buttonN1.TabIndex = 1;
+            this.buttonN1.Text = "1";
+            this.buttonN1.UseVisualStyleBackColor = true;
+            this.buttonN1.Click += new System.EventHandler(this.buttonN1_Click);
+            // 
+            // panelTop1
+            // 
+            this.panelTop1.Controls.Add(this.buttonOdsylacz);
+            this.panelTop1.Controls.Add(this.label28);
+            this.panelTop1.ForeColor = System.Drawing.Color.Red;
+            this.panelTop1.Location = new System.Drawing.Point(0, 24);
+            this.panelTop1.Name = "panelTop1";
+            this.panelTop1.Size = new System.Drawing.Size(796, 425);
+            this.panelTop1.TabIndex = 19;
+            // 
+            // buttonOdsylacz
+            // 
+            this.buttonOdsylacz.ForeColor = System.Drawing.Color.Black;
+            this.buttonOdsylacz.Location = new System.Drawing.Point(322, 341);
+            this.buttonOdsylacz.Name = "buttonOdsylacz";
+            this.buttonOdsylacz.Size = new System.Drawing.Size(191, 50);
+            this.buttonOdsylacz.TabIndex = 1;
+            this.buttonOdsylacz.Text = "Przejdź do oferty";
+            this.buttonOdsylacz.UseVisualStyleBackColor = true;
+            this.buttonOdsylacz.Click += new System.EventHandler(this.buttonOdsylacz_Click);
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Impact", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label28.Location = new System.Drawing.Point(96, 47);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(633, 36);
+            this.label28.TabIndex = 0;
+            this.label28.Text = "Najczęsciej kupowane spośród ostatnich 5 zakupów";
+            // 
+            // panelNaszaOferta
+            // 
+            this.panelNaszaOferta.Controls.Add(this.buttonDDK);
+            this.panelNaszaOferta.Controls.Add(this.textBoxDDK);
+            this.panelNaszaOferta.Controls.Add(this.labelKupTeraz);
+            this.panelNaszaOferta.Controls.Add(this.buttonWResetujKatiProd);
+            this.panelNaszaOferta.Controls.Add(this.listBoxWyszukajWypProd);
+            this.panelNaszaOferta.Controls.Add(this.listBoxWlistaKategorii);
+            this.panelNaszaOferta.Controls.Add(this.label62);
+            this.panelNaszaOferta.Controls.Add(this.listBoxWlistaProd);
+            this.panelNaszaOferta.Controls.Add(this.label61);
+            this.panelNaszaOferta.Controls.Add(this.textBoxWyszukaj);
+            this.panelNaszaOferta.Controls.Add(this.label60);
+            this.panelNaszaOferta.Controls.Add(this.label59);
+            this.panelNaszaOferta.Location = new System.Drawing.Point(3, 27);
+            this.panelNaszaOferta.Name = "panelNaszaOferta";
+            this.panelNaszaOferta.Size = new System.Drawing.Size(796, 420);
+            this.panelNaszaOferta.TabIndex = 20;
+            // 
+            // buttonDDK
+            // 
+            this.buttonDDK.Location = new System.Drawing.Point(282, 311);
+            this.buttonDDK.Name = "buttonDDK";
+            this.buttonDDK.Size = new System.Drawing.Size(115, 54);
+            this.buttonDDK.TabIndex = 10;
+            this.buttonDDK.Text = "Dodaj do koszyka";
+            this.buttonDDK.UseVisualStyleBackColor = true;
+            this.buttonDDK.Click += new System.EventHandler(this.buttonDDKClick);
+            // 
+            // textBoxDDK
+            // 
+            this.textBoxDDK.Location = new System.Drawing.Point(316, 278);
+            this.textBoxDDK.Name = "textBoxDDK";
+            this.textBoxDDK.Size = new System.Drawing.Size(51, 20);
+            this.textBoxDDK.TabIndex = 9;
+            // 
+            // labelKupTeraz
+            // 
+            this.labelKupTeraz.AutoSize = true;
+            this.labelKupTeraz.Location = new System.Drawing.Point(251, 253);
+            this.labelKupTeraz.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.labelKupTeraz.Name = "labelKupTeraz";
+            this.labelKupTeraz.Size = new System.Drawing.Size(0, 13);
+            this.labelKupTeraz.TabIndex = 8;
             // 
             // buttonWResetujKatiProd
             // 
-            this.buttonWResetujKatiProd.Location = new System.Drawing.Point(132, 364);
+            this.buttonWResetujKatiProd.Location = new System.Drawing.Point(26, 364);
             this.buttonWResetujKatiProd.Name = "buttonWResetujKatiProd";
             this.buttonWResetujKatiProd.Size = new System.Drawing.Size(176, 31);
             this.buttonWResetujKatiProd.TabIndex = 7;
             this.buttonWResetujKatiProd.Text = "Resetuj Kategorie i Producentów";
             this.buttonWResetujKatiProd.UseVisualStyleBackColor = true;
-            this.buttonWResetujKatiProd.Click += new System.EventHandler(this.button2_Click);
+            this.buttonWResetujKatiProd.Click += new System.EventHandler(this.buttonWResetujKatiProd_Click);
             // 
             // listBoxWyszukajWypProd
             // 
             this.listBoxWyszukajWypProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.listBoxWyszukajWypProd.FormattingEnabled = true;
             this.listBoxWyszukajWypProd.ItemHeight = 16;
-            this.listBoxWyszukajWypProd.Location = new System.Drawing.Point(451, 38);
+            this.listBoxWyszukajWypProd.Location = new System.Drawing.Point(225, 82);
             this.listBoxWyszukajWypProd.Name = "listBoxWyszukajWypProd";
-            this.listBoxWyszukajWypProd.Size = new System.Drawing.Size(234, 116);
+            this.listBoxWyszukajWypProd.Size = new System.Drawing.Size(234, 148);
             this.listBoxWyszukajWypProd.TabIndex = 6;
-            this.listBoxWyszukajWypProd.Click += new System.EventHandler(this.listBoxWyszukajWypProd_Click);
+            this.listBoxWyszukajWypProd.Click += new System.EventHandler(this.listBoxWyszukajWypProd_Click_1);
+            this.listBoxWyszukajWypProd.SelectedValueChanged += new System.EventHandler(this.listBoxWyszukajWypProd_Click);
             // 
             // listBoxWlistaKategorii
             // 
             this.listBoxWlistaKategorii.FormattingEnabled = true;
-            this.listBoxWlistaKategorii.Location = new System.Drawing.Point(224, 90);
+            this.listBoxWlistaKategorii.Location = new System.Drawing.Point(26, 233);
             this.listBoxWlistaKategorii.Name = "listBoxWlistaKategorii";
-            this.listBoxWlistaKategorii.Size = new System.Drawing.Size(176, 251);
+            this.listBoxWlistaKategorii.Size = new System.Drawing.Size(176, 108);
             this.listBoxWlistaKategorii.TabIndex = 5;
-            this.listBoxWlistaKategorii.Click += new System.EventHandler(this.listBoxWlistaKategorii_Click);
+            this.listBoxWlistaKategorii.Click += new System.EventHandler(this.listBoxWlistaProd_Click);
             // 
             // label62
             // 
             this.label62.AutoSize = true;
-            this.label62.Location = new System.Drawing.Point(225, 74);
+            this.label62.Location = new System.Drawing.Point(27, 217);
             this.label62.Name = "label62";
             this.label62.Size = new System.Drawing.Size(55, 13);
             this.label62.TabIndex = 4;
@@ -2294,14 +2112,14 @@
             this.listBoxWlistaProd.FormattingEnabled = true;
             this.listBoxWlistaProd.Location = new System.Drawing.Point(26, 90);
             this.listBoxWlistaProd.Name = "listBoxWlistaProd";
-            this.listBoxWlistaProd.Size = new System.Drawing.Size(176, 251);
+            this.listBoxWlistaProd.Size = new System.Drawing.Size(176, 108);
             this.listBoxWlistaProd.TabIndex = 3;
             this.listBoxWlistaProd.Click += new System.EventHandler(this.listBoxWlistaProd_Click);
             // 
             // label61
             // 
             this.label61.AutoSize = true;
-            this.label61.Location = new System.Drawing.Point(448, 18);
+            this.label61.Location = new System.Drawing.Point(222, 62);
             this.label61.Name = "label61";
             this.label61.Size = new System.Drawing.Size(108, 13);
             this.label61.TabIndex = 2;
@@ -2309,7 +2127,7 @@
             // 
             // textBoxWyszukaj
             // 
-            this.textBoxWyszukaj.Location = new System.Drawing.Point(132, 44);
+            this.textBoxWyszukaj.Location = new System.Drawing.Point(26, 43);
             this.textBoxWyszukaj.Name = "textBoxWyszukaj";
             this.textBoxWyszukaj.Size = new System.Drawing.Size(176, 20);
             this.textBoxWyszukaj.TabIndex = 1;
@@ -2318,7 +2136,7 @@
             // label60
             // 
             this.label60.AutoSize = true;
-            this.label60.Location = new System.Drawing.Point(173, 28);
+            this.label60.Location = new System.Drawing.Point(67, 27);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(88, 13);
             this.label60.TabIndex = 0;
@@ -2333,16 +2151,24 @@
             this.label59.TabIndex = 0;
             this.label59.Text = "Producent:";
             // 
+            // twojeZamówieniaToolStripMenuItem
+            // 
+            this.twojeZamówieniaToolStripMenuItem.Name = "twojeZamówieniaToolStripMenuItem";
+            this.twojeZamówieniaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.twojeZamówieniaToolStripMenuItem.Text = "Twoje Zamówienia";
+            this.twojeZamówieniaToolStripMenuItem.Visible = false;
+            this.twojeZamówieniaToolStripMenuItem.Click += new System.EventHandler(this.twojeZamówieniaToolStripMenuItem_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panelWyszukaj);
             this.Controls.Add(this.panelNaszaOferta);
+            this.Controls.Add(this.panelNowosci);
+            this.Controls.Add(this.panelTop1);
             this.Controls.Add(this.panelModyfikujProdukt);
             this.Controls.Add(this.panelWyswProdukt);
-            this.Controls.Add(this.panelNowosci);
             this.Controls.Add(this.labelZalogowanyJako);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panelEdytujUzytkownikow);
@@ -2351,7 +2177,6 @@
             this.Controls.Add(this.panelTwojeZamowienia);
             this.Controls.Add(this.panelEdytujSwojeDane);
             this.Controls.Add(this.panelLogin);
-            this.Controls.Add(this.panelTop1);
             this.Controls.Add(this.panelRejestracja);
             this.Controls.Add(this.panelPrzejdzDoKasy);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -2369,14 +2194,8 @@
             this.panelLogin.PerformLayout();
             this.panelEdytujSwojeDane.ResumeLayout(false);
             this.panelEdytujSwojeDane.PerformLayout();
-            this.panelNaszaOferta.ResumeLayout(false);
-            this.panelNaszaOferta.PerformLayout();
-            this.panelNowosci.ResumeLayout(false);
-            this.panelNowosci.PerformLayout();
             this.panelWyswProdukt.ResumeLayout(false);
             this.panelWyswProdukt.PerformLayout();
-            this.panelTop1.ResumeLayout(false);
-            this.panelTop1.PerformLayout();
             this.panelTwojeZamowienia.ResumeLayout(false);
             this.panelTwojeZamowienia.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).EndInit();
@@ -2390,8 +2209,12 @@
             this.panelModyfikujProdukt.PerformLayout();
             this.panelEdytujUzytkownikow.ResumeLayout(false);
             this.panelEdytujUzytkownikow.PerformLayout();
-            this.panelWyszukaj.ResumeLayout(false);
-            this.panelWyszukaj.PerformLayout();
+            this.panelNowosci.ResumeLayout(false);
+            this.panelNowosci.PerformLayout();
+            this.panelTop1.ResumeLayout(false);
+            this.panelTop1.PerformLayout();
+            this.panelNaszaOferta.ResumeLayout(false);
+            this.panelNaszaOferta.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2407,9 +2230,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem zarejestrujToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zakupyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem naszaOfertaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem wyszukajToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem twojeZamówieniaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem koszykToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem przejdźDoKasyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuńProduktyZKoszykaToolStripMenuItem;
@@ -2479,31 +2299,6 @@
         private System.Windows.Forms.TextBox EmailValidation;
         private System.Windows.Forms.TextBox PasswordValidation;
         private System.Windows.Forms.TextBox LoginValidation;
-        private System.Windows.Forms.Panel panelNaszaOferta;
-        private System.Windows.Forms.Button buttonNOdodajDokoszyka;
-        private System.Windows.Forms.TextBox textBoxNOIleKupic;
-        private System.Windows.Forms.Label labelNOProducent;
-        private System.Windows.Forms.Label labelKupteraz;
-        private System.Windows.Forms.Label labelNOkategorie;
-        private System.Windows.Forms.Label labelNOwMagazynie;
-        private System.Windows.Forms.Label labelNOCena;
-        private System.Windows.Forms.Label labelNOopisProd;
-        private System.Windows.Forms.ListBox listBoxNOProdukty;
-        private System.Windows.Forms.ToolStripMenuItem zobaczWszystkoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem nowosciToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem najpopularniejszyZOstatnich5ZakupówToolStripMenuItem;
-        private System.Windows.Forms.Panel panelNowosci;
-        private System.Windows.Forms.Button buttonN2;
-        private System.Windows.Forms.Button buttonN1;
-        private System.Windows.Forms.Panel panelTop1;
-        private System.Windows.Forms.Label labelNNazwaProd;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label labelNCena;
-        private System.Windows.Forms.Label labelNProducent;
-        private System.Windows.Forms.Label labelNOpisProd;
-        private System.Windows.Forms.Label labelNKategorie;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Panel panelWyswProdukt;
         private System.Windows.Forms.Label labelCena;
         private System.Windows.Forms.Label labelKategorie;
@@ -2511,7 +2306,6 @@
         private System.Windows.Forms.Label labelOpisProd;
         private System.Windows.Forms.Label labelNazwaProd;
         private System.Windows.Forms.Label labelIloscSztuk;
-        private System.Windows.Forms.Button buttonN3;
         private System.Windows.Forms.Button buttonUsunKonto;
         private System.Windows.Forms.Panel panelTwojeZamowienia;
         private System.Windows.Forms.DataGridView dataGridViewTZZamowienia;
@@ -2601,15 +2395,31 @@
         private System.Windows.Forms.RadioButton manager;
         private System.Windows.Forms.RadioButton administrator;
         private System.Windows.Forms.RadioButton brak;
-        private System.Windows.Forms.Panel panelWyszukaj;
+        private System.Windows.Forms.Panel panelNowosci;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Button buttonN3;
+        private System.Windows.Forms.Button buttonN2;
+        private System.Windows.Forms.Button buttonN1;
+        private System.Windows.Forms.Panel panelTop1;
+        private System.Windows.Forms.Button buttonOdsylacz;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Panel panelNaszaOferta;
+        private System.Windows.Forms.Button buttonDDK;
+        private System.Windows.Forms.TextBox textBoxDDK;
+        private System.Windows.Forms.Label labelKupTeraz;
+        private System.Windows.Forms.Button buttonWResetujKatiProd;
+        private System.Windows.Forms.ListBox listBoxWyszukajWypProd;
+        private System.Windows.Forms.ListBox listBoxWlistaKategorii;
+        private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.ListBox listBoxWlistaProd;
         private System.Windows.Forms.Label label61;
         private System.Windows.Forms.TextBox textBoxWyszukaj;
         private System.Windows.Forms.Label label60;
         private System.Windows.Forms.Label label59;
-        private System.Windows.Forms.ListBox listBoxWlistaProd;
-        private System.Windows.Forms.ListBox listBoxWlistaKategorii;
-        private System.Windows.Forms.Label label62;
-        private System.Windows.Forms.ListBox listBoxWyszukajWypProd;
-        private System.Windows.Forms.Button buttonWResetujKatiProd;
+        private System.Windows.Forms.ToolStripMenuItem zobaczWszystkoToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem top1ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nowościToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem twojeZamówieniaToolStripMenuItem;
     }
 }
