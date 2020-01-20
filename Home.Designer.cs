@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zalogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,6 +38,7 @@
             this.edytujSwojeDaneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.zarejestrujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.twojeZamówieniaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zakupyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zobaczWszystkoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.top1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -229,7 +230,8 @@
             this.textBoxWyszukaj = new System.Windows.Forms.TextBox();
             this.label60 = new System.Windows.Forms.Label();
             this.label59 = new System.Windows.Forms.Label();
-            this.twojeZamówieniaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.currentPrivileges = new System.Windows.Forms.Label();
+            this.levelLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
             this.panelRejestracja.SuspendLayout();
@@ -278,7 +280,7 @@
             // zalogujToolStripMenuItem
             // 
             this.zalogujToolStripMenuItem.Name = "zalogujToolStripMenuItem";
-            this.zalogujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.zalogujToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.zalogujToolStripMenuItem.Text = "Zaloguj";
             this.zalogujToolStripMenuItem.Click += new System.EventHandler(this.zalogujToolStripMenuItem_Click);
             // 
@@ -286,7 +288,7 @@
             // 
             this.wylogujToolStripMenuItem.Name = "wylogujToolStripMenuItem";
             this.wylogujToolStripMenuItem.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded;
-            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.wylogujToolStripMenuItem.Text = "Wyloguj";
             this.wylogujToolStripMenuItem.Visible = false;
             this.wylogujToolStripMenuItem.Click += new System.EventHandler(this.wylogujToolStripMenuItem_Click);
@@ -294,7 +296,7 @@
             // edytujSwojeDaneToolStripMenuItem
             // 
             this.edytujSwojeDaneToolStripMenuItem.Name = "edytujSwojeDaneToolStripMenuItem";
-            this.edytujSwojeDaneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.edytujSwojeDaneToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.edytujSwojeDaneToolStripMenuItem.Text = "Edytuj swoje dane";
             this.edytujSwojeDaneToolStripMenuItem.Visible = false;
             this.edytujSwojeDaneToolStripMenuItem.Click += new System.EventHandler(this.edytujSwojeDaneToolStripMenuItem_Click);
@@ -302,14 +304,22 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(169, 6);
             // 
             // zarejestrujToolStripMenuItem
             // 
             this.zarejestrujToolStripMenuItem.Name = "zarejestrujToolStripMenuItem";
-            this.zarejestrujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.zarejestrujToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.zarejestrujToolStripMenuItem.Text = "Zarejestruj";
             this.zarejestrujToolStripMenuItem.Click += new System.EventHandler(this.zarejestrujToolStripMenuItem_Click);
+            // 
+            // twojeZamówieniaToolStripMenuItem
+            // 
+            this.twojeZamówieniaToolStripMenuItem.Name = "twojeZamówieniaToolStripMenuItem";
+            this.twojeZamówieniaToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.twojeZamówieniaToolStripMenuItem.Text = "Twoje Zamówienia";
+            this.twojeZamówieniaToolStripMenuItem.Visible = false;
+            this.twojeZamówieniaToolStripMenuItem.Click += new System.EventHandler(this.twojeZamówieniaToolStripMenuItem_Click);
             // 
             // zakupyToolStripMenuItem
             // 
@@ -324,21 +334,21 @@
             // zobaczWszystkoToolStripMenuItem1
             // 
             this.zobaczWszystkoToolStripMenuItem1.Name = "zobaczWszystkoToolStripMenuItem1";
-            this.zobaczWszystkoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.zobaczWszystkoToolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
             this.zobaczWszystkoToolStripMenuItem1.Text = "Nasza Oferta";
             this.zobaczWszystkoToolStripMenuItem1.Click += new System.EventHandler(this.zobaczWszystkoToolStripMenuItem_Click);
             // 
             // top1ToolStripMenuItem
             // 
             this.top1ToolStripMenuItem.Name = "top1ToolStripMenuItem";
-            this.top1ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.top1ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.top1ToolStripMenuItem.Text = "Top 1 ostatnio";
             this.top1ToolStripMenuItem.Click += new System.EventHandler(this.najpopularniejszyZOstatnich5ZakupówToolStripMenuItem_Click);
             // 
             // nowościToolStripMenuItem
             // 
             this.nowościToolStripMenuItem.Name = "nowościToolStripMenuItem";
-            this.nowościToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nowościToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.nowościToolStripMenuItem.Text = "Nowości";
             this.nowościToolStripMenuItem.Click += new System.EventHandler(this.tOP3ZamawianeToolStripMenuItem_Click);
             // 
@@ -1236,8 +1246,8 @@
             // 
             this.dataGridViewWKoszyku.AllowUserToAddRows = false;
             this.dataGridViewWKoszyku.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewWKoszyku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWKoszyku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NAme,
@@ -1654,6 +1664,8 @@
             // 
             // panelEdytujUzytkownikow
             // 
+            this.panelEdytujUzytkownikow.Controls.Add(this.levelLabel);
+            this.panelEdytujUzytkownikow.Controls.Add(this.currentPrivileges);
             this.panelEdytujUzytkownikow.Controls.Add(this.brak);
             this.panelEdytujUzytkownikow.Controls.Add(this.label58);
             this.panelEdytujUzytkownikow.Controls.Add(this.manager);
@@ -2151,24 +2163,29 @@
             this.label59.TabIndex = 0;
             this.label59.Text = "Producent:";
             // 
-            // twojeZamówieniaToolStripMenuItem
+            // currentPrivileges
             // 
-            this.twojeZamówieniaToolStripMenuItem.Name = "twojeZamówieniaToolStripMenuItem";
-            this.twojeZamówieniaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.twojeZamówieniaToolStripMenuItem.Text = "Twoje Zamówienia";
-            this.twojeZamówieniaToolStripMenuItem.Visible = false;
-            this.twojeZamówieniaToolStripMenuItem.Click += new System.EventHandler(this.twojeZamówieniaToolStripMenuItem_Click);
+            this.currentPrivileges.AutoSize = true;
+            this.currentPrivileges.Location = new System.Drawing.Point(515, 140);
+            this.currentPrivileges.Name = "currentPrivileges";
+            this.currentPrivileges.Size = new System.Drawing.Size(140, 13);
+            this.currentPrivileges.TabIndex = 28;
+            this.currentPrivileges.Text = "Aktualny stopień uprawnień:";
+            this.currentPrivileges.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // levelLabel
+            // 
+            this.levelLabel.AutoSize = true;
+            this.levelLabel.Location = new System.Drawing.Point(655, 140);
+            this.levelLabel.Name = "levelLabel";
+            this.levelLabel.Size = new System.Drawing.Size(0, 13);
+            this.levelLabel.TabIndex = 29;
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panelNaszaOferta);
-            this.Controls.Add(this.panelNowosci);
-            this.Controls.Add(this.panelTop1);
-            this.Controls.Add(this.panelModyfikujProdukt);
-            this.Controls.Add(this.panelWyswProdukt);
             this.Controls.Add(this.labelZalogowanyJako);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panelEdytujUzytkownikow);
@@ -2179,6 +2196,11 @@
             this.Controls.Add(this.panelLogin);
             this.Controls.Add(this.panelRejestracja);
             this.Controls.Add(this.panelPrzejdzDoKasy);
+            this.Controls.Add(this.panelNaszaOferta);
+            this.Controls.Add(this.panelNowosci);
+            this.Controls.Add(this.panelTop1);
+            this.Controls.Add(this.panelModyfikujProdukt);
+            this.Controls.Add(this.panelWyswProdukt);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Home";
@@ -2421,5 +2443,7 @@
         private System.Windows.Forms.ToolStripMenuItem top1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nowościToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem twojeZamówieniaToolStripMenuItem;
+        private System.Windows.Forms.Label levelLabel;
+        private System.Windows.Forms.Label currentPrivileges;
     }
 }

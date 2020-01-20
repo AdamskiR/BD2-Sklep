@@ -70,9 +70,12 @@ namespace Sklep
                 var dataSet = new DataSet();
                 bool adminUser=false;
                 bool managerUser = false;
-                string querry2 = "SELECT RoleID FROM UserRole WHERE UserID='" + globals.userID + "'";
+            string querry2 = "RoleByID";
+              
             SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["Sklep.Properties.Settings.ShopConnectionString"].ConnectionString);
             SqlCommand cmd2 = new SqlCommand(querry2, cnn);
+            cmd2.CommandType = CommandType.StoredProcedure;
+            cmd2.Parameters.Add("@id", SqlDbType.NChar).Value = globals.userID;
             cnn.Open();
             var dataAdapter = new SqlDataAdapter { SelectCommand = cmd2 };
                 dataAdapter.Fill(dataSet);
@@ -413,11 +416,12 @@ namespace Sklep
   
         private void zobaczWszystkoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string querry = "SELECT ID, Vendor FROM Vendors ";
+            string querry = "listVendors";
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(querry, connection))
             using (SqlDataAdapter adapter = new SqlDataAdapter(command))
             {
+                command.CommandType = CommandType.StoredProcedure;
                 DataTable ven = new DataTable();
                 adapter.Fill(ven);
                 listBoxWlistaProd.DisplayMember = "Vendor";
@@ -425,11 +429,12 @@ namespace Sklep
                 listBoxWlistaProd.DataSource = ven;
             }
 
-            querry = "SELECT ID, CategoryName FROM Categories ";
+            querry = "listCategories";
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(querry, connection))
             using (SqlDataAdapter adapter = new SqlDataAdapter(command))
             {
+                command.CommandType = CommandType.StoredProcedure;
                 DataTable cat = new DataTable();
                 adapter.Fill(cat);
 
@@ -1101,6 +1106,33 @@ namespace Sklep
             }
         }
 
+        private void wczytajUprawnienia()
+        {
+            string querry = "RoleByID";
+            using (SqlConnection cnn4 = new SqlConnection(connectionString))
+            {
+
+                try
+                {
+                    cnn4.Open();
+                    SqlCommand cmd = new SqlCommand(querry, cnn4);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@id", SqlDbType.NChar).Value = listBoxNOUsers.SelectedValue;
+                    SqlDataReader dr2 = cmd.ExecuteReader();
+
+                    while (dr2.Read())
+                    {
+                            levelLabel.Text = dr2.GetValue(0).ToString().TrimEnd();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                }
+                cnn4.Close();
+            }
+        }
+
         private void listBoxNOProducts2_SelectedIndexChanged(object sender, EventArgs e)
         {
             wczytajModyfikacje();
@@ -1184,6 +1216,7 @@ namespace Sklep
         private void listBoxNOUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
             wczytajDaneUzytkownikow();
+            wczytajUprawnienia();
         }
 
         private void buttonAdminEdytujUzytkownika_Click(object sender, EventArgs e)
@@ -1196,19 +1229,23 @@ namespace Sklep
                 {
                     var dataSet = new DataSet();
                     bool loginTaken;
-                    string querry2 = "SELECT Username, ID FROM Users WHERE ID=" + "'" + listBoxNOUsers.SelectedValue + "'";
+                    string querry2 = "UserByID";
                     SqlConnection cnn = new SqlConnection(connectionString);
                     cnn.Open();
                     SqlCommand cmd2 = new SqlCommand(querry2, cnn);
+                    cmd2.CommandType = CommandType.StoredProcedure;
+                    cmd2.Parameters.Add("@id", SqlDbType.NChar).Value = listBoxNOUsers.SelectedValue;
                     var dataAdapter = new SqlDataAdapter { SelectCommand = cmd2 };
                     dataAdapter.Fill(dataSet);
 
 
                     var dataSet2 = new DataSet();
-                    string querry3 = "SELECT Username, ID FROM Users WHERE Username=" + "'" + adminEdytujLogin.Text + "'";
+                    string querry3 = "UserByLogin";
                     SqlConnection cnn2 = new SqlConnection(connectionString);
                     cnn2.Open();
                     SqlCommand cmd3 = new SqlCommand(querry3, cnn2);
+                    cmd3.CommandType = CommandType.StoredProcedure;
+                    cmd3.Parameters.Add("@login", SqlDbType.NChar).Value = adminEdytujLogin.Text;
                     var dataAdapter2 = new SqlDataAdapter { SelectCommand = cmd3 };
                     dataAdapter2.Fill(dataSet2);
 
@@ -1234,7 +1271,7 @@ namespace Sklep
                     cnn2.Close();
                     cnn4.Open();
                     SqlCommand cmd = new SqlCommand(querry, cnn4);
-                    cmd.Parameters.Add("@id", SqlDbType.NChar).Value = listBoxNOUsers.SelectedValue;
+                    cmd.Parameters.Add("@id", SqlDbType.Int).Value = listBoxNOUsers.SelectedValue;
                     cmd.Parameters.Add("@username", SqlDbType.NChar).Value = adminEdytujLogin.Text; //dodać sprawdzanie czy login jest zajęty
                     cmd.Parameters.Add("@password", SqlDbType.NChar).Value = adminEdytujHaslo.Text;
                     cmd.Parameters.Add("@email", SqlDbType.NChar).Value = adminEdytujMail.Text;
