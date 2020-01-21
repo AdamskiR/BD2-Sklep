@@ -295,7 +295,7 @@ namespace Sklep
                         {
                             cmd.Parameters.Add("@nazwisko", SqlDbType.NChar).Value = textBoxNazwisko.Text;
                         }
-                        if (string.IsNullOrEmpty(textBoxKod.Text))
+                   /*     if (string.IsNullOrEmpty(textBoxKod.Text))
                             cmd.Parameters.Add("@zipcode", SqlDbType.NChar).Value = DBNull.Value;
                         else
                         {
@@ -313,6 +313,7 @@ namespace Sklep
                         {
                             cmd.Parameters.Add("@ulica", SqlDbType.NChar).Value = textBoxUlica.Text;
                         }
+                        */
                         if (string.IsNullOrEmpty(textBoxNrTelefonu.Text))
                             cmd.Parameters.Add("@telefon", SqlDbType.Int).Value = DBNull.Value;
                         else
@@ -562,7 +563,7 @@ namespace Sklep
                     {
                         cmd.Parameters.Add("@nazwisko", SqlDbType.NChar).Value = textBox9.Text;
                     }
-                    if (string.IsNullOrEmpty(textBox1.Text))
+                    /*if (string.IsNullOrEmpty(textBox1.Text))
                         cmd.Parameters.Add("@zipcode", SqlDbType.NChar).Value = DBNull.Value;
                     else
                     {
@@ -579,7 +580,7 @@ namespace Sklep
                     else
                     {
                         cmd.Parameters.Add("@ulica", SqlDbType.NChar).Value = textBox7.Text;
-                    }
+                    }*/
                     if (string.IsNullOrEmpty(textBox6.Text))
                         cmd.Parameters.Add("@telefon", SqlDbType.Int).Value = DBNull.Value;
                     else
@@ -1222,7 +1223,7 @@ namespace Sklep
 
         private void buttonAdminEdytujUzytkownika_Click(object sender, EventArgs e)
         {
-            string querry = "UPDATE Users SET Username=@username, Password=@password, Email=@email, FirstName=@firstname, LastName=@lastname,ZipCode=@zipcode, City=@city, Street=@street, TelephoneNumber=@telephone WHERE ID = @id";
+            string querry = "UPDATE Users SET Username=@username, Password=@password, Email=@email, FirstName=@firstname, LastName=@lastname, TelephoneNumber=@telephone WHERE ID = @id";
             using (SqlConnection cnn4 = new SqlConnection(connectionString))
             {
 
@@ -1278,9 +1279,9 @@ namespace Sklep
                     cmd.Parameters.Add("@email", SqlDbType.NChar).Value = adminEdytujMail.Text;
                     cmd.Parameters.Add("@firstname", SqlDbType.NChar).Value = adminEdytujImie.Text;
                     cmd.Parameters.Add("@lastname", SqlDbType.NChar).Value = adminEdytujNazwisko.Text;
-                    cmd.Parameters.Add("@zipcode", SqlDbType.NChar).Value = adminEdytujZip.Text;
+                   /* cmd.Parameters.Add("@zipcode", SqlDbType.NChar).Value = adminEdytujZip.Text;
                     cmd.Parameters.Add("@city", SqlDbType.NChar).Value = adminEdytujMiasto.Text;
-                    cmd.Parameters.Add("@street", SqlDbType.NChar).Value = adminEdytujUlica.Text;
+                    cmd.Parameters.Add("@street", SqlDbType.NChar).Value = adminEdytujUlica.Text;*/
                     cmd.Parameters.Add("@telephone", SqlDbType.Int).Value = Convert.ToInt32(adminEdytujTel.Text);
                     string querry5 = "dbo.AddRole";
                     SqlConnection cnn5 = new SqlConnection(connectionString);
