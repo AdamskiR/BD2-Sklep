@@ -783,7 +783,7 @@ namespace Sklep
             }
             catch
             {
-                Console.WriteLine("ERROR");
+               // Console.WriteLine("ERROR");
             }
 
         }
@@ -813,7 +813,7 @@ namespace Sklep
         private bool sprawdzstan()
         {
             bool zgadzasie = true;
-            string message = "BŁĄD\n\nBrak żądanej ilości produktu na stanie, musisz zmienić ilość\n\nNazwa:\t\t\tMaMaxymalna możliwa ilość do kupienia: ";
+            string message = "BŁĄD\n\nBrak żądanej ilości produktu na stanie, musisz zmienić ilość\n\nNazwa:\t\tMaxymalna możliwa ilość do kupienia: ";
             double por;
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand("DisplaySpecificProduct", connection))
@@ -821,19 +821,21 @@ namespace Sklep
             {
                 connection.Open();
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add("@id", SqlDbType.Int);
                 DataTable spr_stan = new DataTable();
 
                 for (int i = 0; i<koszyk.Count(); i++)
                 {
+                    command.Parameters.Clear();
+                    command.Parameters.Add("@id", SqlDbType.Int);
                     command.Parameters["@id"].Value = koszyk[i].id;
                     adapter.Fill(spr_stan);
                     por = (double)spr_stan.Rows[i]["ProductStock"];
                     if (por < koszyk[i].ilosc)
                     {
                         zgadzasie = false;
-                        message += "\n" + (string)spr_stan.Rows[0]["ProductName"] + "\t\t\t" + (double)spr_stan.Rows[0]["ProductStock"];
+                        message += "\n" + (string)spr_stan.Rows[0]["ProductName"] + "\t\t" + (double)spr_stan.Rows[0]["ProductStock"];
                     }
+                    spr_stan.Clear();
                 }
             }
             if (!zgadzasie)
@@ -845,6 +847,7 @@ namespace Sklep
 
         private void buttonPDKKup_Click(object sender, EventArgs e)
         {
+            DGVwKoszykuAktualizuj();
             if(sprawdzstan())
             {
                 using (connection = new SqlConnection(connectionString))
@@ -891,9 +894,6 @@ namespace Sklep
                 if (e.Cell.Value != null)
                 {
                     int.TryParse(e.Cell.Value.ToString(), out int temp);
-
-                    // int.TryParse(dataGridViewWKoszyku.Rows[e.Cell. .Value.ToString(), out temp);
-
                     koszyk[e.Cell.RowIndex].ilosc = temp;
                     DGVwKoszykuAktualizuj();
                 }
@@ -1444,11 +1444,6 @@ namespace Sklep
             listBoxWyszukajWypProd.SelectedIndex = odeslijDoProduktu(index);
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            //Not implemented yet
-        }
-
         private void buttonDDKClick(object sender, EventArgs e)
         {
             
@@ -1548,9 +1543,6 @@ namespace Sklep
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //sprawdz tablice czy nazwa prod jaest takak jak w panelu wyswprodukt prodname.text
-            //nazwa tablicy - Top3id[x]
-            //od 16 elem jest koniec stringa NAzwaprod: 
             DataTable produkt = new DataTable();
             string temp, temp2 = "";
                 using (connection = new SqlConnection(connectionString))
@@ -1559,27 +1551,45 @@ namespace Sklep
                 {
                     command.CommandType = CommandType.StoredProcedure;
 
-                for (int i = 0; i < 3; i++)
-                {
-                    command.Parameters.Clear();
-                    command.Parameters.Add("@id", SqlDbType.Int);
-                    command.Parameters["@id"].Value = Top3id[i];
-
-                    adapter.Fill(produkt);
-                    temp = produkt.Rows[0]["ProductName"].ToString();
-                    temp2 = labelNazwaProd.Text;
-                    temp2 = temp2.Remove(0, 16);
-                    if (temp == temp2)
+                    for (int i = 0; i < 3; i++)
                     {
-                        zobaczWszystkoToolStripMenuItem_Click(sender, e);
-                        listBoxWyszukajWypProd.SelectedIndex = odeslijDoProduktu(Top3id[i]);
-                        break;
-                    }
+                        command.Parameters.Clear();
+                        command.Parameters.Add("@id", SqlDbType.Int);
+                        command.Parameters["@id"].Value = Top3id[i];
 
-                    produkt.Clear();
+                        adapter.Fill(produkt);
+                        temp = produkt.Rows[0]["ProductName"].ToString();
+                        temp2 = labelNazwaProd.Text;
+                        temp2 = temp2.Remove(0, 16);
+                        if (temp == temp2)
+                        {
+                            zobaczWszystkoToolStripMenuItem_Click(sender, e);
+                            listBoxWyszukajWypProd.SelectedIndex = odeslijDoProduktu(Top3id[i]);
+                            break;
+                        }
+
+                        produkt.Clear();
+                    }
+                }
+
+        }
+
+        private void dataGridViewWKoszyku_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.ColumnIndex == 3)
+                {
+                    if (!e.Equals(null))
+                    {
+                        int.TryParse(dataGridViewWKoszyku.Rows[e.ColumnIndex].Cells[e.RowIndex].Value.ToString(), out int temp);
+                        koszyk[e.RowIndex].ilosc = temp;
+                        DGVwKoszykuAktualizuj();
+                        Console.WriteLine(e.RowIndex + "\t" + dataGridViewWKoszyku.Rows[e.ColumnIndex].Cells[e.RowIndex].Value.ToString());
+                    }
                 }
             }
-
+            catch { }
         }
     }
 }

@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zalogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -211,6 +211,7 @@
             this.label50 = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
             this.panelNowosci = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.label30 = new System.Windows.Forms.Label();
             this.buttonN3 = new System.Windows.Forms.Button();
             this.buttonN2 = new System.Windows.Forms.Button();
@@ -231,7 +232,6 @@
             this.textBoxWyszukaj = new System.Windows.Forms.TextBox();
             this.label60 = new System.Windows.Forms.Label();
             this.label59 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
             this.panelRejestracja.SuspendLayout();
@@ -1246,8 +1246,8 @@
             // 
             this.dataGridViewWKoszyku.AllowUserToAddRows = false;
             this.dataGridViewWKoszyku.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewWKoszyku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWKoszyku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NAme,
@@ -1262,7 +1262,10 @@
             this.dataGridViewWKoszyku.Size = new System.Drawing.Size(606, 217);
             this.dataGridViewWKoszyku.StandardTab = true;
             this.dataGridViewWKoszyku.TabIndex = 3;
+            this.dataGridViewWKoszyku.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewWKoszyku_CellEndEdit);
+            this.dataGridViewWKoszyku.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewWKoszyku_CellLeave);
             this.dataGridViewWKoszyku.CellStateChanged += new System.Windows.Forms.DataGridViewCellStateChangedEventHandler(this.dataGridViewWKoszyku_CellStateChanged);
+            this.dataGridViewWKoszyku.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewWKoszyku_CellValueChanged);
             // 
             // NAme
             // 
@@ -1971,6 +1974,16 @@
             this.panelNowosci.Size = new System.Drawing.Size(802, 425);
             this.panelNowosci.TabIndex = 17;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(341, 381);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(138, 32);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Przejdź do oferty";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // label30
             // 
             this.label30.AutoSize = true;
@@ -2170,16 +2183,6 @@
             this.label59.Size = new System.Drawing.Size(59, 13);
             this.label59.TabIndex = 0;
             this.label59.Text = "Producent:";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(341, 381);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(138, 32);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Przejdź do oferty";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Home
             // 
