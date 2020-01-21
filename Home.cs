@@ -372,6 +372,7 @@ namespace Sklep
         private void wylogujToolStripMenuItem_Click(object sender, EventArgs e)
         {
             isUserAuthenticated = false;
+            koszyk.Clear();
             isUserAuthenticatedView();
             MessageBox.Show("Do zobaczenia!");
             panelWelcome.BringToFront();
@@ -1331,11 +1332,6 @@ namespace Sklep
             wylistujProdukty();
         }
 
-        private void panelWyszukaj_Paint(object sender, PaintEventArgs e)
-        {
-            Pen pen = new Pen(Color.FromArgb(255, 0, 0, 0));
-            e.Graphics.DrawLine(pen, 425, 30, 425, 395);
-        }
 
         private void listBoxWyszukajWypProd_Click(object sender, EventArgs e)
         {
@@ -1379,7 +1375,7 @@ namespace Sklep
                
                 try
                 {
-                    Wyswietlprodukt(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 440, 200);
+                    Wyswietlprodukt(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 470, 200, 10);
                 }
                 catch {
                     panelWyswProdukt.SendToBack();
@@ -1548,6 +1544,42 @@ namespace Sklep
                 Wyswietlprodukt(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 470, 200, 10);
             }
             catch { }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //sprawdz tablice czy nazwa prod jaest takak jak w panelu wyswprodukt prodname.text
+            //nazwa tablicy - Top3id[x]
+            //od 16 elem jest koniec stringa NAzwaprod: 
+            DataTable produkt = new DataTable();
+            string temp, temp2 = "";
+                using (connection = new SqlConnection(connectionString))
+                using (SqlCommand command = new SqlCommand("DisplaySPecificProductWOCategories", connection))
+                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                for (int i = 0; i < 3; i++)
+                {
+                    command.Parameters.Clear();
+                    command.Parameters.Add("@id", SqlDbType.Int);
+                    command.Parameters["@id"].Value = Top3id[i];
+
+                    adapter.Fill(produkt);
+                    temp = produkt.Rows[0]["ProductName"].ToString();
+                    temp2 = labelNazwaProd.Text;
+                    temp2 = temp2.Remove(0, 16);
+                    if (temp == temp2)
+                    {
+                        zobaczWszystkoToolStripMenuItem_Click(sender, e);
+                        listBoxWyszukajWypProd.SelectedIndex = odeslijDoProduktu(Top3id[i]);
+                        break;
+                    }
+
+                    produkt.Clear();
+                }
+            }
+
         }
     }
 }

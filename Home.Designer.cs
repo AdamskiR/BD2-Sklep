@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zalogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -180,6 +180,8 @@
             this.label42 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.panelEdytujUzytkownikow = new System.Windows.Forms.Panel();
+            this.levelLabel = new System.Windows.Forms.Label();
+            this.currentPrivileges = new System.Windows.Forms.Label();
             this.brak = new System.Windows.Forms.RadioButton();
             this.label58 = new System.Windows.Forms.Label();
             this.manager = new System.Windows.Forms.RadioButton();
@@ -209,7 +211,6 @@
             this.label50 = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
             this.panelNowosci = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
             this.label30 = new System.Windows.Forms.Label();
             this.buttonN3 = new System.Windows.Forms.Button();
             this.buttonN2 = new System.Windows.Forms.Button();
@@ -230,8 +231,7 @@
             this.textBoxWyszukaj = new System.Windows.Forms.TextBox();
             this.label60 = new System.Windows.Forms.Label();
             this.label59 = new System.Windows.Forms.Label();
-            this.currentPrivileges = new System.Windows.Forms.Label();
-            this.levelLabel = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
             this.panelRejestracja.SuspendLayout();
@@ -1246,8 +1246,8 @@
             // 
             this.dataGridViewWKoszyku.AllowUserToAddRows = false;
             this.dataGridViewWKoszyku.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewWKoszyku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWKoszyku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NAme,
@@ -1699,6 +1699,24 @@
             this.panelEdytujUzytkownikow.Size = new System.Drawing.Size(797, 429);
             this.panelEdytujUzytkownikow.TabIndex = 15;
             // 
+            // levelLabel
+            // 
+            this.levelLabel.AutoSize = true;
+            this.levelLabel.Location = new System.Drawing.Point(655, 140);
+            this.levelLabel.Name = "levelLabel";
+            this.levelLabel.Size = new System.Drawing.Size(0, 13);
+            this.levelLabel.TabIndex = 29;
+            // 
+            // currentPrivileges
+            // 
+            this.currentPrivileges.AutoSize = true;
+            this.currentPrivileges.Location = new System.Drawing.Point(515, 140);
+            this.currentPrivileges.Name = "currentPrivileges";
+            this.currentPrivileges.Size = new System.Drawing.Size(140, 13);
+            this.currentPrivileges.TabIndex = 28;
+            this.currentPrivileges.Text = "Aktualny stopień uprawnień:";
+            this.currentPrivileges.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
             // brak
             // 
             this.brak.AutoSize = true;
@@ -1953,16 +1971,6 @@
             this.panelNowosci.Size = new System.Drawing.Size(802, 425);
             this.panelNowosci.TabIndex = 17;
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(341, 369);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(137, 39);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Przejdź Do Oferty";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
             // label30
             // 
             this.label30.AutoSize = true;
@@ -2163,41 +2171,33 @@
             this.label59.TabIndex = 0;
             this.label59.Text = "Producent:";
             // 
-            // currentPrivileges
+            // button2
             // 
-            this.currentPrivileges.AutoSize = true;
-            this.currentPrivileges.Location = new System.Drawing.Point(515, 140);
-            this.currentPrivileges.Name = "currentPrivileges";
-            this.currentPrivileges.Size = new System.Drawing.Size(140, 13);
-            this.currentPrivileges.TabIndex = 28;
-            this.currentPrivileges.Text = "Aktualny stopień uprawnień:";
-            this.currentPrivileges.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // levelLabel
-            // 
-            this.levelLabel.AutoSize = true;
-            this.levelLabel.Location = new System.Drawing.Point(655, 140);
-            this.levelLabel.Name = "levelLabel";
-            this.levelLabel.Size = new System.Drawing.Size(0, 13);
-            this.levelLabel.TabIndex = 29;
+            this.button2.Location = new System.Drawing.Point(341, 381);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(138, 32);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Przejdź do oferty";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panelPrzejdzDoKasy);
+            this.Controls.Add(this.panelNowosci);
+            this.Controls.Add(this.panelNaszaOferta);
             this.Controls.Add(this.labelZalogowanyJako);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.panelEdytujUzytkownikow);
             this.Controls.Add(this.panelWelcome);
+            this.Controls.Add(this.panelEdytujUzytkownikow);
             this.Controls.Add(this.panelDodajProdukt);
             this.Controls.Add(this.panelTwojeZamowienia);
             this.Controls.Add(this.panelEdytujSwojeDane);
             this.Controls.Add(this.panelLogin);
             this.Controls.Add(this.panelRejestracja);
-            this.Controls.Add(this.panelPrzejdzDoKasy);
-            this.Controls.Add(this.panelNaszaOferta);
-            this.Controls.Add(this.panelNowosci);
             this.Controls.Add(this.panelTop1);
             this.Controls.Add(this.panelModyfikujProdukt);
             this.Controls.Add(this.panelWyswProdukt);
@@ -2418,7 +2418,7 @@
         private System.Windows.Forms.RadioButton administrator;
         private System.Windows.Forms.RadioButton brak;
         private System.Windows.Forms.Panel panelNowosci;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonPDONowosci;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Button buttonN3;
         private System.Windows.Forms.Button buttonN2;
@@ -2445,5 +2445,6 @@
         private System.Windows.Forms.ToolStripMenuItem twojeZamówieniaToolStripMenuItem;
         private System.Windows.Forms.Label levelLabel;
         private System.Windows.Forms.Label currentPrivileges;
+        private System.Windows.Forms.Button button2;
     }
 }
