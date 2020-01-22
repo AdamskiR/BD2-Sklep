@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zalogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,32 +55,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.panelRejestracja = new System.Windows.Forms.Panel();
-            this.LoginValidation = new System.Windows.Forms.TextBox();
-            this.PasswordValidation = new System.Windows.Forms.TextBox();
-            this.EmailValidation = new System.Windows.Forms.TextBox();
-            this.buttonRejestracja = new System.Windows.Forms.Button();
-            this.textBoxKod = new System.Windows.Forms.TextBox();
-            this.textBoxEmail = new System.Windows.Forms.TextBox();
-            this.textHaslo2 = new System.Windows.Forms.TextBox();
-            this.textBoxHaslo = new System.Windows.Forms.TextBox();
-            this.textBoxNazwaUzytkownika = new System.Windows.Forms.TextBox();
-            this.textBoxNrTelefonu = new System.Windows.Forms.TextBox();
-            this.textBoxUlica = new System.Windows.Forms.TextBox();
-            this.textBoxMiasto = new System.Windows.Forms.TextBox();
-            this.textBoxNazwisko = new System.Windows.Forms.TextBox();
-            this.textBoxImie = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panelLogin = new System.Windows.Forms.Panel();
             this.buttonZaloguj = new System.Windows.Forms.Button();
@@ -236,9 +210,28 @@
             this.label60 = new System.Windows.Forms.Label();
             this.label59 = new System.Windows.Forms.Label();
             this.pictureBoxWyswProd = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBoxImie = new System.Windows.Forms.TextBox();
+            this.textBoxNazwisko = new System.Windows.Forms.TextBox();
+            this.textBoxNrTelefonu = new System.Windows.Forms.TextBox();
+            this.textBoxNazwaUzytkownika = new System.Windows.Forms.TextBox();
+            this.textBoxHaslo = new System.Windows.Forms.TextBox();
+            this.textHaslo2 = new System.Windows.Forms.TextBox();
+            this.textBoxEmail = new System.Windows.Forms.TextBox();
+            this.buttonRejestracja = new System.Windows.Forms.Button();
+            this.EmailValidation = new System.Windows.Forms.TextBox();
+            this.PasswordValidation = new System.Windows.Forms.TextBox();
+            this.LoginValidation = new System.Windows.Forms.TextBox();
+            this.panelRejestracja = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
-            this.panelRejestracja.SuspendLayout();
             this.panelLogin.SuspendLayout();
             this.panelEdytujSwojeDane.SuspendLayout();
             this.panelWyswProdukt.SuspendLayout();
@@ -255,6 +248,7 @@
             this.panelTop1.SuspendLayout();
             this.panelNaszaOferta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWyswProd)).BeginInit();
+            this.panelRejestracja.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -286,7 +280,7 @@
             // zalogujToolStripMenuItem
             // 
             this.zalogujToolStripMenuItem.Name = "zalogujToolStripMenuItem";
-            this.zalogujToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.zalogujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.zalogujToolStripMenuItem.Text = "Zaloguj";
             this.zalogujToolStripMenuItem.Click += new System.EventHandler(this.zalogujToolStripMenuItem_Click);
             // 
@@ -294,7 +288,7 @@
             // 
             this.wylogujToolStripMenuItem.Name = "wylogujToolStripMenuItem";
             this.wylogujToolStripMenuItem.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded;
-            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.wylogujToolStripMenuItem.Text = "Wyloguj";
             this.wylogujToolStripMenuItem.Visible = false;
             this.wylogujToolStripMenuItem.Click += new System.EventHandler(this.wylogujToolStripMenuItem_Click);
@@ -302,7 +296,7 @@
             // edytujSwojeDaneToolStripMenuItem
             // 
             this.edytujSwojeDaneToolStripMenuItem.Name = "edytujSwojeDaneToolStripMenuItem";
-            this.edytujSwojeDaneToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.edytujSwojeDaneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.edytujSwojeDaneToolStripMenuItem.Text = "Edytuj swoje dane";
             this.edytujSwojeDaneToolStripMenuItem.Visible = false;
             this.edytujSwojeDaneToolStripMenuItem.Click += new System.EventHandler(this.edytujSwojeDaneToolStripMenuItem_Click);
@@ -310,19 +304,19 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(169, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // zarejestrujToolStripMenuItem
             // 
             this.zarejestrujToolStripMenuItem.Name = "zarejestrujToolStripMenuItem";
-            this.zarejestrujToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.zarejestrujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.zarejestrujToolStripMenuItem.Text = "Zarejestruj";
             this.zarejestrujToolStripMenuItem.Click += new System.EventHandler(this.zarejestrujToolStripMenuItem_Click);
             // 
             // twojeZamówieniaToolStripMenuItem
             // 
             this.twojeZamówieniaToolStripMenuItem.Name = "twojeZamówieniaToolStripMenuItem";
-            this.twojeZamówieniaToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.twojeZamówieniaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.twojeZamówieniaToolStripMenuItem.Text = "Twoje Zamówienia";
             this.twojeZamówieniaToolStripMenuItem.Visible = false;
             this.twojeZamówieniaToolStripMenuItem.Click += new System.EventHandler(this.twojeZamówieniaToolStripMenuItem_Click);
@@ -454,262 +448,6 @@
             this.label1.Size = new System.Drawing.Size(363, 37);
             this.label1.TabIndex = 2;
             this.label1.Text = "Witaj w naszym serwisie";
-            // 
-            // panelRejestracja
-            // 
-            this.panelRejestracja.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelRejestracja.Controls.Add(this.LoginValidation);
-            this.panelRejestracja.Controls.Add(this.PasswordValidation);
-            this.panelRejestracja.Controls.Add(this.EmailValidation);
-            this.panelRejestracja.Controls.Add(this.buttonRejestracja);
-            this.panelRejestracja.Controls.Add(this.textBoxKod);
-            this.panelRejestracja.Controls.Add(this.textBoxEmail);
-            this.panelRejestracja.Controls.Add(this.textHaslo2);
-            this.panelRejestracja.Controls.Add(this.textBoxHaslo);
-            this.panelRejestracja.Controls.Add(this.textBoxNazwaUzytkownika);
-            this.panelRejestracja.Controls.Add(this.textBoxNrTelefonu);
-            this.panelRejestracja.Controls.Add(this.textBoxUlica);
-            this.panelRejestracja.Controls.Add(this.textBoxMiasto);
-            this.panelRejestracja.Controls.Add(this.textBoxNazwisko);
-            this.panelRejestracja.Controls.Add(this.textBoxImie);
-            this.panelRejestracja.Controls.Add(this.label9);
-            this.panelRejestracja.Controls.Add(this.label8);
-            this.panelRejestracja.Controls.Add(this.label7);
-            this.panelRejestracja.Controls.Add(this.label6);
-            this.panelRejestracja.Controls.Add(this.label5);
-            this.panelRejestracja.Controls.Add(this.label13);
-            this.panelRejestracja.Controls.Add(this.label12);
-            this.panelRejestracja.Controls.Add(this.label11);
-            this.panelRejestracja.Controls.Add(this.label10);
-            this.panelRejestracja.Controls.Add(this.label4);
-            this.panelRejestracja.Controls.Add(this.label3);
-            this.panelRejestracja.Location = new System.Drawing.Point(0, 27);
-            this.panelRejestracja.Name = "panelRejestracja";
-            this.panelRejestracja.Size = new System.Drawing.Size(800, 424);
-            this.panelRejestracja.TabIndex = 5;
-            this.panelRejestracja.Paint += new System.Windows.Forms.PaintEventHandler(this.panelRejestracja_Paint);
-            // 
-            // LoginValidation
-            // 
-            this.LoginValidation.AccessibleName = "LoginValidation";
-            this.LoginValidation.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.LoginValidation.Cursor = System.Windows.Forms.Cursors.No;
-            this.LoginValidation.Location = new System.Drawing.Point(478, 245);
-            this.LoginValidation.Name = "LoginValidation";
-            this.LoginValidation.Size = new System.Drawing.Size(197, 13);
-            this.LoginValidation.TabIndex = 7;
-            // 
-            // PasswordValidation
-            // 
-            this.PasswordValidation.AccessibleName = "PasswordValidation";
-            this.PasswordValidation.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PasswordValidation.Cursor = System.Windows.Forms.Cursors.No;
-            this.PasswordValidation.Location = new System.Drawing.Point(478, 288);
-            this.PasswordValidation.Name = "PasswordValidation";
-            this.PasswordValidation.Size = new System.Drawing.Size(197, 13);
-            this.PasswordValidation.TabIndex = 6;
-            // 
-            // EmailValidation
-            // 
-            this.EmailValidation.AccessibleName = "EmailValidation";
-            this.EmailValidation.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.EmailValidation.Cursor = System.Windows.Forms.Cursors.No;
-            this.EmailValidation.Location = new System.Drawing.Point(478, 314);
-            this.EmailValidation.Name = "EmailValidation";
-            this.EmailValidation.Size = new System.Drawing.Size(197, 13);
-            this.EmailValidation.TabIndex = 5;
-            // 
-            // buttonRejestracja
-            // 
-            this.buttonRejestracja.Location = new System.Drawing.Point(269, 352);
-            this.buttonRejestracja.Name = "buttonRejestracja";
-            this.buttonRejestracja.Size = new System.Drawing.Size(223, 46);
-            this.buttonRejestracja.TabIndex = 4;
-            this.buttonRejestracja.Text = "Zarejestruj";
-            this.buttonRejestracja.UseVisualStyleBackColor = true;
-            this.buttonRejestracja.Click += new System.EventHandler(this.buttonRejestracja_Click);
-            // 
-            // textBoxKod
-            // 
-            this.textBoxKod.Location = new System.Drawing.Point(372, 115);
-            this.textBoxKod.Name = "textBoxKod";
-            this.textBoxKod.Size = new System.Drawing.Size(100, 20);
-            this.textBoxKod.TabIndex = 3;
-            // 
-            // textBoxEmail
-            // 
-            this.textBoxEmail.Location = new System.Drawing.Point(372, 311);
-            this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(100, 20);
-            this.textBoxEmail.TabIndex = 3;
-            this.textBoxEmail.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxEmail_Validating);
-            // 
-            // textHaslo2
-            // 
-            this.textHaslo2.Location = new System.Drawing.Point(372, 288);
-            this.textHaslo2.Name = "textHaslo2";
-            this.textHaslo2.PasswordChar = '*';
-            this.textHaslo2.Size = new System.Drawing.Size(100, 20);
-            this.textHaslo2.TabIndex = 3;
-            this.textHaslo2.Validating += new System.ComponentModel.CancelEventHandler(this.textHaslo2_Validating);
-            // 
-            // textBoxHaslo
-            // 
-            this.textBoxHaslo.Location = new System.Drawing.Point(372, 265);
-            this.textBoxHaslo.Name = "textBoxHaslo";
-            this.textBoxHaslo.PasswordChar = '*';
-            this.textBoxHaslo.Size = new System.Drawing.Size(100, 20);
-            this.textBoxHaslo.TabIndex = 3;
-            // 
-            // textBoxNazwaUzytkownika
-            // 
-            this.textBoxNazwaUzytkownika.Location = new System.Drawing.Point(372, 242);
-            this.textBoxNazwaUzytkownika.Name = "textBoxNazwaUzytkownika";
-            this.textBoxNazwaUzytkownika.Size = new System.Drawing.Size(100, 20);
-            this.textBoxNazwaUzytkownika.TabIndex = 3;
-            // 
-            // textBoxNrTelefonu
-            // 
-            this.textBoxNrTelefonu.Location = new System.Drawing.Point(372, 184);
-            this.textBoxNrTelefonu.Name = "textBoxNrTelefonu";
-            this.textBoxNrTelefonu.Size = new System.Drawing.Size(100, 20);
-            this.textBoxNrTelefonu.TabIndex = 3;
-            // 
-            // textBoxUlica
-            // 
-            this.textBoxUlica.Location = new System.Drawing.Point(372, 161);
-            this.textBoxUlica.Name = "textBoxUlica";
-            this.textBoxUlica.Size = new System.Drawing.Size(100, 20);
-            this.textBoxUlica.TabIndex = 3;
-            // 
-            // textBoxMiasto
-            // 
-            this.textBoxMiasto.Location = new System.Drawing.Point(372, 138);
-            this.textBoxMiasto.Name = "textBoxMiasto";
-            this.textBoxMiasto.Size = new System.Drawing.Size(100, 20);
-            this.textBoxMiasto.TabIndex = 3;
-            // 
-            // textBoxNazwisko
-            // 
-            this.textBoxNazwisko.Location = new System.Drawing.Point(372, 94);
-            this.textBoxNazwisko.Name = "textBoxNazwisko";
-            this.textBoxNazwisko.Size = new System.Drawing.Size(100, 20);
-            this.textBoxNazwisko.TabIndex = 3;
-            // 
-            // textBoxImie
-            // 
-            this.textBoxImie.Location = new System.Drawing.Point(372, 73);
-            this.textBoxImie.Name = "textBoxImie";
-            this.textBoxImie.Size = new System.Drawing.Size(100, 20);
-            this.textBoxImie.TabIndex = 2;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(266, 191);
-            this.label9.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(62, 13);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "Nr telefonu:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(266, 168);
-            this.label8.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(34, 13);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "Ulica:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(266, 145);
-            this.label7.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 13);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "Miasto:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(266, 122);
-            this.label6.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 13);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Kod pocztowy:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(266, 99);
-            this.label5.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Nazwisko:";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(266, 318);
-            this.label13.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(35, 13);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "Email:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(266, 295);
-            this.label12.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(86, 13);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "Potwierdź hasło:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(266, 272);
-            this.label11.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(39, 13);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "Hasło:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(266, 249);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(105, 13);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "Nazwa użytkownika:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(266, 76);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 13);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Imię:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.label3.Location = new System.Drawing.Point(265, 12);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(227, 31);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Podaj swoje dane";
             // 
             // panelLogin
             // 
@@ -1252,8 +990,8 @@
             // 
             this.dataGridViewWKoszyku.AllowUserToAddRows = false;
             this.dataGridViewWKoszyku.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewWKoszyku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWKoszyku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NAme,
@@ -2069,6 +1807,7 @@
             this.panelTop1.Name = "panelTop1";
             this.panelTop1.Size = new System.Drawing.Size(796, 425);
             this.panelTop1.TabIndex = 19;
+            this.panelTop1.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTop1_Paint);
             // 
             // buttonOdsylacz
             // 
@@ -2229,27 +1968,226 @@
             this.pictureBoxWyswProd.TabIndex = 0;
             this.pictureBoxWyswProd.TabStop = false;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.label3.Location = new System.Drawing.Point(265, 12);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(227, 31);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Podaj swoje dane";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(266, 76);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Imię:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(266, 249);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(105, 13);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Nazwa użytkownika:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(266, 272);
+            this.label11.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(39, 13);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "Hasło:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(266, 295);
+            this.label12.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(86, 13);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Potwierdź hasło:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(266, 318);
+            this.label13.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(35, 13);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "Email:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(266, 99);
+            this.label5.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(56, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Nazwisko:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(266, 122);
+            this.label9.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(62, 13);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Nr telefonu:";
+            // 
+            // textBoxImie
+            // 
+            this.textBoxImie.Location = new System.Drawing.Point(372, 73);
+            this.textBoxImie.Name = "textBoxImie";
+            this.textBoxImie.Size = new System.Drawing.Size(100, 20);
+            this.textBoxImie.TabIndex = 2;
+            // 
+            // textBoxNazwisko
+            // 
+            this.textBoxNazwisko.Location = new System.Drawing.Point(372, 94);
+            this.textBoxNazwisko.Name = "textBoxNazwisko";
+            this.textBoxNazwisko.Size = new System.Drawing.Size(100, 20);
+            this.textBoxNazwisko.TabIndex = 3;
+            // 
+            // textBoxNrTelefonu
+            // 
+            this.textBoxNrTelefonu.Location = new System.Drawing.Point(372, 117);
+            this.textBoxNrTelefonu.Name = "textBoxNrTelefonu";
+            this.textBoxNrTelefonu.Size = new System.Drawing.Size(100, 20);
+            this.textBoxNrTelefonu.TabIndex = 3;
+            // 
+            // textBoxNazwaUzytkownika
+            // 
+            this.textBoxNazwaUzytkownika.Location = new System.Drawing.Point(372, 242);
+            this.textBoxNazwaUzytkownika.Name = "textBoxNazwaUzytkownika";
+            this.textBoxNazwaUzytkownika.Size = new System.Drawing.Size(100, 20);
+            this.textBoxNazwaUzytkownika.TabIndex = 3;
+            // 
+            // textBoxHaslo
+            // 
+            this.textBoxHaslo.Location = new System.Drawing.Point(372, 265);
+            this.textBoxHaslo.Name = "textBoxHaslo";
+            this.textBoxHaslo.PasswordChar = '*';
+            this.textBoxHaslo.Size = new System.Drawing.Size(100, 20);
+            this.textBoxHaslo.TabIndex = 3;
+            // 
+            // textHaslo2
+            // 
+            this.textHaslo2.Location = new System.Drawing.Point(372, 288);
+            this.textHaslo2.Name = "textHaslo2";
+            this.textHaslo2.PasswordChar = '*';
+            this.textHaslo2.Size = new System.Drawing.Size(100, 20);
+            this.textHaslo2.TabIndex = 3;
+            this.textHaslo2.Validating += new System.ComponentModel.CancelEventHandler(this.textHaslo2_Validating);
+            // 
+            // textBoxEmail
+            // 
+            this.textBoxEmail.Location = new System.Drawing.Point(372, 311);
+            this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.Size = new System.Drawing.Size(100, 20);
+            this.textBoxEmail.TabIndex = 3;
+            this.textBoxEmail.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxEmail_Validating);
+            // 
+            // buttonRejestracja
+            // 
+            this.buttonRejestracja.Location = new System.Drawing.Point(269, 352);
+            this.buttonRejestracja.Name = "buttonRejestracja";
+            this.buttonRejestracja.Size = new System.Drawing.Size(223, 46);
+            this.buttonRejestracja.TabIndex = 4;
+            this.buttonRejestracja.Text = "Zarejestruj";
+            this.buttonRejestracja.UseVisualStyleBackColor = true;
+            this.buttonRejestracja.Click += new System.EventHandler(this.buttonRejestracja_Click);
+            // 
+            // EmailValidation
+            // 
+            this.EmailValidation.AccessibleName = "EmailValidation";
+            this.EmailValidation.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.EmailValidation.Cursor = System.Windows.Forms.Cursors.No;
+            this.EmailValidation.Location = new System.Drawing.Point(478, 314);
+            this.EmailValidation.Name = "EmailValidation";
+            this.EmailValidation.Size = new System.Drawing.Size(197, 13);
+            this.EmailValidation.TabIndex = 5;
+            // 
+            // PasswordValidation
+            // 
+            this.PasswordValidation.AccessibleName = "PasswordValidation";
+            this.PasswordValidation.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PasswordValidation.Cursor = System.Windows.Forms.Cursors.No;
+            this.PasswordValidation.Location = new System.Drawing.Point(478, 288);
+            this.PasswordValidation.Name = "PasswordValidation";
+            this.PasswordValidation.Size = new System.Drawing.Size(197, 13);
+            this.PasswordValidation.TabIndex = 6;
+            // 
+            // LoginValidation
+            // 
+            this.LoginValidation.AccessibleName = "LoginValidation";
+            this.LoginValidation.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.LoginValidation.Cursor = System.Windows.Forms.Cursors.No;
+            this.LoginValidation.Location = new System.Drawing.Point(478, 245);
+            this.LoginValidation.Name = "LoginValidation";
+            this.LoginValidation.Size = new System.Drawing.Size(197, 13);
+            this.LoginValidation.TabIndex = 7;
+            // 
+            // panelRejestracja
+            // 
+            this.panelRejestracja.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelRejestracja.Controls.Add(this.LoginValidation);
+            this.panelRejestracja.Controls.Add(this.PasswordValidation);
+            this.panelRejestracja.Controls.Add(this.EmailValidation);
+            this.panelRejestracja.Controls.Add(this.buttonRejestracja);
+            this.panelRejestracja.Controls.Add(this.textBoxEmail);
+            this.panelRejestracja.Controls.Add(this.textHaslo2);
+            this.panelRejestracja.Controls.Add(this.textBoxHaslo);
+            this.panelRejestracja.Controls.Add(this.textBoxNazwaUzytkownika);
+            this.panelRejestracja.Controls.Add(this.textBoxNrTelefonu);
+            this.panelRejestracja.Controls.Add(this.textBoxNazwisko);
+            this.panelRejestracja.Controls.Add(this.textBoxImie);
+            this.panelRejestracja.Controls.Add(this.label9);
+            this.panelRejestracja.Controls.Add(this.label5);
+            this.panelRejestracja.Controls.Add(this.label13);
+            this.panelRejestracja.Controls.Add(this.label12);
+            this.panelRejestracja.Controls.Add(this.label11);
+            this.panelRejestracja.Controls.Add(this.label10);
+            this.panelRejestracja.Controls.Add(this.label4);
+            this.panelRejestracja.Controls.Add(this.label3);
+            this.panelRejestracja.Location = new System.Drawing.Point(0, 27);
+            this.panelRejestracja.Name = "panelRejestracja";
+            this.panelRejestracja.Size = new System.Drawing.Size(800, 424);
+            this.panelRejestracja.TabIndex = 5;
+            this.panelRejestracja.Paint += new System.Windows.Forms.PaintEventHandler(this.panelRejestracja_Paint);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.pictureBoxWyswProd);
+            this.Controls.Add(this.labelZalogowanyJako);
+            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.panelRejestracja);
+            this.Controls.Add(this.panelTop1);
+            this.Controls.Add(this.panelWyswProdukt);
             this.Controls.Add(this.panelNaszaOferta);
             this.Controls.Add(this.panelModyfikujProdukt);
             this.Controls.Add(this.panelPrzejdzDoKasy);
             this.Controls.Add(this.panelNowosci);
-            this.Controls.Add(this.labelZalogowanyJako);
-            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panelWelcome);
             this.Controls.Add(this.panelEdytujUzytkownikow);
             this.Controls.Add(this.panelDodajProdukt);
             this.Controls.Add(this.panelTwojeZamowienia);
             this.Controls.Add(this.panelEdytujSwojeDane);
             this.Controls.Add(this.panelLogin);
-            this.Controls.Add(this.panelRejestracja);
-            this.Controls.Add(this.panelTop1);
-            this.Controls.Add(this.panelWyswProdukt);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Home";
@@ -2259,8 +2197,6 @@
             this.menuStrip1.PerformLayout();
             this.panelWelcome.ResumeLayout(false);
             this.panelWelcome.PerformLayout();
-            this.panelRejestracja.ResumeLayout(false);
-            this.panelRejestracja.PerformLayout();
             this.panelLogin.ResumeLayout(false);
             this.panelLogin.PerformLayout();
             this.panelEdytujSwojeDane.ResumeLayout(false);
@@ -2288,6 +2224,8 @@
             this.panelNaszaOferta.ResumeLayout(false);
             this.panelNaszaOferta.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWyswProd)).EndInit();
+            this.panelRejestracja.ResumeLayout(false);
+            this.panelRejestracja.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2311,30 +2249,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panelLogo;
-        private System.Windows.Forms.Panel panelRejestracja;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.TextBox textBoxKod;
-        private System.Windows.Forms.TextBox textBoxNrTelefonu;
-        private System.Windows.Forms.TextBox textBoxUlica;
-        private System.Windows.Forms.TextBox textBoxMiasto;
-        private System.Windows.Forms.TextBox textBoxNazwisko;
-        private System.Windows.Forms.TextBox textBoxImie;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBoxEmail;
-        private System.Windows.Forms.TextBox textHaslo2;
-        private System.Windows.Forms.TextBox textBoxHaslo;
-        private System.Windows.Forms.TextBox textBoxNazwaUzytkownika;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button buttonRejestracja;
         private System.Windows.Forms.Label labelZalogowanyJako;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
@@ -2369,9 +2284,6 @@
         private System.Windows.Forms.ToolStripMenuItem dodajProduktToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modyfikujProduktToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ądzajUżytkownikamiToolStripMenuItem;
-        private System.Windows.Forms.TextBox EmailValidation;
-        private System.Windows.Forms.TextBox PasswordValidation;
-        private System.Windows.Forms.TextBox LoginValidation;
         private System.Windows.Forms.Panel panelWyswProdukt;
         private System.Windows.Forms.Label labelCena;
         private System.Windows.Forms.Label labelKategorie;
@@ -2500,5 +2412,25 @@
         private System.Windows.Forms.PictureBox pictureBoxMP;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.PictureBox pictureBoxWyswProd;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBoxImie;
+        private System.Windows.Forms.TextBox textBoxNazwisko;
+        private System.Windows.Forms.TextBox textBoxNrTelefonu;
+        private System.Windows.Forms.TextBox textBoxNazwaUzytkownika;
+        private System.Windows.Forms.TextBox textBoxHaslo;
+        private System.Windows.Forms.TextBox textHaslo2;
+        private System.Windows.Forms.TextBox textBoxEmail;
+        private System.Windows.Forms.Button buttonRejestracja;
+        private System.Windows.Forms.TextBox EmailValidation;
+        private System.Windows.Forms.TextBox PasswordValidation;
+        private System.Windows.Forms.TextBox LoginValidation;
+        private System.Windows.Forms.Panel panelRejestracja;
     }
 }

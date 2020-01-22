@@ -298,25 +298,6 @@ namespace Sklep
                         {
                             cmd.Parameters.Add("@nazwisko", SqlDbType.NChar).Value = textBoxNazwisko.Text;
                         }
-                   /*     if (string.IsNullOrEmpty(textBoxKod.Text))
-                            cmd.Parameters.Add("@zipcode", SqlDbType.NChar).Value = DBNull.Value;
-                        else
-                        {
-                            cmd.Parameters.Add("@zipcode", SqlDbType.NChar).Value = textBoxKod.Text;
-                        }
-                        if (string.IsNullOrEmpty(textBoxMiasto.Text))
-                            cmd.Parameters.Add("@miasto", SqlDbType.NChar).Value = DBNull.Value;
-                        else
-                        {
-                            cmd.Parameters.Add("@miasto", SqlDbType.NChar).Value = textBoxMiasto.Text;
-                        }
-                        if (string.IsNullOrEmpty(textBoxUlica.Text))
-                            cmd.Parameters.Add("@ulica", SqlDbType.NChar).Value = DBNull.Value;
-                        else
-                        {
-                            cmd.Parameters.Add("@ulica", SqlDbType.NChar).Value = textBoxUlica.Text;
-                        }
-                        */
                         if (string.IsNullOrEmpty(textBoxNrTelefonu.Text))
                             cmd.Parameters.Add("@telefon", SqlDbType.Int).Value = DBNull.Value;
                         else
@@ -1671,6 +1652,41 @@ namespace Sklep
         private void listBoxNOProducts2_SelectedIndexChanged(object sender, EventArgs e)
         {
             wczytajModyfikacje();
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxKod_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxMiasto_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxUlica_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelTop1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
