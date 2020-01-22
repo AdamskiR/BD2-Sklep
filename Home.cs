@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -41,12 +42,13 @@ namespace Sklep
             InitializeComponent();
             isUserAuthenticatedView();
             connectionString = ConfigurationManager.ConnectionStrings["Sklep.Properties.Settings.ShopConnectionString"].ConnectionString;
+
         }
 
         private void Home_Load(object sender, EventArgs e)
         {
             panelLogo.BackgroundImage = imageListlogo.Images[0];
-            panelWelcome.BringToFront();
+            panelWelcome.BringToFront();       
         }
 
         private void zarejestrujToolStripMenuItem_Click(object sender, EventArgs e)
@@ -63,6 +65,7 @@ namespace Sklep
         private void zalogujToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panelLogin.BringToFront();
+
         }
 
         private void isUserAuthenticatedView()
@@ -449,7 +452,8 @@ namespace Sklep
             listBoxWlistaProd.SelectedIndex = -1;
             listBoxWlistaKategorii.SelectedIndex = -1;
             panelNaszaOferta.BringToFront();
-            Wyswietlprodukt(1, 470, 200, 10);
+            Wyswietlprodukt(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 470, 220, 10);
+            wyswietl_zdjecie(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 520, 30, 200, 220);
         }
 
         private void tOP3ZamawianeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1046,7 +1050,7 @@ namespace Sklep
 
         private void wczytajModyfikacje()
         {
-            string querry = "SELECT ProductName, ProductPrice, ProductDesc, ProductStock, ProductCategoryID, VendorID FROM Products WHERE ID = @id";
+            string querry = "SELECT ProductName, ProductPrice, ProductDesc, ProductStock, ProductCategoryID, VendorID, ProductImage FROM Products WHERE ID = @id";
             using (SqlConnection cnn4 = new SqlConnection(connectionString))
             {
 
@@ -1065,6 +1069,10 @@ namespace Sklep
                         ModyfikujIlosc.Text = dr2.GetValue(3).ToString().TrimEnd();
                         listBoxNOCategories2.SelectedValue = dr2.GetValue(4);
                         listBoxNOVendors2.SelectedValue = dr2.GetValue(5);
+
+                        byte[] obrazek = (byte[])(dr2.GetValue(6));
+                        MemoryStream ms = new MemoryStream(obrazek);
+                        pictureBoxMP.Image = Image.FromStream(ms);
                     }
                 }
                 catch (Exception ex)
@@ -1072,7 +1080,6 @@ namespace Sklep
                     MessageBox.Show("ERROR:" + ex.Message);
                 }
                 cnn4.Close();
-                panelModyfikujProdukt.BringToFront();
             }
         }
         private void wczytajDaneUzytkownikow()
@@ -1136,10 +1143,6 @@ namespace Sklep
             }
         }
 
-        private void listBoxNOProducts2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            wczytajModyfikacje();
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -1336,15 +1339,6 @@ namespace Sklep
         }
 
 
-        private void listBoxWyszukajWypProd_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Wyswietlprodukt(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 470, 200, 10);
-            }
-            catch { }
-        }
-    
         private void odswiezZnalezioneProdukty()
         { 
            
@@ -1378,7 +1372,8 @@ namespace Sklep
                
                 try
                 {
-                    Wyswietlprodukt(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 470, 200, 10);
+                    Wyswietlprodukt(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 470, 220, 10);
+                    wyswietl_zdjecie(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 520, 30, 200, 220);
                 }
                 catch {
                     panelWyswProdukt.SendToBack();
@@ -1534,12 +1529,50 @@ namespace Sklep
             odswiezZnalezioneProdukty();
         }
 
+        //Dodać ochronę przed niezuploadowanym obrazkiem (DBNull)
+        private void wyswietl_zdjecie(int id, int left, int top, int height, int width)
+        {
+            pictureBoxWyswProd.Left = left;
+            pictureBoxWyswProd.Top = top;
+            pictureBoxWyswProd.Height = height;
+            pictureBoxWyswProd.Width = width;
+
+                       
+            string querry = "SELECT ProductImage FROM Products WHERE ID = @id";
+            using (SqlConnection cnn = new SqlConnection(connectionString))
+            {
+
+                try
+                {
+                    cnn.Open();
+                    SqlCommand cmd = new SqlCommand(querry, cnn);
+                    cmd.Parameters.Add("@id", SqlDbType.NChar).Value = id;
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        byte[] obrazek = (byte[])(dr.GetValue(0));
+                        MemoryStream ms = new MemoryStream(obrazek);
+                        pictureBoxWyswProd.Image = Image.FromStream(ms);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                }
+                cnn.Close();
+
+            }
+            pictureBoxWyswProd.BringToFront();
+            
+        }
 
         private void listBoxWyszukajWypProd_Click_1(object sender, EventArgs e)
         {
             try
             {
-                Wyswietlprodukt(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 470, 200, 10);
+                Wyswietlprodukt(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 470, 220, 10);
+                wyswietl_zdjecie(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 520, 30, 200, 220);
             }
             catch { }
         }
@@ -1608,25 +1641,36 @@ namespace Sklep
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ImageConverter imgc = new ImageConverter();
-            byte[] img = (byte[])imgc.ConvertTo(pictureBoxMP.Image, Type.GetType("System.Byte[]"));
+            if (pictureBoxMP != null)
+            {
+                MemoryStream ms = new MemoryStream();
+                pictureBoxMP.Image.Save(ms, pictureBoxMP.Image.RawFormat);
+                byte[] img = ms.GetBuffer();
+                ms.Close();
 
-            //using (connection = new SqlConnection(connectionString))
-            //using (SqlCommand command = new SqlCommand(querry, connection))
-            //using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-            //{
+                string querry = "UPDATE Products SET ProductImage=@zdjecie WHERE ID = @id";
+                
+                using (connection = new SqlConnection(connectionString))
+                using (SqlCommand command = new SqlCommand(querry, connection))
+                {
+                    connection.Open();
+                    command.Parameters.Clear();
+                    command.Parameters.Add("@zdjecie", SqlDbType.Image);
+                    command.Parameters.Add("@id", SqlDbType.Int);
+                    command.Parameters["@zdjecie"].Value = img;
+                    command.Parameters["@id"].Value = listBoxNOProducts2.SelectedValue;
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        MessageBox.Show("OK" );
+                    }
+                }
+                pictureBoxMP.Image = null;
+            }
+        }
 
-            //    DataTable tabela_prod = new DataTable();
-            //    adapter.Fill(tabela_prod);
-
-            //    listBoxNOProducts2.DisplayMember = "ProductName";
-            //    listBoxNOProducts2.ValueMember = "ID";
-            //    listBoxNOProducts2.DataSource = tabela_prod;
-            //    listBoxWyszukajWypProd.DisplayMember = "ProductName";
-            //    listBoxWyszukajWypProd.ValueMember = "ID";
-            //    listBoxWyszukajWypProd.DataSource = tabela_prod;
-
-            //}
+        private void listBoxNOProducts2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            wczytajModyfikacje();
         }
     }
 }

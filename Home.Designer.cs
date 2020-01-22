@@ -161,6 +161,9 @@
             this.label33 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.panelModyfikujProdukt = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.buttonMPZaladujZdjecie = new System.Windows.Forms.Button();
+            this.pictureBoxMP = new System.Windows.Forms.PictureBox();
             this.OdswiezProdukty = new System.Windows.Forms.Button();
             this.NazwaAlert = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
@@ -232,9 +235,7 @@
             this.textBoxWyszukaj = new System.Windows.Forms.TextBox();
             this.label60 = new System.Windows.Forms.Label();
             this.label59 = new System.Windows.Forms.Label();
-            this.pictureBoxMP = new System.Windows.Forms.PictureBox();
-            this.buttonMPZaladujZdjecie = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.pictureBoxWyswProd = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
             this.panelRejestracja.SuspendLayout();
@@ -248,11 +249,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWKoszyku)).BeginInit();
             this.panelDodajProdukt.SuspendLayout();
             this.panelModyfikujProdukt.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMP)).BeginInit();
             this.panelEdytujUzytkownikow.SuspendLayout();
             this.panelNowosci.SuspendLayout();
             this.panelTop1.SuspendLayout();
             this.panelNaszaOferta.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWyswProd)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -1517,6 +1519,35 @@
             this.panelModyfikujProdukt.Size = new System.Drawing.Size(797, 429);
             this.panelModyfikujProdukt.TabIndex = 14;
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(605, 255);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 21;
+            this.button3.Text = "Zapisz zdj";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // buttonMPZaladujZdjecie
+            // 
+            this.buttonMPZaladujZdjecie.Location = new System.Drawing.Point(577, 76);
+            this.buttonMPZaladujZdjecie.Name = "buttonMPZaladujZdjecie";
+            this.buttonMPZaladujZdjecie.Size = new System.Drawing.Size(128, 26);
+            this.buttonMPZaladujZdjecie.TabIndex = 20;
+            this.buttonMPZaladujZdjecie.Text = "Załaduj zdjęcie";
+            this.buttonMPZaladujZdjecie.UseVisualStyleBackColor = true;
+            this.buttonMPZaladujZdjecie.Click += new System.EventHandler(this.buttonMPZaladujZdjecie_Click);
+            // 
+            // pictureBoxMP
+            // 
+            this.pictureBoxMP.Location = new System.Drawing.Point(577, 119);
+            this.pictureBoxMP.Name = "pictureBoxMP";
+            this.pictureBoxMP.Size = new System.Drawing.Size(128, 126);
+            this.pictureBoxMP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxMP.TabIndex = 19;
+            this.pictureBoxMP.TabStop = false;
+            // 
             // OdswiezProdukty
             // 
             this.OdswiezProdukty.Location = new System.Drawing.Point(23, 291);
@@ -2078,6 +2109,7 @@
             this.panelNaszaOferta.Name = "panelNaszaOferta";
             this.panelNaszaOferta.Size = new System.Drawing.Size(796, 420);
             this.panelNaszaOferta.TabIndex = 20;
+            this.panelNaszaOferta.Click += new System.EventHandler(this.listBoxWyszukajWypProd_Click_1);
             // 
             // buttonDDK
             // 
@@ -2125,7 +2157,6 @@
             this.listBoxWyszukajWypProd.Size = new System.Drawing.Size(234, 148);
             this.listBoxWyszukajWypProd.TabIndex = 6;
             this.listBoxWyszukajWypProd.Click += new System.EventHandler(this.listBoxWyszukajWypProd_Click_1);
-            this.listBoxWyszukajWypProd.SelectedValueChanged += new System.EventHandler(this.listBoxWyszukajWypProd_Click);
             // 
             // listBoxWlistaKategorii
             // 
@@ -2189,42 +2220,23 @@
             this.label59.TabIndex = 0;
             this.label59.Text = "Producent:";
             // 
-            // pictureBoxMP
+            // pictureBoxWyswProd
             // 
-            this.pictureBoxMP.Location = new System.Drawing.Point(577, 119);
-            this.pictureBoxMP.Name = "pictureBoxMP";
-            this.pictureBoxMP.Size = new System.Drawing.Size(128, 126);
-            this.pictureBoxMP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxMP.TabIndex = 19;
-            this.pictureBoxMP.TabStop = false;
-            // 
-            // buttonMPZaladujZdjecie
-            // 
-            this.buttonMPZaladujZdjecie.Location = new System.Drawing.Point(577, 76);
-            this.buttonMPZaladujZdjecie.Name = "buttonMPZaladujZdjecie";
-            this.buttonMPZaladujZdjecie.Size = new System.Drawing.Size(128, 26);
-            this.buttonMPZaladujZdjecie.TabIndex = 20;
-            this.buttonMPZaladujZdjecie.Text = "Załaduj zdjęcie";
-            this.buttonMPZaladujZdjecie.UseVisualStyleBackColor = true;
-            this.buttonMPZaladujZdjecie.Click += new System.EventHandler(this.buttonMPZaladujZdjecie_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(605, 255);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 21;
-            this.button3.Text = "Zapisz zdj";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.pictureBoxWyswProd.Location = new System.Drawing.Point(501, -40);
+            this.pictureBoxWyswProd.Name = "pictureBoxWyswProd";
+            this.pictureBoxWyswProd.Size = new System.Drawing.Size(183, 159);
+            this.pictureBoxWyswProd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxWyswProd.TabIndex = 0;
+            this.pictureBoxWyswProd.TabStop = false;
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panelModyfikujProdukt);
+            this.Controls.Add(this.pictureBoxWyswProd);
             this.Controls.Add(this.panelNaszaOferta);
+            this.Controls.Add(this.panelModyfikujProdukt);
             this.Controls.Add(this.panelPrzejdzDoKasy);
             this.Controls.Add(this.panelNowosci);
             this.Controls.Add(this.labelZalogowanyJako);
@@ -2266,6 +2278,7 @@
             this.panelDodajProdukt.PerformLayout();
             this.panelModyfikujProdukt.ResumeLayout(false);
             this.panelModyfikujProdukt.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMP)).EndInit();
             this.panelEdytujUzytkownikow.ResumeLayout(false);
             this.panelEdytujUzytkownikow.PerformLayout();
             this.panelNowosci.ResumeLayout(false);
@@ -2274,7 +2287,7 @@
             this.panelTop1.PerformLayout();
             this.panelNaszaOferta.ResumeLayout(false);
             this.panelNaszaOferta.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWyswProd)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2486,5 +2499,6 @@
         private System.Windows.Forms.Button buttonMPZaladujZdjecie;
         private System.Windows.Forms.PictureBox pictureBoxMP;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.PictureBox pictureBoxWyswProd;
     }
 }
