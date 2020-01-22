@@ -548,24 +548,6 @@ namespace Sklep
                     {
                         cmd.Parameters.Add("@nazwisko", SqlDbType.NChar).Value = textBox9.Text;
                     }
-                    /*if (string.IsNullOrEmpty(textBox1.Text))
-                        cmd.Parameters.Add("@zipcode", SqlDbType.NChar).Value = DBNull.Value;
-                    else
-                    {
-                        cmd.Parameters.Add("@zipcode", SqlDbType.NChar).Value = textBox1.Text;
-                    }
-                    if (string.IsNullOrEmpty(textBox8.Text))
-                        cmd.Parameters.Add("@miasto", SqlDbType.NChar).Value = DBNull.Value;
-                    else
-                    {
-                        cmd.Parameters.Add("@miasto", SqlDbType.NChar).Value = textBox8.Text;
-                    }
-                    if (string.IsNullOrEmpty(textBox7.Text))
-                        cmd.Parameters.Add("@ulica", SqlDbType.NChar).Value = DBNull.Value;
-                    else
-                    {
-                        cmd.Parameters.Add("@ulica", SqlDbType.NChar).Value = textBox7.Text;
-                    }*/
                     if (string.IsNullOrEmpty(textBox6.Text))
                         cmd.Parameters.Add("@telefon", SqlDbType.Int).Value = DBNull.Value;
                     else
@@ -1264,9 +1246,6 @@ namespace Sklep
                     cmd.Parameters.Add("@email", SqlDbType.NChar).Value = adminEdytujMail.Text;
                     cmd.Parameters.Add("@firstname", SqlDbType.NChar).Value = adminEdytujImie.Text;
                     cmd.Parameters.Add("@lastname", SqlDbType.NChar).Value = adminEdytujNazwisko.Text;
-                   /* cmd.Parameters.Add("@zipcode", SqlDbType.NChar).Value = adminEdytujZip.Text;
-                    cmd.Parameters.Add("@city", SqlDbType.NChar).Value = adminEdytujMiasto.Text;
-                    cmd.Parameters.Add("@street", SqlDbType.NChar).Value = adminEdytujUlica.Text;*/
                     cmd.Parameters.Add("@telephone", SqlDbType.Int).Value = Convert.ToInt32(adminEdytujTel.Text);
                     string querry5 = "dbo.AddRole";
                     SqlConnection cnn5 = new SqlConnection(connectionString);

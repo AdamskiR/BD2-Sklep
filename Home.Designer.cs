@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zalogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -230,6 +230,8 @@
             this.PasswordValidation = new System.Windows.Forms.TextBox();
             this.LoginValidation = new System.Windows.Forms.TextBox();
             this.panelRejestracja = new System.Windows.Forms.Panel();
+            this.adminDaneAdresoweButton = new System.Windows.Forms.Button();
+            this.zmienDaneAdresowe = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
             this.panelLogin.SuspendLayout();
@@ -530,6 +532,7 @@
             // panelEdytujSwojeDane
             // 
             this.panelEdytujSwojeDane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelEdytujSwojeDane.Controls.Add(this.zmienDaneAdresowe);
             this.panelEdytujSwojeDane.Controls.Add(this.buttonUsunKonto);
             this.panelEdytujSwojeDane.Controls.Add(this.ZmianaHasla);
             this.panelEdytujSwojeDane.Controls.Add(this.buttonZmienDane);
@@ -580,7 +583,7 @@
             // 
             // buttonZmienDane
             // 
-            this.buttonZmienDane.Location = new System.Drawing.Point(104, 257);
+            this.buttonZmienDane.Location = new System.Drawing.Point(104, 175);
             this.buttonZmienDane.Name = "buttonZmienDane";
             this.buttonZmienDane.Size = new System.Drawing.Size(204, 51);
             this.buttonZmienDane.TabIndex = 4;
@@ -590,7 +593,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(207, 142);
+            this.textBox1.Location = new System.Drawing.Point(207, 241);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 3;
@@ -618,21 +621,21 @@
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(207, 211);
+            this.textBox6.Location = new System.Drawing.Point(207, 142);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(100, 20);
             this.textBox6.TabIndex = 3;
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(207, 188);
+            this.textBox7.Location = new System.Drawing.Point(207, 287);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(100, 20);
             this.textBox7.TabIndex = 3;
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(207, 165);
+            this.textBox8.Location = new System.Drawing.Point(207, 264);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(100, 20);
             this.textBox8.TabIndex = 3;
@@ -654,7 +657,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(101, 218);
+            this.label17.Location = new System.Drawing.Point(101, 149);
             this.label17.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(62, 13);
@@ -664,7 +667,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(101, 195);
+            this.label18.Location = new System.Drawing.Point(101, 294);
             this.label18.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(34, 13);
@@ -674,7 +677,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(101, 172);
+            this.label19.Location = new System.Drawing.Point(101, 271);
             this.label19.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(41, 13);
@@ -684,7 +687,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(101, 149);
+            this.label20.Location = new System.Drawing.Point(101, 248);
             this.label20.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(77, 13);
@@ -990,8 +993,8 @@
             // 
             this.dataGridViewWKoszyku.AllowUserToAddRows = false;
             this.dataGridViewWKoszyku.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewWKoszyku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWKoszyku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NAme,
@@ -1441,6 +1444,7 @@
             // 
             // panelEdytujUzytkownikow
             // 
+            this.panelEdytujUzytkownikow.Controls.Add(this.adminDaneAdresoweButton);
             this.panelEdytujUzytkownikow.Controls.Add(this.levelLabel);
             this.panelEdytujUzytkownikow.Controls.Add(this.currentPrivileges);
             this.panelEdytujUzytkownikow.Controls.Add(this.brak);
@@ -1598,14 +1602,14 @@
             // 
             // adminEdytujTel
             // 
-            this.adminEdytujTel.Location = new System.Drawing.Point(390, 247);
+            this.adminEdytujTel.Location = new System.Drawing.Point(390, 172);
             this.adminEdytujTel.Name = "adminEdytujTel";
             this.adminEdytujTel.Size = new System.Drawing.Size(85, 20);
             this.adminEdytujTel.TabIndex = 16;
             // 
             // adminEdytujUlica
             // 
-            this.adminEdytujUlica.Location = new System.Drawing.Point(390, 219);
+            this.adminEdytujUlica.Location = new System.Drawing.Point(401, 347);
             this.adminEdytujUlica.Name = "adminEdytujUlica";
             this.adminEdytujUlica.Size = new System.Drawing.Size(85, 20);
             this.adminEdytujUlica.TabIndex = 15;
@@ -1613,7 +1617,7 @@
             // label53
             // 
             this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(302, 250);
+            this.label53.Location = new System.Drawing.Point(302, 175);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(82, 13);
             this.label53.TabIndex = 14;
@@ -1622,7 +1626,7 @@
             // label52
             // 
             this.label52.AutoSize = true;
-            this.label52.Location = new System.Drawing.Point(339, 222);
+            this.label52.Location = new System.Drawing.Point(350, 350);
             this.label52.Name = "label52";
             this.label52.Size = new System.Drawing.Size(34, 13);
             this.label52.TabIndex = 13;
@@ -1630,7 +1634,7 @@
             // 
             // adminEdytujMiasto
             // 
-            this.adminEdytujMiasto.Location = new System.Drawing.Point(390, 193);
+            this.adminEdytujMiasto.Location = new System.Drawing.Point(401, 321);
             this.adminEdytujMiasto.Name = "adminEdytujMiasto";
             this.adminEdytujMiasto.Size = new System.Drawing.Size(85, 20);
             this.adminEdytujMiasto.TabIndex = 12;
@@ -1653,7 +1657,7 @@
             // 
             // adminEdytujZip
             // 
-            this.adminEdytujZip.Location = new System.Drawing.Point(390, 169);
+            this.adminEdytujZip.Location = new System.Drawing.Point(401, 297);
             this.adminEdytujZip.Name = "adminEdytujZip";
             this.adminEdytujZip.Size = new System.Drawing.Size(85, 20);
             this.adminEdytujZip.TabIndex = 9;
@@ -1674,7 +1678,7 @@
             // 
             // buttonAdminEdytujUzytkownika
             // 
-            this.buttonAdminEdytujUzytkownika.Location = new System.Drawing.Point(585, 314);
+            this.buttonAdminEdytujUzytkownika.Location = new System.Drawing.Point(616, 205);
             this.buttonAdminEdytujUzytkownika.Name = "buttonAdminEdytujUzytkownika";
             this.buttonAdminEdytujUzytkownika.Size = new System.Drawing.Size(111, 31);
             this.buttonAdminEdytujUzytkownika.TabIndex = 6;
@@ -1685,7 +1689,7 @@
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(335, 196);
+            this.label46.Location = new System.Drawing.Point(346, 324);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(41, 13);
             this.label46.TabIndex = 5;
@@ -1694,7 +1698,7 @@
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(299, 173);
+            this.label47.Location = new System.Drawing.Point(310, 301);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(77, 13);
             this.label47.TabIndex = 4;
@@ -2161,11 +2165,29 @@
             this.panelRejestracja.Controls.Add(this.label10);
             this.panelRejestracja.Controls.Add(this.label4);
             this.panelRejestracja.Controls.Add(this.label3);
-            this.panelRejestracja.Location = new System.Drawing.Point(0, 27);
+            this.panelRejestracja.Location = new System.Drawing.Point(12, 31);
             this.panelRejestracja.Name = "panelRejestracja";
-            this.panelRejestracja.Size = new System.Drawing.Size(800, 424);
+            this.panelRejestracja.Size = new System.Drawing.Size(788, 420);
             this.panelRejestracja.TabIndex = 5;
             this.panelRejestracja.Paint += new System.Windows.Forms.PaintEventHandler(this.panelRejestracja_Paint);
+            // 
+            // adminDaneAdresoweButton
+            // 
+            this.adminDaneAdresoweButton.Location = new System.Drawing.Point(556, 373);
+            this.adminDaneAdresoweButton.Name = "adminDaneAdresoweButton";
+            this.adminDaneAdresoweButton.Size = new System.Drawing.Size(167, 24);
+            this.adminDaneAdresoweButton.TabIndex = 30;
+            this.adminDaneAdresoweButton.Text = "Zmień dane adresowe";
+            this.adminDaneAdresoweButton.UseVisualStyleBackColor = true;
+            // 
+            // zmienDaneAdresowe
+            // 
+            this.zmienDaneAdresowe.Location = new System.Drawing.Point(127, 321);
+            this.zmienDaneAdresowe.Name = "zmienDaneAdresowe";
+            this.zmienDaneAdresowe.Size = new System.Drawing.Size(141, 23);
+            this.zmienDaneAdresowe.TabIndex = 6;
+            this.zmienDaneAdresowe.Text = "Zmień dane adresowe";
+            this.zmienDaneAdresowe.UseVisualStyleBackColor = true;
             // 
             // Home
             // 
@@ -2175,10 +2197,12 @@
             this.Controls.Add(this.pictureBoxWyswProd);
             this.Controls.Add(this.labelZalogowanyJako);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.panelEdytujSwojeDane);
+            this.Controls.Add(this.panelLogin);
             this.Controls.Add(this.panelRejestracja);
             this.Controls.Add(this.panelTop1);
-            this.Controls.Add(this.panelWyswProdukt);
             this.Controls.Add(this.panelNaszaOferta);
+            this.Controls.Add(this.panelWyswProdukt);
             this.Controls.Add(this.panelModyfikujProdukt);
             this.Controls.Add(this.panelPrzejdzDoKasy);
             this.Controls.Add(this.panelNowosci);
@@ -2186,8 +2210,6 @@
             this.Controls.Add(this.panelEdytujUzytkownikow);
             this.Controls.Add(this.panelDodajProdukt);
             this.Controls.Add(this.panelTwojeZamowienia);
-            this.Controls.Add(this.panelEdytujSwojeDane);
-            this.Controls.Add(this.panelLogin);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Home";
@@ -2432,5 +2454,7 @@
         private System.Windows.Forms.TextBox PasswordValidation;
         private System.Windows.Forms.TextBox LoginValidation;
         private System.Windows.Forms.Panel panelRejestracja;
+        private System.Windows.Forms.Button zmienDaneAdresowe;
+        private System.Windows.Forms.Button adminDaneAdresoweButton;
     }
 }
