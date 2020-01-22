@@ -48,7 +48,7 @@ namespace Sklep
         private void Home_Load(object sender, EventArgs e)
         {
             panelLogo.BackgroundImage = imageListlogo.Images[0];
-            panelWelcome.BringToFront();       
+            panelWelcome.BringToFront();
         }
 
         private void zarejestrujToolStripMenuItem_Click(object sender, EventArgs e)
@@ -70,79 +70,79 @@ namespace Sklep
 
         private void isUserAuthenticatedView()
         {
-                var dataSet = new DataSet();
-                bool adminUser=false;
-                bool managerUser = false;
+            var dataSet = new DataSet();
+            bool adminUser = false;
+            bool managerUser = false;
             string querry2 = "RoleByID";
-              
+
             SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["Sklep.Properties.Settings.ShopConnectionString"].ConnectionString);
             SqlCommand cmd2 = new SqlCommand(querry2, cnn);
             cmd2.CommandType = CommandType.StoredProcedure;
             cmd2.Parameters.Add("@id", SqlDbType.NChar).Value = globals.userID;
             cnn.Open();
             var dataAdapter = new SqlDataAdapter { SelectCommand = cmd2 };
-                dataAdapter.Fill(dataSet);
+            dataAdapter.Fill(dataSet);
 
 
-                if (dataSet.Tables[0].Rows.Count > 0)
+            if (dataSet.Tables[0].Rows.Count > 0)
+            {
+                if (Convert.ToInt32(dataSet.Tables[0].Rows[0]["RoleID"]) == 1)
                 {
-                    if (Convert.ToInt32(dataSet.Tables[0].Rows[0]["RoleID"]) == 1)
-                    {
                     adminUser = true;
-                    }
-                    else if(Convert.ToInt32(dataSet.Tables[0].Rows[0]["RoleID"]) == 2)
-                    {
-                    managerUser = true;
-                    }
                 }
-                else
+                else if (Convert.ToInt32(dataSet.Tables[0].Rows[0]["RoleID"]) == 2)
                 {
+                    managerUser = true;
+                }
+            }
+            else
+            {
                 adminUser = false;
                 managerUser = false;
-                }
+            }
             cnn.Close();
 
             if (isUserAuthenticated == false)
-                {
-                    labelZalogowanyJako.ResetText();
-                    buttonZaloguj.Visible = true;
-                    wylogujToolStripMenuItem.Visible = false;
-                    edytujSwojeDaneToolStripMenuItem.Visible = false;
-                    panelAdministracyjnyToolStripMenuItem.Visible = false;
-                    zalogujToolStripMenuItem.Visible = true;
-                    koszykToolStripMenuItem.Visible = false;
-                    twojeZamówieniaToolStripMenuItem.Visible = false;
-                    textBoxDDK.Visible = false;
-                    buttonDDK.Visible = false;
-                    zarejestrujToolStripMenuItem.Visible = true;
+            {
+                labelZalogowanyJako.ResetText();
+                buttonZaloguj.Visible = true;
+                wylogujToolStripMenuItem.Visible = false;
+                edytujSwojeDaneToolStripMenuItem.Visible = false;
+                panelAdministracyjnyToolStripMenuItem.Visible = false;
+                zalogujToolStripMenuItem.Visible = true;
+                koszykToolStripMenuItem.Visible = false;
+                twojeZamówieniaToolStripMenuItem.Visible = false;
+                textBoxDDK.Visible = false;
+                buttonDDK.Visible = false;
+                zarejestrujToolStripMenuItem.Visible = true;
 
-                }
-                else
-                {
+            }
+            else
+            {
                 if (adminUser == true)
                 {
                     panelAdministracyjnyToolStripMenuItem.Visible = true;
                 }
-                if(managerUser == true)
+                if (managerUser == true)
                 {
                     panelAdministracyjnyToolStripMenuItem.Visible = true;
                     ądzajUżytkownikamiToolStripMenuItem.Enabled = false;
                 }
-                    buttonZaloguj.Visible = false;
-                    zalogujToolStripMenuItem.Visible = false;
-                    wylogujToolStripMenuItem.Visible = true;
-                    edytujSwojeDaneToolStripMenuItem.Visible = true;
-                    twojeZamówieniaToolStripMenuItem.Visible = true;
-                    twojeZamówieniaToolStripMenuItem.Enabled = true;
-                    currentUsername = textBoxLogUzytkownik.Text;
-                    koszykToolStripMenuItem.Visible = true;
-                    twojeZamówieniaToolStripMenuItem.Visible = true;
-                    labelZalogowanyJako.Text = "Zalogowany jako: " + textBoxLogUzytkownik.Text;
-                    zarejestrujToolStripMenuItem.Visible = false;
-                    textBoxDDK.Visible = true;
-                    buttonDDK.Visible = true;
-                    labelKupTeraz.Text = "Wybierz ilość jaką chcesz kupić";
-                }
+                buttonZaloguj.Visible = false;
+                zalogujToolStripMenuItem.Visible = false;
+                wylogujToolStripMenuItem.Visible = true;
+                edytujSwojeDaneToolStripMenuItem.Visible = true;
+                twojeZamówieniaToolStripMenuItem.Visible = true;
+                twojeZamówieniaToolStripMenuItem.Enabled = true;
+                currentUsername = textBoxLogUzytkownik.Text;
+                koszykToolStripMenuItem.Visible = true;
+                twojeZamówieniaToolStripMenuItem.Visible = true;
+                labelZalogowanyJako.Text = "Zalogowany jako: " + textBoxLogUzytkownik.Text;
+                zarejestrujToolStripMenuItem.Visible = false;
+                textBoxDDK.Visible = true;
+                buttonDDK.Visible = true;
+                labelKupTeraz.Text = "Wybierz ilość jaką chcesz kupić";
+            }
         }
 
         private void buttonZaloguj_Click(object sender, EventArgs e)
@@ -200,7 +200,7 @@ namespace Sklep
         {
             panelEdytujSwojeDane.BringToFront();
             string querry = "dbo.GetUserData";
-            string querry2 = "SELECT ZipCode, City, Street FROM Address WHERE Id=(SELECT AddressID FROM Users WHERE Username='" +currentUsername+"')";
+            string querry2 = "SELECT ZipCode, City, Street FROM Address WHERE Id=(SELECT AddressID FROM Users WHERE Username='" + currentUsername + "')";
             using (SqlConnection cnn4 = new SqlConnection(connectionString))
             {
 
@@ -410,7 +410,7 @@ namespace Sklep
             }
         }
 
-  
+
         private void zobaczWszystkoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string querry = "listVendors";
@@ -650,7 +650,7 @@ namespace Sklep
             }
         }
 
- 
+
 
         private void usuńProduktyZKoszykaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -762,7 +762,7 @@ namespace Sklep
             }
             catch
             {
-               // Console.WriteLine("ERROR");
+                // Console.WriteLine("ERROR");
             }
 
         }
@@ -802,7 +802,7 @@ namespace Sklep
                 command.CommandType = CommandType.StoredProcedure;
                 DataTable spr_stan = new DataTable();
 
-                for (int i = 0; i<koszyk.Count(); i++)
+                for (int i = 0; i < koszyk.Count(); i++)
                 {
                     command.Parameters.Clear();
                     command.Parameters.Add("@id", SqlDbType.Int);
@@ -827,7 +827,7 @@ namespace Sklep
         private void buttonPDKKup_Click(object sender, EventArgs e)
         {
             DGVwKoszykuAktualizuj();
-            if(sprawdzstan())
+            if (sprawdzstan())
             {
                 using (connection = new SqlConnection(connectionString))
                 using (SqlCommand command = new SqlCommand("DodajZamowienie", connection))
@@ -880,7 +880,7 @@ namespace Sklep
         }
 
 
-      
+
         private void dodajProduktToolStripMenuItem_Click(object sender, EventArgs e)
         {
             wylistujKategorie();
@@ -897,7 +897,7 @@ namespace Sklep
 
                 bool productNameTaken;
                 string querry2 = "dbo.checkProductName";
-               
+
                 SqlConnection cnn = new SqlConnection(connectionString);
                 cnn.Open();
                 SqlCommand cmd2 = new SqlCommand(querry2, cnn);
@@ -936,9 +936,9 @@ namespace Sklep
                     {
                         MessageBox.Show("Popraw błędne informacje!");
                     }
-                    
+
                     cnn4.Close();
-                    
+
                 }
                 catch (Exception ex)
                 {
@@ -976,7 +976,7 @@ namespace Sklep
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(querry, connection))
             using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-           
+
             {
                 command.CommandType = CommandType.StoredProcedure;
 
@@ -1058,7 +1058,8 @@ namespace Sklep
         }
         private void wczytajDaneUzytkownikow()
         {
-            string querry = "SELECT Username, Password, Email, FirstName, LastName,ZipCode, City, Street, TelephoneNumber FROM Users WHERE ID = @id";
+            string querry = "SELECT Username, Password, Email, FirstName, LastName, TelephoneNumber FROM Users WHERE ID = @id";
+            string querry2 = "SELECT ZipCode, City, Street FROM Address WHERE Id=(SELECT AddressID FROM Users WHERE ID=@id)";
             using (SqlConnection cnn4 = new SqlConnection(connectionString))
             {
 
@@ -1076,19 +1077,39 @@ namespace Sklep
                         adminEdytujMail.Text = dr2.GetValue(2).ToString().TrimEnd();
                         adminEdytujImie.Text = dr2.GetValue(3).ToString().TrimEnd();
                         adminEdytujNazwisko.Text = dr2.GetValue(4).ToString().TrimEnd();
-                        adminEdytujZip.Text = dr2.GetValue(5).ToString().TrimEnd();
-                        adminEdytujMiasto.Text = dr2.GetValue(6).ToString().TrimEnd();
-                        adminEdytujUlica.Text = dr2.GetValue(7).ToString().TrimEnd();
-                        adminEdytujTel.Text = dr2.GetValue(8).ToString().TrimEnd();
+                        adminEdytujTel.Text = dr2.GetValue(5).ToString().TrimEnd();
+                    }
+
+
+                    using (SqlConnection cnn3 = new SqlConnection(connectionString))
+                    {
+
+
+                        cmd.Parameters.Add("@login", SqlDbType.NChar).Value = currentUsername;
+                        using (SqlConnection cnn2 = new SqlConnection(connectionString))
+                        {
+                            cnn2.Open();
+                            SqlCommand cmd2 = new SqlCommand(querry2, cnn2);
+                            cmd2.Parameters.Add("@id", SqlDbType.NChar).Value = listBoxNOUsers.SelectedValue;
+                            SqlDataReader dr3 = cmd2.ExecuteReader();
+                            while (dr3.Read())
+                            {
+                                adminEdytujZip.Text = dr3.GetValue(0).ToString().TrimEnd();
+                                adminEdytujMiasto.Text = dr3.GetValue(1).ToString().TrimEnd();
+                                adminEdytujUlica.Text = dr3.GetValue(2).ToString().TrimEnd();
+                            }
+                            cnn2.Close();
+                            cnn4.Close();
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("ERROR:" + ex.Message);
                 }
-                cnn4.Close();
             }
         }
+
 
         private void wczytajUprawnienia()
         {
@@ -1744,6 +1765,11 @@ namespace Sklep
                     MessageBox.Show("ERROR:" + ex.Message);
                 }
             }
+        }
+
+        private void adminDaneAdresoweButton_Click(object sender, EventArgs e)
+        {
+            //tutaj dodać edycje danych adresowych przez admina
         }
     }
     }

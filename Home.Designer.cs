@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zalogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -993,8 +993,8 @@
             // 
             this.dataGridViewWKoszyku.AllowUserToAddRows = false;
             this.dataGridViewWKoszyku.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewWKoszyku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWKoszyku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NAme,
@@ -2179,6 +2179,7 @@
             this.adminDaneAdresoweButton.TabIndex = 30;
             this.adminDaneAdresoweButton.Text = "Zmień dane adresowe";
             this.adminDaneAdresoweButton.UseVisualStyleBackColor = true;
+            this.adminDaneAdresoweButton.Click += new System.EventHandler(this.adminDaneAdresoweButton_Click);
             // 
             // zmienDaneAdresowe
             // 
@@ -2198,6 +2199,9 @@
             this.Controls.Add(this.pictureBoxWyswProd);
             this.Controls.Add(this.labelZalogowanyJako);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.panelEdytujUzytkownikow);
+            this.Controls.Add(this.panelDodajProdukt);
+            this.Controls.Add(this.panelTwojeZamowienia);
             this.Controls.Add(this.panelEdytujSwojeDane);
             this.Controls.Add(this.panelLogin);
             this.Controls.Add(this.panelRejestracja);
@@ -2208,9 +2212,6 @@
             this.Controls.Add(this.panelPrzejdzDoKasy);
             this.Controls.Add(this.panelNowosci);
             this.Controls.Add(this.panelWelcome);
-            this.Controls.Add(this.panelEdytujUzytkownikow);
-            this.Controls.Add(this.panelDodajProdukt);
-            this.Controls.Add(this.panelTwojeZamowienia);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Home";
