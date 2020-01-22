@@ -1072,6 +1072,7 @@ namespace Sklep
                     MessageBox.Show("ERROR:" + ex.Message);
                 }
                 cnn4.Close();
+                panelModyfikujProdukt.BringToFront();
             }
         }
         private void wczytajDaneUzytkownikow()
@@ -1331,6 +1332,7 @@ namespace Sklep
         private void OdswiezProdukty_Click(object sender, EventArgs e)
         {
             wylistujProdukty();
+            panelModyfikujProdukt.BringToFront();
         }
 
 
@@ -1591,6 +1593,40 @@ namespace Sklep
                 }
             }
             catch { }
+        }
+
+        private void buttonMPZaladujZdjecie_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog() { Filter = "JPEG|*.jpg", Multiselect = false })
+            {
+                if (ofd.ShowDialog()==DialogResult.OK)
+                {
+                    pictureBoxMP.Image = Image.FromFile(ofd.FileName);
+                }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ImageConverter imgc = new ImageConverter();
+            byte[] img = (byte[])imgc.ConvertTo(pictureBoxMP.Image, Type.GetType("System.Byte[]"));
+
+            //using (connection = new SqlConnection(connectionString))
+            //using (SqlCommand command = new SqlCommand(querry, connection))
+            //using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            //{
+
+            //    DataTable tabela_prod = new DataTable();
+            //    adapter.Fill(tabela_prod);
+
+            //    listBoxNOProducts2.DisplayMember = "ProductName";
+            //    listBoxNOProducts2.ValueMember = "ID";
+            //    listBoxNOProducts2.DataSource = tabela_prod;
+            //    listBoxWyszukajWypProd.DisplayMember = "ProductName";
+            //    listBoxWyszukajWypProd.ValueMember = "ID";
+            //    listBoxWyszukajWypProd.DataSource = tabela_prod;
+
+            //}
         }
     }
 }

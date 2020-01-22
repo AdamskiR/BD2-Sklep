@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zalogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -232,6 +232,9 @@
             this.textBoxWyszukaj = new System.Windows.Forms.TextBox();
             this.label60 = new System.Windows.Forms.Label();
             this.label59 = new System.Windows.Forms.Label();
+            this.pictureBoxMP = new System.Windows.Forms.PictureBox();
+            this.buttonMPZaladujZdjecie = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
             this.panelRejestracja.SuspendLayout();
@@ -249,6 +252,7 @@
             this.panelNowosci.SuspendLayout();
             this.panelTop1.SuspendLayout();
             this.panelNaszaOferta.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMP)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -1246,8 +1250,8 @@
             // 
             this.dataGridViewWKoszyku.AllowUserToAddRows = false;
             this.dataGridViewWKoszyku.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewWKoszyku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWKoszyku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NAme,
@@ -1262,10 +1266,8 @@
             this.dataGridViewWKoszyku.Size = new System.Drawing.Size(606, 217);
             this.dataGridViewWKoszyku.StandardTab = true;
             this.dataGridViewWKoszyku.TabIndex = 3;
-            this.dataGridViewWKoszyku.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewWKoszyku_CellEndEdit);
             this.dataGridViewWKoszyku.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewWKoszyku_CellLeave);
             this.dataGridViewWKoszyku.CellStateChanged += new System.Windows.Forms.DataGridViewCellStateChangedEventHandler(this.dataGridViewWKoszyku_CellStateChanged);
-            this.dataGridViewWKoszyku.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewWKoszyku_CellValueChanged);
             // 
             // NAme
             // 
@@ -1489,6 +1491,9 @@
             // 
             // panelModyfikujProdukt
             // 
+            this.panelModyfikujProdukt.Controls.Add(this.button3);
+            this.panelModyfikujProdukt.Controls.Add(this.buttonMPZaladujZdjecie);
+            this.panelModyfikujProdukt.Controls.Add(this.pictureBoxMP);
             this.panelModyfikujProdukt.Controls.Add(this.OdswiezProdukty);
             this.panelModyfikujProdukt.Controls.Add(this.NazwaAlert);
             this.panelModyfikujProdukt.Controls.Add(this.label44);
@@ -1577,7 +1582,7 @@
             // 
             this.ModyfikujOpis.Location = new System.Drawing.Point(264, 125);
             this.ModyfikujOpis.Name = "ModyfikujOpis";
-            this.ModyfikujOpis.Size = new System.Drawing.Size(345, 20);
+            this.ModyfikujOpis.Size = new System.Drawing.Size(286, 20);
             this.ModyfikujOpis.TabIndex = 10;
             // 
             // ModyfikujIlosc
@@ -1603,9 +1608,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(596, 318);
+            this.button1.Location = new System.Drawing.Point(585, 340);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 31);
+            this.button1.Size = new System.Drawing.Size(128, 31);
             this.button1.TabIndex = 6;
             this.button1.Text = "Zapisz";
             this.button1.UseVisualStyleBackColor = true;
@@ -2184,14 +2189,44 @@
             this.label59.TabIndex = 0;
             this.label59.Text = "Producent:";
             // 
+            // pictureBoxMP
+            // 
+            this.pictureBoxMP.Location = new System.Drawing.Point(577, 119);
+            this.pictureBoxMP.Name = "pictureBoxMP";
+            this.pictureBoxMP.Size = new System.Drawing.Size(128, 126);
+            this.pictureBoxMP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxMP.TabIndex = 19;
+            this.pictureBoxMP.TabStop = false;
+            // 
+            // buttonMPZaladujZdjecie
+            // 
+            this.buttonMPZaladujZdjecie.Location = new System.Drawing.Point(577, 76);
+            this.buttonMPZaladujZdjecie.Name = "buttonMPZaladujZdjecie";
+            this.buttonMPZaladujZdjecie.Size = new System.Drawing.Size(128, 26);
+            this.buttonMPZaladujZdjecie.TabIndex = 20;
+            this.buttonMPZaladujZdjecie.Text = "Załaduj zdjęcie";
+            this.buttonMPZaladujZdjecie.UseVisualStyleBackColor = true;
+            this.buttonMPZaladujZdjecie.Click += new System.EventHandler(this.buttonMPZaladujZdjecie_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(605, 255);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 21;
+            this.button3.Text = "Zapisz zdj";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panelModyfikujProdukt);
+            this.Controls.Add(this.panelNaszaOferta);
             this.Controls.Add(this.panelPrzejdzDoKasy);
             this.Controls.Add(this.panelNowosci);
-            this.Controls.Add(this.panelNaszaOferta);
             this.Controls.Add(this.labelZalogowanyJako);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panelWelcome);
@@ -2202,7 +2237,6 @@
             this.Controls.Add(this.panelLogin);
             this.Controls.Add(this.panelRejestracja);
             this.Controls.Add(this.panelTop1);
-            this.Controls.Add(this.panelModyfikujProdukt);
             this.Controls.Add(this.panelWyswProdukt);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -2240,6 +2274,7 @@
             this.panelTop1.PerformLayout();
             this.panelNaszaOferta.ResumeLayout(false);
             this.panelNaszaOferta.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2421,7 +2456,6 @@
         private System.Windows.Forms.RadioButton administrator;
         private System.Windows.Forms.RadioButton brak;
         private System.Windows.Forms.Panel panelNowosci;
-        private System.Windows.Forms.Button buttonPDONowosci;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Button buttonN3;
         private System.Windows.Forms.Button buttonN2;
@@ -2449,5 +2483,8 @@
         private System.Windows.Forms.Label levelLabel;
         private System.Windows.Forms.Label currentPrivileges;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonMPZaladujZdjecie;
+        private System.Windows.Forms.PictureBox pictureBoxMP;
+        private System.Windows.Forms.Button button3;
     }
 }
