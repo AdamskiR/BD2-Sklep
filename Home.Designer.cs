@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zalogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -242,6 +242,11 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
+            this.dodajKategorie = new System.Windows.Forms.Button();
+            this.usuńKategorie = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.aktualneKategorie = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
             this.panelLogin.SuspendLayout();
@@ -1024,8 +1029,8 @@
             // 
             this.dataGridViewWKoszyku.AllowUserToAddRows = false;
             this.dataGridViewWKoszyku.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewWKoszyku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWKoszyku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NAme,
@@ -1265,6 +1270,11 @@
             // 
             // panelModyfikujProdukt
             // 
+            this.panelModyfikujProdukt.Controls.Add(this.aktualneKategorie);
+            this.panelModyfikujProdukt.Controls.Add(this.label8);
+            this.panelModyfikujProdukt.Controls.Add(this.listBox1);
+            this.panelModyfikujProdukt.Controls.Add(this.usuńKategorie);
+            this.panelModyfikujProdukt.Controls.Add(this.dodajKategorie);
             this.panelModyfikujProdukt.Controls.Add(this.buttonMPZaladujZdjecie);
             this.panelModyfikujProdukt.Controls.Add(this.pictureBoxMP);
             this.panelModyfikujProdukt.Controls.Add(this.OdswiezProdukty);
@@ -1367,7 +1377,7 @@
             this.listBoxNOCategories2.FormattingEnabled = true;
             this.listBoxNOCategories2.Location = new System.Drawing.Point(249, 189);
             this.listBoxNOCategories2.Name = "listBoxNOCategories2";
-            this.listBoxNOCategories2.Size = new System.Drawing.Size(145, 186);
+            this.listBoxNOCategories2.Size = new System.Drawing.Size(145, 69);
             this.listBoxNOCategories2.TabIndex = 12;
             // 
             // ModyfikujOpis
@@ -2307,12 +2317,58 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Oczekujące zamowienia:";
             // 
+            // dodajKategorie
+            // 
+            this.dodajKategorie.Location = new System.Drawing.Point(277, 270);
+            this.dodajKategorie.Name = "dodajKategorie";
+            this.dodajKategorie.Size = new System.Drawing.Size(57, 23);
+            this.dodajKategorie.TabIndex = 21;
+            this.dodajKategorie.Text = "Dodaj";
+            this.dodajKategorie.UseVisualStyleBackColor = true;
+            this.dodajKategorie.Click += new System.EventHandler(this.dodajKategorie_Click);
+            // 
+            // usuńKategorie
+            // 
+            this.usuńKategorie.Location = new System.Drawing.Point(337, 270);
+            this.usuńKategorie.Name = "usuńKategorie";
+            this.usuńKategorie.Size = new System.Drawing.Size(57, 23);
+            this.usuńKategorie.TabIndex = 22;
+            this.usuńKategorie.Text = "Usuń";
+            this.usuńKategorie.UseVisualStyleBackColor = true;
+            this.usuńKategorie.Click += new System.EventHandler(this.usuńKategorie_Click);
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(250, 317);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(144, 56);
+            this.listBox1.TabIndex = 23;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(247, 301);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(154, 13);
+            this.label8.TabIndex = 24;
+            this.label8.Text = "Aktualnie przypisane kategorie:";
+            // 
+            // aktualneKategorie
+            // 
+            this.aktualneKategorie.Location = new System.Drawing.Point(318, 382);
+            this.aktualneKategorie.Name = "aktualneKategorie";
+            this.aktualneKategorie.Size = new System.Drawing.Size(68, 25);
+            this.aktualneKategorie.TabIndex = 25;
+            this.aktualneKategorie.Text = "Odśwież";
+            this.aktualneKategorie.UseVisualStyleBackColor = true;
+            this.aktualneKategorie.Click += new System.EventHandler(this.aktualneKategorie_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panelNaszaOferta);
             this.Controls.Add(this.panelModyfikujProdukt);
             this.Controls.Add(this.panelZamowieniaDoWyslania);
             this.Controls.Add(this.panelTwojeZamowienia);
@@ -2329,6 +2385,7 @@
             this.Controls.Add(this.panelRejestracja);
             this.Controls.Add(this.panelWyswProdukt);
             this.Controls.Add(this.panelWelcome);
+            this.Controls.Add(this.panelNaszaOferta);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Home";
@@ -2589,5 +2646,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.Button buttonWZWyslijZam;
+        private System.Windows.Forms.Button aktualneKategorie;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button usuńKategorie;
+        private System.Windows.Forms.Button dodajKategorie;
     }
 }

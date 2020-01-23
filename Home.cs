@@ -975,6 +975,22 @@ namespace Sklep
 
             }
         }
+
+        private void wylistujAktualneKategorie()
+        {
+            string querry = "SELECT CategoryName FROM Categories WHERE ID in (SELECT IDCat FROM ProdCat WHERE IDProd="+listBoxNOProducts2.SelectedValue+")";
+
+            using (connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(querry, connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            {
+                DataTable tabela_cat = new DataTable();
+                adapter.Fill(tabela_cat);
+
+                listBox1.DisplayMember = "CategoryName";
+                listBox1.DataSource = tabela_cat;
+            }
+        }
         private void wylistujVendorow()
         {
             string querry = "dbo.listVendors";
@@ -1024,13 +1040,14 @@ namespace Sklep
         {
             wylistujProdukty();
             wylistujKategorie();
+            wylistujAktualneKategorie();
             wylistujVendorow();
             panelModyfikujProdukt.BringToFront();
         }
 
         private void wczytajModyfikacje()
         {
-            string querry = "SELECT ProductName, ProductPrice, ProductDesc, ProductStock, ProductCategoryID, VendorID, ProductImage FROM Products WHERE ID = @id";
+            string querry = "SELECT ProductName, ProductPrice, ProductDesc, ProductStock, VendorID, ProductImage FROM Products WHERE ID = @id";
             using (SqlConnection cnn4 = new SqlConnection(connectionString))
             {
 
@@ -1047,11 +1064,10 @@ namespace Sklep
                         ModyfikujCena.Text = dr2.GetValue(1).ToString().TrimEnd();
                         ModyfikujOpis.Text = dr2.GetValue(2).ToString().TrimEnd();
                         ModyfikujIlosc.Text = dr2.GetValue(3).ToString().TrimEnd();
-                        listBoxNOCategories2.SelectedValue = dr2.GetValue(4);
-                        listBoxNOVendors2.SelectedValue = dr2.GetValue(5);
+                        listBoxNOVendors2.SelectedValue = dr2.GetValue(4);
                         if (!(dr2["ProductImage"] == DBNull.Value))
                         {
-                            byte[] obrazek = (byte[])(dr2.GetValue(6));
+                            byte[] obrazek = (byte[])(dr2.GetValue(5));
                             MemoryStream ms = new MemoryStream(obrazek);
                             pictureBoxMP.Image = Image.FromStream(ms);
                         }
@@ -1150,7 +1166,7 @@ namespace Sklep
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string querry = "UPDATE Products SET ProductName=@productname, ProductPrice=@productprice, ProductDesc=@productdesc, ProductStock=@productstock, ProductCategoryID=@categoryid, VendorID=@vendorid WHERE ID = @id";
+            string querry = "UPDATE Products SET ProductName=@productname, ProductPrice=@productprice, ProductDesc=@productdesc, ProductStock=@productstock, VendorID=@vendorid WHERE ID = @id";
             using (SqlConnection cnn4 = new SqlConnection(connectionString))
             {
 
@@ -1201,7 +1217,6 @@ namespace Sklep
                     cmd.Parameters.Add("@productprice", SqlDbType.Decimal).Value = ModyfikujCena.Text;
                     cmd.Parameters.Add("@productdesc", SqlDbType.NChar).Value = ModyfikujOpis.Text;
                     cmd.Parameters.Add("@productstock", SqlDbType.NChar).Value = ModyfikujIlosc.Text;
-                    cmd.Parameters.Add("@categoryid", SqlDbType.NChar).Value = listBoxNOCategories2.SelectedValue;
                     cmd.Parameters.Add("@vendorid", SqlDbType.NChar).Value = listBoxNOVendors2.SelectedValue;
                      if (productNameTaken == false)
                     {
@@ -1665,6 +1680,7 @@ namespace Sklep
         private void listBoxNOProducts2_SelectedIndexChanged(object sender, EventArgs e)
         {
             wczytajModyfikacje();
+            wylistujAktualneKategorie();
             panelWyswProdukt.SendToBack();              //QUICK FIX - Do poprawy jak bedzie czas
             pictureBoxWyswProd.SendToBack();            //QUICK FIX - Do poprawy jak bedzie czas
         }
@@ -1889,6 +1905,41 @@ namespace Sklep
                     wyswietl_zdjecie(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 520, 30, 200, 220);
                 }
                 catch { }
+        }
+
+        private void aktualneKategorie_Click(object sender, EventArgs e)
+        {
+            wylistujAktualneKategorie();
+        }
+
+        private void dodajKategorie_Click(object sender, EventArgs e)
+        {
+            string querry = "INSERT INTO ProdCat(IDProd,IDCat)Values("+listBoxNOProducts2.SelectedValue+","+listBoxNOCategories2.SelectedValue+")";
+            try
+            {
+                using (connection = new SqlConnection(connectionString))
+                using (SqlCommand command = new SqlCommand(querry, connection))
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();   
+                }
+            }
+            catch { }
+        }
+
+        private void usuńKategorie_Click(object sender, EventArgs e)
+        {
+            string querry = "DELETE FROM ProdCat WHERE IDProd=" + listBoxNOProducts2.SelectedValue +"AND IDCat=" + listBoxNOCategories2.SelectedValue;
+            try
+            {
+                using (connection = new SqlConnection(connectionString))
+                using (SqlCommand command = new SqlCommand(querry, connection))
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch { }
         }
     }
     }
