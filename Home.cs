@@ -1914,13 +1914,16 @@ namespace Sklep
 
         private void dodajKategorie_Click(object sender, EventArgs e)
         {
-            string querry = "INSERT INTO ProdCat(IDProd,IDCat)Values("+listBoxNOProducts2.SelectedValue+","+listBoxNOCategories2.SelectedValue+")";
+            string querry = "dbo.AddCategory";
             try
             {
                 using (connection = new SqlConnection(connectionString))
                 using (SqlCommand command = new SqlCommand(querry, connection))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
                     connection.Open();
+                    command.Parameters.Add("@prodid", SqlDbType.Int).Value = listBoxNOProducts2.SelectedValue;
+                    command.Parameters.Add("@categoryid", SqlDbType.Int).Value = listBoxNOCategories2.SelectedValue;
                     command.ExecuteNonQuery();   
                 }
             }
@@ -1928,14 +1931,17 @@ namespace Sklep
         }
 
         private void usuńKategorie_Click(object sender, EventArgs e)
-        {
-            string querry = "DELETE FROM ProdCat WHERE IDProd=" + listBoxNOProducts2.SelectedValue +"AND IDCat=" + listBoxNOCategories2.SelectedValue;
+        { 
+            string querry = "dbo.DeleteCategory";
             try
             {
                 using (connection = new SqlConnection(connectionString))
                 using (SqlCommand command = new SqlCommand(querry, connection))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
                     connection.Open();
+                    command.Parameters.Add("@prodid", SqlDbType.Int).Value = listBoxNOProducts2.SelectedValue;
+                    command.Parameters.Add("@categoryid", SqlDbType.Int).Value = listBoxNOCategories2.SelectedValue;
                     command.ExecuteNonQuery();
                 }
             }

@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zalogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -137,6 +137,11 @@
             this.label33 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.panelModyfikujProdukt = new System.Windows.Forms.Panel();
+            this.aktualneKategorie = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.usuńKategorie = new System.Windows.Forms.Button();
+            this.dodajKategorie = new System.Windows.Forms.Button();
             this.buttonMPZaladujZdjecie = new System.Windows.Forms.Button();
             this.pictureBoxMP = new System.Windows.Forms.PictureBox();
             this.OdswiezProdukty = new System.Windows.Forms.Button();
@@ -242,11 +247,6 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
-            this.dodajKategorie = new System.Windows.Forms.Button();
-            this.usuńKategorie = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.aktualneKategorie = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
             this.panelLogin.SuspendLayout();
@@ -1029,8 +1029,8 @@
             // 
             this.dataGridViewWKoszyku.AllowUserToAddRows = false;
             this.dataGridViewWKoszyku.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewWKoszyku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWKoszyku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NAme,
@@ -1300,9 +1300,56 @@
             this.panelModyfikujProdukt.Size = new System.Drawing.Size(797, 429);
             this.panelModyfikujProdukt.TabIndex = 14;
             // 
+            // aktualneKategorie
+            // 
+            this.aktualneKategorie.Location = new System.Drawing.Point(689, 301);
+            this.aktualneKategorie.Name = "aktualneKategorie";
+            this.aktualneKategorie.Size = new System.Drawing.Size(68, 25);
+            this.aktualneKategorie.TabIndex = 25;
+            this.aktualneKategorie.Text = "Odśwież";
+            this.aktualneKategorie.UseVisualStyleBackColor = true;
+            this.aktualneKategorie.Click += new System.EventHandler(this.aktualneKategorie_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(595, 184);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(154, 13);
+            this.label8.TabIndex = 24;
+            this.label8.Text = "Aktualnie przypisane kategorie:";
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(606, 201);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(144, 95);
+            this.listBox1.TabIndex = 23;
+            // 
+            // usuńKategorie
+            // 
+            this.usuńKategorie.Location = new System.Drawing.Point(693, 158);
+            this.usuńKategorie.Name = "usuńKategorie";
+            this.usuńKategorie.Size = new System.Drawing.Size(57, 23);
+            this.usuńKategorie.TabIndex = 22;
+            this.usuńKategorie.Text = "Usuń";
+            this.usuńKategorie.UseVisualStyleBackColor = true;
+            this.usuńKategorie.Click += new System.EventHandler(this.usuńKategorie_Click);
+            // 
+            // dodajKategorie
+            // 
+            this.dodajKategorie.Location = new System.Drawing.Point(630, 158);
+            this.dodajKategorie.Name = "dodajKategorie";
+            this.dodajKategorie.Size = new System.Drawing.Size(57, 23);
+            this.dodajKategorie.TabIndex = 21;
+            this.dodajKategorie.Text = "Dodaj";
+            this.dodajKategorie.UseVisualStyleBackColor = true;
+            this.dodajKategorie.Click += new System.EventHandler(this.dodajKategorie_Click);
+            // 
             // buttonMPZaladujZdjecie
             // 
-            this.buttonMPZaladujZdjecie.Location = new System.Drawing.Point(585, 83);
+            this.buttonMPZaladujZdjecie.Location = new System.Drawing.Point(203, 168);
             this.buttonMPZaladujZdjecie.Name = "buttonMPZaladujZdjecie";
             this.buttonMPZaladujZdjecie.Size = new System.Drawing.Size(128, 26);
             this.buttonMPZaladujZdjecie.TabIndex = 20;
@@ -1312,7 +1359,7 @@
             // 
             // pictureBoxMP
             // 
-            this.pictureBoxMP.Location = new System.Drawing.Point(579, 136);
+            this.pictureBoxMP.Location = new System.Drawing.Point(207, 205);
             this.pictureBoxMP.Name = "pictureBoxMP";
             this.pictureBoxMP.Size = new System.Drawing.Size(144, 155);
             this.pictureBoxMP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1332,7 +1379,7 @@
             // NazwaAlert
             // 
             this.NazwaAlert.AutoSize = true;
-            this.NazwaAlert.Location = new System.Drawing.Point(449, 60);
+            this.NazwaAlert.Location = new System.Drawing.Point(410, 52);
             this.NazwaAlert.Name = "NazwaAlert";
             this.NazwaAlert.Size = new System.Drawing.Size(0, 13);
             this.NazwaAlert.TabIndex = 17;
@@ -1340,7 +1387,7 @@
             // label44
             // 
             this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(415, 169);
+            this.label44.Location = new System.Drawing.Point(371, 157);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(59, 13);
             this.label44.TabIndex = 16;
@@ -1360,14 +1407,14 @@
             this.listBoxNOProducts2.FormattingEnabled = true;
             this.listBoxNOProducts2.Location = new System.Drawing.Point(20, 92);
             this.listBoxNOProducts2.Name = "listBoxNOProducts2";
-            this.listBoxNOProducts2.Size = new System.Drawing.Size(198, 225);
+            this.listBoxNOProducts2.Size = new System.Drawing.Size(154, 225);
             this.listBoxNOProducts2.TabIndex = 14;
             this.listBoxNOProducts2.SelectedIndexChanged += new System.EventHandler(this.listBoxNOProducts2_SelectedIndexChanged);
             // 
             // listBoxNOVendors2
             // 
             this.listBoxNOVendors2.FormattingEnabled = true;
-            this.listBoxNOVendors2.Location = new System.Drawing.Point(412, 188);
+            this.listBoxNOVendors2.Location = new System.Drawing.Point(374, 176);
             this.listBoxNOVendors2.Name = "listBoxNOVendors2";
             this.listBoxNOVendors2.Size = new System.Drawing.Size(138, 186);
             this.listBoxNOVendors2.TabIndex = 13;
@@ -1375,42 +1422,42 @@
             // listBoxNOCategories2
             // 
             this.listBoxNOCategories2.FormattingEnabled = true;
-            this.listBoxNOCategories2.Location = new System.Drawing.Point(249, 189);
+            this.listBoxNOCategories2.Location = new System.Drawing.Point(605, 60);
             this.listBoxNOCategories2.Name = "listBoxNOCategories2";
-            this.listBoxNOCategories2.Size = new System.Drawing.Size(145, 69);
+            this.listBoxNOCategories2.Size = new System.Drawing.Size(145, 95);
             this.listBoxNOCategories2.TabIndex = 12;
             // 
             // ModyfikujOpis
             // 
-            this.ModyfikujOpis.Location = new System.Drawing.Point(343, 125);
+            this.ModyfikujOpis.Location = new System.Drawing.Point(304, 117);
             this.ModyfikujOpis.Name = "ModyfikujOpis";
             this.ModyfikujOpis.Size = new System.Drawing.Size(199, 20);
             this.ModyfikujOpis.TabIndex = 10;
             // 
             // ModyfikujIlosc
             // 
-            this.ModyfikujIlosc.Location = new System.Drawing.Point(343, 102);
+            this.ModyfikujIlosc.Location = new System.Drawing.Point(304, 94);
             this.ModyfikujIlosc.Name = "ModyfikujIlosc";
             this.ModyfikujIlosc.Size = new System.Drawing.Size(199, 20);
             this.ModyfikujIlosc.TabIndex = 9;
             // 
             // ModyfikujCena
             // 
-            this.ModyfikujCena.Location = new System.Drawing.Point(343, 79);
+            this.ModyfikujCena.Location = new System.Drawing.Point(304, 71);
             this.ModyfikujCena.Name = "ModyfikujCena";
             this.ModyfikujCena.Size = new System.Drawing.Size(199, 20);
             this.ModyfikujCena.TabIndex = 8;
             // 
             // ModyfikujNazwa
             // 
-            this.ModyfikujNazwa.Location = new System.Drawing.Point(343, 57);
+            this.ModyfikujNazwa.Location = new System.Drawing.Point(304, 49);
             this.ModyfikujNazwa.Name = "ModyfikujNazwa";
             this.ModyfikujNazwa.Size = new System.Drawing.Size(199, 20);
             this.ModyfikujNazwa.TabIndex = 7;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(585, 340);
+            this.button1.Location = new System.Drawing.Point(406, 368);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(128, 31);
             this.button1.TabIndex = 6;
@@ -1421,7 +1468,7 @@
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(246, 169);
+            this.label38.Location = new System.Drawing.Point(569, 36);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(55, 13);
             this.label38.TabIndex = 5;
@@ -1430,7 +1477,7 @@
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(252, 105);
+            this.label39.Location = new System.Drawing.Point(213, 97);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(32, 13);
             this.label39.TabIndex = 4;
@@ -1439,7 +1486,7 @@
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(252, 129);
+            this.label40.Location = new System.Drawing.Point(213, 121);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(31, 13);
             this.label40.TabIndex = 3;
@@ -1448,7 +1495,7 @@
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(253, 83);
+            this.label41.Location = new System.Drawing.Point(214, 75);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(35, 13);
             this.label41.TabIndex = 2;
@@ -1457,7 +1504,7 @@
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(251, 60);
+            this.label42.Location = new System.Drawing.Point(212, 52);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(91, 13);
             this.label42.TabIndex = 1;
@@ -2316,53 +2363,6 @@
             this.label7.Size = new System.Drawing.Size(315, 31);
             this.label7.TabIndex = 0;
             this.label7.Text = "Oczekujące zamowienia:";
-            // 
-            // dodajKategorie
-            // 
-            this.dodajKategorie.Location = new System.Drawing.Point(277, 270);
-            this.dodajKategorie.Name = "dodajKategorie";
-            this.dodajKategorie.Size = new System.Drawing.Size(57, 23);
-            this.dodajKategorie.TabIndex = 21;
-            this.dodajKategorie.Text = "Dodaj";
-            this.dodajKategorie.UseVisualStyleBackColor = true;
-            this.dodajKategorie.Click += new System.EventHandler(this.dodajKategorie_Click);
-            // 
-            // usuńKategorie
-            // 
-            this.usuńKategorie.Location = new System.Drawing.Point(337, 270);
-            this.usuńKategorie.Name = "usuńKategorie";
-            this.usuńKategorie.Size = new System.Drawing.Size(57, 23);
-            this.usuńKategorie.TabIndex = 22;
-            this.usuńKategorie.Text = "Usuń";
-            this.usuńKategorie.UseVisualStyleBackColor = true;
-            this.usuńKategorie.Click += new System.EventHandler(this.usuńKategorie_Click);
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(250, 317);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(144, 56);
-            this.listBox1.TabIndex = 23;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(247, 301);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(154, 13);
-            this.label8.TabIndex = 24;
-            this.label8.Text = "Aktualnie przypisane kategorie:";
-            // 
-            // aktualneKategorie
-            // 
-            this.aktualneKategorie.Location = new System.Drawing.Point(318, 382);
-            this.aktualneKategorie.Name = "aktualneKategorie";
-            this.aktualneKategorie.Size = new System.Drawing.Size(68, 25);
-            this.aktualneKategorie.TabIndex = 25;
-            this.aktualneKategorie.Text = "Odśwież";
-            this.aktualneKategorie.UseVisualStyleBackColor = true;
-            this.aktualneKategorie.Click += new System.EventHandler(this.aktualneKategorie_Click);
             // 
             // Home
             // 
