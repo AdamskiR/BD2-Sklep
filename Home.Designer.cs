@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zalogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,6 +65,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.labelZalogowanyJako = new System.Windows.Forms.Label();
             this.panelEdytujSwojeDane = new System.Windows.Forms.Panel();
+            this.zmienDaneAdresowe = new System.Windows.Forms.Button();
             this.buttonUsunKonto = new System.Windows.Forms.Button();
             this.ZmianaHasla = new System.Windows.Forms.Button();
             this.buttonZmienDane = new System.Windows.Forms.Button();
@@ -157,6 +158,7 @@
             this.label42 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.panelEdytujUzytkownikow = new System.Windows.Forms.Panel();
+            this.adminDaneAdresoweButton = new System.Windows.Forms.Button();
             this.levelLabel = new System.Windows.Forms.Label();
             this.currentPrivileges = new System.Windows.Forms.Label();
             this.brak = new System.Windows.Forms.RadioButton();
@@ -230,8 +232,6 @@
             this.PasswordValidation = new System.Windows.Forms.TextBox();
             this.LoginValidation = new System.Windows.Forms.TextBox();
             this.panelRejestracja = new System.Windows.Forms.Panel();
-            this.adminDaneAdresoweButton = new System.Windows.Forms.Button();
-            this.zmienDaneAdresowe = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
             this.panelLogin.SuspendLayout();
@@ -282,7 +282,7 @@
             // zalogujToolStripMenuItem
             // 
             this.zalogujToolStripMenuItem.Name = "zalogujToolStripMenuItem";
-            this.zalogujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.zalogujToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.zalogujToolStripMenuItem.Text = "Zaloguj";
             this.zalogujToolStripMenuItem.Click += new System.EventHandler(this.zalogujToolStripMenuItem_Click);
             // 
@@ -290,7 +290,7 @@
             // 
             this.wylogujToolStripMenuItem.Name = "wylogujToolStripMenuItem";
             this.wylogujToolStripMenuItem.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded;
-            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.wylogujToolStripMenuItem.Text = "Wyloguj";
             this.wylogujToolStripMenuItem.Visible = false;
             this.wylogujToolStripMenuItem.Click += new System.EventHandler(this.wylogujToolStripMenuItem_Click);
@@ -298,7 +298,7 @@
             // edytujSwojeDaneToolStripMenuItem
             // 
             this.edytujSwojeDaneToolStripMenuItem.Name = "edytujSwojeDaneToolStripMenuItem";
-            this.edytujSwojeDaneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.edytujSwojeDaneToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.edytujSwojeDaneToolStripMenuItem.Text = "Edytuj swoje dane";
             this.edytujSwojeDaneToolStripMenuItem.Visible = false;
             this.edytujSwojeDaneToolStripMenuItem.Click += new System.EventHandler(this.edytujSwojeDaneToolStripMenuItem_Click);
@@ -306,19 +306,19 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(169, 6);
             // 
             // zarejestrujToolStripMenuItem
             // 
             this.zarejestrujToolStripMenuItem.Name = "zarejestrujToolStripMenuItem";
-            this.zarejestrujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.zarejestrujToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.zarejestrujToolStripMenuItem.Text = "Zarejestruj";
             this.zarejestrujToolStripMenuItem.Click += new System.EventHandler(this.zarejestrujToolStripMenuItem_Click);
             // 
             // twojeZamówieniaToolStripMenuItem
             // 
             this.twojeZamówieniaToolStripMenuItem.Name = "twojeZamówieniaToolStripMenuItem";
-            this.twojeZamówieniaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.twojeZamówieniaToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.twojeZamówieniaToolStripMenuItem.Text = "Twoje Zamówienia";
             this.twojeZamówieniaToolStripMenuItem.Visible = false;
             this.twojeZamówieniaToolStripMenuItem.Click += new System.EventHandler(this.twojeZamówieniaToolStripMenuItem_Click);
@@ -560,6 +560,16 @@
             this.panelEdytujSwojeDane.Size = new System.Drawing.Size(800, 424);
             this.panelEdytujSwojeDane.TabIndex = 6;
             this.panelEdytujSwojeDane.Paint += new System.Windows.Forms.PaintEventHandler(this.panelEdytujSwojeDane_Paint);
+            // 
+            // zmienDaneAdresowe
+            // 
+            this.zmienDaneAdresowe.Location = new System.Drawing.Point(138, 321);
+            this.zmienDaneAdresowe.Name = "zmienDaneAdresowe";
+            this.zmienDaneAdresowe.Size = new System.Drawing.Size(141, 23);
+            this.zmienDaneAdresowe.TabIndex = 6;
+            this.zmienDaneAdresowe.Text = "Zmień dane adresowe";
+            this.zmienDaneAdresowe.UseVisualStyleBackColor = true;
+            this.zmienDaneAdresowe.Click += new System.EventHandler(this.zmienDaneAdresowe_Click);
             // 
             // buttonUsunKonto
             // 
@@ -993,8 +1003,8 @@
             // 
             this.dataGridViewWKoszyku.AllowUserToAddRows = false;
             this.dataGridViewWKoszyku.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewWKoszyku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWKoszyku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NAme,
@@ -1479,6 +1489,17 @@
             this.panelEdytujUzytkownikow.Name = "panelEdytujUzytkownikow";
             this.panelEdytujUzytkownikow.Size = new System.Drawing.Size(797, 429);
             this.panelEdytujUzytkownikow.TabIndex = 15;
+            this.panelEdytujUzytkownikow.Paint += new System.Windows.Forms.PaintEventHandler(this.panelEdytujUzytkownikow_Paint);
+            // 
+            // adminDaneAdresoweButton
+            // 
+            this.adminDaneAdresoweButton.Location = new System.Drawing.Point(556, 373);
+            this.adminDaneAdresoweButton.Name = "adminDaneAdresoweButton";
+            this.adminDaneAdresoweButton.Size = new System.Drawing.Size(167, 24);
+            this.adminDaneAdresoweButton.TabIndex = 30;
+            this.adminDaneAdresoweButton.Text = "Zmień dane adresowe";
+            this.adminDaneAdresoweButton.UseVisualStyleBackColor = true;
+            this.adminDaneAdresoweButton.Click += new System.EventHandler(this.adminDaneAdresoweButton_Click);
             // 
             // levelLabel
             // 
@@ -1816,7 +1837,7 @@
             // buttonOdsylacz
             // 
             this.buttonOdsylacz.ForeColor = System.Drawing.Color.Black;
-            this.buttonOdsylacz.Location = new System.Drawing.Point(322, 341);
+            this.buttonOdsylacz.Location = new System.Drawing.Point(322, 351);
             this.buttonOdsylacz.Name = "buttonOdsylacz";
             this.buttonOdsylacz.Size = new System.Drawing.Size(191, 50);
             this.buttonOdsylacz.TabIndex = 1;
@@ -1828,7 +1849,7 @@
             // 
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Impact", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label28.Location = new System.Drawing.Point(96, 47);
+            this.label28.Location = new System.Drawing.Point(96, 26);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(633, 36);
             this.label28.TabIndex = 0;
@@ -1900,6 +1921,7 @@
             this.listBoxWyszukajWypProd.Size = new System.Drawing.Size(234, 148);
             this.listBoxWyszukajWypProd.TabIndex = 6;
             this.listBoxWyszukajWypProd.Click += new System.EventHandler(this.listBoxWyszukajWypProd_Click_1);
+            this.listBoxWyszukajWypProd.SelectedIndexChanged += new System.EventHandler(this.listBoxWyszukajWypProd_SelectedIndexChanged);
             // 
             // listBoxWlistaKategorii
             // 
@@ -1965,9 +1987,9 @@
             // 
             // pictureBoxWyswProd
             // 
-            this.pictureBoxWyswProd.Location = new System.Drawing.Point(501, -40);
+            this.pictureBoxWyswProd.Location = new System.Drawing.Point(819, 288);
             this.pictureBoxWyswProd.Name = "pictureBoxWyswProd";
-            this.pictureBoxWyswProd.Size = new System.Drawing.Size(183, 159);
+            this.pictureBoxWyswProd.Size = new System.Drawing.Size(39, 52);
             this.pictureBoxWyswProd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxWyswProd.TabIndex = 0;
             this.pictureBoxWyswProd.TabStop = false;
@@ -2171,31 +2193,14 @@
             this.panelRejestracja.TabIndex = 5;
             this.panelRejestracja.Paint += new System.Windows.Forms.PaintEventHandler(this.panelRejestracja_Paint);
             // 
-            // adminDaneAdresoweButton
-            // 
-            this.adminDaneAdresoweButton.Location = new System.Drawing.Point(556, 373);
-            this.adminDaneAdresoweButton.Name = "adminDaneAdresoweButton";
-            this.adminDaneAdresoweButton.Size = new System.Drawing.Size(167, 24);
-            this.adminDaneAdresoweButton.TabIndex = 30;
-            this.adminDaneAdresoweButton.Text = "Zmień dane adresowe";
-            this.adminDaneAdresoweButton.UseVisualStyleBackColor = true;
-            this.adminDaneAdresoweButton.Click += new System.EventHandler(this.adminDaneAdresoweButton_Click);
-            // 
-            // zmienDaneAdresowe
-            // 
-            this.zmienDaneAdresowe.Location = new System.Drawing.Point(138, 321);
-            this.zmienDaneAdresowe.Name = "zmienDaneAdresowe";
-            this.zmienDaneAdresowe.Size = new System.Drawing.Size(141, 23);
-            this.zmienDaneAdresowe.TabIndex = 6;
-            this.zmienDaneAdresowe.Text = "Zmień dane adresowe";
-            this.zmienDaneAdresowe.UseVisualStyleBackColor = true;
-            this.zmienDaneAdresowe.Click += new System.EventHandler(this.zmienDaneAdresowe_Click);
-            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panelTop1);
+            this.Controls.Add(this.panelNowosci);
+            this.Controls.Add(this.panelNaszaOferta);
             this.Controls.Add(this.pictureBoxWyswProd);
             this.Controls.Add(this.labelZalogowanyJako);
             this.Controls.Add(this.menuStrip1);
@@ -2205,12 +2210,9 @@
             this.Controls.Add(this.panelEdytujSwojeDane);
             this.Controls.Add(this.panelLogin);
             this.Controls.Add(this.panelRejestracja);
-            this.Controls.Add(this.panelTop1);
-            this.Controls.Add(this.panelNaszaOferta);
             this.Controls.Add(this.panelWyswProdukt);
             this.Controls.Add(this.panelModyfikujProdukt);
             this.Controls.Add(this.panelPrzejdzDoKasy);
-            this.Controls.Add(this.panelNowosci);
             this.Controls.Add(this.panelWelcome);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;

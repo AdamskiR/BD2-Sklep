@@ -470,7 +470,8 @@ namespace Sklep
                     temp++;
                 }
             }
-            Wyswietlprodukt(Top3id[0], 250, 100);
+            Wyswietlprodukt(Top3id[0], 100, 100);
+            wyswietl_zdjecie(Top3id[0], 500, 100, 200, 220);
             connection.Close();
         }
 
@@ -517,22 +518,26 @@ namespace Sklep
         private void najpopularniejszyZOstatnich5ZakupówToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panelTop1.BringToFront();
-            Wyswietlprodukt(zwrocIdNajpopProduktu(), 250, 130);
+            Wyswietlprodukt(zwrocIdNajpopProduktu(), 80, 120, 14);
+            wyswietl_zdjecie(zwrocIdNajpopProduktu(), 500, 100, 230, 250);
         }
 
         private void buttonN1_Click(object sender, EventArgs e)
         {
-            Wyswietlprodukt(Top3id[0], 250, 100);
+            Wyswietlprodukt(Top3id[0], 100, 100);
+            wyswietl_zdjecie(Top3id[0], 500, 100, 200, 220);
         }
 
         private void buttonN2_Click(object sender, EventArgs e)
         {
-            Wyswietlprodukt(Top3id[1], 250, 100);
+            Wyswietlprodukt(Top3id[1], 100, 100);
+            wyswietl_zdjecie(Top3id[1], 500, 100, 200, 220);
         }
 
         private void buttonN3_Click(object sender, EventArgs e)
         {
-            Wyswietlprodukt(Top3id[2], 250, 100);
+            Wyswietlprodukt(Top3id[2], 100, 100);
+            wyswietl_zdjecie(Top3id[2], 500, 100, 200, 220);
         }
 
         private void buttonZmienDane_Click(object sender, EventArgs e)
@@ -1043,10 +1048,13 @@ namespace Sklep
                         ModyfikujIlosc.Text = dr2.GetValue(3).ToString().TrimEnd();
                         listBoxNOCategories2.SelectedValue = dr2.GetValue(4);
                         listBoxNOVendors2.SelectedValue = dr2.GetValue(5);
-
-                        byte[] obrazek = (byte[])(dr2.GetValue(6));
-                        MemoryStream ms = new MemoryStream(obrazek);
-                        pictureBoxMP.Image = Image.FromStream(ms);
+                        if (!(dr2["ProductImage"] == DBNull.Value))
+                        {
+                            byte[] obrazek = (byte[])(dr2.GetValue(6));
+                            MemoryStream ms = new MemoryStream(obrazek);
+                            pictureBoxMP.Image = Image.FromStream(ms);
+                        }
+                        else pictureBoxWyswProd.ImageLocation = "https://pngimage.net/wp-content/uploads/2018/06/no-image-png-2.png";           
                     }
                 }
                 catch (Exception ex)
@@ -1533,30 +1541,24 @@ namespace Sklep
             string querry = "SELECT ProductImage FROM Products WHERE ID = @id";
             using (SqlConnection cnn = new SqlConnection(connectionString))
             {
-
-                try
-                {
-                    cnn.Open();
-                    SqlCommand cmd = new SqlCommand(querry, cnn);
-                    cmd.Parameters.Add("@id", SqlDbType.NChar).Value = id;
-                    SqlDataReader dr = cmd.ExecuteReader();
-
-                    while (dr.Read())
+                cnn.Open();
+                SqlCommand cmd = new SqlCommand(querry, cnn);
+                cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                SqlDataReader dr = cmd.ExecuteReader();
+   
+                  
+               while (dr.Read())
+               {
+                    if (!(dr["ProductImage"] == DBNull.Value))
                     {
                         byte[] obrazek = (byte[])(dr.GetValue(0));
                         MemoryStream ms = new MemoryStream(obrazek);
                         pictureBoxWyswProd.Image = Image.FromStream(ms);
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("ERROR:" + ex.Message);
-                }
-                cnn.Close();
-
+                    else pictureBoxWyswProd.ImageLocation = "https://pngimage.net/wp-content/uploads/2018/06/no-image-png-2.png";
+               }
             }
             pictureBoxWyswProd.BringToFront();
-            
         }
 
         private void listBoxWyszukajWypProd_Click_1(object sender, EventArgs e)
@@ -1834,6 +1836,21 @@ namespace Sklep
                 }
             }
 
+        }
+
+        private void panelEdytujUzytkownikow_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void listBoxWyszukajWypProd_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Wyswietlprodukt(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 470, 220, 10);
+                wyswietl_zdjecie(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 520, 30, 200, 220);
+            }
+            catch { }
         }
     }
     }
