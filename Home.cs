@@ -65,6 +65,7 @@ namespace Sklep
         private void zalogujToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panelLogin.BringToFront();
+            panelAdministracyjnyToolStripMenuItem.Visible = true;
 
         }
 
@@ -1529,7 +1530,7 @@ namespace Sklep
             odswiezZnalezioneProdukty();
         }
 
-        //Dodać ochronę przed niezuploadowanym obrazkiem (DBNull)
+        
         private void wyswietl_zdjecie(int id, int left, int top, int height, int width)
         {
             pictureBoxWyswProd.Left = left;
@@ -1667,40 +1668,6 @@ namespace Sklep
             wczytajModyfikacje();
         }
 
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxKod_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxMiasto_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxUlica_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panelTop1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void zmienDaneAdresowe_Click(object sender, EventArgs e)
         {
@@ -1838,10 +1805,6 @@ namespace Sklep
 
         }
 
-        private void panelEdytujUzytkownikow_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void listBoxWyszukajWypProd_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1849,6 +1812,79 @@ namespace Sklep
             {
                 Wyswietlprodukt(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 470, 220, 10);
                 wyswietl_zdjecie(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 520, 30, 200, 220);
+            }
+            catch { }
+        }
+
+
+        private void wyślijZamówienieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            string querry = "SELECT Orders.ID, Users.Username FROM Orders INNER JOIN Users ON Orders.UserID = Users.ID WHERE OrderStatus=1";
+            using (SqlConnection cnn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(querry, cnn))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+            {
+                cnn.Open();
+                DataTable zam_uz = new DataTable();
+                adapter.Fill(zam_uz);
+
+                dataGridViewWZLista.AutoGenerateColumns = false;
+                dataGridViewWZLista.DataSource = zam_uz;
+            }
+
+            panelZamowieniaDoWyslania.BringToFront();
+        }
+
+        private void dataGridViewWZLista_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                Int32.TryParse(dataGridViewWZLista.Rows[e.RowIndex].Cells[0].Value.ToString(), out int orderno);
+
+                using (connection = new SqlConnection(connectionString))
+                using (SqlCommand command = new SqlCommand("DisplayOrder", connection))
+                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("@orderID", SqlDbType.Int);
+                    command.Parameters["@orderID"].Value = orderno;
+
+                    DataTable konkretneZamowienie = new DataTable();
+                    adapter.Fill(konkretneZamowienie);
+
+                    dataGridViewWZListaProd.AutoGenerateColumns = false;
+                    dataGridViewWZListaProd.DataSource = konkretneZamowienie;
+                }
+            }
+            catch
+            {
+            }
+        }
+
+        private void buttonWZWyslijZam_Click(object sender, EventArgs e)
+        {
+
+            int rowindex = dataGridViewWZLista.CurrentCell.RowIndex;
+            
+            //Console.WriteLine(Convert.ToInt32(dataGridViewWZLista.Rows[rowindex].Cells[0].Value.ToString()) + " Wartosc sparsu");
+
+            string querry = "UPDATE Orders SET OrderStatus = 2 WHERE ID = @id";
+            try
+            {
+                using (connection = new SqlConnection(connectionString))
+                using (SqlCommand command = new SqlCommand(querry, connection))
+                {
+                    //Console.WriteLine(Convert.ToInt32(dataGridViewWZLista.SelectedCells[0].RowIndex.ToString()) + " Wartosc sparsu");
+                    connection.Open();
+                    command.Parameters.Add("@id", SqlDbType.Int);
+                    command.Parameters["@id"].Value = Convert.ToInt32(dataGridViewWZLista.Rows[rowindex].Cells[0].Value.ToString());
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        MessageBox.Show("Zamówienie zostało wysłane");
+                        wyślijZamówienieToolStripMenuItem_Click(sender, e);
+                    }
+                }
             }
             catch { }
         }

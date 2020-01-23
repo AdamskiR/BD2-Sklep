@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zalogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,6 +50,7 @@
             this.dodajProduktToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modyfikujProduktToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ądzajUżytkownikamiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wyślijZamówienieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageListlogo = new System.Windows.Forms.ImageList(this.components);
             this.panelWelcome = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -232,6 +233,16 @@
             this.PasswordValidation = new System.Windows.Forms.TextBox();
             this.LoginValidation = new System.Windows.Forms.TextBox();
             this.panelRejestracja = new System.Windows.Forms.Panel();
+            this.panelZamowieniaDoWyslania = new System.Windows.Forms.Panel();
+            this.buttonWZWyslijZam = new System.Windows.Forms.Button();
+            this.dataGridViewWZLista = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dataGridViewWZListaProd = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label7 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panelWelcome.SuspendLayout();
             this.panelLogin.SuspendLayout();
@@ -251,6 +262,9 @@
             this.panelNaszaOferta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWyswProd)).BeginInit();
             this.panelRejestracja.SuspendLayout();
+            this.panelZamowieniaDoWyslania.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWZLista)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWZListaProd)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -382,7 +396,8 @@
             this.panelAdministracyjnyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dodajProduktToolStripMenuItem,
             this.modyfikujProduktToolStripMenuItem,
-            this.ądzajUżytkownikamiToolStripMenuItem});
+            this.ądzajUżytkownikamiToolStripMenuItem,
+            this.wyślijZamówienieToolStripMenuItem});
             this.panelAdministracyjnyToolStripMenuItem.Name = "panelAdministracyjnyToolStripMenuItem";
             this.panelAdministracyjnyToolStripMenuItem.Size = new System.Drawing.Size(137, 20);
             this.panelAdministracyjnyToolStripMenuItem.Text = "Panel Administracyjny";
@@ -407,6 +422,13 @@
             this.ądzajUżytkownikamiToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.ądzajUżytkownikamiToolStripMenuItem.Text = "Edytuj userów";
             this.ądzajUżytkownikamiToolStripMenuItem.Click += new System.EventHandler(this.ądzajUżytkownikamiToolStripMenuItem_Click);
+            // 
+            // wyślijZamówienieToolStripMenuItem
+            // 
+            this.wyślijZamówienieToolStripMenuItem.Name = "wyślijZamówienieToolStripMenuItem";
+            this.wyślijZamówienieToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.wyślijZamówienieToolStripMenuItem.Text = "Wyślij zamówienie";
+            this.wyślijZamówienieToolStripMenuItem.Click += new System.EventHandler(this.wyślijZamówienieToolStripMenuItem_Click);
             // 
             // imageListlogo
             // 
@@ -1003,8 +1025,8 @@
             // 
             this.dataGridViewWKoszyku.AllowUserToAddRows = false;
             this.dataGridViewWKoszyku.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewWKoszyku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWKoszyku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NAme,
@@ -1489,7 +1511,6 @@
             this.panelEdytujUzytkownikow.Name = "panelEdytujUzytkownikow";
             this.panelEdytujUzytkownikow.Size = new System.Drawing.Size(797, 429);
             this.panelEdytujUzytkownikow.TabIndex = 15;
-            this.panelEdytujUzytkownikow.Paint += new System.Windows.Forms.PaintEventHandler(this.panelEdytujUzytkownikow_Paint);
             // 
             // adminDaneAdresoweButton
             // 
@@ -1832,7 +1853,6 @@
             this.panelTop1.Name = "panelTop1";
             this.panelTop1.Size = new System.Drawing.Size(796, 425);
             this.panelTop1.TabIndex = 19;
-            this.panelTop1.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTop1_Paint);
             // 
             // buttonOdsylacz
             // 
@@ -2193,26 +2213,132 @@
             this.panelRejestracja.TabIndex = 5;
             this.panelRejestracja.Paint += new System.Windows.Forms.PaintEventHandler(this.panelRejestracja_Paint);
             // 
+            // panelZamowieniaDoWyslania
+            // 
+            this.panelZamowieniaDoWyslania.Controls.Add(this.buttonWZWyslijZam);
+            this.panelZamowieniaDoWyslania.Controls.Add(this.dataGridViewWZLista);
+            this.panelZamowieniaDoWyslania.Controls.Add(this.label6);
+            this.panelZamowieniaDoWyslania.Controls.Add(this.dataGridViewWZListaProd);
+            this.panelZamowieniaDoWyslania.Controls.Add(this.label7);
+            this.panelZamowieniaDoWyslania.Location = new System.Drawing.Point(1, 23);
+            this.panelZamowieniaDoWyslania.Name = "panelZamowieniaDoWyslania";
+            this.panelZamowieniaDoWyslania.Size = new System.Drawing.Size(798, 420);
+            this.panelZamowieniaDoWyslania.TabIndex = 21;
+            // 
+            // buttonWZWyslijZam
+            // 
+            this.buttonWZWyslijZam.Location = new System.Drawing.Point(411, 320);
+            this.buttonWZWyslijZam.Name = "buttonWZWyslijZam";
+            this.buttonWZWyslijZam.Size = new System.Drawing.Size(305, 38);
+            this.buttonWZWyslijZam.TabIndex = 5;
+            this.buttonWZWyslijZam.Text = "Wyślij zamówienie";
+            this.buttonWZWyslijZam.UseVisualStyleBackColor = true;
+            this.buttonWZWyslijZam.Click += new System.EventHandler(this.buttonWZWyslijZam_Click);
+            // 
+            // dataGridViewWZLista
+            // 
+            this.dataGridViewWZLista.AllowUserToAddRows = false;
+            this.dataGridViewWZLista.AllowUserToDeleteRows = false;
+            this.dataGridViewWZLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewWZLista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
+            this.username});
+            this.dataGridViewWZLista.Location = new System.Drawing.Point(90, 75);
+            this.dataGridViewWZLista.MultiSelect = false;
+            this.dataGridViewWZLista.Name = "dataGridViewWZLista";
+            this.dataGridViewWZLista.ReadOnly = true;
+            this.dataGridViewWZLista.RowHeadersVisible = false;
+            this.dataGridViewWZLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewWZLista.Size = new System.Drawing.Size(254, 309);
+            this.dataGridViewWZLista.TabIndex = 4;
+            this.dataGridViewWZLista.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewWZLista_CellContentClick);
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "ID";
+            this.id.HeaderText = "ID zamówienia";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // username
+            // 
+            this.username.DataPropertyName = "Username";
+            this.username.HeaderText = "Nazwa użytkownika";
+            this.username.Name = "username";
+            this.username.ReadOnly = true;
+            this.username.Width = 150;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(422, 240);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(0, 13);
+            this.label6.TabIndex = 3;
+            // 
+            // dataGridViewWZListaProd
+            // 
+            this.dataGridViewWZListaProd.AllowUserToAddRows = false;
+            this.dataGridViewWZListaProd.AllowUserToDeleteRows = false;
+            this.dataGridViewWZListaProd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewWZListaProd.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn3});
+            this.dataGridViewWZListaProd.Location = new System.Drawing.Point(411, 75);
+            this.dataGridViewWZListaProd.Name = "dataGridViewWZListaProd";
+            this.dataGridViewWZListaProd.ReadOnly = true;
+            this.dataGridViewWZListaProd.RowHeadersVisible = false;
+            this.dataGridViewWZListaProd.Size = new System.Drawing.Size(305, 194);
+            this.dataGridViewWZListaProd.TabIndex = 2;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "ProductName";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Produkt";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn1.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Amount";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Ilosc";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.label7.Location = new System.Drawing.Point(210, 19);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(315, 31);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Oczekujące zamowienia:";
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panelZamowieniaDoWyslania);
+            this.Controls.Add(this.panelTwojeZamowienia);
+            this.Controls.Add(this.panelPrzejdzDoKasy);
+            this.Controls.Add(this.panelModyfikujProdukt);
+            this.Controls.Add(this.panelNaszaOferta);
             this.Controls.Add(this.panelTop1);
             this.Controls.Add(this.panelNowosci);
-            this.Controls.Add(this.panelNaszaOferta);
             this.Controls.Add(this.pictureBoxWyswProd);
             this.Controls.Add(this.labelZalogowanyJako);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panelEdytujUzytkownikow);
             this.Controls.Add(this.panelDodajProdukt);
-            this.Controls.Add(this.panelTwojeZamowienia);
             this.Controls.Add(this.panelEdytujSwojeDane);
             this.Controls.Add(this.panelLogin);
             this.Controls.Add(this.panelRejestracja);
             this.Controls.Add(this.panelWyswProdukt);
-            this.Controls.Add(this.panelModyfikujProdukt);
-            this.Controls.Add(this.panelPrzejdzDoKasy);
             this.Controls.Add(this.panelWelcome);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -2252,6 +2378,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWyswProd)).EndInit();
             this.panelRejestracja.ResumeLayout(false);
             this.panelRejestracja.PerformLayout();
+            this.panelZamowieniaDoWyslania.ResumeLayout(false);
+            this.panelZamowieniaDoWyslania.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWZLista)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWZListaProd)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2460,5 +2590,16 @@
         private System.Windows.Forms.Panel panelRejestracja;
         private System.Windows.Forms.Button zmienDaneAdresowe;
         private System.Windows.Forms.Button adminDaneAdresoweButton;
+        private System.Windows.Forms.ToolStripMenuItem wyślijZamówienieToolStripMenuItem;
+        private System.Windows.Forms.Panel panelZamowieniaDoWyslania;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridView dataGridViewWZListaProd;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridView dataGridViewWZLista;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn username;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.Button buttonWZWyslijZam;
     }
 }
