@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zalogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -137,7 +137,6 @@
             this.label33 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.panelModyfikujProdukt = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
             this.buttonMPZaladujZdjecie = new System.Windows.Forms.Button();
             this.pictureBoxMP = new System.Windows.Forms.PictureBox();
             this.OdswiezProdukty = new System.Windows.Forms.Button();
@@ -1025,8 +1024,8 @@
             // 
             this.dataGridViewWKoszyku.AllowUserToAddRows = false;
             this.dataGridViewWKoszyku.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewWKoszyku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewWKoszyku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWKoszyku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NAme,
@@ -1266,7 +1265,6 @@
             // 
             // panelModyfikujProdukt
             // 
-            this.panelModyfikujProdukt.Controls.Add(this.button3);
             this.panelModyfikujProdukt.Controls.Add(this.buttonMPZaladujZdjecie);
             this.panelModyfikujProdukt.Controls.Add(this.pictureBoxMP);
             this.panelModyfikujProdukt.Controls.Add(this.OdswiezProdukty);
@@ -1292,19 +1290,9 @@
             this.panelModyfikujProdukt.Size = new System.Drawing.Size(797, 429);
             this.panelModyfikujProdukt.TabIndex = 14;
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(605, 255);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 21;
-            this.button3.Text = "Zapisz zdj";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // buttonMPZaladujZdjecie
             // 
-            this.buttonMPZaladujZdjecie.Location = new System.Drawing.Point(577, 76);
+            this.buttonMPZaladujZdjecie.Location = new System.Drawing.Point(585, 83);
             this.buttonMPZaladujZdjecie.Name = "buttonMPZaladujZdjecie";
             this.buttonMPZaladujZdjecie.Size = new System.Drawing.Size(128, 26);
             this.buttonMPZaladujZdjecie.TabIndex = 20;
@@ -1314,16 +1302,16 @@
             // 
             // pictureBoxMP
             // 
-            this.pictureBoxMP.Location = new System.Drawing.Point(577, 119);
+            this.pictureBoxMP.Location = new System.Drawing.Point(579, 136);
             this.pictureBoxMP.Name = "pictureBoxMP";
-            this.pictureBoxMP.Size = new System.Drawing.Size(128, 126);
+            this.pictureBoxMP.Size = new System.Drawing.Size(144, 155);
             this.pictureBoxMP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxMP.TabIndex = 19;
             this.pictureBoxMP.TabStop = false;
             // 
             // OdswiezProdukty
             // 
-            this.OdswiezProdukty.Location = new System.Drawing.Point(23, 291);
+            this.OdswiezProdukty.Location = new System.Drawing.Point(20, 323);
             this.OdswiezProdukty.Name = "OdswiezProdukty";
             this.OdswiezProdukty.Size = new System.Drawing.Size(75, 23);
             this.OdswiezProdukty.TabIndex = 18;
@@ -1334,7 +1322,7 @@
             // NazwaAlert
             // 
             this.NazwaAlert.AutoSize = true;
-            this.NazwaAlert.Location = new System.Drawing.Point(454, 60);
+            this.NazwaAlert.Location = new System.Drawing.Point(449, 60);
             this.NazwaAlert.Name = "NazwaAlert";
             this.NazwaAlert.Size = new System.Drawing.Size(0, 13);
             this.NazwaAlert.TabIndex = 17;
@@ -1351,7 +1339,7 @@
             // label57
             // 
             this.label57.AutoSize = true;
-            this.label57.Location = new System.Drawing.Point(26, 44);
+            this.label57.Location = new System.Drawing.Point(17, 72);
             this.label57.Name = "label57";
             this.label57.Size = new System.Drawing.Size(87, 13);
             this.label57.TabIndex = 15;
@@ -1360,7 +1348,7 @@
             // listBoxNOProducts2
             // 
             this.listBoxNOProducts2.FormattingEnabled = true;
-            this.listBoxNOProducts2.Location = new System.Drawing.Point(23, 60);
+            this.listBoxNOProducts2.Location = new System.Drawing.Point(20, 92);
             this.listBoxNOProducts2.Name = "listBoxNOProducts2";
             this.listBoxNOProducts2.Size = new System.Drawing.Size(198, 225);
             this.listBoxNOProducts2.TabIndex = 14;
@@ -1384,30 +1372,30 @@
             // 
             // ModyfikujOpis
             // 
-            this.ModyfikujOpis.Location = new System.Drawing.Point(264, 125);
+            this.ModyfikujOpis.Location = new System.Drawing.Point(343, 125);
             this.ModyfikujOpis.Name = "ModyfikujOpis";
-            this.ModyfikujOpis.Size = new System.Drawing.Size(286, 20);
+            this.ModyfikujOpis.Size = new System.Drawing.Size(199, 20);
             this.ModyfikujOpis.TabIndex = 10;
             // 
             // ModyfikujIlosc
             // 
-            this.ModyfikujIlosc.Location = new System.Drawing.Point(348, 102);
+            this.ModyfikujIlosc.Location = new System.Drawing.Point(343, 102);
             this.ModyfikujIlosc.Name = "ModyfikujIlosc";
-            this.ModyfikujIlosc.Size = new System.Drawing.Size(100, 20);
+            this.ModyfikujIlosc.Size = new System.Drawing.Size(199, 20);
             this.ModyfikujIlosc.TabIndex = 9;
             // 
             // ModyfikujCena
             // 
-            this.ModyfikujCena.Location = new System.Drawing.Point(348, 79);
+            this.ModyfikujCena.Location = new System.Drawing.Point(343, 79);
             this.ModyfikujCena.Name = "ModyfikujCena";
-            this.ModyfikujCena.Size = new System.Drawing.Size(100, 20);
+            this.ModyfikujCena.Size = new System.Drawing.Size(199, 20);
             this.ModyfikujCena.TabIndex = 8;
             // 
             // ModyfikujNazwa
             // 
-            this.ModyfikujNazwa.Location = new System.Drawing.Point(348, 57);
+            this.ModyfikujNazwa.Location = new System.Drawing.Point(343, 57);
             this.ModyfikujNazwa.Name = "ModyfikujNazwa";
-            this.ModyfikujNazwa.Size = new System.Drawing.Size(100, 20);
+            this.ModyfikujNazwa.Size = new System.Drawing.Size(199, 20);
             this.ModyfikujNazwa.TabIndex = 7;
             // 
             // button1
@@ -1432,7 +1420,7 @@
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(306, 107);
+            this.label39.Location = new System.Drawing.Point(252, 105);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(32, 13);
             this.label39.TabIndex = 4;
@@ -1441,7 +1429,7 @@
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(230, 128);
+            this.label40.Location = new System.Drawing.Point(252, 129);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(31, 13);
             this.label40.TabIndex = 3;
@@ -1450,7 +1438,7 @@
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(306, 81);
+            this.label41.Location = new System.Drawing.Point(253, 83);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(35, 13);
             this.label41.TabIndex = 2;
@@ -1459,7 +1447,7 @@
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(256, 60);
+            this.label42.Location = new System.Drawing.Point(251, 60);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(91, 13);
             this.label42.TabIndex = 1;
@@ -1468,9 +1456,10 @@
             // label43
             // 
             this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(20, 18);
+            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label43.Location = new System.Drawing.Point(17, 19);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(91, 13);
+            this.label43.Size = new System.Drawing.Size(157, 24);
             this.label43.TabIndex = 0;
             this.label43.Text = "Modyfikuj produkt";
             // 
@@ -2323,11 +2312,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panelNaszaOferta);
+            this.Controls.Add(this.panelModyfikujProdukt);
             this.Controls.Add(this.panelZamowieniaDoWyslania);
             this.Controls.Add(this.panelTwojeZamowienia);
             this.Controls.Add(this.panelPrzejdzDoKasy);
-            this.Controls.Add(this.panelModyfikujProdukt);
-            this.Controls.Add(this.panelNaszaOferta);
             this.Controls.Add(this.panelTop1);
             this.Controls.Add(this.panelNowosci);
             this.Controls.Add(this.pictureBoxWyswProd);
@@ -2566,7 +2555,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button buttonMPZaladujZdjecie;
         private System.Windows.Forms.PictureBox pictureBoxMP;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.PictureBox pictureBoxWyswProd;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;

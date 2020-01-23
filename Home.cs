@@ -1055,7 +1055,7 @@ namespace Sklep
                             MemoryStream ms = new MemoryStream(obrazek);
                             pictureBoxMP.Image = Image.FromStream(ms);
                         }
-                        else pictureBoxWyswProd.ImageLocation = "https://pngimage.net/wp-content/uploads/2018/06/no-image-png-2.png";           
+                        else pictureBoxMP.ImageLocation = "https://pngimage.net/wp-content/uploads/2018/06/no-image-png-2.png";           
                     }
                 }
                 catch (Exception ex)
@@ -1220,6 +1220,8 @@ namespace Sklep
                 {
                     MessageBox.Show("ERROR:" + ex.Message);
                 }
+
+                button3_Click(sender, e);
             }
         }
 
@@ -1654,10 +1656,7 @@ namespace Sklep
                     command.Parameters.Add("@id", SqlDbType.Int);
                     command.Parameters["@zdjecie"].Value = img;
                     command.Parameters["@id"].Value = listBoxNOProducts2.SelectedValue;
-                    if (command.ExecuteNonQuery() > 0)
-                    {
-                        MessageBox.Show("OK" );
-                    }
+                    command.ExecuteNonQuery();
                 }
                 pictureBoxMP.Image = null;
             }
@@ -1666,6 +1665,8 @@ namespace Sklep
         private void listBoxNOProducts2_SelectedIndexChanged(object sender, EventArgs e)
         {
             wczytajModyfikacje();
+            panelWyswProdukt.SendToBack();              //QUICK FIX - Do poprawy jak bedzie czas
+            pictureBoxWyswProd.SendToBack();            //QUICK FIX - Do poprawy jak bedzie czas
         }
 
 
@@ -1806,15 +1807,6 @@ namespace Sklep
         }
 
 
-        private void listBoxWyszukajWypProd_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                Wyswietlprodukt(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 470, 220, 10);
-                wyswietl_zdjecie(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 520, 30, 200, 220);
-            }
-            catch { }
-        }
 
 
         private void wyślijZamówienieToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1887,6 +1879,16 @@ namespace Sklep
                 }
             }
             catch { }
+        }
+
+        private void listBoxWyszukajWypProd_SelectedIndexChanged(object sender, EventArgs e)
+        {
+                try
+                {
+                    Wyswietlprodukt(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 470, 220, 10);
+                    wyswietl_zdjecie(Convert.ToInt32(listBoxWyszukajWypProd.SelectedValue.ToString()), 520, 30, 200, 220);
+                }
+                catch { }
         }
     }
     }
