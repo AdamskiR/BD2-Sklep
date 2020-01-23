@@ -1688,7 +1688,7 @@ namespace Sklep
 
         private void zmienDaneAdresowe_Click(object sender, EventArgs e)
         {
-            string querry = "SELECT Id FROM Address WHERE ZipCode=@zipcode AND City=@city AND Street=@street";
+            string querry = "dbo.AddressCheck";
             using (SqlConnection cnn4 = new SqlConnection(connectionString))
             {
 
@@ -1696,6 +1696,7 @@ namespace Sklep
                 {
                     cnn4.Open();
                     SqlCommand cmd = new SqlCommand(querry, cnn4);
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@zipcode", this.textBox1.Text);
                     cmd.Parameters.AddWithValue("@city", this.textBox8.Text);
                     cmd.Parameters.AddWithValue("@street", this.textBox7.Text);
@@ -1755,8 +1756,7 @@ namespace Sklep
 
         private void adminDaneAdresoweButton_Click(object sender, EventArgs e)
         {
-            //tutaj dodać edycje danych adresowych przez admina
-            string querry = "SELECT Id FROM Address WHERE ZipCode=@zipcode AND City=@city AND Street=@street";
+            string querry = "dbo.AddressCheck";
             using (SqlConnection cnn4 = new SqlConnection(connectionString))
             {
 
@@ -1764,6 +1764,7 @@ namespace Sklep
                 {
                     cnn4.Open();
                     SqlCommand cmd = new SqlCommand(querry, cnn4);
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@zipcode", this.adminEdytujZip.Text);
                     cmd.Parameters.AddWithValue("@city", this.adminEdytujMiasto.Text);
                     cmd.Parameters.AddWithValue("@street", this.adminEdytujUlica.Text);
@@ -1924,7 +1925,8 @@ namespace Sklep
                     connection.Open();
                     command.Parameters.Add("@prodid", SqlDbType.Int).Value = listBoxNOProducts2.SelectedValue;
                     command.Parameters.Add("@categoryid", SqlDbType.Int).Value = listBoxNOCategories2.SelectedValue;
-                    command.ExecuteNonQuery();   
+                    command.ExecuteNonQuery();
+                    connection.Close();
                 }
             }
             catch { }
@@ -1943,6 +1945,7 @@ namespace Sklep
                     command.Parameters.Add("@prodid", SqlDbType.Int).Value = listBoxNOProducts2.SelectedValue;
                     command.Parameters.Add("@categoryid", SqlDbType.Int).Value = listBoxNOCategories2.SelectedValue;
                     command.ExecuteNonQuery();
+                    connection.Close();
                 }
             }
             catch { }
