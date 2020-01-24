@@ -833,41 +833,58 @@ namespace Sklep
         private void buttonPDKKup_Click(object sender, EventArgs e)
         {
             DGVwKoszykuAktualizuj();
-            if (sprawdzstan())
+            string querry = "SELECT AddressID from Users WHERE Username='" + currentUsername + "'";
+            using (SqlConnection cnn4 = new SqlConnection(connectionString))
             {
-                using (connection = new SqlConnection(connectionString))
-                using (SqlCommand command = new SqlCommand("DodajZamowienie", connection))
-                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                {
-                    connection.Open();
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.Add("@userID", SqlDbType.Int);
-                    command.Parameters["@userID"].Value = globals.userID;
-                    SqlDataReader reader = command.ExecuteReader();
-                }
+                cnn4.Open();
+                SqlCommand cmd = new SqlCommand(querry, cnn4);
+                SqlDataReader dr = cmd.ExecuteReader();
+                dr.Read();
 
-                using (connection = new SqlConnection(connectionString))
-                using (SqlCommand command2 = new SqlCommand("DodajSzczegolyZamowienia", connection))
-                using (SqlDataAdapter adapter2 = new SqlDataAdapter(command2))
+                if (dr.HasRows == true && (dr["AddressID"] != DBNull.Value))
                 {
-                    connection.Open();
-                    command2.CommandType = CommandType.StoredProcedure;
-                    command2.Parameters.Add("@user_id", SqlDbType.Int);
-                    command2.Parameters.Add("@prod_id", SqlDbType.Int);
-                    command2.Parameters.Add("@amount", SqlDbType.Int);
-                    command2.Parameters["@user_id"].Value = globals.userID;
-
-                    for (int i = 0; i < koszyk.Count(); i++)
+                    if (sprawdzstan())
                     {
-                        command2.Parameters["@prod_id"].Value = koszyk[i].id;
-                        command2.Parameters["@amount"].Value = koszyk[i].ilosc;
-                        command2.ExecuteNonQuery();
+                        using (connection = new SqlConnection(connectionString))
+                        using (SqlCommand command = new SqlCommand("DodajZamowienie", connection))
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            connection.Open();
+                            command.CommandType = CommandType.StoredProcedure;
+                            command.Parameters.Add("@userID", SqlDbType.Int);
+                            command.Parameters["@userID"].Value = globals.userID;
+                            SqlDataReader reader = command.ExecuteReader();
+                        }
+
+                        using (connection = new SqlConnection(connectionString))
+                        using (SqlCommand command2 = new SqlCommand("DodajSzczegolyZamowienia", connection))
+                        using (SqlDataAdapter adapter2 = new SqlDataAdapter(command2))
+                        {
+                            connection.Open();
+                            command2.CommandType = CommandType.StoredProcedure;
+                            command2.Parameters.Add("@user_id", SqlDbType.Int);
+                            command2.Parameters.Add("@prod_id", SqlDbType.Int);
+                            command2.Parameters.Add("@amount", SqlDbType.Int);
+                            command2.Parameters["@user_id"].Value = globals.userID;
+
+                            for (int i = 0; i < koszyk.Count(); i++)
+                            {
+                                command2.Parameters["@prod_id"].Value = koszyk[i].id;
+                                command2.Parameters["@amount"].Value = koszyk[i].ilosc;
+                                command2.ExecuteNonQuery();
+                            }
+                            MessageBox.Show("Gratulacje!\nTwoje zamówienie zostało złożone");
+                            aktualizujZamowienia();
+                            panelTwojeZamowienia.BringToFront();
+                            koszyk.Clear();
+                        }
                     }
-                    MessageBox.Show("Gratulacje!\nTwoje zamówienie zostało złożone", "Operacja pomyślna", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    aktualizujZamowienia();
-                    panelTwojeZamowienia.BringToFront();
-                    koszyk.Clear();
                 }
+                else
+                {
+                    MessageBox.Show("Aby złożyć zamówienie uzupełnij dane adresowe w panelu Menu>Edytuj swoje dane!");
+                }
+                cnn4.Close();
             }
         }
 
@@ -1742,59 +1759,66 @@ namespace Sklep
                     cnn4.Open();
                     SqlCommand cmd = new SqlCommand(querry, cnn4);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@zipcode", this.textBox1.Text);
-                    cmd.Parameters.AddWithValue("@city", this.textBox8.Text);
-                    cmd.Parameters.AddWithValue("@street", this.textBox7.Text);
-                    SqlDataReader dr = cmd.ExecuteReader();
-                    dr.Read();
-
-                    if (dr.HasRows == true)
+                    if (!string.IsNullOrWhiteSpace(textBox1.Text) && !string.IsNullOrWhiteSpace(textBox8.Text) && !string.IsNullOrWhiteSpace(textBox7.Text))
                     {
-                        string querry2 = "UPDATE Users SET AddressId=(SELECT Id FROM Address WHERE ZipCode=@zipcode AND City=@city AND Street=@street) WHERE ID=(SELECT ID FROM Users WHERE Username='" + currentUsername + "')";
-                        using (SqlConnection cnn2 = new SqlConnection(connectionString))
+                        cmd.Parameters.AddWithValue("@zipcode", this.textBox1.Text);
+                        cmd.Parameters.AddWithValue("@city", this.textBox8.Text);
+                        cmd.Parameters.AddWithValue("@street", this.textBox7.Text);
+                        SqlDataReader dr = cmd.ExecuteReader();
+                        dr.Read();
+
+                        if (dr.HasRows == true)
                         {
-                            cnn2.Open();
-                            SqlCommand cmd2 = new SqlCommand(querry2, cnn2);
-                            cmd2.Parameters.AddWithValue("@zipcode", this.textBox1.Text);
-                            cmd2.Parameters.AddWithValue("@city", this.textBox8.Text);
-                            cmd2.Parameters.AddWithValue("@street", this.textBox7.Text);
-                            cmd2.ExecuteNonQuery();
-                            cnn2.Close();
+                            string querry2 = "UPDATE Users SET AddressId=(SELECT Id FROM Address WHERE ZipCode=@zipcode AND City=@city AND Street=@street) WHERE ID=(SELECT ID FROM Users WHERE Username='" + currentUsername + "')";
+                            using (SqlConnection cnn2 = new SqlConnection(connectionString))
+                            {
+                                cnn2.Open();
+                                SqlCommand cmd2 = new SqlCommand(querry2, cnn2);
+                                cmd2.Parameters.AddWithValue("@zipcode", this.textBox1.Text);
+                                cmd2.Parameters.AddWithValue("@city", this.textBox8.Text);
+                                cmd2.Parameters.AddWithValue("@street", this.textBox7.Text);
+                                cmd2.ExecuteNonQuery();
+                                cnn2.Close();
+                            }
                         }
+                        else
+                        {
+                            string querry2 = "INSERT INTO Address(ZipCode, City, Street) Values(@zipcode, @city, @street)";
+                            using (SqlConnection cnn3 = new SqlConnection(connectionString))
+                            {
+                                cnn3.Open();
+                                SqlCommand cmd3 = new SqlCommand(querry2, cnn3);
+                                cmd3.Parameters.AddWithValue("@zipcode", this.textBox1.Text);
+                                cmd3.Parameters.AddWithValue("@city", this.textBox8.Text);
+                                cmd3.Parameters.AddWithValue("@street", this.textBox7.Text);
+                                cmd3.ExecuteNonQuery();
+                                cnn3.Close();
+                            }
+                            string querry3 = "UPDATE Users SET AddressId=(SELECT Id FROM Address WHERE ZipCode=@zipcode AND City=@city AND Street=@street) WHERE ID=(SELECT ID FROM Users WHERE Username='" + currentUsername + "')";
+                            using (SqlConnection cnn = new SqlConnection(connectionString))
+                            {
+                                cnn.Open();
+                                SqlCommand cmd4 = new SqlCommand(querry3, cnn);
+                                cmd4.Parameters.AddWithValue("@zipcode", this.textBox1.Text);
+                                cmd4.Parameters.AddWithValue("@city", this.textBox8.Text);
+                                cmd4.Parameters.AddWithValue("@street", this.textBox7.Text);
+                                cmd4.ExecuteNonQuery();
+                                cnn.Close();
+                            }
+                        }
+                        cnn4.Close();
+                        MessageBox.Show("Dane adresowe zmienione!");
                     }
+
                     else
                     {
-                        string querry2 = "INSERT INTO Address(ZipCode, City, Street) Values(@zipcode, @city, @street)";
-                        using (SqlConnection cnn3 = new SqlConnection(connectionString))
-                        {
-                            cnn3.Open();
-                            SqlCommand cmd3 = new SqlCommand(querry2, cnn3);
-                            cmd3.Parameters.AddWithValue("@zipcode", this.textBox1.Text);
-                            cmd3.Parameters.AddWithValue("@city", this.textBox8.Text);
-                            cmd3.Parameters.AddWithValue("@street", this.textBox7.Text);
-                            cmd3.ExecuteNonQuery();
-                            cnn3.Close();
-                        }
-                        string querry3 = "UPDATE Users SET AddressId=(SELECT Id FROM Address WHERE ZipCode=@zipcode AND City=@city AND Street=@street) WHERE ID=(SELECT ID FROM Users WHERE Username='" + currentUsername + "')";
-                        using (SqlConnection cnn = new SqlConnection(connectionString))
-                        {
-                            cnn.Open();
-                            SqlCommand cmd4 = new SqlCommand(querry3, cnn);
-                            cmd4.Parameters.AddWithValue("@zipcode", this.textBox1.Text);
-                            cmd4.Parameters.AddWithValue("@city", this.textBox8.Text);
-                            cmd4.Parameters.AddWithValue("@street", this.textBox7.Text);
-                            cmd4.ExecuteNonQuery();
-                            cnn.Close();
-                        }
+                        MessageBox.Show("Uzupełnij wszystkie dane adresowe!");
                     }
-                    cnn4.Close();
-                    MessageBox.Show("Dane adresowe zmienione!", "Operacja pomyślna", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
 
                 catch (Exception ex)
                 {
-                    MessageBox.Show("ERROR:" + ex.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("ERROR:" + ex.Message);
                 }
             }
         }
@@ -1810,59 +1834,67 @@ namespace Sklep
                     cnn4.Open();
                     SqlCommand cmd = new SqlCommand(querry, cnn4);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@zipcode", this.adminEdytujZip.Text);
-                    cmd.Parameters.AddWithValue("@city", this.adminEdytujMiasto.Text);
-                    cmd.Parameters.AddWithValue("@street", this.adminEdytujUlica.Text);
-                    SqlDataReader dr = cmd.ExecuteReader();
-                    dr.Read();
-
-                    if (dr.HasRows == true)
+                    if (!string.IsNullOrWhiteSpace(adminEdytujZip.Text) && !string.IsNullOrWhiteSpace(adminEdytujMiasto.Text) && !string.IsNullOrWhiteSpace(adminEdytujUlica.Text))
                     {
-                        string querry2 = "UPDATE Users SET AddressID=(SELECT Id FROM Address WHERE ZipCode=@zipcode AND City=@city AND Street=@street) WHERE ID=(" + listBoxNOUsers.SelectedValue + ")";
-                        using (SqlConnection cnn2 = new SqlConnection(connectionString))
+                        cmd.Parameters.AddWithValue("@zipcode", this.adminEdytujZip.Text);
+                        cmd.Parameters.AddWithValue("@city", this.adminEdytujMiasto.Text);
+                        cmd.Parameters.AddWithValue("@street", this.adminEdytujUlica.Text);
+                        SqlDataReader dr = cmd.ExecuteReader();
+                        dr.Read();
+
+                        if (dr.HasRows == true)
                         {
-                            cnn2.Open();
-                            SqlCommand cmd2 = new SqlCommand(querry2, cnn2);
-                            cmd2.Parameters.AddWithValue("@zipcode", this.adminEdytujZip.Text);
-                            cmd2.Parameters.AddWithValue("@city", this.adminEdytujMiasto.Text);
-                            cmd2.Parameters.AddWithValue("@street", this.adminEdytujUlica.Text);
-                            cmd2.ExecuteNonQuery();
-                            cnn2.Close();
+                            string querry2 = "UPDATE Users SET AddressID=(SELECT Id FROM Address WHERE ZipCode=@zipcode AND City=@city AND Street=@street) WHERE ID=(" + listBoxNOUsers.SelectedValue + ")";
+                            using (SqlConnection cnn2 = new SqlConnection(connectionString))
+                            {
+                                cnn2.Open();
+                                SqlCommand cmd2 = new SqlCommand(querry2, cnn2);
+                                cmd2.Parameters.AddWithValue("@zipcode", this.adminEdytujZip.Text);
+                                cmd2.Parameters.AddWithValue("@city", this.adminEdytujMiasto.Text);
+                                cmd2.Parameters.AddWithValue("@street", this.adminEdytujUlica.Text);
+                                cmd2.ExecuteNonQuery();
+                                cnn2.Close();
+                            }
                         }
+                        else
+                        {
+                            string querry2 = "INSERT INTO Address(ZipCode, City, Street) Values(@zipcode, @city, @street)";
+                            using (SqlConnection cnn3 = new SqlConnection(connectionString))
+                            {
+                                cnn3.Open();
+                                SqlCommand cmd3 = new SqlCommand(querry2, cnn3);
+                                cmd3.Parameters.AddWithValue("@zipcode", this.adminEdytujZip.Text);
+                                cmd3.Parameters.AddWithValue("@city", this.adminEdytujMiasto.Text);
+                                cmd3.Parameters.AddWithValue("@street", this.adminEdytujUlica.Text);
+                                cmd3.ExecuteNonQuery();
+                                cnn3.Close();
+                            }
+                            string querry3 = "UPDATE Users SET AddressID=(SELECT Id FROM Address WHERE ZipCode=@zipcode AND City=@city AND Street=@street) WHERE ID=(" + listBoxNOUsers.SelectedValue + ")";
+                            using (SqlConnection cnn = new SqlConnection(connectionString))
+                            {
+                                cnn.Open();
+                                SqlCommand cmd4 = new SqlCommand(querry3, cnn);
+                                cmd4.Parameters.AddWithValue("@zipcode", this.adminEdytujZip.Text);
+                                cmd4.Parameters.AddWithValue("@city", this.adminEdytujMiasto.Text);
+                                cmd4.Parameters.AddWithValue("@street", this.adminEdytujUlica.Text);
+                                cmd4.ExecuteNonQuery();
+                                cnn.Close();
+                            }
+                        }
+                        cnn4.Close();
+                        MessageBox.Show("Dane adresowe zmienione!");
                     }
+
                     else
                     {
-                        string querry2 = "INSERT INTO Address(ZipCode, City, Street) Values(@zipcode, @city, @street)";
-                        using (SqlConnection cnn3 = new SqlConnection(connectionString))
-                        {
-                            cnn3.Open();
-                            SqlCommand cmd3 = new SqlCommand(querry2, cnn3);
-                            cmd3.Parameters.AddWithValue("@zipcode", this.adminEdytujZip.Text);
-                            cmd3.Parameters.AddWithValue("@city", this.adminEdytujMiasto.Text);
-                            cmd3.Parameters.AddWithValue("@street", this.adminEdytujUlica.Text);
-                            cmd3.ExecuteNonQuery();
-                            cnn3.Close();
-                        }
-                        string querry3 = "UPDATE Users SET AddressID=(SELECT Id FROM Address WHERE ZipCode=@zipcode AND City=@city AND Street=@street) WHERE ID=(" + listBoxNOUsers.SelectedValue + ")";
-                        using (SqlConnection cnn = new SqlConnection(connectionString))
-                        {
-                            cnn.Open();
-                            SqlCommand cmd4 = new SqlCommand(querry3, cnn);
-                            cmd4.Parameters.AddWithValue("@zipcode", this.adminEdytujZip.Text);
-                            cmd4.Parameters.AddWithValue("@city", this.adminEdytujMiasto.Text);
-                            cmd4.Parameters.AddWithValue("@street", this.adminEdytujUlica.Text);
-                            cmd4.ExecuteNonQuery();
-                            cnn.Close();
-                        }
+                        MessageBox.Show("Uzupełnij wszystkie dane adresowe!");
                     }
-                    cnn4.Close();
-                    MessageBox.Show("Dane adresowe zmienione!", "Operacja pomyślna", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
 
                 catch (Exception ex)
                 {
-                    MessageBox.Show("ERROR:" + ex.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("ERROR:" + ex.Message);
                 }
             }
 
