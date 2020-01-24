@@ -371,6 +371,7 @@ namespace Sklep
             isUserAuthenticated = false;
             koszyk.Clear();
             isUserAuthenticatedView();
+            dataGridViewOrder.DataSource = null;
             MessageBox.Show("Do zobaczenia!", "Operacja pomyślna", MessageBoxButtons.OK, MessageBoxIcon.Information);
             panelWelcome.BringToFront();
         }
@@ -916,21 +917,25 @@ namespace Sklep
         {
             if (pictureBoxDNP != null)
             {
-                MemoryStream ms = new MemoryStream();
-                pictureBoxDNP.Image.Save(ms, pictureBoxDNP.Image.RawFormat);
-                byte[] img = ms.GetBuffer();
-                ms.Close();
-
-                string querry = "UPDATE Products SET ProductImage=@zdjecie WHERE ID = (SELECT TOP 1 ID FROM Orders ORDER BY ID DESC)";
-
-                using (connection = new SqlConnection(connectionString))
-                using (SqlCommand command = new SqlCommand(querry, connection))
+                try
                 {
-                    connection.Open();
-                    command.Parameters.Add("@zdjecie", SqlDbType.Image);
-                    command.Parameters["@zdjecie"].Value = img;
-                    command.ExecuteNonQuery();
+                    MemoryStream ms = new MemoryStream();
+                    pictureBoxDNP.Image.Save(ms, pictureBoxDNP.Image.RawFormat);
+                    byte[] img = ms.GetBuffer();
+                    ms.Close();
+
+                    string querry = "UPDATE Products SET ProductImage = @zdjecie WHERE ID = (SELECT TOP 1 ID FROM Products ORDER BY ID DESC)";
+
+                    using (connection = new SqlConnection(connectionString))
+                    using (SqlCommand command = new SqlCommand(querry, connection))
+                    {
+                        connection.Open();
+                        command.Parameters.Add("@zdjecie", SqlDbType.Image);
+                        command.Parameters["@zdjecie"].Value = img;
+                        command.ExecuteNonQuery();
+                    }
                 }
+                catch { }
                 pictureBoxMP.Image = null;
             }
         }
@@ -978,6 +983,11 @@ namespace Sklep
                         cmd.ExecuteNonQuery();
                         dodajZdj();
                         MessageBox.Show("Produkt dodany!", "Operacja pomyślna", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DodajCena.Text = "";
+                        DodajIlosc.Text = "";
+                        DodajOpis.Text = "";
+                        DodajNazwa.Text = "";
+                        pictureBoxDNP.Image = null;
                     }
                     else
                     {
@@ -992,6 +1002,7 @@ namespace Sklep
                     MessageBox.Show("ERROR:" + ex.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            
         }
         private void wylistujKategorie()
         {
