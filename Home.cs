@@ -65,7 +65,7 @@ namespace Sklep
         private void zalogujToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panelLogin.BringToFront();
-            panelAdministracyjnyToolStripMenuItem.Visible = true;
+            //panelAdministracyjnyToolStripMenuItem.Visible = true; //Odkomentować dla łatwego dostepu do sekcji edycji
 
         }
 
@@ -172,20 +172,20 @@ namespace Sklep
 
                     if (dr2.Read() == true && isUserAuthenticated == false)
                     {
-                        MessageBox.Show("Witaj ponownie " + textBoxLogUzytkownik.Text.ToString());
+                        MessageBox.Show("Witaj ponownie " + textBoxLogUzytkownik.Text.ToString(), "Operacja pomyślna", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         globals.GetUserID(textBoxLogUzytkownik.Text);
                         isUserAuthenticated = true;
                         isUserAuthenticatedView();
                     }
                     else
                     {
-                        MessageBox.Show("Nieprawidłowy login lub hasło");
+                        MessageBox.Show("Nieprawidłowy login lub hasło", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     cnn3.Close();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("ERROR:" + ex.Message);
+                    MessageBox.Show("ERROR:" + ex.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -236,7 +236,7 @@ namespace Sklep
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("ERROR:" + ex.Message);
+                    MessageBox.Show("ERROR:" + ex.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -290,7 +290,7 @@ namespace Sklep
                             }
                             catch (Exception ex)
                             {
-                                MessageBox.Show("ERROR:" + ex.Message);
+                                MessageBox.Show("ERROR:" + ex.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         cmd.CommandType = CommandType.StoredProcedure;
@@ -323,19 +323,19 @@ namespace Sklep
                         if (!string.IsNullOrWhiteSpace(textBoxNazwaUzytkownika.Text) && !string.IsNullOrWhiteSpace(textBoxHaslo.Text) && !string.IsNullOrWhiteSpace(textBoxEmail.Text) && Regex.IsMatch(textBoxEmail.Text, pattern) && isUsernameTaken == false && textBoxHaslo.Text == textHaslo2.Text)
                         {
                             cmd.ExecuteNonQuery();
-                            MessageBox.Show("Twoje konto zostało założone. Witaj " + textBoxNazwaUzytkownika.Text.ToString());
+                            MessageBox.Show("Twoje konto zostało założone. Witaj " + textBoxNazwaUzytkownika.Text.ToString(), "Operacja pomyślna", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             panelLogin.BringToFront();
                         }
                         else
                         {
-                            MessageBox.Show("Wprowadzone dane są nieprawidłowe lub brakuje wymaganych informacji, spróbuj ponownie!");
+                            MessageBox.Show("Wprowadzone dane są nieprawidłowe lub brakuje wymaganych informacji, spróbuj ponownie!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         cnn.Close();
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("ERROR:" + ex.Message);
+                    MessageBox.Show("ERROR:" + ex.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -371,7 +371,7 @@ namespace Sklep
             isUserAuthenticated = false;
             koszyk.Clear();
             isUserAuthenticatedView();
-            MessageBox.Show("Do zobaczenia!");
+            MessageBox.Show("Do zobaczenia!", "Operacja pomyślna", MessageBoxButtons.OK, MessageBoxIcon.Information);
             panelWelcome.BringToFront();
         }
 
@@ -391,7 +391,7 @@ namespace Sklep
 
         private void wylistujProdukty()
         {
-            string querry = "SELECT ID, ProductName FROM Products ";// + "INNER JOIN Vendors b ON b.ID = a.VendorID " + "WHERE a.VendorID = @VendorID";
+            string querry = "SELECT ID, ProductName FROM Products ";
 
             using (connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(querry, connection))
@@ -574,11 +574,11 @@ namespace Sklep
 
                     cmd.ExecuteNonQuery();
                     cnn4.Close();
-                    MessageBox.Show("Dane zostały zmienione!");
+                    MessageBox.Show("Dane zostały zmienione!", "Operacja pomyślna", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("ERROR:" + ex.Message);
+                    MessageBox.Show("ERROR:" + ex.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -606,17 +606,17 @@ namespace Sklep
                         cmd3.Parameters.Add("@login", SqlDbType.NChar).Value = currentUsername;
                         cmd3.Parameters.Add("@password", SqlDbType.NChar).Value = noweHaslo.Text;
                         cmd3.ExecuteNonQuery();
-                        MessageBox.Show("Hasło zostało zmienione!");
+                        MessageBox.Show("Hasło zostało zmienione!", "Operacja pomyślna", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show("Podane hasło jest niepoprawne!");
+                        MessageBox.Show("Podane hasło jest niepoprawne!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     cnn2.Close();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("ERROR:" + ex.Message);
+                    MessageBox.Show("ERROR:" + ex.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -637,7 +637,7 @@ namespace Sklep
                         cmd2.CommandType = CommandType.StoredProcedure;
                         cmd2.Parameters.Add("@login", SqlDbType.NChar).Value = currentUsername;
                         cmd2.ExecuteNonQuery();
-                        MessageBox.Show("Konto usunięte!");
+                        MessageBox.Show("Konto usunięte!", "Operacja pomyślna", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         currentUsername = null;
                         isUserAuthenticated = false;
                         isUserAuthenticatedView();
@@ -646,7 +646,7 @@ namespace Sklep
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("ERROR:" + ex.Message);
+                        MessageBox.Show("ERROR:" + ex.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -825,7 +825,7 @@ namespace Sklep
             }
             if (!zgadzasie)
             {
-                MessageBox.Show(message);
+                MessageBox.Show(message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return zgadzasie;
             } else return zgadzasie;
         }
@@ -863,7 +863,7 @@ namespace Sklep
                         command2.Parameters["@amount"].Value = koszyk[i].ilosc;
                         command2.ExecuteNonQuery();
                     }
-                    MessageBox.Show("Gratulacje!\nTwoje zamówienie zostało złożone");
+                    MessageBox.Show("Gratulacje!\nTwoje zamówienie zostało złożone", "Operacja pomyślna", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     aktualizujZamowienia();
                     panelTwojeZamowienia.BringToFront();
                     koszyk.Clear();
@@ -893,6 +893,29 @@ namespace Sklep
             wylistujVendorow();
             panelDodajProdukt.BringToFront();
 
+        }
+
+        private void dodajZdj()
+        {
+            if (pictureBoxDNP != null)
+            {
+                MemoryStream ms = new MemoryStream();
+                pictureBoxDNP.Image.Save(ms, pictureBoxDNP.Image.RawFormat);
+                byte[] img = ms.GetBuffer();
+                ms.Close();
+
+                string querry = "UPDATE Products SET ProductImage=@zdjecie WHERE ID = (SELECT TOP 1 ID FROM Orders ORDER BY ID DESC)";
+
+                using (connection = new SqlConnection(connectionString))
+                using (SqlCommand command = new SqlCommand(querry, connection))
+                {
+                    connection.Open();
+                    command.Parameters.Add("@zdjecie", SqlDbType.Image);
+                    command.Parameters["@zdjecie"].Value = img;
+                    command.ExecuteNonQuery();
+                }
+                pictureBoxMP.Image = null;
+            }
         }
 
         private void buttonDodajProd_Click(object sender, EventArgs e)
@@ -936,11 +959,12 @@ namespace Sklep
                     if (productNameTaken == false)
                     {
                         cmd.ExecuteNonQuery();
-                        MessageBox.Show("Produkt dodany!");
+                        dodajZdj();
+                        MessageBox.Show("Produkt dodany!", "Operacja pomyślna", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show("Popraw błędne informacje!");
+                        MessageBox.Show("Popraw błędne informacje!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                     cnn4.Close();
@@ -948,7 +972,7 @@ namespace Sklep
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("ERROR:" + ex.Message);
+                    MessageBox.Show("ERROR:" + ex.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -972,6 +996,9 @@ namespace Sklep
                 listBoxNOCategories2.DisplayMember = "CategoryName";
                 listBoxNOCategories2.ValueMember = "ID";
                 listBoxNOCategories2.DataSource = tabela_cat;
+                listBoxDKPKategorie.DisplayMember = "CategoryName";
+                listBoxDKPKategorie.ValueMember = "ID";
+                listBoxDKPKategorie.DataSource = tabela_cat;
 
             }
         }
@@ -989,6 +1016,8 @@ namespace Sklep
 
                 listBox1.DisplayMember = "CategoryName";
                 listBox1.DataSource = tabela_cat;
+
+
             }
         }
         private void wylistujVendorow()
@@ -1014,8 +1043,14 @@ namespace Sklep
                 listBoxNOVendors2.ValueMember = "ID";
                 listBoxNOVendors2.DataSource = tabela_ven;
 
+                listBoxDKPProducenci.DisplayMember = "Vendor";
+                listBoxDKPProducenci.ValueMember = "ID";
+                listBoxDKPProducenci.DataSource = tabela_ven;
+
             }
         }
+
+
         private void wylistujUserow()
         {
             string querry = "dbo.listUsers";
@@ -1076,7 +1111,7 @@ namespace Sklep
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("ERROR:" + ex.Message);
+                    MessageBox.Show("ERROR:" + ex.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 cnn4.Close();
             }
@@ -1221,11 +1256,11 @@ namespace Sklep
                      if (productNameTaken == false)
                     {
                         cmd.ExecuteNonQuery();
-                        MessageBox.Show("Produkt zmodyfikowany!");
+                        MessageBox.Show("Produkt zmodyfikowany!", "Operacja pomyślna", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show("Popraw błędne informacje!");
+                        MessageBox.Show("Popraw błędne informacje!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     cnn4.Close();
                 }
@@ -1327,11 +1362,11 @@ namespace Sklep
                     {
                         cmd.ExecuteNonQuery();
                         cmd5.ExecuteNonQuery();
-                        MessageBox.Show("Użytkownik zmodyfikowany!");
+                        MessageBox.Show("Użytkownik zmodyfikowany!", "Operacja pomyślna", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show("Popraw błędne informacje!");
+                        MessageBox.Show("Popraw błędne informacje!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     cnn5.Close();
                     cnn4.Close();
@@ -1496,12 +1531,12 @@ namespace Sklep
                                                 if (Convert.ToInt32(koszyk[i].ilosc + ilosc) <= Convert.ToInt32(dataSet.Tables[0].Rows[0]["ProductStock"]))
                                                 {
                                                     koszyk[i].ilosc += ilosc;
-                                                    MessageBox.Show("Dodano do koszyka");
-                                                }
+                                                    MessageBox.Show("Dodano do koszyka", "Operacja pomyślna", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            }
                                                 else
                                                 {
-                                                    MessageBox.Show("Suma towarów z koszyka i tego zamówienia przekracza ilość towaru w magazynie!");
-                                                }
+                                                    MessageBox.Show("Suma towarów z koszyka i tego zamówienia przekracza ilość towaru w magazynie!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            }
                                             }
                                         }
                                     }
@@ -1511,25 +1546,26 @@ namespace Sklep
                                         kupno.ilosc = ilosc;
                                         koszyk.Add(kupno);
                                         result.Clear();
-                                        MessageBox.Show("Dodano do koszyka");
-                                    }
+                                        MessageBox.Show("Dodano do koszyka", "Operacja pomyślna", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Brak takiej ilości towaru w magazynie!");
-                                }
+                                    MessageBox.Show("Brak takiej ilości towaru w magazynie!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                             }
                             else
                             {
-                                MessageBox.Show("Musisz wprowadzić ilość!");
-                            }
-                            cnn.Close();
+                                MessageBox.Show("Musisz wprowadzić ilość!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        cnn.Close();
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show("ERROR:" + ex.Message);
-                        }
+                            MessageBox.Show("ERROR:" + ex.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     }
+                }
                     else
                     {
                         MessageBox.Show("Wprowadź dane w postaci liczbowej", "Błąd",
@@ -1592,7 +1628,8 @@ namespace Sklep
         private void button2_Click(object sender, EventArgs e)
         {
             DataTable produkt = new DataTable();
-            string temp, temp2 = "";
+            string temp = "";
+            string temp2 = "";
                 using (connection = new SqlConnection(connectionString))
                 using (SqlCommand command = new SqlCommand("DisplaySPecificProductWOCategories", connection))
                 using (SqlDataAdapter adapter = new SqlDataAdapter(command))
@@ -1646,7 +1683,15 @@ namespace Sklep
             {
                 if (ofd.ShowDialog()==DialogResult.OK)
                 {
-                    pictureBoxMP.Image = Image.FromFile(ofd.FileName);
+                    
+                    if((sender as Button).Name.ToString() == "buttonDNPDodajZdj")
+                    {
+                        pictureBoxDNP.Image = Image.FromFile(ofd.FileName);
+                    }
+                    else
+                    {
+                        pictureBoxMP.Image = Image.FromFile(ofd.FileName);
+                    }
                 }
             }
         }
@@ -1743,13 +1788,13 @@ namespace Sklep
                         }
                     }
                     cnn4.Close();
-                    MessageBox.Show("Dane adresowe zmienione!");
+                    MessageBox.Show("Dane adresowe zmienione!", "Operacja pomyślna", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
 
                 catch (Exception ex)
                 {
-                    MessageBox.Show("ERROR:" + ex.Message);
+                    MessageBox.Show("ERROR:" + ex.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -1811,13 +1856,13 @@ namespace Sklep
                         }
                     }
                     cnn4.Close();
-                    MessageBox.Show("Dane adresowe zmienione!");
+                    MessageBox.Show("Dane adresowe zmienione!", "Operacja pomyślna", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
 
                 catch (Exception ex)
                 {
-                    MessageBox.Show("ERROR:" + ex.Message);
+                    MessageBox.Show("ERROR:" + ex.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
@@ -1873,24 +1918,20 @@ namespace Sklep
 
         private void buttonWZWyslijZam_Click(object sender, EventArgs e)
         {
-
-            int rowindex = dataGridViewWZLista.CurrentCell.RowIndex;
-            
-            //Console.WriteLine(Convert.ToInt32(dataGridViewWZLista.Rows[rowindex].Cells[0].Value.ToString()) + " Wartosc sparsu");
-
             string querry = "UPDATE Orders SET OrderStatus = 2 WHERE ID = @id";
             try
             {
+                int rowindex = dataGridViewWZLista.CurrentCell.RowIndex;
+
                 using (connection = new SqlConnection(connectionString))
                 using (SqlCommand command = new SqlCommand(querry, connection))
                 {
-                    //Console.WriteLine(Convert.ToInt32(dataGridViewWZLista.SelectedCells[0].RowIndex.ToString()) + " Wartosc sparsu");
                     connection.Open();
                     command.Parameters.Add("@id", SqlDbType.Int);
                     command.Parameters["@id"].Value = Convert.ToInt32(dataGridViewWZLista.Rows[rowindex].Cells[0].Value.ToString());
                     if (command.ExecuteNonQuery() > 0)
                     {
-                        MessageBox.Show("Zamówienie zostało wysłane");
+                        MessageBox.Show("Zamówienie zostało wysłane", "Operacja pomyślna", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         wyślijZamówienieToolStripMenuItem_Click(sender, e);
                     }
                 }
@@ -1950,6 +1991,87 @@ namespace Sklep
             }
             catch { }
         }
+
+        private void dodajKategorięProducentaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            wylistujKategorie();
+            wylistujVendorow();
+            panelDodajKatProd.BringToFront();
+        }
+
+        private void buttonDKPDodajKat_Click(object sender, EventArgs e)
+        {
+            if (textBoxDKPKategoria.Text != "")
+            {
+                string q = "SELECT CategoryName FROM Categories WHERE CategoryName = @name";
+                try
+                {
+                    using (SqlConnection cnn = new SqlConnection(connectionString))
+                    {
+                    cnn.Open();
+                    SqlCommand cmd = new SqlCommand(q, cnn);
+                    cmd.Parameters.Add("@name", SqlDbType.NVarChar).Value = textBoxDKPKategoria.Text;
+                    SqlDataReader dr = cmd.ExecuteReader();
+                        if (!dr.HasRows)
+                        {
+                            string querry = "INSERT INTO Categories(CategoryName) VALUES (@catName)";
+                                using (connection = new SqlConnection(connectionString))
+                                using (SqlCommand command = new SqlCommand(querry, connection))
+                                {
+                                    connection.Open();
+                                    command.Parameters.Clear();
+                                    command.Parameters.Add("@catName", SqlDbType.NVarChar).Value = textBoxDKPKategoria.Text;
+                                    command.ExecuteNonQuery();
+                                    MessageBox.Show("Pomyślnie dodano kategorie", "Operacja pomyślna", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+
+                        }
+                        else MessageBox.Show("Błąd, podana kategoria już istnieje", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch { }
+            }
+            else MessageBox.Show("Podaj nazwę kategorii!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            wylistujKategorie();
+        }
+
+        private void buttonDKPDodajProd_Click(object sender, EventArgs e)
+        {
+            if (textBoxDKPProducent.Text != "")
+            {
+                string q = "SELECT Vendor FROM Vendors WHERE Vendor = @name";
+                using (SqlConnection cnn = new SqlConnection(connectionString))
+                {
+                    cnn.Open();
+                    SqlCommand cmd = new SqlCommand(q, cnn);
+                    cmd.Parameters.Add("@name", SqlDbType.NVarChar).Value = textBoxDKPProducent.Text;
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    if (!dr.HasRows)
+                    {
+                        string querry = "INSERT INTO Vendors(Vendor) VALUES (@venName)";
+                        using (connection = new SqlConnection(connectionString))
+                        using (SqlCommand command = new SqlCommand(querry, connection))
+                        {
+                            connection.Open();
+                            command.Parameters.Clear();
+                            command.Parameters.Add("@venName", SqlDbType.NVarChar).Value = textBoxDKPProducent.Text;
+                            command.ExecuteNonQuery();
+                            MessageBox.Show("Pomyślnie dodano producenta", "Operacja pomyślna", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else MessageBox.Show("Błąd, podany producent już istnieje", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else MessageBox.Show("Podaj nazwę producenta!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            wylistujVendorow();
+        }
+
+        private void listBoxDKPKategorie_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
     }
     }
+    
 
